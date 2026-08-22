@@ -499,6 +499,10 @@ a:hover {
   border-top: 0;
 }
 
+.toc-menu__label--compact {
+  display: none;
+}
+
 .editions__menu a {
   min-height: 2.75rem;
   display: grid;
@@ -1876,9 +1880,19 @@ html[data-reading="true"] .edition-body {
 @media (max-width: 38rem) {
   .brand__mark,
   .brand__tagline,
-  .toc-menu,
+  .editions,
+  [data-reading-toggle],
   [data-type-toggle] {
     display: none;
+  }
+
+  .toc-menu__label--wide,
+  .theme-control [data-theme-label] {
+    display: none;
+  }
+
+  .toc-menu__label--compact {
+    display: inline;
   }
 
   .brand__copy {
@@ -1903,7 +1917,7 @@ html[data-reading="true"] .edition-body {
   }
 
   .theme-control {
-    min-width: 2.9rem;
+    min-width: 2.5rem;
   }
 
   .editions__menu {
@@ -2022,11 +2036,7 @@ html[data-reading="true"] .edition-body {
   }
 
   .story-shape .section-tools {
-    position: static;
-    order: 2;
-    margin-top: 0.8rem;
-    opacity: 1;
-    transform: none;
+    display: none;
   }
 
   .pullquote {

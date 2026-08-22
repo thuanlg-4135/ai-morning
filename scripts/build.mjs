@@ -661,8 +661,9 @@ function renderReleases(edition, { compact = false } = {}) {
   const releaseItems = compact
     ? edition.releases.filter((release) => !(release.sources ?? []).some((source) => leadSourceUrls.has(source.url)))
     : edition.releases;
-  const releases = releaseItems.map((release, index) => {
-    const featured = index === 0 && release.verdict === 'TRY_NOW' && release.freshness === 'NEW_TODAY';
+  const orderedReleaseItems = [...releaseItems].sort((a, b) => Number(isRecord(b.visual)) - Number(isRecord(a.visual)));
+  const releases = orderedReleaseItems.map((release, index) => {
+    const featured = isRecord(release.visual) || (index === 0 && release.verdict === 'TRY_NOW' && release.freshness === 'NEW_TODAY');
     const whoGetsIt = hasText(release.who_gets_it)
       ? '<p class="release__audience"><strong>Phạm vi:</strong> ' + escapeHtml(release.who_gets_it) + '</p>'
       : '';
@@ -684,7 +685,7 @@ function renderReleases(edition, { compact = false } = {}) {
     ].join('\n');
   }).join('\n');
 
-  const gridClass = releaseItems.length > 1 ? ' release-list--grid' : '';
+  const gridClass = orderedReleaseItems.length > 1 ? ' release-list--grid' : '';
   return '<section class="release-notebook' + (compact ? ' release-notebook--compact' : '') + '" id="releases" aria-labelledby="release-title">\n' +
     '<header class="department-heading"><p>Release notebook</p><h2 id="release-title">Những thay đổi đáng biết</h2></header>\n' +
     '<div class="release-list' + gridClass + '">' + releases + '</div>\n' +

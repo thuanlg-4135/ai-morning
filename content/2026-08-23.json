@@ -18,9 +18,9 @@
     "caption": "Tín hiệu chính hôm nay: chi phí inference giảm trong khi chất lượng hệ thống quanh model ngày càng quyết định hiệu quả agent."
   },
   "one_number": {
-    "value": "9,8%",
-    "label": "ít bước thực thi hơn trong báo cáo EnvHarness",
-    "context": "Kết quả nghiên cứu trên held-out tasks; không phải bảo đảm cho mọi workload."
+    "value": "$20",
+    "label": "mỗi triệu output token của GPT-5.6 Sol trên Bedrock",
+    "context": "Promotional price được AWS công bố áp dụng ít nhất tới 21/11/2026."
   },
   "watching": [
     "GPT-5.6 pricing theo từng channel",
@@ -179,10 +179,22 @@
       "summary": "Anthropic đưa một nhóm primitive dành cho agent vào GA, trong đó Browser Use kết hợp quan sát giao diện với cấu trúc trang, Skills API đóng gói capability tái sử dụng và Files API hỗ trợ reuse file trong workflow.",
       "verdict": "TRY_NOW",
       "verdict_note": "POC hợp lý nếu đang xây browser/computer agent. Nếu Playwright hiện tại đã ổn thì chưa cần migrate.",
+      "visual": {
+        "kind": "screenshot",
+        "src": "https://cdn.prod.website-files.com/68a44d4040f98a4adf2207b6/690267e194f8fd4618cb330e_image.webp",
+        "alt": "Giao diện Capabilities của Claude.ai hiển thị danh sách Skills và các công tắc bật tắt.",
+        "caption": "Skills trong giao diện Capabilities của Claude.ai. Screenshot sản phẩm chính thức từ Claude.",
+        "credit": "Claude by Anthropic"
+      },
       "sources": [
         {
           "label": "Anthropic announcement",
           "url": "https://claude.com/blog/computer-use-skills-api-files-api",
+          "type": "official"
+        },
+        {
+          "label": "Claude — official Skills interface screenshot",
+          "url": "https://claude.com/blog/skills",
           "type": "official"
         }
       ]
