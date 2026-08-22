@@ -506,6 +506,11 @@ figcaption {
   min-width: 0;
 }
 
+.story-layout > aside {
+  min-width: 0;
+  align-self: stretch;
+}
+
 .story > section {
   margin-bottom: clamp(4.5rem, 8vw, 7.5rem);
 }
