@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "edition_date": "2026-08-22",
+  "locale": "vi-VN",
+  "edition_type": "daily_ai_catchup",
+  "headline": "AI đang rời khỏi chat box và đi thẳng vào workflow",
+  "dek": "Không có một frontier-model launch đủ lớn để chiếm toàn bộ tiêu điểm. Câu chuyện đáng chú ý hơn nằm ở tầng hệ thống: agent harness, browser/computer use, reusable skills và workspace cộng tác đang dần quyết định AI có tạo ra giá trị thực tế hay không.",
+  "meta": {
+    "primary_scan_hours": 24,
+    "context_window_hours": 72,
+    "reading_minutes": 6,
+    "source_policy": "official-first"
+  },
+  "hero_visual": {
+    "kind": "editorial",
+    "key": "model-harness-verification",
+    "caption": "Chất lượng agent ngày càng phụ thuộc vào harness, tools và verification, không chỉ riêng model."
+  },
+  "brief": [
+    {
+      "freshness": "NEW_TODAY",
+      "text": "Agent stack đang trở nên quan trọng ngang việc chọn model."
+    },
+    {
+      "freshness": "NEW_TODAY",
+      "text": "Anthropic GA Computer Use, Browser Use, Skills API và Files API."
+    },
+    {
+      "freshness": "CONTEXT_72H",
+      "text": "Claude Security đưa Mythos 5 vào workflow scan repository."
+    },
+    {
+      "freshness": "CONTEXT_72H",
+      "text": "Slack Code kéo coding agent ra khỏi IDE và vào workspace chung."
+    },
+    {
+      "freshness": "CONTEXT_72H",
+      "text": "Outsourcing bắt đầu bị đo bằng outcome hơn là billable hours."
+    },
+    {
+      "freshness": "CONTEXT_72H",
+      "text": "AI infrastructure vẫn tăng nóng nhưng vốn bắt đầu đòi kỷ luật hơn."
+    }
+  ],
+  "trends": [
+    {
+      "id": "agent-system",
+      "freshness": "NEW_TODAY",
+      "strength": "ACCELERATING",
+      "title": "Cuộc đua đang chuyển từ model sang hệ thống agent",
+      "paragraphs": [
+        "Trong phần lớn hai năm qua, thị trường AI bị cuốn vào câu hỏi model nào đứng đầu benchmark. Tín hiệu mới đáng chú ý hơn là cùng một model có thể cho kết quả rất khác khi đặt trong một harness tốt hơn, có memory, tool use, supervisor và cơ chế kiểm tra tiến độ.",
+        "Nghiên cứu do Nvidia công bố về ARC-AGI-3 là một ví dụ mạnh, dù vẫn nên xem đây là vendor research chứ chưa phải kết luận phổ quát. Insight đáng lấy không phải “hãy đổi model”, mà là reliability của agent ngày càng phụ thuộc vào cách hệ thống giữ context, chọn tool, phục hồi sau lỗi và xác minh kết quả.",
+        "Anthropic cũng đang productize đúng tầng này bằng Browser Use, Computer Use, Skills API và Files API. Đây không phải headline “wow” kiểu model mới, nhưng lại là những primitive có khả năng làm agent ổn định hơn trong sản phẩm thật."
+      ],
+      "pullquote": "Model vẫn quan trọng. Nhưng lợi thế thực dụng đang dịch chuyển sang model + context + memory + tools + verification.",
+      "action": "Nếu một agent đang fail ở task dài, hãy thử thêm verifier hoặc supervisor nhỏ và đo completion rate trước khi đổi model.",
+      "visual": {
+        "kind": "editorial",
+        "key": "browser-computer-use",
+        "caption": "Browser agent kết hợp quan sát giao diện với cấu trúc trang để nhắm đúng field, button và form."
+      },
+      "sources": [
+        {
+          "label": "TechCrunch — agent harness research",
+          "url": "https://techcrunch.com/2026/08/21/nvidia-just-showed-that-the-harness-not-the-ai-model-is-now-the-real-hero/",
+          "type": "reporting"
+        },
+        {
+          "label": "Anthropic — Computer Use, Skills API and Files API",
+          "url": "https://claude.com/blog/computer-use-skills-api-files-api",
+          "type": "official"
+        }
+      ]
+    },
+    {
+      "id": "workflow-shift",
+      "freshness": "NEW_TODAY",
+      "strength": "ACCELERATING",
+      "title": "Agent đang thoát khỏi chat box và IDE",
+      "paragraphs": [
+        "Anthropic đưa agent vào browser và computer workflows. Slack Code đặt coding agents vào project channel nơi con người xem diff, preview và approve. OpenAI tiếp tục mở rộng ChatGPT Business theo hướng cộng tác và hành động trong môi trường làm việc.",
+        "Điểm chung là AI đang chuyển từ một cửa sổ hỏi đáp sang một thành phần có mặt ngay trong nơi công việc diễn ra. Với enterprise, điều này kéo theo permission boundary, audit log, human approval và rollback rõ ràng hơn."
+      ],
+      "action": "Quan sát nơi agent tham gia workflow và bổ sung approval boundary rõ ràng trước khi mở rộng quyền hành động.",
+      "visual": {
+        "kind": "editorial",
+        "key": "chat-tools-workflow-workspace",
+        "caption": "Giao diện hỏi đáp không biến mất, nhưng giá trị đang tiến dần tới workflow và workspace có ngữ cảnh chung."
+      },
+      "sources": [
+        {
+          "label": "The Verge — Slack Code",
+          "url": "https://www.theverge.com/tech/982628/slack-code-vibe-coding-channels-launch",
+          "type": "reporting"
+        },
+        {
+          "label": "OpenAI — ChatGPT Business release notes",
+          "url": "https://help.openai.com/en/articles/11391654-chatgpt-business-release-notes",
+          "type": "official"
+        }
+      ]
+    },
+    {
+      "id": "outcome-pricing",
+      "freshness": "CONTEXT_72H",
+      "strength": "EMERGING",
+      "title": "AI bắt đầu thay đổi cách công ty phần mềm được trả tiền",
+      "paragraphs": [
+        "Reuters ghi nhận các hợp đồng outsourcing đang chịu áp lực chuyển từ billable-hour sang outcome-based pricing. Khách hàng bắt đầu kỳ vọng cùng một ngân sách phải tạo ra nhiều kết quả hơn, khiến headcount ngày càng kém thuyết phục nếu đứng một mình."
+      ],
+      "action": "Khi đánh giá hiệu quả AI, ưu tiên outcome và cost per completed task thay vì chỉ nhìn số giờ hoặc số người.",
+      "sources": [
+        {
+          "label": "Reuters — outcome-based outsourcing contracts",
+          "url": "https://www.reuters.com/world/india/ai-reshapes-indias-it-services-sector-contracts-clients-demand-more-less-2026-08-20/",
+          "type": "reporting"
+        }
+      ]
+    }
+  ],
+  "releases": [
+    {
+      "product": "Claude Platform",
+      "feature": "Computer Use, Browser Use, Skills API, Files API",
+      "freshness": "NEW_TODAY",
+      "status": "RELEASED_GA",
+      "summary": "Đáng thử nhất nếu bạn đang xây browser hoặc computer agent. Browser Use hiểu thêm cấu trúc trang; Skills API đóng gói capability tái sử dụng; Files API giúp giữ và tái dùng file.",
+      "who_gets_it": "Developer đang xây browser hoặc computer agent trên Claude Platform.",
+      "verdict": "TRY_NOW",
+      "verdict_note": "POC nhỏ trên một workflow thật, chưa cần đổi architecture.",
+      "sources": [
+        {
+          "label": "Anthropic announcement",
+          "url": "https://claude.com/blog/computer-use-skills-api-files-api",
+          "type": "official"
+        }
+      ]
+    },
+    {
+      "product": "Claude Security",
+      "feature": "Mythos 5 repository scanning",
+      "freshness": "CONTEXT_72H",
+      "status": "PUBLIC_BETA",
+      "summary": "Claude Enterprise có thể dùng Mythos 5 để phân tích repository, phân loại lỗ hổng, severity/confidence và gợi ý patch, với human approval vẫn nằm trong flow.",
+      "who_gets_it": "Claude Enterprise teams quan tâm AppSec.",
+      "verdict": "WATCH",
+      "verdict_note": "Hữu ích nếu team đã dùng Claude Enterprise hoặc quan tâm AppSec.",
+      "sources": [
+        {
+          "label": "Anthropic announcement",
+          "url": "https://claude.com/blog/bringing-claude-mythos-5-to-more-defenders",
+          "type": "official"
+        }
+      ]
+    },
+    {
+      "product": "Slack Code",
+      "feature": "Collaborative coding channels",
+      "freshness": "CONTEXT_72H",
+      "status": "RELEASED",
+      "summary": "Coding agents có thể tham gia coding channel nơi cả team cùng theo dõi tiến độ, diff, preview và approval.",
+      "who_gets_it": "Các team đã dùng Slack làm workspace chính.",
+      "verdict": "WATCH",
+      "verdict_note": "Đáng thử nếu team đã sống trong Slack.",
+      "sources": [
+        {
+          "label": "The Verge",
+          "url": "https://www.theverge.com/tech/982628/slack-code-vibe-coding-channels-launch",
+          "type": "reporting"
+        }
+      ]
+    },
+    {
+      "product": "ChatGPT Business",
+      "feature": "Collaboration và Codex sharing",
+      "freshness": "CONTEXT_72H",
+      "status": "RELEASED",
+      "summary": "Batch cập nhật tiếp tục kéo ChatGPT và Codex theo hướng work surface có collaboration và action.",
+      "who_gets_it": "ChatGPT Business workspaces.",
+      "verdict": "SKIP_FOR_NOW",
+      "verdict_note": "Không cần hành động nếu workflow hiện tại đã ổn.",
+      "sources": [
+        {
+          "label": "OpenAI release notes",
+          "url": "https://help.openai.com/en/articles/11391654-chatgpt-business-release-notes",
+          "type": "official"
+        }
+      ]
+    }
+  ],
+  "developer_memo": {
+    "title": "Có cần đổi workflow hôm nay không?",
+    "direct_answer": "Chưa cần thay đổi workflow hiện tại.",
+    "actions": [
+      "Nếu một coding agent đang fail ở task dài, thử thêm verifier hoặc supervisor nhỏ và đo completion rate trước và sau.",
+      "Chọn một capability lặp lại để đóng gói thành reusable skill trước.",
+      "Chỉ POC Browser Use trên một workflow phù hợp và có tiêu chí đo rõ ràng."
+    ],
+    "avoid": [
+      "Không đổi model chỉ vì một headline mới.",
+      "Không migrate browser automation bằng Playwright nếu workflow hiện tại đã ổn.",
+      "Không mở rộng quyền agent nếu chưa có approval và rollback rõ ràng."
+    ]
+  },
+  "radar": [
+    {
+      "status": "CONFIRMED",
+      "text": "Anthropic tiếp tục mở rộng các primitive agent mới sang nhiều platform hơn."
+    },
+    {
+      "status": "LIKELY",
+      "text": "Supervisor và harness sẽ trở thành chủ đề nóng hơn trong benchmark agent dài hạn."
+    },
+    {
+      "status": "LIKELY",
+      "text": "Collaborative agent workspace sẽ tạo thêm thử nghiệm về cách agent tham gia SDLC bên cạnh con người."
+    }
+  ],
+  "takeaway": "Cuộc đua AI đang dịch chuyển từ “ai có model thông minh nhất?” sang “ai biến model thành một hệ thống agent đáng tin cậy nhất?”. Với developer, hãy chú ý hơn tới harness, skills, tool use và verification — nhưng chỉ sau khi chúng chứng minh được giá trị trên workflow thật."
+}

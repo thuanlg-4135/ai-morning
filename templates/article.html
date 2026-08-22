@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="{{DESCRIPTION}}">
+  <meta name="generator" content="AI Morning static renderer">
+  <title>{{PAGE_TITLE}}</title>
+  <link rel="icon" href="{{ASSET_PREFIX}}mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ASSET_PREFIX}}site.css">
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('ai-morning-theme');
+      if (savedTheme === 'light' || savedTheme === 'dark') document.documentElement.dataset.theme = savedTheme;
+    } catch {}
+  </script>
+  <script src="{{ASSET_PREFIX}}site.js" defer></script>
+</head>
+<body class="{{PAGE_CLASS}}">
+  <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
+  <div class="reading-progress" data-reading-progress aria-hidden="true"></div>
+
+  <header class="masthead">
+    <div class="masthead__inner">
+      <a class="brand" href="{{HOME_HREF}}" aria-label="AI Morning, trang mới nhất">
+        <span class="brand__mark" aria-hidden="true">AI</span>
+        <span class="brand__copy">
+          <span class="brand__name">AI MORNING</span>
+          <span class="brand__tagline">Bản tin AI buổi sáng cho software engineer</span>
+        </span>
+      </a>
+
+      <nav class="masthead__nav" aria-label="Điều hướng chính">
+        <a class="masthead__link section-link" href="#trends">Xu hướng</a>
+        <a class="masthead__link section-link" href="#releases">Release</a>
+        <a class="masthead__link section-link" href="#developer">Developer</a>
+        <a class="masthead__link section-link" href="#radar">Radar</a>
+        <details class="editions">
+          <summary>Bài cũ</summary>
+          <div class="editions__menu">
+            {{EDITIONS_MENU}}
+          </div>
+        </details>
+        <button class="control theme-control" type="button" data-theme-toggle aria-label="Theme: auto. Chọn theme tiếp theo">
+          <span>Theme</span>
+          <span data-theme-label>AUTO</span>
+        </button>
+        <button class="control" type="button" data-type-toggle aria-label="Đổi cỡ chữ" aria-pressed="false">Aa</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell" id="main-content">
+    {{HERO}}
+    {{BRIEFING}}
+
+    <div class="story-layout">
+      <article class="story">
+        {{TRENDS}}
+        {{RELEASES}}
+        {{DEVELOPER_MEMO}}
+        {{RADAR}}
+        {{TAKEAWAY}}
+      </article>
+      {{RIGHT_RAIL}}
+    </div>
+
+    <footer class="site-footer">
+      <p>AI Morning là bản tổng hợp có chọn lọc. Claim quan trọng nên được kiểm tra ở nguồn gốc trước khi dùng cho quyết định production, pháp lý hoặc tài chính.</p>
+      <a href="{{ARCHIVE_HREF}}">Bài cũ / Editions</a>
+    </footer>
+  </main>
+</body>
+</html>

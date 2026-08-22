@@ -70,6 +70,10 @@ html {
   scroll-padding-top: 5.25rem;
 }
 
+section[id] {
+  scroll-margin-top: 5.75rem;
+}
+
 body {
   margin: 0;
   overflow-x: hidden;
@@ -351,6 +355,56 @@ a:hover {
   text-transform: uppercase;
 }
 
+.freshness-strip {
+  margin: 0 0 1.1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.75rem;
+  color: var(--muted);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.075em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.edition-state {
+  color: var(--text);
+}
+
+.edition-page--historical .edition-state {
+  color: var(--muted);
+}
+
+.freshness {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--muted);
+  font-size: 0.61rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.freshness::before {
+  width: 0.38rem;
+  height: 0.38rem;
+  border: 1px solid currentColor;
+  content: "";
+}
+
+.freshness--new {
+  color: var(--accent);
+}
+
+.freshness--new::before {
+  background: currentColor;
+}
+
 h1,
 h2,
 h3,
@@ -366,6 +420,12 @@ h1 {
   letter-spacing: -0.062em;
   line-height: 0.96;
   text-wrap: balance;
+}
+
+.hero--long-title h1 {
+  max-width: none;
+  font-size: clamp(2.8rem, 5.3vw, 5rem);
+  letter-spacing: -0.052em;
 }
 
 .dek {
@@ -475,12 +535,16 @@ figcaption {
   padding: 0.8rem 0 0.9rem;
   border-top: 1px solid var(--line);
   display: grid;
-  grid-template-columns: 2rem minmax(0, 1fr);
+  grid-template-columns: 2rem auto minmax(0, 1fr);
   gap: 0.55rem;
   font-size: 0.92rem;
   font-weight: 600;
   line-height: 1.45;
   counter-increment: briefing;
+}
+
+.briefing__freshness {
+  padding-top: 0.16rem;
 }
 
 .briefing li::before {
@@ -525,6 +589,34 @@ figcaption {
   text-wrap: balance;
 }
 
+.story .section-intro {
+  max-width: 32rem;
+  margin-bottom: 3.5rem;
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.45;
+}
+
+.trend__meta {
+  margin-bottom: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 0.85rem;
+  color: var(--muted);
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.trend__meta > span:last-child:not(.freshness) {
+  padding-left: 0.85rem;
+  border-left: 1px solid var(--line-strong);
+}
+
 .story h3 {
   margin: 0;
   font-size: clamp(1.2rem, 1.1rem + 0.4vw, 1.5rem);
@@ -565,11 +657,50 @@ figcaption {
   line-height: 1.32;
 }
 
-.source {
+.sources {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
   color: var(--muted);
-  font-size: 0.73rem;
+  font-size: 0.7rem;
   font-weight: 500;
   line-height: 1.55;
+}
+
+.sources a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.source-type {
+  color: var(--muted);
+  font-size: 0.56rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.action-note {
+  max-width: 62ch;
+  margin: 2rem 0 0;
+  padding: 1rem 1.1rem 1.15rem;
+  border-top: 1px solid var(--line-strong);
+  background: var(--surface);
+}
+
+.action-note strong {
+  color: var(--accent);
+  font-size: 0.67rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.action-note p {
+  margin: 0.45rem 0 0;
+  font-size: 0.9em;
 }
 
 .inline-visual {
@@ -594,6 +725,23 @@ figcaption {
   gap: 1.25rem;
 }
 
+.release__product {
+  margin: 0 0 0.28rem !important;
+  color: var(--accent);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.release__flags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.55rem;
+}
+
 .status {
   padding: 0.3rem 0.42rem;
   border: 1px solid var(--line-strong);
@@ -608,6 +756,11 @@ figcaption {
 
 .release p {
   margin: 0.8rem 0 0;
+}
+
+.release__audience {
+  color: var(--muted);
+  font-size: 0.78rem;
 }
 
 .verdict {
@@ -643,6 +796,30 @@ figcaption {
   font-weight: 700;
 }
 
+.memo__grid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.memo__grid h3 {
+  margin-bottom: 0.8rem;
+  color: var(--accent);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.memo__grid ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.memo__grid li {
+  margin-bottom: 0.65rem;
+}
+
 .radar-list {
   margin: 2rem 0 0;
   padding: 0;
@@ -653,6 +830,9 @@ figcaption {
 .radar-list li {
   padding: 1rem 0;
   border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: 0.75rem;
 }
 
 .radar-list strong {
@@ -761,6 +941,27 @@ figcaption {
   padding: 2.5rem 0 7rem;
 }
 
+.archive-list__intro {
+  padding-bottom: 1.5rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.archive-list__intro h2,
+.archive-list__intro p {
+  margin: 0;
+}
+
+.archive-list__intro p {
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
 .archive-list__head,
 .edition-row {
   display: grid;
@@ -819,6 +1020,21 @@ figcaption {
   color: var(--muted);
   font-size: 0.88rem;
   line-height: 1.55;
+}
+
+.edition-row__topics {
+  margin-top: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.8rem;
+}
+
+.edition-row__topics span {
+  color: var(--muted);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
 }
 
 .edition-row__arrow {
@@ -956,6 +1172,10 @@ figcaption {
     padding-top: 2.65rem;
   }
 
+  .hero--long-title h1 {
+    font-size: clamp(2.65rem, 11vw, 3.5rem);
+  }
+
   .eyebrow {
     font-size: 0.67rem;
   }
@@ -980,6 +1200,15 @@ figcaption {
 
   .briefing li {
     font-size: 0.88rem;
+    grid-template-columns: 1.8rem minmax(0, 1fr);
+  }
+
+  .briefing__freshness {
+    grid-column: 2;
+  }
+
+  .briefing li > span:last-child {
+    grid-column: 2;
   }
 
   .story-layout {
@@ -999,6 +1228,10 @@ figcaption {
     gap: 0.65rem;
   }
 
+  .release__flags {
+    justify-content: flex-start;
+  }
+
   .status {
     justify-self: start;
   }
@@ -1008,9 +1241,19 @@ figcaption {
     padding: 2rem 1.25rem 2.25rem;
   }
 
+  .memo__grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
   .radar-list strong {
     display: block;
     margin-bottom: 0.25rem;
+  }
+
+  .radar-list li {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
   }
 
   .rail {
