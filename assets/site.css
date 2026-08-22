@@ -91,6 +91,8 @@
   --font-editorial: "Source Serif 4", Georgia, "Times New Roman", serif;
   --page: 78rem;
   --article: 68ch;
+  --editorial-kicker: 9.5rem;
+  --editorial-gap: 2rem;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -829,8 +831,8 @@ figcaption {
   padding: 2rem max(1.25rem, calc((100% - var(--page)) / 2)) 2.4rem;
   border-bottom: 1px solid var(--line);
   display: grid;
-  grid-template-columns: 11rem minmax(0, 1fr);
-  gap: 2.5rem;
+  grid-template-columns: var(--editorial-kicker) minmax(0, 1fr);
+  column-gap: var(--editorial-gap);
 }
 
 .section-label {
@@ -852,13 +854,19 @@ figcaption {
   counter-reset: briefing;
 }
 
+.briefing--compact ol {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 2rem;
+}
+
 .briefing li {
   min-width: 0;
   padding: 0.85rem 0 1rem;
   border-top: 1px solid var(--line);
   display: grid;
-  grid-template-columns: 2rem auto minmax(0, 1fr);
-  gap: 0.55rem;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-content: start;
+  gap: 0.45rem;
   font-size: 0.95rem;
   font-weight: 600;
   line-height: 1.4;
@@ -866,6 +874,7 @@ figcaption {
 }
 
 .briefing__copy {
+  grid-column: 1 / -1;
   display: grid;
   gap: 0.28rem;
 }
@@ -883,7 +892,7 @@ figcaption {
 }
 
 .briefing__freshness {
-  padding-top: 0.16rem;
+  align-self: start;
 }
 
 .briefing li::before {
@@ -927,9 +936,9 @@ figcaption {
   padding-top: 0.8rem;
   border-top: 0.24rem solid var(--text);
   display: grid;
-  grid-template-columns: minmax(8rem, 0.34fr) minmax(0, 1fr);
+  grid-template-columns: var(--editorial-kicker) minmax(0, 1fr);
   align-items: baseline;
-  gap: 1.5rem;
+  column-gap: var(--editorial-gap);
   font-family: var(--font-ui);
 }
 
@@ -1320,7 +1329,7 @@ figcaption {
 }
 
 .release-list {
-  border-top: 0.2rem solid var(--text);
+  border-top: 1px solid var(--line);
 }
 
 .release-list--grid {
@@ -1785,6 +1794,10 @@ html[data-reading="true"] .edition-body {
   .edition-body {
     grid-template-columns: minmax(0, 1fr) 12.5rem;
     gap: 3rem;
+  }
+
+  .briefing--compact ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .lead-story__opening,
