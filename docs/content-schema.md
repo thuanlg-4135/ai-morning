@@ -136,7 +136,18 @@ id, importance, pullquote, stat, action, visual, and sources are optional. `impo
 
 ## Visual keys
 
-Visual hints never contain SVG or HTML. scripts/visuals.mjs maps a short key to a reusable, theme-aware SVG.
+Visual hints never contain SVG or HTML. `scripts/visuals.mjs` maps a short key to a reusable, theme-aware SVG and can also render an editorial image or screenshot.
+
+Supported visual kinds:
+
+- `editorial`: existing abstract editorial SVG.
+- `chart`: quantitative comparison; may provide a simplified mobile treatment.
+- `diagram`: architecture or process explanation.
+- `stat`: dominant quantitative finding, normally paired with `trend.stat`.
+- `image`: meaningful editorial photography.
+- `screenshot`: real product or interface capture.
+
+For `image` and `screenshot`, provide `src`, `alt`, `caption`, and optional `credit`. For the code-native kinds, provide `key` and `caption`.
 
 Known keys:
 

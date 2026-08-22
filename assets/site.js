@@ -184,7 +184,7 @@
     observedSections.forEach((section) => observer.observe(section));
   }
 
-  document.querySelectorAll('.editions').forEach((menu) => {
+  document.querySelectorAll('.editions, .toc-menu').forEach((menu) => {
     menu.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
         menu.removeAttribute('open');
@@ -194,7 +194,7 @@
   });
 
   addEventListener('click', (event) => {
-    document.querySelectorAll('.editions[open]').forEach((menu) => {
+    document.querySelectorAll('.editions[open], .toc-menu[open]').forEach((menu) => {
       if (!menu.contains(event.target)) menu.removeAttribute('open');
     });
   });

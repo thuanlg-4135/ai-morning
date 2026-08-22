@@ -29,6 +29,7 @@ const sourceTypes = new Set(['official', 'research', 'reporting']);
 const radarStatuses = new Set(['CONFIRMED', 'WATCH', 'LIKELY', 'SPECULATION']);
 const editionModes = new Set(['BIG', 'NORMAL', 'QUIET']);
 const importanceValues = new Set(['LEAD', 'SECONDARY', 'BRIEF']);
+const visualKinds = new Set(['editorial', 'image', 'screenshot', 'chart', 'diagram', 'stat']);
 const monthNames = [
   'tháng 1', 'tháng 2', 'tháng 3', 'tháng 4', 'tháng 5', 'tháng 6',
   'tháng 7', 'tháng 8', 'tháng 9', 'tháng 10', 'tháng 11', 'tháng 12'
@@ -94,6 +95,24 @@ function validateOptionalString(value, field, errors) {
   }
 }
 
+function validateVisual(visual, field, errors) {
+  if (visual === undefined) return;
+  if (!isRecord(visual)) {
+    errors.push('invalid field "' + field + '": expected object');
+    return;
+  }
+  const kind = visual.kind ?? 'editorial';
+  if (!visualKinds.has(kind)) {
+    errors.push('invalid field "' + field + '.kind": expected editorial, image, screenshot, chart, diagram, or stat');
+  }
+  if ((kind === 'image' || kind === 'screenshot') && !hasText(visual.src)) {
+    errors.push('missing required field "' + field + '.src"');
+  }
+  for (const key of ['src', 'alt', 'caption', 'credit', 'key']) {
+    validateOptionalString(visual[key], field + '.' + key, errors);
+  }
+}
+
 function validateEdition(edition, filename) {
   const errors = [];
   if (!isRecord(edition)) {
@@ -118,6 +137,7 @@ function validateEdition(edition, filename) {
 
   if (!hasText(edition.headline)) errors.push('invalid field "headline": expected non-empty string');
   if (!hasText(edition.dek)) errors.push('invalid field "dek": expected non-empty string');
+  validateVisual(edition.hero_visual, 'hero_visual', errors);
 
   if (edition.edition_mode !== undefined && !editionModes.has(edition.edition_mode)) {
     errors.push('invalid field "edition_mode": expected BIG, NORMAL, or QUIET');
@@ -180,6 +200,7 @@ function validateEdition(edition, filename) {
           errors.push('invalid field "' + field + '.stat": expected object with value and label');
         }
       }
+      validateVisual(trend.visual, field + '.visual', errors);
       if (trend.sources !== undefined) {
         if (!Array.isArray(trend.sources)) {
           errors.push('invalid field "' + field + '.sources": expected array');
@@ -206,6 +227,7 @@ function validateEdition(edition, filename) {
       if (!verdictValues.has(release.verdict)) {
         errors.push('invalid field "' + field + '.verdict": expected TRY_NOW, WATCH, or SKIP_FOR_NOW');
       }
+      validateVisual(release.visual, field + '.visual', errors);
       if (release.sources !== undefined) {
         if (!Array.isArray(release.sources)) {
           errors.push('invalid field "' + field + '.sources": expected array');
@@ -514,8 +536,9 @@ function renderHero(edition, context) {
   ].join('\n');
 }
 
-function renderBriefing(edition) {
-  const items = frontBriefs(edition).map((item) => {
+function renderBriefing(edition, { start = 0, max = 5, compact = false } = {}) {
+  const selected = edition.brief.slice(start, start + max);
+  const items = selected.map((item) => {
     const body = briefBody(item);
     return '<li>' +
       '<span class="briefing__freshness">' + renderFreshness(item.freshness, true) + '</span>' +
@@ -524,80 +547,121 @@ function renderBriefing(edition) {
       '</div></li>';
   }).join('');
   return [
-    '<section class="briefing" id="briefing" aria-labelledby="briefing-title">',
-    '  <h2 class="section-label" id="briefing-title">60 giây<br>nắm bắt</h2>',
+    '<section class="briefing' + (compact ? ' briefing--compact' : '') + '" id="briefing" aria-labelledby="briefing-title">',
+    '  <h2 class="section-label" id="briefing-title">' + (start > 0 ? 'Còn lại trong<br>60 giây' : '60 giây<br>nắm bắt') + '</h2>',
     '  <ol>' + items + '</ol>',
     '</section>'
   ].join('\n');
 }
 
-function renderTrendBody(trend, isLead) {
-  const paragraphs = trend.paragraphs;
-  const visual = isRecord(trend.visual) ? renderVisual(trend.visual) : '';
+function trendShape(trend, index, { compact = false } = {}) {
+  const importance = trendImportance(trend, index);
+  if (compact && importance !== 'LEAD') return 'news-brief';
+  if (trend.layout_hint === 'visual_explainer') return 'visual-explainer';
+  if (importance === 'LEAD') return 'lead-story';
+  if (isRecord(trend.stat) && !isRecord(trend.visual)) return 'by-the-numbers';
+  if (isRecord(trend.visual)) return 'visual-explainer';
+  if (importance === 'BRIEF') return 'news-brief';
+  return 'secondary-story';
+}
+
+function renderTrendHeader(trend, id, shape) {
+  const heading = shape === 'news-brief' ? 'h3' : 'h2';
+  return [
+    '<header class="story-shape__header">',
+    '  <div class="trend__meta">' + renderFreshness(trend.freshness) + (hasText(trend.strength) ? '<span>' + escapeHtml(trend.strength) + '</span>' : '') + '</div>',
+    '  <' + heading + '>' + escapeHtml(trend.title) + '</' + heading + '>',
+    '</header>',
+    renderSectionTools(id, trend.title)
+  ].join('\n');
+}
+
+function renderParagraphs(paragraphs, { lead = false } = {}) {
+  return paragraphs.map((paragraph, index) =>
+    '<p' + (lead && index === 0 ? ' class="lead"' : '') + '>' + escapeHtml(paragraph) + '</p>'
+  ).join('\n');
+}
+
+function renderTrendStory(trend, index, options = {}) {
+  const importance = trendImportance(trend, index);
+  const shape = trendShape(trend, index, options);
+  const id = hasText(trend.id) ? trend.id : 'trend-' + (index + 1);
+  const statAsVisual = isRecord(trend.visual) && trend.visual.kind === 'stat' && isRecord(trend.stat);
+  const visual = statAsVisual
+    ? renderStat(trend.stat, 'stat-break--visual')
+    : (isRecord(trend.visual) ? renderVisual(trend.visual) : '');
   const quote = hasText(trend.pullquote)
     ? '<blockquote class="pullquote">' + escapeHtml(trend.pullquote) + '</blockquote>'
     : '';
-  const stat = isRecord(trend.stat) ? renderStat(trend.stat) : '';
-  const visualFirst = trend.layout_hint === 'visual_explainer' && visual;
-  const blocks = [];
+  const stat = isRecord(trend.stat) && !statAsVisual ? renderStat(trend.stat) : '';
+  const action = hasText(trend.action)
+    ? '<aside class="action-note"><strong>Việc nên thử</strong><p>' + escapeHtml(trend.action) + '</p></aside>'
+    : '';
+  const first = trend.paragraphs.slice(0, 1);
+  const rest = trend.paragraphs.slice(1);
+  let body;
 
-  if (visualFirst) blocks.push(visual);
-
-  paragraphs.forEach((paragraph, index) => {
-    const leadClass = isLead && index === 0 ? ' class="lead"' : '';
-    blocks.push('<p' + leadClass + '>' + escapeHtml(paragraph) + '</p>');
-
-    const afterFirst = index === 0;
-    const afterSecond = index === 1 || (index === 0 && paragraphs.length === 1);
-
-    if (afterFirst && stat) blocks.push(stat);
-    if (!visualFirst && visual) {
-      const visualAfter = paragraphs.length >= 3 ? 0 : Math.min(1, paragraphs.length - 1);
-      if (index === visualAfter) blocks.push(visual);
-    }
-    if (quote && afterSecond) {
-      const quoteAlready = blocks.includes(quote);
-      if (!quoteAlready) blocks.push(quote);
-    }
-  });
-
-  if (quote && !blocks.includes(quote)) blocks.push(quote);
-  if (visual && !visualFirst && !blocks.includes(visual)) blocks.push(visual);
-
-  return blocks.join('\n');
-}
-
-function renderTrends(edition) {
-  const trends = edition.trends.map((trend, trendIndex) => {
-    const importance = trendImportance(trend, trendIndex);
-    const isLead = importance === 'LEAD';
-    const action = hasText(trend.action)
-      ? '<div class="action-note"><strong>What to do</strong><p>' + escapeHtml(trend.action) + '</p></div>'
-      : '';
-    const divider = trendIndex < edition.trends.length - 1 ? '<hr class="story-divider">' : '';
-    const id = hasText(trend.id) ? trend.id : 'trend-' + (trendIndex + 1);
-    const heading = importance === 'BRIEF' ? 'h3' : 'h2';
-
-    return [
-      '<section class="trend trend--' + importance.toLowerCase() + '" id="' + escapeHtml(id) + '">',
-      '  <div class="trend__meta">' + renderFreshness(trend.freshness) + (hasText(trend.strength) ? '<span>' + escapeHtml(trend.strength) + '</span>' : '') + '</div>',
-      '  <' + heading + '>' + escapeHtml(trend.title) + '</' + heading + '>',
-      '  ' + renderSectionTools(id, trend.title),
-      '  ' + renderTrendBody(trend, isLead),
-      '  ' + action,
-      '  ' + renderSources(trend.sources),
-      '</section>',
-      divider
+  if (shape === 'lead-story') {
+    body = [
+      '<div class="lead-story__opening">',
+      '  <div class="story-prose">' + renderParagraphs(first, { lead: true }) + '</div>',
+      '  ' + visual,
+      '</div>',
+      stat,
+      quote,
+      '<div class="story-prose story-prose--continuation">' + renderParagraphs(rest) + '</div>',
+      action
     ].join('\n');
-  }).join('\n');
+  } else if (shape === 'visual-explainer') {
+    body = [
+      '<div class="visual-explainer__composition">',
+      '  ' + visual,
+      '  <div class="story-prose">' + renderParagraphs(trend.paragraphs) + action + '</div>',
+      '</div>',
+      stat,
+      quote
+    ].join('\n');
+  } else if (shape === 'by-the-numbers') {
+    body = '<div class="numbers-story__composition">' + stat + '<div class="story-prose">' +
+      renderParagraphs(trend.paragraphs) + action + '</div></div>' + quote;
+  } else {
+    const proseWithStat = stat
+      ? renderParagraphs(first) + stat + renderParagraphs(rest)
+      : renderParagraphs(trend.paragraphs);
+    body = '<div class="story-prose">' + proseWithStat + '</div>' + quote + action + visual;
+  }
 
-  return '<section id="trends" aria-labelledby="trends-title">\n' +
-    '<h2 class="section-intro" id="trends-title">Những chuyển động đáng đọc kỹ</h2>\n' +
-    trends + '\n</section>';
+  return [
+    '<section class="story-shape ' + shape + ' trend--' + importance.toLowerCase() + '" id="' + escapeHtml(id) + '">',
+    renderTrendHeader(trend, id, shape),
+    body,
+    renderSources(trend.sources),
+    '</section>'
+  ].join('\n');
 }
 
-function renderReleases(edition) {
-  const releases = edition.releases.map((release, index) => {
+function renderTrendDepartment(trends, allTrends, { compact = false, label = 'Phân tích' } = {}) {
+  if (trends.length === 0) return '';
+  const stories = trends.map((trend) => renderTrendStory(trend, allTrends.indexOf(trend), { compact })).join('\n');
+  return '<section class="story-department' + (compact ? ' story-department--compact' : '') + '" id="trends" aria-labelledby="trends-title">\n' +
+    '<header class="department-heading"><p>' + escapeHtml(label) + '</p><h2 id="trends-title">Những chuyển động đáng đọc kỹ</h2></header>\n' +
+    stories + '\n</section>';
+}
+
+function renderSecondaryGrid(trends, allTrends, { compact = false } = {}) {
+  if (trends.length === 0) return '';
+  return '<section class="secondary-grid" aria-label="Các phân tích tiếp theo">' +
+    trends.map((trend) => renderTrendStory(trend, allTrends.indexOf(trend), { compact })).join('\n') +
+    '</section>';
+}
+
+function renderReleases(edition, { compact = false } = {}) {
+  const lead = edition.trends.find((trend, index) => trendImportance(trend, index) === 'LEAD') ?? edition.trends[0];
+  const leadSourceUrls = new Set((lead?.sources ?? []).map((source) => source.url));
+  const releaseItems = compact
+    ? edition.releases.filter((release) => !(release.sources ?? []).some((source) => leadSourceUrls.has(source.url)))
+    : edition.releases;
+  const releases = releaseItems.map((release, index) => {
     const featured = index === 0 && release.verdict === 'TRY_NOW' && release.freshness === 'NEW_TODAY';
     const whoGetsIt = hasText(release.who_gets_it)
       ? '<p class="release__audience"><strong>Phạm vi:</strong> ' + escapeHtml(release.who_gets_it) + '</p>'
@@ -606,7 +670,7 @@ function renderReleases(edition) {
     const why = hasText(release.why_it_matters) ? release.why_it_matters : release.verdict_note;
     const visual = isRecord(release.visual) ? renderVisual(release.visual) : '';
     return [
-      '<section class="release' + (featured ? ' release--featured' : '') + '">',
+      '<article class="release' + (featured ? ' release--featured' : '') + '">',
       '  <div class="release__head">',
       '    <div><p class="release__product">' + escapeHtml(release.product) + '</p><h3>' + escapeHtml(release.feature) + '</h3></div>',
       '    <div class="release__flags"><span class="status">' + escapeHtml(release.status) + '</span>' + renderFreshness(release.freshness, true) + '</div>',
@@ -616,13 +680,13 @@ function renderReleases(edition) {
       '  ' + whoGetsIt,
       '  <p class="verdict"><strong>' + verdictLabels[release.verdict] + '</strong> ' + escapeHtml(why) + '</p>',
       '  ' + renderSources(release.sources),
-      '</section>'
+      '</article>'
     ].join('\n');
   }).join('\n');
 
-  const gridClass = edition.releases.length > 1 ? ' release-list--grid' : '';
-  return '<section id="releases" aria-labelledby="release-title">\n' +
-    '<h2 id="release-title">Những feature mới đáng catch up</h2>\n' +
+  const gridClass = releaseItems.length > 1 ? ' release-list--grid' : '';
+  return '<section class="release-notebook' + (compact ? ' release-notebook--compact' : '') + '" id="releases" aria-labelledby="release-title">\n' +
+    '<header class="department-heading"><p>Release notebook</p><h2 id="release-title">Những thay đổi đáng biết</h2></header>\n' +
     '<div class="release-list' + gridClass + '">' + releases + '</div>\n' +
     '</section>';
 }
@@ -672,7 +736,61 @@ function renderTakeaway(edition) {
     '</section>';
 }
 
-function renderRightRail(edition, editions, context) {
+function renderMemoRadarPair(edition) {
+  return '<div class="closing-grid">' + renderMemo(edition) + renderRadar(edition) + '</div>';
+}
+
+function renderEditionBody(edition) {
+  const mode = inferEditionMode(edition);
+  const lead = edition.trends.find((trend, index) => trendImportance(trend, index) === 'LEAD') ?? edition.trends[0];
+  const supporting = edition.trends.filter((trend) => trend !== lead);
+  const rail = renderRightRail(edition);
+  let briefing;
+  let main;
+
+  if (mode === 'QUIET') {
+    briefing = renderBriefing(edition, { start: 3, max: 3, compact: true });
+    main = [
+      renderReleases(edition, { compact: true }),
+      renderTrendDepartment([lead], edition.trends, { label: 'Bài đọc chính' }),
+      renderSecondaryGrid(supporting, edition.trends, { compact: true }),
+      renderMemoRadarPair(edition),
+      renderWildcard(edition),
+      renderTakeaway(edition)
+    ].join('\n');
+  } else if (mode === 'BIG') {
+    briefing = renderBriefing(edition);
+    main = [
+      renderTrendDepartment([lead], edition.trends, { label: 'Lead story' }),
+      renderSecondaryGrid(supporting.slice(0, 2), edition.trends),
+      renderReleases(edition),
+      renderSecondaryGrid(supporting.slice(2), edition.trends),
+      renderMemoRadarPair(edition),
+      renderWildcard(edition),
+      renderTakeaway(edition)
+    ].join('\n');
+  } else {
+    briefing = renderBriefing(edition);
+    main = [
+      renderTrendDepartment([lead], edition.trends, { label: 'Phân tích chính' }),
+      renderReleases(edition),
+      renderSecondaryGrid(supporting, edition.trends),
+      renderMemoRadarPair(edition),
+      renderWildcard(edition),
+      renderTakeaway(edition)
+    ].join('\n');
+  }
+
+  return [
+    briefing,
+    '<div class="edition-body edition-body--' + mode.toLowerCase() + '">',
+    '  <article class="edition-body__main">' + main + '</article>',
+    '  ' + rail,
+    '</div>'
+  ].join('\n');
+}
+
+function renderRightRail(edition) {
   const indexItems = [
     { href: '#briefing', label: '60 giây nắm bắt' },
     { href: '#trends', label: edition.trends[0] ? edition.trends[0].title : 'Phân tích' },
@@ -693,17 +811,12 @@ function renderRightRail(edition, editions, context) {
     ? '<section class="rail__block"><h3>Watching</h3><ul class="rail__watch">' + watching + '</ul></section>'
     : '';
 
-  const recent = editions.slice(0, 3).map((item) =>
-    '<a href="' + context.dateHref(item.edition_date) + '"><span>' + formatDate(item.edition_date) + '</span>' + escapeHtml(item.headline) + '</a>'
-  ).join('');
-
   return [
     '<aside aria-label="Mục lục số hôm nay">',
     '  <div class="rail">',
     '    <section class="rail__block"><h3>Trong số này</h3><nav class="rail__index" aria-label="Mục lục">' + indexItems + '</nav></section>',
     '    ' + numberBlock,
     '    ' + watchingBlock,
-    '    <section class="rail__block"><h3>Recent editions</h3>' + recent + '<a href="' + context.archiveHref + '"><span>ARCHIVE</span>Xem tất cả editions →</a></section>',
     '  </div>',
     '</aside>'
   ].join('\n');
@@ -766,14 +879,7 @@ function renderArticlePage(template, edition, editions, context) {
     EDITIONS_MENU: renderEditionsMenu(editions, context),
     DATELINE: renderDateline(edition, editions, context),
     HERO: renderHero(edition, context),
-    BRIEFING: renderBriefing(edition),
-    TRENDS: renderTrends(edition),
-    RELEASES: renderReleases(edition),
-    DEVELOPER_MEMO: renderMemo(edition),
-    RADAR: renderRadar(edition),
-    WILDCARD: renderWildcard(edition),
-    TAKEAWAY: renderTakeaway(edition),
-    RIGHT_RAIL: renderRightRail(edition, editions, context),
+    EDITION_BODY: renderEditionBody(edition),
     FOOTER_NAV: renderFooterNav(edition, editions, context)
   }, 'article.html');
 }

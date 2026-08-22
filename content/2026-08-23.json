@@ -74,7 +74,7 @@
       "pullquote": "Benchmark model vẫn quan trọng, nhưng cost per completed task đang trở thành metric thực dụng hơn cho agent workloads.",
       "action": "Nếu đang chạy GPT-5.6 Sol trên Bedrock, hãy rerun benchmark chi phí trên các task thật. Nếu dùng OpenAI API first-party, chưa nên thay đổi budget assumption cho tới khi pricing chính thức ở channel đó được cập nhật.",
       "visual": {
-        "kind": "editorial",
+        "kind": "chart",
         "key": "sol-pricing-channel-comparison",
         "caption": "So sánh pricing theo channel: Bedrock đang có promotional price, trong khi OpenAI first-party docs tại thời điểm quét vẫn hiển thị mức cũ."
       },
@@ -110,7 +110,7 @@
       "pullquote": "Model mạnh hơn không tự động biến thành agent đáng tin cậy hơn nếu environment và execution loop vẫn yếu.",
       "action": "Nếu agent hay fail ở task dài, hãy đo tool success, recovery, context loss và số bước hoàn thành trước. Thử cải thiện harness hoặc environment trên một workflow nhỏ trước khi đổi model.",
       "visual": {
-        "kind": "editorial",
+        "kind": "diagram",
         "key": "model-harness-environment-verification",
         "caption": "Một agent production nên được nhìn như một hệ thống gồm model, harness, environment, tools và verification."
       },

@@ -45,6 +45,13 @@ const visuals = {
 
   'sol-pricing-channel-comparison': {
     label: 'So sánh giá GPT-5.6 Sol giữa Amazon Bedrock và OpenAI first-party',
+    mobile: () => lines(
+      '<div class="mobile-chart" role="img" aria-label="Bedrock có giá input 4 đô và output 20 đô; OpenAI API có giá input 5 đô và output 30 đô trên mỗi triệu token">',
+      '  <div class="mobile-chart__legend"><span>Input</span><span>Output</span></div>',
+      '  <div class="mobile-chart__row"><strong>Bedrock</strong><span style="--bar: 67%">$4</span><span style="--bar: 67%">$20</span></div>',
+      '  <div class="mobile-chart__row"><strong>OpenAI API</strong><span style="--bar: 83%">$5</span><span style="--bar: 100%">$30</span></div>',
+      '</div>'
+    ),
     svg: () => svgShell('So sánh giá GPT-5.6 Sol giữa Amazon Bedrock và OpenAI first-party', lines(
       '<text x="52" y="60" class="svg-type svg-muted" font-size="14" font-weight="700" letter-spacing="2">SOL PRICING · USD / 1M TOKENS</text>',
       '<line x1="52" y1="88" x2="868" y2="88" class="svg-line" stroke-width="1"/>',
@@ -158,16 +165,30 @@ const fallbackVisual = {
 };
 
 export function renderVisual(visual, { hero = false } = {}) {
-  const key = typeof visual?.key === 'string' ? visual.key : 'unknown';
-  const renderer = visuals[key] ?? fallbackVisual;
+  const kind = typeof visual?.kind === 'string' ? visual.kind : 'editorial';
   const caption = typeof visual?.caption === 'string' && visual.caption.trim()
     ? visual.caption.trim()
     : 'Minh hoạ biên tập cho tín hiệu chính của edition.';
+  const credit = typeof visual?.credit === 'string' && visual.credit.trim()
+    ? '<span class="visual-credit">' + escapeHtml(visual.credit.trim()) + '</span>'
+    : '';
   const classes = hero ? 'editorial-visual hero-visual' : 'editorial-visual inline-visual';
-  const fallbackAttribute = visuals[key] ? '' : ' data-visual-fallback="true"';
 
-  return '<figure class="' + classes + '" data-visual-key="' + escapeHtml(key) + '"' + fallbackAttribute + '>\n' +
-    renderer.svg() + '\n' +
-    '<figcaption>' + escapeHtml(caption) + '</figcaption>\n' +
+  if ((kind === 'image' || kind === 'screenshot') && typeof visual?.src === 'string' && visual.src.trim()) {
+    const alt = typeof visual?.alt === 'string' && visual.alt.trim() ? visual.alt.trim() : caption;
+    return '<figure class="' + classes + ' visual--' + kind + '" data-visual-kind="' + kind + '">\n' +
+      '<img src="' + escapeHtml(visual.src.trim()) + '" alt="' + escapeHtml(alt) + '" loading="lazy" decoding="async">\n' +
+      '<figcaption>' + escapeHtml(caption) + credit + '</figcaption>\n' +
+      '</figure>';
+  }
+
+  const key = typeof visual?.key === 'string' ? visual.key : 'unknown';
+  const renderer = visuals[key] ?? fallbackVisual;
+  const fallbackAttribute = visuals[key] ? '' : ' data-visual-fallback="true"';
+  const mobile = typeof renderer.mobile === 'function' ? renderer.mobile() : '';
+
+  return '<figure class="' + classes + ' visual--' + escapeHtml(kind) + '" data-visual-kind="' + escapeHtml(kind) + '" data-visual-key="' + escapeHtml(key) + '"' + fallbackAttribute + '>\n' +
+    '<div class="visual__desktop">' + renderer.svg() + '</div>\n' + mobile + '\n' +
+    '<figcaption>' + escapeHtml(caption) + credit + '</figcaption>\n' +
     '</figure>';
 }

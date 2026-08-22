@@ -34,10 +34,15 @@
       </a>
 
       <nav class="masthead__nav" aria-label="Điều hướng chính">
-        <a class="masthead__link section-link" href="#briefing">60 giây</a>
-        <a class="masthead__link section-link" href="#trends">Phân tích</a>
-        <a class="masthead__link section-link" href="#releases">Release</a>
-        <a class="masthead__link section-link" href="#developer">Memo</a>
+        <details class="toc-menu">
+          <summary>Trong số này</summary>
+          <nav class="toc-menu__menu" aria-label="Mục lục nhanh">
+            <a href="#briefing">60 giây</a>
+            <a href="#trends">Phân tích</a>
+            <a href="#releases">Release</a>
+            <a href="#developer">Memo</a>
+          </nav>
+        </details>
         <details class="editions">
           <summary>Bài cũ</summary>
           <div class="editions__menu">
@@ -46,7 +51,6 @@
         </details>
         <button class="control" type="button" data-reading-toggle aria-pressed="false" aria-label="Chế độ đọc">Đọc</button>
         <button class="control theme-control" type="button" data-theme-toggle aria-label="Theme: auto. Chọn theme tiếp theo">
-          <span>Theme</span>
           <span data-theme-label>AUTO</span>
         </button>
         <button class="control" type="button" data-type-toggle aria-label="Đổi cỡ chữ" aria-pressed="false">Aa</button>
@@ -57,19 +61,7 @@
 
   <main class="page-shell" id="main-content">
     {{HERO}}
-    {{BRIEFING}}
-
-    <div class="story-layout">
-      <article class="story">
-        {{TRENDS}}
-        {{RELEASES}}
-        {{DEVELOPER_MEMO}}
-        {{RADAR}}
-        {{WILDCARD}}
-        {{TAKEAWAY}}
-      </article>
-      {{RIGHT_RAIL}}
-    </div>
+    {{EDITION_BODY}}
 
     <footer class="site-footer">
       <p>AI Morning là bản tổng hợp có chọn lọc. Claim quan trọng nên được kiểm tra ở nguồn gốc trước khi dùng cho quyết định production, pháp lý hoặc tài chính.</p>

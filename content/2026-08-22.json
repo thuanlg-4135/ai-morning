@@ -3,6 +3,7 @@
   "edition_date": "2026-08-22",
   "locale": "vi-VN",
   "edition_type": "daily_ai_catchup",
+  "edition_mode": "NORMAL",
   "headline": "AI đang rời khỏi chat box và đi thẳng vào workflow",
   "dek": "Không có một frontier-model launch đủ lớn để chiếm toàn bộ tiêu điểm. Câu chuyện đáng chú ý hơn nằm ở tầng hệ thống: agent harness, browser/computer use, reusable skills và workspace cộng tác đang dần quyết định AI có tạo ra giá trị thực tế hay không.",
   "meta": {
@@ -12,7 +13,7 @@
     "source_policy": "official-first"
   },
   "hero_visual": {
-    "kind": "editorial",
+    "kind": "diagram",
     "key": "model-harness-verification",
     "caption": "Chất lượng agent ngày càng phụ thuộc vào harness, tools và verification, không chỉ riêng model."
   },
@@ -84,7 +85,7 @@
       ],
       "action": "Quan sát nơi agent tham gia workflow và bổ sung approval boundary rõ ràng trước khi mở rộng quyền hành động.",
       "visual": {
-        "kind": "editorial",
+        "kind": "diagram",
         "key": "chat-tools-workflow-workspace",
         "caption": "Giao diện hỏi đáp không biến mất, nhưng giá trị đang tiến dần tới workflow và workspace có ngữ cảnh chung."
       },
