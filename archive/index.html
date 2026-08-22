@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Kho lưu trữ các edition đã xuất bản của AI Morning.">
+  <title>Bài cũ · AI Morning</title>
+  <link rel="icon" href="../assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('ai-morning-theme');
+      if (savedTheme === 'light' || savedTheme === 'dark') document.documentElement.dataset.theme = savedTheme;
+    } catch {}
+  </script>
+  <script src="../assets/site.js" defer></script>
+</head>
+<body class="archive-page">
+  <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
+
+  <header class="masthead">
+    <div class="masthead__inner">
+      <a class="brand" href="../" aria-label="AI Morning, trang mới nhất">
+        <span class="brand__mark" aria-hidden="true">AI</span>
+        <span class="brand__copy">
+          <span class="brand__name">AI MORNING</span>
+          <span class="brand__tagline">Bản tin AI buổi sáng cho software engineer</span>
+        </span>
+      </a>
+
+      <nav class="masthead__nav" aria-label="Điều hướng chính">
+        <a class="masthead__link section-link" href="../">Latest</a>
+        <details class="editions">
+          <summary aria-current="page">Bài cũ</summary>
+          <div class="editions__menu">
+            <a href="../"><span class="editions__date">Latest</span><span>Bản tin mới nhất</span></a>
+            <a href="../2026-08-22/"><span class="editions__date">22.08.2026</span><span>AI đi thẳng vào workflow</span></a>
+            <a href="./" aria-current="page"><span class="editions__date">Tất cả</span><span>Kho lưu trữ editions</span></a>
+          </div>
+        </details>
+        <button class="control theme-control" type="button" data-theme-toggle aria-label="Theme: auto. Chọn theme tiếp theo">
+          <span>Theme</span>
+          <span data-theme-label>AUTO</span>
+        </button>
+        <button class="control" type="button" data-type-toggle aria-label="Đổi cỡ chữ" aria-pressed="false">Aa</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell" id="main-content">
+    <header class="archive-hero">
+      <p class="eyebrow">Archive · Editions</p>
+      <h1>Mỗi buổi sáng, một lát cắt.</h1>
+      <p class="dek">Các bản tin đã xuất bản được giữ nguyên theo ngày để bạn có thể trở lại đúng bối cảnh của từng buổi sáng.</p>
+    </header>
+
+    <section class="archive-list" aria-labelledby="archive-title">
+      <h2 class="section-label" id="archive-title">Tất cả editions</h2>
+      <div class="archive-list__head" aria-hidden="true">
+        <span>Ngày</span>
+        <span>Edition</span>
+        <span></span>
+      </div>
+
+      <a class="edition-row" href="../2026-08-22/">
+        <span class="edition-row__date">22.08.2026<small>Saturday</small></span>
+        <div class="edition-row__copy">
+          <h2>AI đang rời khỏi chat box và đi thẳng vào workflow</h2>
+          <p>Agent harness, browser/computer use và workspace cộng tác đang trở thành tầng quyết định AI có tạo ra giá trị thực tế hay không.</p>
+        </div>
+        <span class="edition-row__arrow" aria-hidden="true">→</span>
+      </a>
+    </section>
+
+    <footer class="site-footer">
+      <p>Edition theo ngày là snapshot bất biến. Trang chủ luôn trỏ tới bản tin mới nhất.</p>
+      <a href="../">Đọc edition mới nhất</a>
+    </footer>
+  </main>
+</body>
+</html>
