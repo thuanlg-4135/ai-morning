@@ -25,6 +25,11 @@ The canonical schema version is 1, based on content/2026-08-23.json.
 - edition_type: normally daily_ai_catchup.
 - meta: scan hours, context window, reading time, and source policy.
 - hero_visual: a visual hint consumed by the visual renderer.
+- edition_mode: BIG, NORMAL, or QUIET. If omitted, the renderer infers a mode.
+- edition_number: explicit issue number; otherwise derived chronologically.
+- one_number: value, label, and optional context for the desktop newspaper rail.
+- watching: short topic labels for the desktop newspaper rail.
+- wildcard: optional closing item with title and text.
 - content_contract: documentation metadata; ignored by the renderer.
 - Unknown optional fields are ignored safely.
 
@@ -60,6 +65,7 @@ Source type:
 
     {
       "freshness": "NEW_TODAY",
+      "title": "Tiêu đề scan nhanh tùy chọn",
       "text": "Một tín hiệu ngắn, đủ đọc trong vài giây."
     }
 
@@ -69,12 +75,18 @@ Source type:
       "id": "stable-slug",
       "freshness": "NEW_TODAY",
       "strength": "ACCELERATING",
+      "importance": "LEAD",
       "title": "Tiêu đề phân tích",
       "paragraphs": [
         "Đoạn văn thứ nhất.",
         "Đoạn văn thứ hai."
       ],
       "pullquote": "Pull quote tùy chọn.",
+      "stat": {
+        "value": "9,8%",
+        "label": "ít bước thực thi hơn",
+        "context": "Ngữ cảnh ngắn tùy chọn."
+      },
       "action": "Hành động thực tế tùy chọn.",
       "visual": {
         "kind": "editorial",
@@ -90,7 +102,7 @@ Source type:
       ]
     }
 
-id, pullquote, action, visual, and sources are optional. paragraphs is plain text; do not put HTML or presentation classes in it.
+id, importance, pullquote, stat, action, visual, and sources are optional. `importance` accepts `LEAD`, `SECONDARY`, or `BRIEF`. paragraphs is plain text; do not put HTML or presentation classes in it.
 
 ### Release
 

@@ -19,6 +19,7 @@
 </head>
 <body class="archive-page">
   <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
+  <div class="page-grain" aria-hidden="true"></div>
 
   <header class="masthead">
     <div class="masthead__inner">
@@ -31,7 +32,7 @@
       </a>
 
       <nav class="masthead__nav" aria-label="Điều hướng chính">
-        <a class="masthead__link section-link" href="../">Latest</a>
+        <a class="masthead__link section-link" href="../">Số mới</a>
         <details class="editions">
           <summary aria-current="page">Bài cũ</summary>
           <div class="editions__menu">
@@ -45,11 +46,14 @@
         <button class="control" type="button" data-type-toggle aria-label="Đổi cỡ chữ" aria-pressed="false">Aa</button>
       </nav>
     </div>
+    <div class="dateline">
+      <p class="dateline__date">Kho lưu trữ</p>
+      <p class="dateline__meta"><span>{{EDITION_COUNT}}</span></p>
+    </div>
   </header>
 
   <main class="page-shell" id="main-content">
     <header class="archive-hero">
-      <p class="eyebrow">Archive · Editions</p>
       <h1>Mỗi buổi sáng, một lát cắt.</h1>
       <p class="dek">Các bản tin đã xuất bản được giữ nguyên theo ngày để bạn có thể trở lại đúng bối cảnh của từng buổi sáng.</p>
     </header>
@@ -60,7 +64,7 @@
         <p>{{EDITION_COUNT}}</p>
       </div>
       <div class="archive-list__head" aria-hidden="true">
-        <span>Ngày</span>
+        <span>Số</span>
         <span>Edition</span>
         <span></span>
       </div>
@@ -69,7 +73,7 @@
 
     <footer class="site-footer">
       <p>Edition theo ngày là snapshot được tái tạo từ JSON của chính ngày đó. Trang chủ luôn hiển thị edition mới nhất.</p>
-      <a href="../">Đọc edition mới nhất</a>
+      <a href="../">Đọc số mới nhất</a>
     </footer>
   </main>
 </body>

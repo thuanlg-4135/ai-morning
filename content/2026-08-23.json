@@ -3,6 +3,7 @@
   "edition_date": "2026-08-23",
   "locale": "vi-VN",
   "edition_type": "daily_ai_catchup",
+  "edition_mode": "QUIET",
   "headline": "AI bước vào cuộc đua hiệu quả: Sol rẻ hơn trên Bedrock, agent stack thông minh hơn",
   "dek": "Không có frontier-model launch mới đủ lớn để chiếm tiêu điểm sáng nay. Thay vào đó, tín hiệu đáng chú ý nằm ở hiệu quả vận hành: Amazon Bedrock giảm giá GPT-5.6 Sol theo chương trình khuyến mại, nghiên cứu EnvHarness cho thấy môi trường quanh agent có thể tạo chênh lệch đáng kể, còn Anthropic và AWS tiếp tục mở rộng các primitive và hạ tầng dành cho agent.",
   "meta": {
@@ -16,25 +17,41 @@
     "key": "cost-down-system-up",
     "caption": "Tín hiệu chính hôm nay: chi phí inference giảm trong khi chất lượng hệ thống quanh model ngày càng quyết định hiệu quả agent."
   },
+  "one_number": {
+    "value": "9,8%",
+    "label": "ít bước thực thi hơn trong báo cáo EnvHarness",
+    "context": "Kết quả nghiên cứu trên held-out tasks; không phải bảo đảm cho mọi workload."
+  },
+  "watching": [
+    "GPT-5.6 pricing theo từng channel",
+    "Agent harness và environment",
+    "Cross-Region inference",
+    "Hiệu quả sử dụng AI infrastructure"
+  ],
   "brief": [
     {
       "freshness": "NEW_TODAY",
+      "title": "Bedrock giảm giá GPT-5.6 Sol",
       "text": "Amazon Bedrock công bố giá khuyến mại cho GPT-5.6 Sol ở mức 4 USD/triệu token đầu vào và 20 USD/triệu token đầu ra, áp dụng ít nhất đến 21/11/2026."
     },
     {
       "freshness": "NEW_TODAY",
+      "title": "OpenAI first-party chưa đổi giá",
       "text": "Tại thời điểm quét, trang model GPT-5.6 Sol của OpenAI vẫn hiển thị giá API first-party là 5 USD input và 30 USD output, vì vậy cần phân biệt pricing theo channel."
     },
     {
       "freshness": "CONTEXT_72H",
+      "title": "Environment có thể nâng chất lượng agent",
       "text": "EnvHarness báo cáo mức cải thiện tới 9 điểm trên held-out tasks và giảm 9,8% số bước thực thi bằng cách thay đổi môi trường quanh agent thay vì sửa logic nền."
     },
     {
       "freshness": "CONTEXT_72H",
+      "title": "Claude đưa agent primitives lên GA",
       "text": "Anthropic đưa Computer Use, Browser Use, Skills API và Files API vào nhóm capability GA, củng cố hướng xây agent bằng reusable primitives thay vì giant prompt."
     },
     {
       "freshness": "CONTEXT_72H",
+      "title": "GPT-5.6 mở rộng qua hơn 25 region",
       "text": "Amazon Bedrock mở rộng GPT-5.6 sang hơn 25 region với cross-Region inference, nhắm tới throughput ổn định và khả năng dùng pool compute rộng hơn."
     },
     {
@@ -45,6 +62,7 @@
   "trends": [
     {
       "id": "price-performance",
+      "importance": "LEAD",
       "freshness": "NEW_TODAY",
       "strength": "ACCELERATING",
       "title": "Chi phí inference đang trở thành một feature",
@@ -75,9 +93,15 @@
     },
     {
       "id": "agent-environment",
+      "importance": "SECONDARY",
       "freshness": "CONTEXT_72H",
       "strength": "ACCELERATING",
       "title": "Agent performance đang dịch chuyển từ model sang environment và harness",
+      "stat": {
+        "value": "9,8%",
+        "label": "ít bước thực thi hơn",
+        "context": "EnvHarness báo cáo trên held-out tasks sau khi tối ưu environment."
+      },
       "paragraphs": [
         "EnvHarness bổ sung thêm bằng chứng cho một xu hướng đã bắt đầu rõ: agent không chỉ là model. Nghiên cứu này đặt một programmable layer quanh môi trường tĩnh, quan sát execution trajectory của agent rồi tự tạo các component nhắm vào điểm yếu được phát hiện.",
         "Trên năm benchmark thuộc bốn domain, nhóm tác giả báo cáo cải thiện tới 9 điểm trên held-out instances và giảm 9,8% execution steps. Đây là kết quả nghiên cứu, không nên coi là bảo đảm cho mọi workload, nhưng nó làm nổi bật một hướng tối ưu quan trọng: sửa environment và harness trước khi phản xạ bằng cách đổi model.",
@@ -105,6 +129,7 @@
     },
     {
       "id": "runtime-routing",
+      "importance": "BRIEF",
       "freshness": "CONTEXT_72H",
       "strength": "EMERGING",
       "title": "AI infrastructure đang tối ưu runtime routing, không chỉ mua thêm GPU",

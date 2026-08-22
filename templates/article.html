@@ -13,6 +13,7 @@
     try {
       const savedTheme = localStorage.getItem('ai-morning-theme');
       if (savedTheme === 'light' || savedTheme === 'dark') document.documentElement.dataset.theme = savedTheme;
+      if (localStorage.getItem('ai-morning-reading') === 'true') document.documentElement.dataset.reading = 'true';
     } catch {}
   </script>
   <script src="{{ASSET_PREFIX}}site.js" defer></script>
@@ -20,6 +21,7 @@
 <body class="{{PAGE_CLASS}}">
   <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
   <div class="reading-progress" data-reading-progress aria-hidden="true"></div>
+  <div class="page-grain" aria-hidden="true"></div>
 
   <header class="masthead">
     <div class="masthead__inner">
@@ -32,16 +34,17 @@
       </a>
 
       <nav class="masthead__nav" aria-label="Điều hướng chính">
-        <a class="masthead__link section-link" href="#trends">Xu hướng</a>
+        <a class="masthead__link section-link" href="#briefing">60 giây</a>
+        <a class="masthead__link section-link" href="#trends">Phân tích</a>
         <a class="masthead__link section-link" href="#releases">Release</a>
-        <a class="masthead__link section-link" href="#developer">Developer</a>
-        <a class="masthead__link section-link" href="#radar">Radar</a>
+        <a class="masthead__link section-link" href="#developer">Memo</a>
         <details class="editions">
           <summary>Bài cũ</summary>
           <div class="editions__menu">
             {{EDITIONS_MENU}}
           </div>
         </details>
+        <button class="control" type="button" data-reading-toggle aria-pressed="false" aria-label="Chế độ đọc">Đọc</button>
         <button class="control theme-control" type="button" data-theme-toggle aria-label="Theme: auto. Chọn theme tiếp theo">
           <span>Theme</span>
           <span data-theme-label>AUTO</span>
@@ -49,6 +52,7 @@
         <button class="control" type="button" data-type-toggle aria-label="Đổi cỡ chữ" aria-pressed="false">Aa</button>
       </nav>
     </div>
+    {{DATELINE}}
   </header>
 
   <main class="page-shell" id="main-content">
@@ -61,6 +65,7 @@
         {{RELEASES}}
         {{DEVELOPER_MEMO}}
         {{RADAR}}
+        {{WILDCARD}}
         {{TAKEAWAY}}
       </article>
       {{RIGHT_RAIL}}
@@ -68,7 +73,9 @@
 
     <footer class="site-footer">
       <p>AI Morning là bản tổng hợp có chọn lọc. Claim quan trọng nên được kiểm tra ở nguồn gốc trước khi dùng cho quyết định production, pháp lý hoặc tài chính.</p>
-      <a href="{{ARCHIVE_HREF}}">Bài cũ / Editions</a>
+      <nav class="site-footer__nav" aria-label="Phiên bản khác">
+        {{FOOTER_NAV}}
+      </nav>
     </footer>
   </main>
 </body>
