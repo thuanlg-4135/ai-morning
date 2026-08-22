@@ -164,7 +164,7 @@ const fallbackVisual = {
   ), '0 0 920 460')
 };
 
-export function renderVisual(visual, { hero = false } = {}) {
+export function renderVisual(visual, { hero = false, assetPrefix = '' } = {}) {
   const kind = typeof visual?.kind === 'string' ? visual.kind : 'editorial';
   const caption = typeof visual?.caption === 'string' && visual.caption.trim()
     ? visual.caption.trim()
@@ -176,8 +176,10 @@ export function renderVisual(visual, { hero = false } = {}) {
 
   if ((kind === 'image' || kind === 'screenshot') && typeof visual?.src === 'string' && visual.src.trim()) {
     const alt = typeof visual?.alt === 'string' && visual.alt.trim() ? visual.alt.trim() : caption;
+    const rawSrc = visual.src.trim();
+    const src = /^(?:[a-z][a-z0-9+.-]*:|\/\/|\/|#)/i.test(rawSrc) ? rawSrc : assetPrefix + rawSrc;
     return '<figure class="' + classes + ' visual--' + kind + '" data-visual-kind="' + kind + '">\n' +
-      '<img src="' + escapeHtml(visual.src.trim()) + '" alt="' + escapeHtml(alt) + '" loading="lazy" decoding="async">\n' +
+      '<img src="' + escapeHtml(src) + '" alt="' + escapeHtml(alt) + '" loading="lazy" decoding="async">\n' +
       '<figcaption>' + escapeHtml(caption) + credit + '</figcaption>\n' +
       '</figure>';
   }

@@ -477,7 +477,7 @@ function renderHero(edition, context) {
   const policy = meta.source_policy === 'official-first' ? 'Ưu tiên nguồn chính thức' : 'Nguồn đã đối chiếu';
   const mode = inferEditionMode(edition);
   const newToday = hasNewToday(edition) ? renderFreshness('NEW_TODAY') : '';
-  const visual = isRecord(edition.hero_visual) ? renderVisual(edition.hero_visual, { hero: true }) : '';
+  const visual = isRecord(edition.hero_visual) ? renderVisual(edition.hero_visual, { hero: true, assetPrefix: context.assetPrefix }) : '';
   const longTitle = edition.headline.length > 72 ? ' hero--long-title' : '';
   const metaRow = [
     '<div class="meta" role="group" aria-label="Thông tin bài viết">',
@@ -585,23 +585,28 @@ function renderParagraphs(paragraphs, { lead = false } = {}) {
 function renderTrendStory(trend, index, options = {}) {
   const importance = trendImportance(trend, index);
   const shape = trendShape(trend, index, options);
+  const compactSupporting = options.compact && importance !== 'LEAD';
   const id = hasText(trend.id) ? trend.id : 'trend-' + (index + 1);
   const statAsVisual = isRecord(trend.visual) && trend.visual.kind === 'stat' && isRecord(trend.stat);
-  const visual = statAsVisual
+  const visual = compactSupporting
+    ? ''
+    : statAsVisual
     ? renderStat(trend.stat, 'stat-break--visual')
-    : (isRecord(trend.visual) ? renderVisual(trend.visual) : '');
-  const quote = hasText(trend.pullquote)
+    : (isRecord(trend.visual) ? renderVisual(trend.visual, { assetPrefix: options.assetPrefix }) : '');
+  const quote = !compactSupporting && hasText(trend.pullquote)
     ? '<blockquote class="pullquote">' + escapeHtml(trend.pullquote) + '</blockquote>'
     : '';
-  const stat = isRecord(trend.stat) && !statAsVisual ? renderStat(trend.stat) : '';
-  const action = hasText(trend.action)
+  const stat = isRecord(trend.stat) && (!statAsVisual || compactSupporting) ? renderStat(trend.stat) : '';
+  const action = !compactSupporting && hasText(trend.action)
     ? '<aside class="action-note"><strong>Việc nên thử</strong><p>' + escapeHtml(trend.action) + '</p></aside>'
     : '';
   const first = trend.paragraphs.slice(0, 1);
   const rest = trend.paragraphs.slice(1);
   let body;
 
-  if (shape === 'lead-story') {
+  if (compactSupporting) {
+    body = '<div class="story-prose">' + renderParagraphs(first) + stat + '</div>';
+  } else if (shape === 'lead-story') {
     body = [
       '<div class="lead-story__opening">',
       '  <div class="story-prose">' + renderParagraphs(first, { lead: true }) + '</div>',
@@ -640,36 +645,39 @@ function renderTrendStory(trend, index, options = {}) {
   ].join('\n');
 }
 
-function renderTrendDepartment(trends, allTrends, { compact = false, label = 'Phân tích' } = {}) {
+function renderTrendDepartment(trends, allTrends, { compact = false, label = 'Phân tích', assetPrefix = '' } = {}) {
   if (trends.length === 0) return '';
-  const stories = trends.map((trend) => renderTrendStory(trend, allTrends.indexOf(trend), { compact })).join('\n');
+  const stories = trends.map((trend) => renderTrendStory(trend, allTrends.indexOf(trend), { compact, assetPrefix })).join('\n');
   return '<section class="story-department' + (compact ? ' story-department--compact' : '') + '" id="trends" aria-labelledby="trends-title">\n' +
     '<header class="department-heading"><p>' + escapeHtml(label) + '</p><h2 id="trends-title">Những chuyển động đáng đọc kỹ</h2></header>\n' +
     stories + '\n</section>';
 }
 
-function renderSecondaryGrid(trends, allTrends, { compact = false } = {}) {
+function renderSecondaryGrid(trends, allTrends, { compact = false, assetPrefix = '' } = {}) {
   if (trends.length === 0) return '';
   return '<section class="secondary-grid" aria-label="Các phân tích tiếp theo">' +
-    trends.map((trend) => renderTrendStory(trend, allTrends.indexOf(trend), { compact })).join('\n') +
+    trends.map((trend) => renderTrendStory(trend, allTrends.indexOf(trend), { compact, assetPrefix })).join('\n') +
     '</section>';
 }
 
-function renderReleases(edition, { compact = false } = {}) {
+function renderReleases(edition, { compact = false, assetPrefix = '' } = {}) {
   const lead = edition.trends.find((trend, index) => trendImportance(trend, index) === 'LEAD') ?? edition.trends[0];
   const leadSourceUrls = new Set((lead?.sources ?? []).map((source) => source.url));
   const releaseItems = compact
     ? edition.releases.filter((release) => !(release.sources ?? []).some((source) => leadSourceUrls.has(source.url)))
     : edition.releases;
-  const orderedReleaseItems = [...releaseItems].sort((a, b) => Number(isRecord(b.visual)) - Number(isRecord(a.visual)));
-  const releases = orderedReleaseItems.map((release, index) => {
-    const featured = isRecord(release.visual) || (index === 0 && release.verdict === 'TRY_NOW' && release.freshness === 'NEW_TODAY');
+  const explicitFeaturedIndex = releaseItems.findIndex((release) => release.importance === 'LEAD');
+  const featuredIndex = explicitFeaturedIndex >= 0
+    ? explicitFeaturedIndex
+    : releaseItems.findIndex((release) => release.verdict === 'TRY_NOW' && release.freshness === 'NEW_TODAY');
+  const releases = releaseItems.map((release, index) => {
+    const featured = index === featuredIndex;
     const whoGetsIt = hasText(release.who_gets_it)
       ? '<p class="release__audience"><strong>Phạm vi:</strong> ' + escapeHtml(release.who_gets_it) + '</p>'
       : '';
     const changed = hasText(release.what_changed) ? release.what_changed : release.summary;
     const why = hasText(release.why_it_matters) ? release.why_it_matters : release.verdict_note;
-    const visual = isRecord(release.visual) ? renderVisual(release.visual) : '';
+    const visual = isRecord(release.visual) ? renderVisual(release.visual, { assetPrefix }) : '';
     return [
       '<article class="release' + (featured ? ' release--featured' : '') + '">',
       '  <div class="release__head">',
@@ -685,7 +693,7 @@ function renderReleases(edition, { compact = false } = {}) {
     ].join('\n');
   }).join('\n');
 
-  const gridClass = orderedReleaseItems.length > 1 ? ' release-list--grid' : '';
+  const gridClass = releaseItems.length > 1 ? ' release-list--grid' : '';
   return '<section class="release-notebook' + (compact ? ' release-notebook--compact' : '') + '" id="releases" aria-labelledby="release-title">\n' +
     '<header class="department-heading"><p>Release notebook</p><h2 id="release-title">Những thay đổi đáng biết</h2></header>\n' +
     '<div class="release-list' + gridClass + '">' + releases + '</div>\n' +
@@ -741,7 +749,7 @@ function renderMemoRadarPair(edition) {
   return '<div class="closing-grid">' + renderMemo(edition) + renderRadar(edition) + '</div>';
 }
 
-function renderEditionBody(edition) {
+function renderEditionBody(edition, assetPrefix = '') {
   const mode = inferEditionMode(edition);
   const lead = edition.trends.find((trend, index) => trendImportance(trend, index) === 'LEAD') ?? edition.trends[0];
   const supporting = edition.trends.filter((trend) => trend !== lead);
@@ -752,9 +760,9 @@ function renderEditionBody(edition) {
   if (mode === 'QUIET') {
     briefing = renderBriefing(edition, { start: 3, max: 3, compact: true });
     main = [
-      renderReleases(edition, { compact: true }),
-      renderTrendDepartment([lead], edition.trends, { label: 'Bài đọc chính' }),
-      renderSecondaryGrid(supporting, edition.trends, { compact: true }),
+      renderReleases(edition, { compact: true, assetPrefix }),
+      renderTrendDepartment([lead], edition.trends, { label: 'Bài đọc chính', assetPrefix }),
+      renderSecondaryGrid(supporting, edition.trends, { compact: true, assetPrefix }),
       renderMemoRadarPair(edition),
       renderWildcard(edition),
       renderTakeaway(edition)
@@ -762,10 +770,10 @@ function renderEditionBody(edition) {
   } else if (mode === 'BIG') {
     briefing = renderBriefing(edition);
     main = [
-      renderTrendDepartment([lead], edition.trends, { label: 'Lead story' }),
-      renderSecondaryGrid(supporting.slice(0, 2), edition.trends),
-      renderReleases(edition),
-      renderSecondaryGrid(supporting.slice(2), edition.trends),
+      renderTrendDepartment([lead], edition.trends, { label: 'Lead story', assetPrefix }),
+      renderSecondaryGrid(supporting.slice(0, 2), edition.trends, { assetPrefix }),
+      renderReleases(edition, { assetPrefix }),
+      renderSecondaryGrid(supporting.slice(2), edition.trends, { assetPrefix }),
       renderMemoRadarPair(edition),
       renderWildcard(edition),
       renderTakeaway(edition)
@@ -773,9 +781,9 @@ function renderEditionBody(edition) {
   } else {
     briefing = renderBriefing(edition);
     main = [
-      renderTrendDepartment([lead], edition.trends, { label: 'Phân tích chính' }),
-      renderReleases(edition),
-      renderSecondaryGrid(supporting, edition.trends),
+      renderTrendDepartment([lead], edition.trends, { label: 'Phân tích chính', assetPrefix }),
+      renderReleases(edition, { assetPrefix }),
+      renderSecondaryGrid(supporting, edition.trends, { assetPrefix }),
       renderMemoRadarPair(edition),
       renderWildcard(edition),
       renderTakeaway(edition)
@@ -880,7 +888,7 @@ function renderArticlePage(template, edition, editions, context) {
     EDITIONS_MENU: renderEditionsMenu(editions, context),
     DATELINE: renderDateline(edition, editions, context),
     HERO: renderHero(edition, context),
-    EDITION_BODY: renderEditionBody(edition),
+    EDITION_BODY: renderEditionBody(edition, context.assetPrefix),
     FOOTER_NAV: renderFooterNav(edition, editions, context)
   }, 'article.html');
 }
