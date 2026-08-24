@@ -89,33 +89,75 @@ function renderSources(sources = []) {
     '<p class="sources__label">Nguồn kiểm chứng · ' + sources.length + '</p><ol class="sources__items">' + links + '</ol></footer>';
 }
 
-function pageContext(kind, currentDate) {
+function pageContext(kind, currentDate, language = 'vi') {
+  if (language === 'en') {
+    if (kind === 'latest') {
+      return {
+        kind,
+        language,
+        currentDate,
+        assetPrefix: '../assets/',
+        homeHref: './',
+        archiveHref: 'archive/',
+        languageSwitchHref: '../',
+        dateHref: (date) => date + '/'
+      };
+    }
+    if (kind === 'archive') {
+      return {
+        kind,
+        language,
+        currentDate: null,
+        assetPrefix: '../../assets/',
+        homeHref: '../',
+        archiveHref: './',
+        languageSwitchHref: '../../archive/',
+        dateHref: (date) => '../' + date + '/'
+      };
+    }
+    return {
+      kind,
+      language,
+      currentDate,
+      assetPrefix: '../../assets/',
+      homeHref: '../',
+      archiveHref: '../archive/',
+      languageSwitchHref: '../../' + currentDate + '/',
+      dateHref: (date) => '../' + date + '/'
+    };
+  }
   if (kind === 'latest') {
     return {
       kind,
+      language,
       currentDate,
       assetPrefix: 'assets/',
       homeHref: './',
       archiveHref: 'archive/',
+      languageSwitchHref: 'en/',
       dateHref: (date) => date + '/'
     };
   }
   if (kind === 'archive') {
     return {
       kind,
+      language,
       currentDate: null,
       assetPrefix: '../assets/',
       homeHref: '../',
       archiveHref: './',
+      languageSwitchHref: '../en/archive/',
       dateHref: (date) => '../' + date + '/'
     };
   }
   return {
     kind,
+    language,
     currentDate,
     assetPrefix: '../assets/',
     homeHref: '../',
     archiveHref: '../archive/',
+    languageSwitchHref: '../en/' + currentDate + '/',
     dateHref: (date) => '../' + date + '/'
   };
 }
@@ -552,7 +594,7 @@ function renderWildcard(edition) {
 }
 
 function renderTakeaway(edition) {
-  const text = edition.takeaway.replace(/^Nếu hôm nay chỉ nhớ một điều\s*:\s*/i, '');
+  const text = edition.takeaway.replace(/^(?:Nếu hôm nay chỉ nhớ một điều|If you remember one thing today)\s*:\s*/i, '');
   return '<section class="takeaway" id="takeaway" aria-labelledby="takeaway-title" data-scroll-section>\n' +
     '<h2 id="takeaway-title">Nếu hôm nay chỉ nhớ một điều</h2>\n' +
     '<p>' + escapeHtml(text) + '</p>\n' +
@@ -745,10 +787,118 @@ function fillTemplate(template, values, filename) {
   return clean.endsWith('\n') ? clean : clean + '\n';
 }
 
+function localizeChrome(html, language) {
+  if (language !== 'en') return html;
+  const pairs = [
+    ['Bỏ qua điều hướng', 'Skip navigation'],
+    ['AI Morning, trang mới nhất', 'AI Morning, latest edition'],
+    ['Bản tin AI buổi sáng cho software engineer', 'The morning AI briefing for software engineers'],
+    ['Điều hướng chính', 'Main navigation'],
+    ['Mục lục trong số này', 'Table of contents for this edition'],
+    ['Mục lục nhanh', 'Quick table of contents'],
+    ['Chế độ đọc', 'Reading mode'],
+    ['Theme: auto. Chọn theme tiếp theo', 'Theme: auto. Choose the next theme'],
+    ['Đổi cỡ chữ', 'Change font size'],
+    ['AI Morning là bản tổng hợp có chọn lọc. Claim quan trọng nên được kiểm tra ở nguồn gốc trước khi dùng cho quyết định production, pháp lý hoặc tài chính.', 'AI Morning is a curated briefing. Verify consequential claims with their primary source before making production, legal, or financial decisions.'],
+    ['Phiên bản khác', 'Other editions'],
+    ['Mỗi buổi sáng, một lát cắt.', 'One morning, one clear slice.'],
+    ['Các bản tin đã xuất bản được giữ nguyên theo ngày để bạn có thể trở lại đúng bối cảnh của từng buổi sáng.', 'Published briefings are preserved by date so you can return to the context of any given morning.'],
+    ['Tất cả editions', 'All editions'],
+    ['>Số</span>', '>Issue</span>'],
+    ['Kho lưu trữ', 'Archive'],
+    ['Đọc số mới nhất', 'Read the latest edition'],
+    ['Edition theo ngày là snapshot được tái tạo từ JSON của chính ngày đó. Trang chủ luôn hiển thị edition mới nhất.', 'Each dated edition is a snapshot generated from that day’s JSON. The homepage always shows the latest edition.'],
+    ['Bản tin mới nhất', 'Latest briefing'],
+    ['Xem toàn bộ editions →', 'View all editions →'],
+    ['Không có launch lớn', 'No major launch'],
+    ['Việc đáng đọc thay thế', 'Worth reading instead'],
+    ['Còn lại trong<br>60 giây', 'The rest in<br>60 seconds'],
+    ['60 giây<br>nắm bắt', 'Catch up in<br>60 seconds'],
+    ['60 giây nắm bắt', '60-second catch-up'],
+    ['60 giây', '60 seconds'],
+    ['Những chuyển động đáng đọc kỹ', 'Developments worth a closer look'],
+    ['Phân tích chính', 'Main analysis'],
+    ['Bài đọc chính', 'Main story'],
+    ['Những thay đổi đáng biết', 'Changes worth knowing'],
+    ['Vì sao đáng chú ý', 'Why it matters'],
+    ['Thay đổi', 'What changed'],
+    ['Khuyến nghị', 'Recommendation'],
+    ['Phạm vi:', 'Availability:'],
+    ['Những tín hiệu cần tiếp tục nhìn', 'Signals to keep watching'],
+    ['Nếu hôm nay chỉ nhớ một điều', 'If you remember one thing today'],
+    ['Việc nên thử', 'What to try'],
+    ['Nên làm', 'Do'],
+    ['Tránh', 'Avoid'],
+    ['Trong số này', 'In this edition'],
+    ['Điều cần nhớ', 'Takeaway'],
+    ['Kết luận', 'Takeaway'],
+    ['Phạm vi số này', 'Edition coverage'],
+    ['Sự kiện mới', 'New events'],
+    ['Nguồn trực tiếp', 'Direct sources'],
+    ['Nguồn gốc', 'Primary'],
+    ['Đối chiếu', 'Reporting'],
+    ['Nghiên cứu', 'Research'],
+    ['Nguồn kiểm chứng', 'Verified sources'],
+    ['Chốt bản tin', 'Cutoff'],
+    ['Sao chép link', 'Copy link'],
+    ['Sao chép liên kết', 'Copy link to'],
+    ['aria-label="Lưu ', 'aria-label="Save '],
+    ['>Lưu</button>', '>Save</button>'],
+    [' để đọc sau', ' for later'],
+    ['Bài cũ / Editions', 'Past editions'],
+    ['Bài cũ', 'Past editions'],
+    ['>Đọc</button>', '>Read</button>'],
+    ['Bản lưu', 'Archived'],
+    ['Số mới', 'Latest'],
+    ['Số thường', 'Standard edition'],
+    ['Ngày lớn', 'Big news day'],
+    ['Ngày yên', 'Quiet day'],
+    ['Ưu tiên nguồn chính thức', 'Official sources first'],
+    ['Nguồn đã đối chiếu', 'Cross-checked sources'],
+    ['Thông tin bài viết', 'Article information'],
+    ['Các phân tích tiếp theo', 'Further analysis'],
+    ['Mục lục số hôm nay', "Today's table of contents"],
+    ['Mục lục', 'Table of contents'],
+    ['Phân tích', 'Analysis'],
+    ['Tất cả', 'All'],
+    ['Thứ hai', 'Monday'],
+    ['Thứ ba', 'Tuesday'],
+    ['Thứ tư', 'Wednesday'],
+    ['Thứ năm', 'Thursday'],
+    ['Thứ sáu', 'Friday'],
+    ['Thứ bảy', 'Saturday'],
+    ['Chủ nhật', 'Sunday'],
+    ['BỐI CẢNH BIÊN TẬP', 'EDITORIAL CONTEXT'],
+    ['TÍN HIỆU', 'SIGNAL'],
+    ['điều vừa đổi', 'what changed'],
+    ['HỆ THỐNG', 'SYSTEM'],
+    ['nơi bị tác động', 'where it lands'],
+    ['HÀNH ĐỘNG', 'ACTION'],
+    ['việc cần thử', 'what to try'],
+    ['Minh hoạ biên tập · không biểu diễn dữ liệu định lượng.', 'Editorial illustration · not a quantitative chart.'],
+    ['Minh hoạ biên tập trung tính cho tín hiệu AI', 'Neutral editorial illustration for an AI signal']
+  ];
+  let localized = html;
+  pairs.forEach(([vi, en]) => { localized = localized.replaceAll(vi, en); });
+  return localized
+    .replace(/Quét (\d+) giờ · đối chiếu (\d+) giờ/g, 'Scanned $1 hours · cross-checked $2 hours')
+    .replace(/(\d+) phút đọc/g, '$1 min read')
+    .replace(/(\d+) nguồn/g, '$1 sources')
+    .replace(/Số (\d+)/g, 'Issue $1')
+    .replace(/tháng (\d+)/g, (match, month) => [
+      '', 'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ][Number(month)]);
+}
+
 function renderArticlePage(template, edition, editions, context) {
   const mode = inferEditionMode(edition);
   const pageKind = context.kind === 'latest' ? 'edition-page edition-page--latest' : 'edition-page edition-page--historical';
-  return fillTemplate(template, {
+  const html = fillTemplate(template, {
+    HTML_LANG: context.language,
+    LANGUAGE_SWITCH_HREF: context.languageSwitchHref,
+    LANGUAGE_SWITCH_LABEL: context.language === 'en' ? 'VI' : 'EN',
+    LANGUAGE_SWITCH_ARIA: context.language === 'en' ? 'Chuyển ngôn ngữ sang tiếng Việt' : 'Switch language to English',
     PAGE_TITLE: escapeHtml('AI Morning · ' + formatDate(edition.edition_date)),
     DESCRIPTION: escapeHtml(edition.dek),
     ASSET_PREFIX: context.assetPrefix,
@@ -761,6 +911,43 @@ function renderArticlePage(template, edition, editions, context) {
     EDITION_BODY: renderEditionBody(edition, context.assetPrefix),
     FOOTER_NAV: renderFooterNav(edition, editions, context)
   }, 'article.html');
+  return localizeChrome(html, context.language);
+}
+
+function translatedEdition(edition, language) {
+  if (language === 'vi') return edition;
+  const translation = edition.translations?.[language];
+  if (!isRecord(translation)) return null;
+  const localized = structuredClone(edition);
+  const mergeText = (target, overlay, keys) => {
+    if (!isRecord(overlay)) return;
+    keys.forEach((key) => {
+      if (overlay[key] !== undefined) target[key] = overlay[key];
+    });
+  };
+  mergeText(localized, translation, ['headline', 'dek', 'takeaway', 'watching']);
+  mergeText(localized.hero_visual, translation.hero_visual, ['caption', 'alt']);
+  mergeText(localized.developer_memo, translation.developer_memo, ['title', 'direct_answer', 'actions', 'avoid']);
+  mergeText(localized.wildcard, translation.wildcard, ['title', 'text']);
+  for (const section of ['brief', 'trends', 'releases', 'radar']) {
+    const overlays = translation[section];
+    if (!isRecord(overlays)) continue;
+    localized[section].forEach((item) => {
+      const overlay = overlays[item.event_id];
+      mergeText(item, overlay, [
+        'title', 'text', 'paragraphs', 'pullquote', 'action', 'product', 'feature', 'summary',
+        'what_changed', 'who_gets_it', 'why_it_matters', 'verdict_note'
+      ]);
+      mergeText(item.visual, overlay?.visual, ['caption', 'alt']);
+      if (Array.isArray(overlay?.source_labels)) {
+        overlay.source_labels.forEach((label, index) => {
+          if (item.sources[index] && hasText(label)) item.sources[index].label = label;
+        });
+      }
+    });
+  }
+  localized.locale = 'en-US';
+  return localized;
 }
 
 async function copyDirectory(source, destination) {
@@ -819,7 +1006,9 @@ async function build() {
   for (const edition of editions) {
     const outputDir = path.join(distDir, edition.edition_date);
     await mkdir(outputDir, { recursive: true });
-    const html = renderArticlePage(articleTemplate, edition, editions, pageContext('dated', edition.edition_date));
+    const context = pageContext('dated', edition.edition_date);
+    if (!isRecord(edition.translations?.en)) context.languageSwitchHref = '../en/';
+    const html = renderArticlePage(articleTemplate, edition, editions, context);
     await writeFile(path.join(outputDir, 'index.html'), html, 'utf8');
   }
 
@@ -830,8 +1019,55 @@ async function build() {
     'utf8'
   );
 
+  const englishEditions = editions
+    .map((edition) => translatedEdition(edition, 'en'))
+    .filter(Boolean);
+  if (englishEditions.length > 0) {
+    const englishDir = path.join(distDir, 'en');
+    await mkdir(englishDir, { recursive: true });
+    for (const edition of englishEditions) {
+      const outputDir = path.join(englishDir, edition.edition_date);
+      await mkdir(outputDir, { recursive: true });
+      await writeFile(
+        path.join(outputDir, 'index.html'),
+        renderArticlePage(articleTemplate, edition, englishEditions, pageContext('dated', edition.edition_date, 'en')),
+        'utf8'
+      );
+    }
+    await writeFile(
+      path.join(englishDir, 'index.html'),
+      renderArticlePage(articleTemplate, englishEditions[0], englishEditions, pageContext('latest', englishEditions[0].edition_date, 'en')),
+      'utf8'
+    );
+    const englishArchiveContext = pageContext('archive', null, 'en');
+    const englishArchiveHtml = localizeChrome(fillTemplate(archiveTemplate, {
+      HTML_LANG: 'en',
+      ARCHIVE_DESCRIPTION: 'Archive of published AI Morning editions.',
+      ARCHIVE_TITLE: 'Past editions · AI Morning',
+      ASSET_PREFIX: englishArchiveContext.assetPrefix,
+      HOME_HREF: englishArchiveContext.homeHref,
+      LANGUAGE_SWITCH_HREF: englishArchiveContext.languageSwitchHref,
+      LANGUAGE_SWITCH_LABEL: 'VI',
+      LANGUAGE_SWITCH_ARIA: 'Chuyển ngôn ngữ sang tiếng Việt',
+      EDITIONS_MENU: renderEditionsMenu(englishEditions, englishArchiveContext),
+      EDITION_COUNT: englishEditions.length + (englishEditions.length === 1 ? ' edition' : ' editions'),
+      ARCHIVE_ROWS: renderArchiveRows(englishEditions, englishEditions, englishArchiveContext)
+    }, 'archive.html'), 'en');
+    const englishArchiveDir = path.join(englishDir, 'archive');
+    await mkdir(englishArchiveDir, { recursive: true });
+    await writeFile(path.join(englishArchiveDir, 'index.html'), englishArchiveHtml, 'utf8');
+  }
+
   const archiveContext = pageContext('archive');
   const archiveHtml = fillTemplate(archiveTemplate, {
+    HTML_LANG: 'vi',
+    ARCHIVE_DESCRIPTION: 'Kho lưu trữ các edition đã xuất bản của AI Morning.',
+    ARCHIVE_TITLE: 'Bài cũ · AI Morning',
+    ASSET_PREFIX: archiveContext.assetPrefix,
+    HOME_HREF: archiveContext.homeHref,
+    LANGUAGE_SWITCH_HREF: archiveContext.languageSwitchHref,
+    LANGUAGE_SWITCH_LABEL: 'EN',
+    LANGUAGE_SWITCH_ARIA: 'Switch language to English',
     EDITIONS_MENU: renderEditionsMenu(editions, archiveContext),
     EDITION_COUNT: editions.length + (editions.length === 1 ? ' edition' : ' editions'),
     ARCHIVE_ROWS: renderArchiveRows(editions, editions, archiveContext)

@@ -195,5 +195,73 @@
     ]
   },
   "radar": [],
-  "takeaway": "Nếu hôm nay chỉ nhớ một điều: lợi thế AI production đang chuyển từ một model mạnh sang khả năng kết hợp model phù hợp, dữ liệu có quyền sử dụng, identity có kiểm soát và hạ tầng được đo theo workload thật."
+  "takeaway": "Nếu hôm nay chỉ nhớ một điều: lợi thế AI production đang chuyển từ một model mạnh sang khả năng kết hợp model phù hợp, dữ liệu có quyền sử dụng, identity có kiểm soát và hạ tầng được đo theo workload thật.",
+  "translations": {
+    "en": {
+      "headline": "Enterprise AI moves deeper into proprietary models, agent identity, and inference infrastructure",
+      "dek": "The announcements in this morning's window do not revolve around a new general-purpose chatbot. Thomson Reuters is building its own domain model, Okta is bringing agent identity into IAM, and NVIDIA is separating context processing from token generation to serve longer-running agent workloads.",
+      "hero_visual": {
+        "caption": "Five independent events this morning point to the same shift: production AI is becoming more specialized across models, access control, workflows, and serving infrastructure."
+      },
+      "brief": {
+        "okta-agent-sso-ga": {
+          "title": "Okta makes Agent SSO generally available",
+          "text": "Agent SSO uses Cross App Access to manage an agent as a first-class identity instead of scattering static API keys across services. Teams can bring agent connections under the same centralized access policies, consent flows, and controls they already use for people."
+        },
+        "fdb-script-agent-first-commercial-deployment": {
+          "title": "FDB Script Agent turns clinical conversations into prescriptions for physician review",
+          "text": "First Databank announced its first commercial deployment with Tebra. The agent converts a visit conversation into a structured prescription while keeping clinician review as the final step. It is a clear example of automation that combines domain validation with an accountable human approver."
+        }
+      },
+      "trends": {
+        "thomson-reuters-thomson-model-launch": {
+          "title": "Thomson Reuters bets $40 million on a domain model it controls",
+          "paragraphs": [
+            "Thomson Reuters introduced Thomson, the first large language model developed by the company. It says the work started from an open-source foundation model, followed by a $40 million investment in people and compute to mid-train and post-train it for legal, tax, and professional workflows. The number and the word ‘frontier’ should be treated as vendor claims: the announcement does not yet provide a complete independent benchmark against leading general-purpose models.",
+            "The more important point is control over the full lifecycle, not the marketing benchmark. Thomson Reuters owns the model, domain data, expert evaluation process, and products such as Westlaw and Practical Law. It also says customer data is not used for training without explicit consent. The first deployment will be in CoCounsel Legal's Tabular Analysis, while CoCounsel will retain a multi-model architecture that selects a suitable model for each task.",
+            "For teams building AI products, this reinforces an architectural option beyond attaching RAG to a general-purpose API. In domains with proprietary data, strict verification requirements, and sufficient volume, specialized training plus expert evaluation can improve cost, data sovereignty, and behavior. Even so, teams should ask for a technical report, tests performed outside the vendor, and total operating cost before using this case as evidence for a self-training strategy."
+          ],
+          "pullquote": "A domain model is valuable only when its data, evaluation, and control live in one verifiable system.",
+          "action": "If you are considering a proprietary model, compare RAG, fine-tuning, and mid/post-training across domain quality, data rights, inference cost, and auditability. Do not begin with model size.",
+          "visual": {
+            "caption": "Thomson combines a foundation model, domain data, expert evaluation, and professional tools inside a controlled lifecycle."
+          }
+        },
+        "nvidia-groq-3-lpx-production": {
+          "title": "NVIDIA turns decode latency into a dedicated acceleration layer for agents",
+          "paragraphs": [
+            "At Hot Chips, NVIDIA said Groq 3 LPX has entered full production as an extension of the Vera Rubin NVL72 system. Rubin GPUs process large contexts while LPX accelerates the latency-sensitive decode phase; Nebius is the first cloud provider to announce adoption. This is one infrastructure event. The Spectrum-X, Scale-In, and NVLink Fusion specifications in the same announcement should not be counted as separate stories.",
+            "NVIDIA reports 3,400 output tokens per second for Gemma 4 31B in a test with a 100,000-token context, and claims four times the performance of the nearest platform. These are vendor-supplied results for a particular configuration and workload, so they cannot be generalized to every model or agent. The technical value of the announcement is its recognition that prefill, decode, networking, and cache have different bottlenecks and should be measured separately.",
+            "For teams operating agents, the practical lesson is to track time to first token, inter-token latency, cache hits, context growth, and cost per completed task—not just peak tokens per second. Disaggregated serving may improve responsiveness, but it also complicates scheduling, routing, and capacity planning. Consider specialized hardware only after production traces show that decode is truly limiting the workload."
+          ],
+          "action": "Split the inference dashboard into prefill, decode, cache, and tool-wait stages. Use the latency distribution of completed tasks to decide whether disaggregated serving is warranted."
+        }
+      },
+      "releases": {
+        "lexisnexis-protege-agentic-orchestration": {
+          "product": "Lexis+ with Protégé",
+          "feature": "Agentic orchestration with persistent context and review-ready outputs",
+          "summary": "LexisNexis expanded Protégé so it can select models, agents, skills, and sources based on the user's goal while carrying context through research, analysis, drafting, and review. The system can produce Word, Excel, or PowerPoint files, connect to an organization's documents, and validate legal authority through citations and Shepard's.",
+          "who_gets_it": "Lexis+ with Protégé customers; several newly developed LexisNexis models are scheduled for preview later this year.",
+          "verdict_note": "Worth watching as an orchestration pattern for domains with authoritative sources and outputs that require review. The announcement provides no independent accuracy or time-saved benchmark, so ‘automatic model selection’ should not be treated as evidence of quality without per-task traces and evaluations."
+        }
+      },
+      "developer_memo": {
+        "title": "What to bring into this week's architecture",
+        "direct_answer": "Separate four layers clearly: model, domain data, agent identity, and inference runtime.",
+        "actions": [
+          "Give every agent its own identity, short-lived scope, and audit log instead of sharing a service API key.",
+          "Measure latency across prefill, decode, tool wait, and task completion before changing the serving architecture.",
+          "For high-risk domains, make expert evaluation and human approval product components rather than final-stage checklist items."
+        ],
+        "avoid": [
+          "Do not treat a vendor's benchmark or ‘frontier’ label as an independent comparison.",
+          "Do not let orchestration select models if the team cannot record which model, source, and tool produced each artifact.",
+          "Do not issue long-lived identities to agents merely to reduce integration friction."
+        ]
+      },
+      "radar": {},
+      "takeaway": "If you remember one thing today: the production AI advantage is shifting away from a single powerful model toward the ability to combine the right model, properly licensed data, controlled identity, and infrastructure measured against real workloads."
+    }
+  }
 }

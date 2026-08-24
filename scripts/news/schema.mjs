@@ -165,6 +165,72 @@ function validateMeta(meta, filename, errors) {
   validateOptionalString(meta.source_policy, 'meta.source_policy', filename, errors);
 }
 
+function validateTranslationText(value, field, filename, errors) {
+  if (!hasText(value)) {
+    errors.push(schemaIssue(filename, field, 'INCOMPLETE_TRANSLATION', 'A complete, non-empty English translation is required.'));
+  }
+}
+
+function validateEnglishTranslation(edition, translation, filename, errors) {
+  const root = 'translations.en';
+  if (!isRecord(translation)) {
+    errors.push(schemaIssue(filename, root, 'INVALID_TRANSLATION', 'Expected an English translation object.'));
+    return;
+  }
+  for (const key of ['headline', 'dek', 'takeaway']) {
+    validateTranslationText(translation[key], root + '.' + key, filename, errors);
+  }
+  if (!isRecord(translation.developer_memo)) {
+    errors.push(schemaIssue(filename, root + '.developer_memo', 'INCOMPLETE_TRANSLATION', 'The developer memo must be translated.'));
+  } else {
+    for (const key of ['title', 'direct_answer']) {
+      validateTranslationText(translation.developer_memo[key], root + '.developer_memo.' + key, filename, errors);
+    }
+    for (const key of ['actions', 'avoid']) {
+      const translated = translation.developer_memo[key];
+      const original = edition.developer_memo?.[key];
+      if (!Array.isArray(translated) || translated.length !== original?.length || translated.some((item) => !hasText(item))) {
+        errors.push(schemaIssue(filename, root + '.developer_memo.' + key, 'INCOMPLETE_TRANSLATION', 'Expected one translated entry for every original entry.'));
+      }
+    }
+  }
+
+  const requiredFields = {
+    brief: ['title', 'text'],
+    trends: ['title', 'paragraphs', 'action'],
+    releases: ['product', 'feature', 'summary', 'verdict_note'],
+    radar: ['text']
+  };
+  for (const [section, fields] of Object.entries(requiredFields)) {
+    const overlays = translation[section];
+    if (!isRecord(overlays)) {
+      errors.push(schemaIssue(filename, root + '.' + section, 'INCOMPLETE_TRANSLATION', 'Expected translations keyed by event_id.'));
+      continue;
+    }
+    if (!Array.isArray(edition[section])) continue;
+    edition[section].forEach((item) => {
+      const itemField = root + '.' + section + '.' + item.event_id;
+      const overlay = overlays[item.event_id];
+      if (!isRecord(overlay)) {
+        errors.push(schemaIssue(filename, itemField, 'INCOMPLETE_TRANSLATION', 'Missing translation for event_id ' + item.event_id + '.'));
+        return;
+      }
+      fields.forEach((key) => {
+        if (key === 'paragraphs') {
+          if (!Array.isArray(overlay.paragraphs) || overlay.paragraphs.length !== item.paragraphs.length || overlay.paragraphs.some((paragraph) => !hasText(paragraph))) {
+            errors.push(schemaIssue(filename, itemField + '.paragraphs', 'INCOMPLETE_TRANSLATION', 'Expected one translated paragraph for every original paragraph.'));
+          }
+        } else {
+          validateTranslationText(overlay[key], itemField + '.' + key, filename, errors);
+        }
+      });
+      for (const optionalKey of ['pullquote', 'what_changed', 'who_gets_it', 'why_it_matters']) {
+        if (hasText(item[optionalKey])) validateTranslationText(overlay[optionalKey], itemField + '.' + optionalKey, filename, errors);
+      }
+    });
+  }
+}
+
 export function validateEditionSchema(edition, { filename } = {}) {
   const resolvedFilename = filename ?? (hasText(edition?.edition_date) ? edition.edition_date + '.json' : 'unknown.json');
   const errors = [];
@@ -193,6 +259,13 @@ export function validateEditionSchema(edition, { filename } = {}) {
   }
   validateMeta(edition.meta, resolvedFilename, errors);
   validateVisual(edition.hero_visual, 'hero_visual', resolvedFilename, errors);
+  if (edition.translations !== undefined) {
+    if (!isRecord(edition.translations)) {
+      errors.push(schemaIssue(resolvedFilename, 'translations', 'INVALID_TRANSLATION', 'Expected a translations object.'));
+    } else if (edition.translations.en !== undefined) {
+      validateEnglishTranslation(edition, edition.translations.en, resolvedFilename, errors);
+    }
+  }
 
   if (edition.one_number !== undefined && (
     !isRecord(edition.one_number) || !hasText(edition.one_number.value) || !hasText(edition.one_number.label)

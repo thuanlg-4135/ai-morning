@@ -1965,6 +1965,7 @@ html[data-reading="true"] .brand,
 html[data-reading="true"] .toc-menu,
 html[data-reading="true"] .editions,
 html[data-reading="true"] [data-theme-toggle],
+html[data-reading="true"] [data-language-toggle],
 html[data-reading="true"] [data-type-toggle],
 html[data-reading="true"] .dateline,
 html[data-reading="true"] .edition-body > aside {
@@ -2280,6 +2281,7 @@ html[data-reading="true"] .edition-body {
   .brand__tagline,
   .editions,
   [data-reading-toggle],
+  [data-language-toggle],
   [data-type-toggle] {
     display: none;
   }

@@ -31,7 +31,43 @@ The renderer schema remains version 1. The news-quality contract below additiona
 - watching: short topic labels for the desktop newspaper rail.
 - wildcard: optional closing item with title and text.
 - content_contract: documentation metadata; ignored by the renderer.
+- translations: optional reviewed locale overlays. `translations.en` creates the corresponding `/en/` page and must be complete when present.
 - Unknown optional fields are ignored safely.
+
+## Bilingual content
+
+Vietnamese remains the canonical editorial record. A reviewed English edition is stored under `translations.en`; shared factual metadata (`event_id`, `event_signature`, timestamps, freshness, and source URLs) is never duplicated. News-item translations are objects keyed by `event_id`, so adding or reordering items cannot attach English copy to the wrong event.
+
+The English overlay requires `headline`, `dek`, `takeaway`, a complete `developer_memo`, and complete entries for every item in `brief`, `trends`, `releases`, and `radar`. Trend paragraph counts and memo list lengths must match the Vietnamese edition. Optional Vietnamese fields such as `pullquote`, `who_gets_it`, `what_changed`, and `why_it_matters` also require English equivalents when they exist. Incomplete overlays fail schema validation instead of producing a mixed-language page.
+
+Example:
+
+    {
+      "translations": {
+        "en": {
+          "headline": "English headline",
+          "dek": "English editorial summary.",
+          "brief": {
+            "vendor-product-concrete-change": {
+              "title": "English brief title",
+              "text": "English explanatory body."
+            }
+          },
+          "trends": {},
+          "releases": {},
+          "developer_memo": {
+            "title": "English memo title",
+            "direct_answer": "English direct answer.",
+            "actions": ["English action."],
+            "avoid": ["English caution."]
+          },
+          "radar": {},
+          "takeaway": "English takeaway."
+        }
+      }
+    }
+
+The renderer publishes Vietnamese at `/YYYY-MM-DD/` and English at `/en/YYYY-MM-DD/`. Only fully translated editions appear in the English archive. The VI/EN control links between equivalent dated pages when both exist and otherwise returns to the latest translated English edition.
 
 ## Allowed enums
 

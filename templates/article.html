@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="{{HTML_LANG}}" data-language="{{HTML_LANG}}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -19,41 +19,42 @@
   <script src="{{ASSET_PREFIX}}site.js" defer></script>
 </head>
 <body class="{{PAGE_CLASS}}">
-  <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
+  <a class="skip-link" href="#main-content" data-i18n="skip-navigation">Bỏ qua điều hướng</a>
   <div class="reading-progress" data-reading-progress aria-hidden="true"></div>
   <div class="page-grain" aria-hidden="true"></div>
 
   <header class="masthead">
     <div class="masthead__inner">
-      <a class="brand" href="{{HOME_HREF}}" aria-label="AI Morning, trang mới nhất">
+      <a class="brand" href="{{HOME_HREF}}" data-i18n-aria="home-label" aria-label="AI Morning, trang mới nhất">
         <span class="brand__mark" aria-hidden="true">AI</span>
         <span class="brand__copy">
           <span class="brand__name">AI MORNING</span>
-          <span class="brand__tagline">Bản tin AI buổi sáng cho software engineer</span>
+          <span class="brand__tagline" data-i18n="tagline">Bản tin AI buổi sáng cho software engineer</span>
         </span>
       </a>
 
-      <nav class="masthead__nav" aria-label="Điều hướng chính">
+      <nav class="masthead__nav" data-i18n-aria="main-navigation" aria-label="Điều hướng chính">
         <details class="toc-menu">
-          <summary aria-label="Mục lục trong số này">
-            <span class="toc-menu__label toc-menu__label--wide">Trong số này</span>
-            <span class="toc-menu__label toc-menu__label--compact">Mục lục</span>
+          <summary data-i18n-aria="table-of-contents" aria-label="Mục lục trong số này">
+            <span class="toc-menu__label toc-menu__label--wide" data-i18n="in-this-edition">Trong số này</span>
+            <span class="toc-menu__label toc-menu__label--compact" data-i18n="toc">Mục lục</span>
           </summary>
-          <nav class="toc-menu__menu" aria-label="Mục lục nhanh">
+          <nav class="toc-menu__menu" data-i18n-aria="quick-toc" aria-label="Mục lục nhanh">
             {{TOC_MENU}}
           </nav>
         </details>
         <details class="editions">
-          <summary>Bài cũ</summary>
+          <summary data-i18n="past-editions">Bài cũ</summary>
           <div class="editions__menu">
             {{EDITIONS_MENU}}
           </div>
         </details>
-        <button class="control" type="button" data-reading-toggle aria-pressed="false" aria-label="Chế độ đọc">Đọc</button>
-        <button class="control theme-control" type="button" data-theme-toggle aria-label="Theme: auto. Chọn theme tiếp theo">
+        <button class="control language-control" type="button" data-language-toggle data-language-href="{{LANGUAGE_SWITCH_HREF}}" aria-label="{{LANGUAGE_SWITCH_ARIA}}"><span data-language-label>{{LANGUAGE_SWITCH_LABEL}}</span></button>
+        <button class="control" type="button" data-reading-toggle aria-pressed="false" data-i18n-aria="reading-mode" aria-label="Chế độ đọc" data-i18n="read">Đọc</button>
+        <button class="control theme-control" type="button" data-theme-toggle data-i18n-aria="theme-next" aria-label="Theme: auto. Chọn theme tiếp theo">
           <span data-theme-label>AUTO</span>
         </button>
-        <button class="control" type="button" data-type-toggle aria-label="Đổi cỡ chữ" aria-pressed="false">Aa</button>
+        <button class="control" type="button" data-type-toggle data-i18n-aria="font-size" aria-label="Đổi cỡ chữ" aria-pressed="false">Aa</button>
       </nav>
     </div>
     {{DATELINE}}
@@ -66,8 +67,8 @@
     </article>
 
     <footer class="site-footer">
-      <p>AI Morning là bản tổng hợp có chọn lọc. Claim quan trọng nên được kiểm tra ở nguồn gốc trước khi dùng cho quyết định production, pháp lý hoặc tài chính.</p>
-      <nav class="site-footer__nav" aria-label="Phiên bản khác">
+      <p data-i18n="footer-disclaimer">AI Morning là bản tổng hợp có chọn lọc. Claim quan trọng nên được kiểm tra ở nguồn gốc trước khi dùng cho quyết định production, pháp lý hoặc tài chính.</p>
+      <nav class="site-footer__nav" data-i18n-aria="other-editions" aria-label="Phiên bản khác">
         {{FOOTER_NAV}}
       </nav>
     </footer>

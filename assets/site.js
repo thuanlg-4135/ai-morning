@@ -1,10 +1,95 @@
 (() => {
   const root = document.documentElement;
+  const languageButton = document.querySelector('[data-language-toggle]');
   const themeButton = document.querySelector('[data-theme-toggle]');
   const typeButton = document.querySelector('[data-type-toggle]');
   const readingButton = document.querySelector('[data-reading-toggle]');
   const progress = document.querySelector('[data-reading-progress]');
   const choices = ['auto', 'light', 'dark'];
+  const translations = {
+    en: {
+      'skip-navigation': 'Skip navigation',
+      'home-label': 'AI Morning, latest edition',
+      tagline: 'The morning AI briefing for software engineers',
+      'main-navigation': 'Main navigation',
+      'table-of-contents': 'Table of contents for this edition',
+      'in-this-edition': 'In this edition',
+      toc: 'Contents',
+      'quick-toc': 'Quick table of contents',
+      'past-editions': 'Past editions',
+      'latest-edition': 'Latest edition',
+      'reading-mode': 'Reading mode',
+      'theme-next': 'Theme: auto. Choose the next theme',
+      'font-size': 'Change font size',
+      read: 'Read',
+      'footer-disclaimer': 'AI Morning is a curated briefing. Verify consequential claims with their primary source before making production, legal, or financial decisions.',
+      'other-editions': 'Other editions',
+      archive: 'Archive',
+      'archive-headline': 'One morning, one clear slice.',
+      'archive-dek': 'Published briefings are preserved by date so you can return to the context of any given morning.',
+      'all-editions': 'All editions',
+      issue: 'Issue',
+      edition: 'Edition',
+      'archive-footer': 'Each dated edition is a snapshot generated from that day’s JSON. The homepage always shows the latest edition.',
+      'read-latest': 'Read the latest edition',
+      'theme-label': 'Theme'
+    }
+  };
+
+  const textFor = (key, language) => language === 'en' ? (translations.en[key] ?? null) : null;
+  const storedLanguage = (() => {
+    return root.dataset.language === 'en' ? 'en' : 'vi';
+  })();
+  let language = storedLanguage;
+
+  const applyLanguage = (value) => {
+    language = value;
+    root.lang = value;
+    root.dataset.language = value;
+    document.querySelectorAll('[data-i18n]').forEach((element) => {
+      const translated = textFor(element.dataset.i18n, value);
+      if (!element.dataset.vi) element.dataset.vi = element.textContent;
+      element.textContent = translated ?? element.dataset.vi;
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach((element) => {
+      const translated = textFor(element.dataset.i18nAria, value);
+      if (!element.dataset.viAria) element.dataset.viAria = element.getAttribute('aria-label') ?? '';
+      element.setAttribute('aria-label', translated ?? element.dataset.viAria);
+    });
+    if (themeButton) {
+      const currentTheme = root.dataset.theme ?? 'auto';
+      themeButton.setAttribute('aria-label', value === 'en'
+        ? `Theme: ${currentTheme}. Choose the next theme`
+        : `Theme: ${currentTheme}. Chọn theme tiếp theo`);
+    }
+    if (readingButton && root.dataset.reading === 'true') {
+      readingButton.textContent = value === 'en' ? 'Exit reading' : 'Thoát đọc';
+    }
+    if (languageButton) {
+      languageButton.querySelector('[data-language-label]').textContent = value === 'en' ? 'VI' : 'EN';
+      languageButton.setAttribute('aria-label', value === 'en' ? 'Chuyển ngôn ngữ sang tiếng Việt' : 'Switch language to English');
+      languageButton.title = value === 'en' ? 'Tiếng Việt' : 'English';
+    }
+  };
+
+  applyLanguage(language);
+  languageButton?.addEventListener('click', () => {
+    if (languageButton.dataset.languageHref) {
+      try {
+        localStorage.setItem('ai-morning-language', language === 'vi' ? 'en' : 'vi');
+      } catch {
+        // Navigation still works when storage is unavailable.
+      }
+      location.assign(languageButton.dataset.languageHref);
+      return;
+    }
+    applyLanguage(language === 'vi' ? 'en' : 'vi');
+    try {
+      localStorage.setItem('ai-morning-language', language);
+    } catch {
+      // The selected language still works for this page view.
+    }
+  });
 
   const storedTheme = (() => {
     try {
@@ -28,7 +113,9 @@
     if (themeButton) {
       const label = themeButton.querySelector('[data-theme-label]');
       if (label) label.textContent = value.toUpperCase();
-      themeButton.setAttribute('aria-label', `Theme: ${value}. Chọn theme tiếp theo`);
+      themeButton.setAttribute('aria-label', language === 'en'
+        ? `Theme: ${value}. Choose the next theme`
+        : `Theme: ${value}. Chọn theme tiếp theo`);
       themeButton.title = `Theme: ${value.toUpperCase()}`;
     }
   };
@@ -73,7 +160,9 @@
       root.removeAttribute('data-reading');
     }
     readingButton?.setAttribute('aria-pressed', String(enabled));
-    if (readingButton) readingButton.textContent = enabled ? 'Thoát đọc' : 'Đọc';
+      if (readingButton) readingButton.textContent = enabled
+        ? (language === 'en' ? 'Exit reading' : 'Thoát đọc')
+        : (language === 'en' ? 'Read' : 'Đọc');
   };
 
   const storedReadingMode = (() => {
@@ -125,7 +214,9 @@
     const section = document.getElementById(id);
     const applyBookmark = (saved) => {
       button.setAttribute('aria-pressed', String(saved));
-      button.textContent = saved ? 'Đã lưu' : 'Lưu';
+      button.textContent = saved
+        ? (language === 'en' ? 'Saved' : 'Đã lưu')
+        : (language === 'en' ? 'Save' : 'Lưu');
       section?.classList.toggle('is-bookmarked', saved);
     };
 
@@ -149,7 +240,7 @@
       const url = new URL(button.dataset.copyLink, location.href).href;
       try {
         await navigator.clipboard.writeText(url);
-        button.textContent = 'Đã chép';
+        button.textContent = language === 'en' ? 'Copied' : 'Đã chép';
       } catch {
         const selection = document.createElement('textarea');
         selection.value = url;
@@ -160,7 +251,7 @@
         selection.select();
         document.execCommand('copy');
         selection.remove();
-        button.textContent = 'Đã chép';
+        button.textContent = language === 'en' ? 'Copied' : 'Đã chép';
       }
       setTimeout(() => { button.textContent = original; }, 1600);
     });

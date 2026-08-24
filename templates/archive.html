@@ -1,79 +1,80 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="{{HTML_LANG}}" data-language="{{HTML_LANG}}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="color-scheme" content="light dark">
-  <meta name="description" content="Kho lưu trữ các edition đã xuất bản của AI Morning.">
+  <meta name="description" content="{{ARCHIVE_DESCRIPTION}}">
   <meta name="generator" content="AI Morning static renderer">
-  <title>Bài cũ · AI Morning</title>
-  <link rel="icon" href="../assets/mark.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../assets/site.css">
+  <title>{{ARCHIVE_TITLE}}</title>
+  <link rel="icon" href="{{ASSET_PREFIX}}mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ASSET_PREFIX}}site.css">
   <script>
     try {
       const savedTheme = localStorage.getItem('ai-morning-theme');
       if (savedTheme === 'light' || savedTheme === 'dark') document.documentElement.dataset.theme = savedTheme;
     } catch {}
   </script>
-  <script src="../assets/site.js" defer></script>
+  <script src="{{ASSET_PREFIX}}site.js" defer></script>
 </head>
 <body class="archive-page">
-  <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
+  <a class="skip-link" href="#main-content" data-i18n="skip-navigation">Bỏ qua điều hướng</a>
   <div class="page-grain" aria-hidden="true"></div>
 
   <header class="masthead">
     <div class="masthead__inner">
-      <a class="brand" href="../" aria-label="AI Morning, trang mới nhất">
+      <a class="brand" href="{{HOME_HREF}}" data-i18n-aria="home-label" aria-label="AI Morning, trang mới nhất">
         <span class="brand__mark" aria-hidden="true">AI</span>
         <span class="brand__copy">
           <span class="brand__name">AI MORNING</span>
-          <span class="brand__tagline">Bản tin AI buổi sáng cho software engineer</span>
+          <span class="brand__tagline" data-i18n="tagline">Bản tin AI buổi sáng cho software engineer</span>
         </span>
       </a>
 
-      <nav class="masthead__nav" aria-label="Điều hướng chính">
-        <a class="masthead__link section-link" href="../">Số mới</a>
+      <nav class="masthead__nav" data-i18n-aria="main-navigation" aria-label="Điều hướng chính">
+        <a class="masthead__link section-link" href="{{HOME_HREF}}" data-i18n="latest-edition">Số mới</a>
         <details class="editions">
-          <summary aria-current="page">Bài cũ</summary>
+          <summary aria-current="page" data-i18n="past-editions">Bài cũ</summary>
           <div class="editions__menu">
             {{EDITIONS_MENU}}
           </div>
         </details>
-        <button class="control theme-control" type="button" data-theme-toggle aria-label="Theme: auto. Chọn theme tiếp theo">
+        <button class="control language-control" type="button" data-language-toggle data-language-href="{{LANGUAGE_SWITCH_HREF}}" aria-label="{{LANGUAGE_SWITCH_ARIA}}"><span data-language-label>{{LANGUAGE_SWITCH_LABEL}}</span></button>
+        <button class="control theme-control" type="button" data-theme-toggle data-i18n-aria="theme-next" aria-label="Theme: auto. Chọn theme tiếp theo">
           <span>Theme</span>
           <span data-theme-label>AUTO</span>
         </button>
-        <button class="control" type="button" data-type-toggle aria-label="Đổi cỡ chữ" aria-pressed="false">Aa</button>
+        <button class="control" type="button" data-type-toggle data-i18n-aria="font-size" aria-label="Đổi cỡ chữ" aria-pressed="false">Aa</button>
       </nav>
     </div>
     <div class="dateline">
-      <p class="dateline__date">Kho lưu trữ</p>
+      <p class="dateline__date" data-i18n="archive">Kho lưu trữ</p>
       <p class="dateline__meta"><span>{{EDITION_COUNT}}</span></p>
     </div>
   </header>
 
   <main class="page-shell" id="main-content">
     <header class="archive-hero">
-      <h1>Mỗi buổi sáng, một lát cắt.</h1>
-      <p class="dek">Các bản tin đã xuất bản được giữ nguyên theo ngày để bạn có thể trở lại đúng bối cảnh của từng buổi sáng.</p>
+      <h1 data-i18n="archive-headline">Mỗi buổi sáng, một lát cắt.</h1>
+      <p class="dek" data-i18n="archive-dek">Các bản tin đã xuất bản được giữ nguyên theo ngày để bạn có thể trở lại đúng bối cảnh của từng buổi sáng.</p>
     </header>
 
     <section class="archive-list" aria-labelledby="archive-title">
       <div class="archive-list__intro">
-        <h2 class="section-label" id="archive-title">Tất cả editions</h2>
+        <h2 class="section-label" id="archive-title" data-i18n="all-editions">Tất cả editions</h2>
         <p>{{EDITION_COUNT}}</p>
       </div>
       <div class="archive-list__head" aria-hidden="true">
-        <span>Số</span>
-        <span>Edition</span>
+        <span data-i18n="issue">Số</span>
+        <span data-i18n="edition">Edition</span>
         <span></span>
       </div>
       {{ARCHIVE_ROWS}}
     </section>
 
     <footer class="site-footer">
-      <p>Edition theo ngày là snapshot được tái tạo từ JSON của chính ngày đó. Trang chủ luôn hiển thị edition mới nhất.</p>
-      <a href="../">Đọc số mới nhất</a>
+      <p data-i18n="archive-footer">Edition theo ngày là snapshot được tái tạo từ JSON của chính ngày đó. Trang chủ luôn hiển thị edition mới nhất.</p>
+      <a href="{{HOME_HREF}}" data-i18n="read-latest">Đọc số mới nhất</a>
     </footer>
   </main>
 </body>

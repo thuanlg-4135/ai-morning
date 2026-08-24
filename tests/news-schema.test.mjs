@@ -77,3 +77,37 @@ test('optional generation and editorial metadata are zoned and kebab-case', () =
   assert(codes(errors).has('INVALID_META_TIMESTAMP'));
   assert(codes(errors).has('INVALID_EDITORIAL_METADATA'));
 });
+
+test('English translations are complete and keyed by stable event_id', () => {
+  const complete = makeEdition({
+    translations: {
+      en: {
+        headline: 'A translated headline',
+        dek: 'A translated editorial summary with the same meaning.',
+        takeaway: 'A translated practical takeaway.',
+        brief: {
+          'default-brief-event': { title: 'Translated brief title', text: 'Translated explanatory brief body.' }
+        },
+        trends: {
+          'default-trend-event': {
+            title: 'Translated trend title',
+            paragraphs: ['Translated paragraph one.', 'Translated paragraph two.', 'Translated paragraph three.'],
+            action: 'Translated practical action.'
+          }
+        },
+        releases: {},
+        developer_memo: {
+          title: 'Translated memo title',
+          direct_answer: 'Translated direct answer.',
+          actions: ['Translated action.'],
+          avoid: ['Translated caution.']
+        },
+        radar: {}
+      }
+    }
+  });
+  assert.deepEqual(validateEditionSchema(complete, { filename: '2026-08-25.json' }), []);
+
+  delete complete.translations.en.brief['default-brief-event'];
+  assert(codes(validateEditionSchema(complete, { filename: '2026-08-25.json' })).has('INCOMPLETE_TRANSLATION'));
+});
