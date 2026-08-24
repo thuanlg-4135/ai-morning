@@ -2830,7 +2830,26 @@ body {
 }
 
 .masthead.is-compact {
+  position: fixed;
+  right: 0;
+  left: 0;
+  width: 100%;
   box-shadow: 0 0.35rem 1.5rem rgba(73, 58, 42, 0.08);
+}
+
+.masthead-spacer {
+  display: none;
+}
+
+.masthead-spacer.is-active {
+  display: block;
+}
+
+.masthead.is-restoring,
+.masthead.is-restoring .masthead__utility,
+.masthead.is-restoring .masthead__brandline,
+.masthead.is-restoring .masthead__sections {
+  transition: none !important;
 }
 
 .masthead.is-compact .masthead__utility {

@@ -6,6 +6,7 @@
   const readingButton = document.querySelector('[data-reading-toggle]');
   const progress = document.querySelector('[data-reading-progress]');
   const masthead = document.querySelector('[data-masthead]');
+  const mastheadSpacer = masthead ? document.createElement('div') : null;
   const choices = ['auto', 'light', 'dark'];
   const translations = {
     en: {
@@ -123,8 +124,30 @@
 
   applyTheme(theme);
 
+  if (mastheadSpacer) {
+    mastheadSpacer.className = 'masthead-spacer';
+    mastheadSpacer.setAttribute('aria-hidden', 'true');
+    masthead.after(mastheadSpacer);
+  }
+
   const updateMasthead = () => {
-    masthead?.classList.toggle('is-compact', scrollY > 96);
+    if (!masthead || !mastheadSpacer) return;
+
+    const isCompact = masthead.classList.contains('is-compact');
+    const shouldCompact = isCompact ? scrollY > 64 : scrollY > 96;
+    if (shouldCompact === isCompact) return;
+
+    if (shouldCompact) {
+      mastheadSpacer.style.height = `${masthead.getBoundingClientRect().height}px`;
+      mastheadSpacer.classList.add('is-active');
+      masthead.classList.add('is-compact');
+    } else {
+      masthead.classList.add('is-restoring');
+      masthead.classList.remove('is-compact');
+      mastheadSpacer.classList.remove('is-active');
+      mastheadSpacer.style.height = '';
+      requestAnimationFrame(() => masthead.classList.remove('is-restoring'));
+    }
   };
 
   updateMasthead();
