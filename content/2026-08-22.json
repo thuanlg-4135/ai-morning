@@ -3,220 +3,108 @@
   "edition_date": "2026-08-22",
   "locale": "vi-VN",
   "edition_type": "daily_ai_catchup",
-  "edition_mode": "NORMAL",
-  "headline": "AI đang rời khỏi chat box và đi thẳng vào workflow",
-  "dek": "Không có một frontier-model launch đủ lớn để chiếm toàn bộ tiêu điểm. Câu chuyện đáng chú ý hơn nằm ở tầng hệ thống: agent harness, browser/computer use, reusable skills và workspace cộng tác đang dần quyết định AI có tạo ra giá trị thực tế hay không.",
+  "edition_mode": "QUIET",
+  "headline": "Sol giảm giá; review UI cục bộ có thêm ranh giới an toàn",
+  "dek": "Cửa sổ kết thúc lúc 07:00 không có model mới và chỉ có hai thay đổi đủ chắc để đưa vào bản tin. GPT-5.6 Sol rẻ hơn trong thời gian khuyến mại, còn Plannotator thêm một vòng annotation trực tiếp trên ứng dụng localhost với kiểm soát phiên và host.",
   "meta": {
     "primary_scan_hours": 24,
     "context_window_hours": 72,
-    "reading_minutes": 6,
+    "window_started_at": "2026-08-21T07:00:00+07:00",
+    "cutoff_at": "2026-08-22T07:00:00+07:00",
+    "reading_minutes": 4,
     "source_policy": "official-first"
   },
   "hero_visual": {
-    "kind": "diagram",
-    "key": "model-harness-verification",
-    "caption": "Chất lượng agent ngày càng phụ thuộc vào harness, tools và verification, không chỉ riêng model."
+    "kind": "editorial",
+    "key": "cost-review-boundary",
+    "caption": "Chi phí model giảm và feedback loop nhanh hơn chỉ hữu ích khi team vẫn đo task hoàn chỉnh và giữ ranh giới review rõ ràng."
   },
   "brief": [
     {
+      "event_id": "plannotator-v0-27-6-live-app-annotation",
+      "event_signature": {
+        "organization": "backnotprop",
+        "product": "plannotator",
+        "action": "release",
+        "artifact": "v0-27-6-live-app-annotation"
+      },
+      "published_at": "2026-08-21T17:43:15Z",
       "freshness": "NEW_TODAY",
-      "text": "Agent stack đang trở nên quan trọng ngang việc chọn model."
-    },
-    {
-      "freshness": "NEW_TODAY",
-      "text": "Anthropic GA Computer Use, Browser Use, Skills API và Files API."
-    },
-    {
-      "freshness": "CONTEXT_72H",
-      "text": "Claude Security đưa Mythos 5 vào workflow scan repository."
-    },
-    {
-      "freshness": "CONTEXT_72H",
-      "text": "Slack Code kéo coding agent ra khỏi IDE và vào workspace chung."
-    },
-    {
-      "freshness": "CONTEXT_72H",
-      "text": "Outsourcing bắt đầu bị đo bằng outcome hơn là billable hours."
-    },
-    {
-      "freshness": "CONTEXT_72H",
-      "text": "AI infrastructure vẫn tăng nóng nhưng vốn bắt đầu đòi kỷ luật hơn."
+      "title": "Plannotator đưa phản hồi trực tiếp lên ứng dụng localhost",
+      "text": "Bản 0.27.6 thêm proxy loopback theo từng phiên để reviewer bấm vào phần tử trên ứng dụng đang chạy và gửi nhận xét cho coding agent, kể cả qua hot reload hoặc điều hướng SPA. Thiết kế dùng Host validation, token phiên và từ chối proxy từ xa, phù hợp để thử trên một luồng review UI cục bộ có kiểm soát.",
+      "sources": [
+        {
+          "label": "Plannotator v0.27.6 release notes",
+          "url": "https://github.com/backnotprop/plannotator/releases/tag/v0.27.6",
+          "type": "official",
+          "published_at": "2026-08-21T17:43:15Z"
+        }
+      ]
     }
   ],
   "trends": [
     {
-      "id": "agent-system",
+      "event_id": "openai-gpt-5-6-sol-promotional-price-cut",
+      "event_signature": {
+        "organization": "openai",
+        "product": "gpt-5-6-sol",
+        "action": "pricing",
+        "artifact": "three-month-promotional-price-cut"
+      },
+      "published_at": "2026-08-21T19:41:58.778Z",
+      "id": "sol-price-economics",
       "freshness": "NEW_TODAY",
-      "strength": "ACCELERATING",
-      "title": "Cuộc đua đang chuyển từ model sang hệ thống agent",
+      "strength": "CONFIRMED_CHANGE",
+      "importance": "LEAD",
+      "title": "Giá Sol giảm, model routing cần được tính lại bằng task hoàn chỉnh",
       "paragraphs": [
-        "Trong phần lớn hai năm qua, thị trường AI bị cuốn vào câu hỏi model nào đứng đầu benchmark. Tín hiệu mới đáng chú ý hơn là cùng một model có thể cho kết quả rất khác khi đặt trong một harness tốt hơn, có memory, tool use, supervisor và cơ chế kiểm tra tiến độ.",
-        "Nghiên cứu do Nvidia công bố về ARC-AGI-3 là một ví dụ mạnh, dù vẫn nên xem đây là vendor research chứ chưa phải kết luận phổ quát. Insight đáng lấy không phải “hãy đổi model”, mà là reliability của agent ngày càng phụ thuộc vào cách hệ thống giữ context, chọn tool, phục hồi sau lỗi và xác minh kết quả.",
-        "Anthropic cũng đang productize đúng tầng này bằng Browser Use, Computer Use, Skills API và Files API. Đây không phải headline “wow” kiểu model mới, nhưng lại là những primitive có khả năng làm agent ổn định hơn trong sản phẩm thật."
+        "OpenAI công bố chương trình giảm hơn 20% giá API và một số loại credit đủ điều kiện cho GPT-5.6 Sol trong ba tháng. AWS xác nhận mức giá Sol trên Bedrock là 4 USD cho mỗi triệu token đầu vào và 20 USD cho mỗi triệu token đầu ra, tương ứng giảm 20% và 33,3% so với mức trước đó trên nền tảng này; chương trình được duy trì ít nhất tới ngày 21/11/2026. Thông báo không thay đổi hạn mức sử dụng đi kèm các gói thuê bao ChatGPT Pro, Plus hoặc Business.",
+        "Tác động thực tế lớn nhất nằm ở agent workload dài. Một coding agent có thể gọi công cụ nhiều lần, sinh output dài, tự kiểm tra rồi chạy lại sau lỗi, nên giá niêm yết trên một triệu token chưa phản ánh toàn bộ chi phí. Khi output giảm mạnh hơn input, một số workflow tạo nhiều mã hoặc báo cáo dài có thể thay đổi đáng kể về economics, nhưng chỉ khi chất lượng và tỷ lệ hoàn thành vẫn được giữ ổn định.",
+        "Đội đang dùng Sol nên chạy lại cùng một tập task thật và ghi tổng input, output, số tool call, retry, latency cùng tỷ lệ hoàn thành. So sánh cost per completed task với model hiện tại trước khi đổi routing; đồng thời lưu ngày kết thúc promotion trong cấu hình ngân sách để tránh biến mức giá tạm thời thành giả định dài hạn."
       ],
-      "pullquote": "Model vẫn quan trọng. Nhưng lợi thế thực dụng đang dịch chuyển sang model + context + memory + tools + verification.",
-      "action": "Nếu một agent đang fail ở task dài, hãy thử thêm verifier hoặc supervisor nhỏ và đo completion rate trước khi đổi model.",
+      "pullquote": "Giá token thấp hơn chỉ có ý nghĩa khi tổng chi phí để hoàn thành một task cũng giảm.",
+      "stat": {
+        "value": "$4 / $20",
+        "label": "mỗi triệu input / output token trên Bedrock",
+        "context": "Mức promotional pricing được AWS công bố cho GPT-5.6 Sol."
+      },
+      "action": "Rerun benchmark trên task production đại diện và đặt cảnh báo ngân sách trước khi promotion kết thúc ngày 21/11.",
       "visual": {
-        "kind": "editorial",
-        "key": "browser-computer-use",
-        "caption": "Browser agent kết hợp quan sát giao diện với cấu trúc trang để nhắm đúng field, button và form."
+        "kind": "chart",
+        "key": "sol-pricing-channel-comparison",
+        "caption": "Mức giá mới cần được đánh giá cùng chất lượng, số vòng lặp và tổng chi phí hoàn thành task."
       },
       "sources": [
         {
-          "label": "TechCrunch — agent harness research",
-          "url": "https://techcrunch.com/2026/08/21/nvidia-just-showed-that-the-harness-not-the-ai-model-is-now-the-real-hero/",
-          "type": "reporting"
+          "label": "OpenAI Developer Community — GPT-5.6 Sol price reduction",
+          "url": "https://community.openai.com/t/20-price-reduction-for-gpt-5-6-sol-api-codex-credits-and-chatgpt-work/1391726",
+          "type": "official",
+          "published_at": "2026-08-21T19:41:58.778Z"
         },
         {
-          "label": "Anthropic — Computer Use, Skills API and Files API",
-          "url": "https://claude.com/blog/computer-use-skills-api-files-api",
-          "type": "official"
-        }
-      ]
-    },
-    {
-      "id": "workflow-shift",
-      "freshness": "NEW_TODAY",
-      "strength": "ACCELERATING",
-      "title": "Agent đang thoát khỏi chat box và IDE",
-      "paragraphs": [
-        "Anthropic đưa agent vào browser và computer workflows. Slack Code đặt coding agents vào project channel nơi con người xem diff, preview và approve. OpenAI tiếp tục mở rộng ChatGPT Business theo hướng cộng tác và hành động trong môi trường làm việc.",
-        "Điểm chung là AI đang chuyển từ một cửa sổ hỏi đáp sang một thành phần có mặt ngay trong nơi công việc diễn ra. Với enterprise, điều này kéo theo permission boundary, audit log, human approval và rollback rõ ràng hơn."
-      ],
-      "action": "Quan sát nơi agent tham gia workflow và bổ sung approval boundary rõ ràng trước khi mở rộng quyền hành động.",
-      "visual": {
-        "kind": "diagram",
-        "key": "chat-tools-workflow-workspace",
-        "caption": "Giao diện hỏi đáp không biến mất, nhưng giá trị đang tiến dần tới workflow và workspace có ngữ cảnh chung."
-      },
-      "sources": [
-        {
-          "label": "The Verge — Slack Code",
-          "url": "https://www.theverge.com/tech/982628/slack-code-vibe-coding-channels-launch",
-          "type": "reporting"
-        },
-        {
-          "label": "OpenAI — ChatGPT Business release notes",
-          "url": "https://help.openai.com/en/articles/11391654-chatgpt-business-release-notes",
-          "type": "official"
-        }
-      ]
-    },
-    {
-      "id": "outcome-pricing",
-      "freshness": "CONTEXT_72H",
-      "strength": "EMERGING",
-      "title": "AI bắt đầu thay đổi cách công ty phần mềm được trả tiền",
-      "paragraphs": [
-        "Reuters ghi nhận các hợp đồng outsourcing đang chịu áp lực chuyển từ billable-hour sang outcome-based pricing. Khách hàng bắt đầu kỳ vọng cùng một ngân sách phải tạo ra nhiều kết quả hơn, khiến headcount ngày càng kém thuyết phục nếu đứng một mình."
-      ],
-      "action": "Khi đánh giá hiệu quả AI, ưu tiên outcome và cost per completed task thay vì chỉ nhìn số giờ hoặc số người.",
-      "sources": [
-        {
-          "label": "Reuters — outcome-based outsourcing contracts",
-          "url": "https://www.reuters.com/world/india/ai-reshapes-indias-it-services-sector-contracts-clients-demand-more-less-2026-08-20/",
-          "type": "reporting"
+          "label": "AWS — reduced pricing for GPT-5.6 Sol on Bedrock",
+          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/bedrock-openai-gpt-56-sol-reduced-pricing/",
+          "type": "official",
+          "published_at": "2026-08-21"
         }
       ]
     }
   ],
-  "releases": [
-    {
-      "product": "Claude Platform",
-      "feature": "Computer Use, Browser Use, Skills API, Files API",
-      "freshness": "NEW_TODAY",
-      "status": "RELEASED_GA",
-      "summary": "Đáng thử nhất nếu bạn đang xây browser hoặc computer agent. Browser Use hiểu thêm cấu trúc trang; Skills API đóng gói capability tái sử dụng; Files API giúp giữ và tái dùng file.",
-      "who_gets_it": "Developer đang xây browser hoặc computer agent trên Claude Platform.",
-      "verdict": "TRY_NOW",
-      "verdict_note": "POC nhỏ trên một workflow thật, chưa cần đổi architecture.",
-      "sources": [
-        {
-          "label": "Anthropic announcement",
-          "url": "https://claude.com/blog/computer-use-skills-api-files-api",
-          "type": "official"
-        }
-      ]
-    },
-    {
-      "product": "Claude Security",
-      "feature": "Mythos 5 repository scanning",
-      "freshness": "CONTEXT_72H",
-      "status": "PUBLIC_BETA",
-      "summary": "Claude Enterprise có thể dùng Mythos 5 để phân tích repository, phân loại lỗ hổng, severity/confidence và gợi ý patch, với human approval vẫn nằm trong flow.",
-      "who_gets_it": "Claude Enterprise teams quan tâm AppSec.",
-      "verdict": "WATCH",
-      "verdict_note": "Hữu ích nếu team đã dùng Claude Enterprise hoặc quan tâm AppSec.",
-      "sources": [
-        {
-          "label": "Anthropic announcement",
-          "url": "https://claude.com/blog/bringing-claude-mythos-5-to-more-defenders",
-          "type": "official"
-        }
-      ]
-    },
-    {
-      "product": "Slack Code",
-      "feature": "Collaborative coding channels",
-      "freshness": "CONTEXT_72H",
-      "status": "RELEASED",
-      "summary": "Coding agents có thể tham gia coding channel nơi cả team cùng theo dõi tiến độ, diff, preview và approval.",
-      "who_gets_it": "Các team đã dùng Slack làm workspace chính.",
-      "verdict": "WATCH",
-      "verdict_note": "Đáng thử nếu team đã sống trong Slack.",
-      "sources": [
-        {
-          "label": "The Verge",
-          "url": "https://www.theverge.com/tech/982628/slack-code-vibe-coding-channels-launch",
-          "type": "reporting"
-        }
-      ]
-    },
-    {
-      "product": "ChatGPT Business",
-      "feature": "Collaboration và Codex sharing",
-      "freshness": "CONTEXT_72H",
-      "status": "RELEASED",
-      "summary": "Batch cập nhật tiếp tục kéo ChatGPT và Codex theo hướng work surface có collaboration và action.",
-      "who_gets_it": "ChatGPT Business workspaces.",
-      "verdict": "SKIP_FOR_NOW",
-      "verdict_note": "Không cần hành động nếu workflow hiện tại đã ổn.",
-      "sources": [
-        {
-          "label": "OpenAI release notes",
-          "url": "https://help.openai.com/en/articles/11391654-chatgpt-business-release-notes",
-          "type": "official"
-        }
-      ]
-    }
-  ],
+  "releases": [],
   "developer_memo": {
     "title": "Có cần đổi workflow hôm nay không?",
-    "direct_answer": "Chưa cần thay đổi workflow hiện tại.",
+    "direct_answer": "Chỉ thay đổi có mục tiêu: tính lại economics nếu dùng Sol và thử vòng review cục bộ trên một UI không nhạy cảm.",
     "actions": [
-      "Nếu một coding agent đang fail ở task dài, thử thêm verifier hoặc supervisor nhỏ và đo completion rate trước và sau.",
-      "Chọn một capability lặp lại để đóng gói thành reusable skill trước.",
-      "Chỉ POC Browser Use trên một workflow phù hợp và có tiêu chí đo rõ ràng."
+      "Đo lại cost per completed task của Sol bằng cùng tập task, prompt, toolchain và tiêu chí chất lượng đang dùng.",
+      "Gắn ngày kết thúc promotion vào budget forecast và cảnh báo chi phí để mức tạm thời không trở thành giả định dài hạn.",
+      "Thử vòng annotation cục bộ trên một UI không nhạy cảm và xác nhận proxy không thể truy cập từ interface bên ngoài."
     ],
     "avoid": [
-      "Không đổi model chỉ vì một headline mới.",
-      "Không migrate browser automation bằng Playwright nếu workflow hiện tại đã ổn.",
-      "Không mở rộng quyền agent nếu chưa có approval và rollback rõ ràng."
+      "Không dự toán dài hạn bằng promotional pricing mà bỏ qua ngày kết thúc chương trình.",
+      "Không đổi model routing chỉ từ token price nếu chưa so tỷ lệ task hoàn tất, retry và latency.",
+      "Không mở proxy review ra interface bên ngoài hoặc dùng nó với dữ liệu nhạy cảm trước khi kiểm tra ranh giới phiên."
     ]
   },
-  "radar": [
-    {
-      "status": "CONFIRMED",
-      "text": "Anthropic tiếp tục mở rộng các primitive agent mới sang nhiều platform hơn."
-    },
-    {
-      "status": "LIKELY",
-      "text": "Supervisor và harness sẽ trở thành chủ đề nóng hơn trong benchmark agent dài hạn."
-    },
-    {
-      "status": "LIKELY",
-      "text": "Collaborative agent workspace sẽ tạo thêm thử nghiệm về cách agent tham gia SDLC bên cạnh con người."
-    }
-  ],
-  "takeaway": "Cuộc đua AI đang dịch chuyển từ “ai có model thông minh nhất?” sang “ai biến model thành một hệ thống agent đáng tin cậy nhất?”. Với developer, hãy chú ý hơn tới harness, skills, tool use và verification — nhưng chỉ sau khi chúng chứng minh được giá trị trên workflow thật."
+  "radar": [],
+  "takeaway": "Nếu hôm nay chỉ nhớ một điều: inference rẻ hơn và feedback nhanh hơn chỉ có giá trị khi team vẫn đo chi phí theo task hoàn chỉnh và giữ review trong ranh giới an toàn."
 }

@@ -1,0 +1,318 @@
+{
+  "schema_version": 1,
+  "notes": "Research registry. Tier 3 sources discover candidates only and cannot be the sole evidence for publication.",
+  "sources": [
+    {
+      "id": "openai-news",
+      "name": "OpenAI News",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["models", "api", "research", "safety"],
+      "url": "https://openai.com/news/"
+    },
+    {
+      "id": "openai-release-notes",
+      "name": "OpenAI product release notes",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["chatgpt", "codex", "api"],
+      "url": "https://help.openai.com/en/collections/6864542-release-notes"
+    },
+    {
+      "id": "anthropic-news",
+      "name": "Anthropic Newsroom",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["models", "claude", "research", "safety"],
+      "url": "https://www.anthropic.com/news"
+    },
+    {
+      "id": "google-deepmind",
+      "name": "Google DeepMind",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["models", "research", "science"],
+      "url": "https://deepmind.google/discover/blog/"
+    },
+    {
+      "id": "google-ai-developers",
+      "name": "Google Developers AI",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["gemini", "api", "developer-tools"],
+      "url": "https://developers.googleblog.com/en/search/?technology_categories=AI"
+    },
+    {
+      "id": "meta-ai",
+      "name": "Meta AI",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["models", "open-weights", "research"],
+      "url": "https://ai.meta.com/blog/"
+    },
+    {
+      "id": "mistral-news",
+      "name": "Mistral AI News",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["models", "api", "open-weights"],
+      "url": "https://mistral.ai/news"
+    },
+    {
+      "id": "microsoft-ai",
+      "name": "Microsoft AI Blog",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["models", "copilot", "enterprise"],
+      "url": "https://blogs.microsoft.com/ai/"
+    },
+    {
+      "id": "aws-machine-learning",
+      "name": "AWS Machine Learning Blog",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["bedrock", "agents", "infrastructure"],
+      "url": "https://aws.amazon.com/blogs/machine-learning/"
+    },
+    {
+      "id": "azure-ai-updates",
+      "name": "Azure AI updates",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["models", "api", "cloud"],
+      "url": "https://azure.microsoft.com/en-us/updates/?category=ai-machine-learning"
+    },
+    {
+      "id": "nvidia-developer-ai",
+      "name": "NVIDIA Technical Blog — AI",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["inference", "training", "hardware", "agents"],
+      "url": "https://developer.nvidia.com/blog/tag/machine-learning-and-artificial-intelligence/"
+    },
+    {
+      "id": "hugging-face-blog",
+      "name": "Hugging Face Blog",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["open-source", "models", "datasets", "research"],
+      "url": "https://huggingface.co/blog"
+    },
+    {
+      "id": "github-changelog-copilot",
+      "name": "GitHub Changelog — Copilot",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["copilot", "developer-tools", "agents"],
+      "url": "https://github.blog/changelog/label/copilot/"
+    },
+    {
+      "id": "vscode-updates",
+      "name": "Visual Studio Code updates",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["developer-tools", "copilot", "agents"],
+      "url": "https://code.visualstudio.com/updates"
+    },
+    {
+      "id": "vercel-changelog",
+      "name": "Vercel Changelog",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["ai-sdk", "ai-gateway", "agents", "deployment"],
+      "url": "https://vercel.com/changelog"
+    },
+    {
+      "id": "cloudflare-changelog",
+      "name": "Cloudflare Changelog",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["workers-ai", "agents", "security", "infrastructure"],
+      "url": "https://developers.cloudflare.com/changelog/"
+    },
+    {
+      "id": "jetbrains-ai",
+      "name": "JetBrains AI Blog",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["developer-tools", "agents", "ides"],
+      "url": "https://blog.jetbrains.com/ai/"
+    },
+    {
+      "id": "cursor-changelog",
+      "name": "Cursor Changelog",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["developer-tools", "coding-agents"],
+      "url": "https://cursor.com/changelog"
+    },
+    {
+      "id": "mcp-blog",
+      "name": "Model Context Protocol Blog",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["mcp", "standards", "agents", "security"],
+      "url": "https://blog.modelcontextprotocol.io/"
+    },
+    {
+      "id": "arxiv-cs-ai",
+      "name": "arXiv cs.AI recent submissions",
+      "tier": 1,
+      "kind": "research",
+      "topics": ["research", "agents", "models", "evaluation"],
+      "url": "https://arxiv.org/list/cs.AI/recent"
+    },
+    {
+      "id": "arxiv-cs-se",
+      "name": "arXiv cs.SE recent submissions",
+      "tier": 1,
+      "kind": "research",
+      "topics": ["software-engineering", "coding-agents", "evaluation"],
+      "url": "https://arxiv.org/list/cs.SE/recent"
+    },
+    {
+      "id": "nist-ai",
+      "name": "NIST Artificial Intelligence",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["standards", "risk", "security", "evaluation"],
+      "url": "https://www.nist.gov/artificial-intelligence"
+    },
+    {
+      "id": "google-cloud-release-notes",
+      "name": "Google Cloud release notes",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["cloud", "vertex-ai", "agents", "infrastructure"],
+      "url": "https://cloud.google.com/release-notes"
+    },
+    {
+      "id": "qwen-blog",
+      "name": "Qwen Blog",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["models", "open-weights", "agents", "multimodal"],
+      "url": "https://qwenlm.github.io/blog/"
+    },
+    {
+      "id": "deepseek-news",
+      "name": "DeepSeek API News",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["models", "api", "research", "pricing"],
+      "url": "https://api-docs.deepseek.com/news/"
+    },
+    {
+      "id": "openai-status-history",
+      "name": "OpenAI Status History",
+      "tier": 1,
+      "kind": "status",
+      "topics": ["incidents", "api", "chatgpt", "codex"],
+      "url": "https://status.openai.com/history"
+    },
+    {
+      "id": "anthropic-status-history",
+      "name": "Anthropic Status History",
+      "tier": 1,
+      "kind": "status",
+      "topics": ["incidents", "api", "claude"],
+      "url": "https://status.anthropic.com/history"
+    },
+    {
+      "id": "github-advisories",
+      "name": "GitHub Advisory Database",
+      "tier": 1,
+      "kind": "security",
+      "topics": ["security", "vulnerabilities", "packages", "developer-tools"],
+      "url": "https://github.com/advisories"
+    },
+    {
+      "id": "cisa-kev",
+      "name": "CISA Known Exploited Vulnerabilities",
+      "tier": 1,
+      "kind": "security",
+      "topics": ["security", "vulnerabilities", "exploitation"],
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+    },
+    {
+      "id": "pypi-updates",
+      "name": "PyPI package updates RSS",
+      "tier": 1,
+      "kind": "registry",
+      "topics": ["python", "packages", "releases", "developer-tools"],
+      "url": "https://pypi.org/rss/updates.xml"
+    },
+    {
+      "id": "reuters-ai",
+      "name": "Reuters Artificial Intelligence",
+      "tier": 2,
+      "kind": "reporting",
+      "topics": ["companies", "policy", "funding", "infrastructure"],
+      "url": "https://www.reuters.com/technology/artificial-intelligence/"
+    },
+    {
+      "id": "techcrunch-ai",
+      "name": "TechCrunch AI",
+      "tier": 2,
+      "kind": "reporting",
+      "topics": ["products", "startups", "models"],
+      "url": "https://techcrunch.com/category/artificial-intelligence/"
+    },
+    {
+      "id": "the-verge-ai",
+      "name": "The Verge AI",
+      "tier": 2,
+      "kind": "reporting",
+      "topics": ["products", "policy", "platforms"],
+      "url": "https://www.theverge.com/ai-artificial-intelligence"
+    },
+    {
+      "id": "ars-ai",
+      "name": "Ars Technica AI",
+      "tier": 2,
+      "kind": "reporting",
+      "topics": ["technology", "security", "research"],
+      "url": "https://arstechnica.com/ai/"
+    },
+    {
+      "id": "hacker-news",
+      "name": "Hacker News",
+      "tier": 3,
+      "kind": "discovery",
+      "topics": ["developer-tools", "research", "open-source"],
+      "url": "https://news.ycombinator.com/"
+    },
+    {
+      "id": "github-trending",
+      "name": "GitHub Trending",
+      "tier": 3,
+      "kind": "discovery",
+      "topics": ["open-source", "developer-tools"],
+      "url": "https://github.com/trending"
+    },
+    {
+      "id": "reddit-machine-learning",
+      "name": "Reddit r/MachineLearning",
+      "tier": 3,
+      "kind": "discovery",
+      "topics": ["research", "models", "evaluation", "community"],
+      "url": "https://www.reddit.com/r/MachineLearning/"
+    },
+    {
+      "id": "reddit-local-llama",
+      "name": "Reddit r/LocalLLaMA",
+      "tier": 3,
+      "kind": "discovery",
+      "topics": ["open-weights", "local-inference", "tooling", "community"],
+      "url": "https://www.reddit.com/r/LocalLLaMA/"
+    },
+    {
+      "id": "product-hunt-ai",
+      "name": "Product Hunt AI",
+      "tier": 3,
+      "kind": "discovery",
+      "topics": ["products", "startups"],
+      "url": "https://www.producthunt.com/topics/artificial-intelligence"
+    }
+  ]
+}

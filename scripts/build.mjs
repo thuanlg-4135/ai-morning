@@ -78,7 +78,7 @@ function validateSource(source, field, errors) {
       errors.push('invalid field "' + field + '.url": expected http(s) URL');
     }
   }
-  if (source.type !== undefined && !sourceTypes.has(source.type)) {
+  if (!sourceTypes.has(source.type)) {
     errors.push('invalid field "' + field + '.type": expected official, research, or reporting');
   }
 }
@@ -263,7 +263,15 @@ function validateEdition(edition, filename) {
       if (!radarStatuses.has(item.status)) {
         errors.push('invalid field "' + field + '.status": expected CONFIRMED, WATCH, LIKELY, or SPECULATION');
       }
+      validateFreshness(item.freshness, field + '.freshness', errors);
       if (!hasText(item.text)) errors.push('missing required field "' + field + '.text"');
+      if (item.sources !== undefined) {
+        if (!Array.isArray(item.sources)) {
+          errors.push('invalid field "' + field + '.sources": expected array');
+        } else {
+          item.sources.forEach((source, sourceIndex) => validateSource(source, field + '.sources[' + sourceIndex + ']', errors));
+        }
+      }
     });
   }
 
@@ -306,9 +314,13 @@ function renderSources(sources = []) {
   if (!Array.isArray(sources) || sources.length === 0) return '';
   const links = sources.map((source) => {
     const type = source.type ?? 'reporting';
+    const published = hasText(source.published_at) && /^\d{4}-\d{2}-\d{2}/.test(source.published_at)
+      ? '<time datetime="' + escapeHtml(source.published_at) + '">' + formatDate(source.published_at.slice(0, 10)) + '</time>'
+      : '';
     return '<a href="' + escapeHtml(source.url) + '" target="_blank" rel="noopener noreferrer">' +
       '<span class="source-type">' + escapeHtml(type) + '</span>' +
-      escapeHtml(source.label) +
+      '<span>' + escapeHtml(source.label) + '</span>' +
+      published +
       '</a>';
   }).join('');
   return '<div class="sources" role="group" aria-label="Nguồn">' + links + '</div>';
@@ -492,6 +504,7 @@ function renderHero(edition, context) {
       '<li><span class="hero__instead-index">' + pad2(index + 1) + '</span><div><strong>' +
       escapeHtml(briefTitle(item)) + '</strong>' +
       (briefBody(item) ? '<span>' + escapeHtml(briefBody(item)) + '</span>' : '') +
+      renderSources(item.sources) +
       '</div></li>'
     ).join('');
     return [
@@ -500,7 +513,7 @@ function renderHero(edition, context) {
       '  <h1>' + escapeHtml(edition.headline) + '</h1>',
       '  <p class="dek">' + escapeHtml(edition.dek) + '</p>',
       '  ' + metaRow,
-      '  <div class="hero__instead-wrap">',
+      '  <div class="hero__instead-wrap" id="briefing">',
       '    <p class="section-label">Việc đáng đọc thay thế</p>',
       '    <ol class="hero__instead">' + instead + '</ol>',
       '  </div>',
@@ -536,19 +549,21 @@ function renderHero(edition, context) {
   ].join('\n');
 }
 
-function renderBriefing(edition, { start = 0, max = 5, compact = false } = {}) {
+function renderBriefing(edition, { start = 0, max = 5, compact = false, id = 'briefing' } = {}) {
   const selected = edition.brief.slice(start, start + max);
+  if (selected.length === 0) return '';
   const items = selected.map((item) => {
     const body = briefBody(item);
     return '<li>' +
       '<span class="briefing__freshness">' + renderFreshness(item.freshness, true) + '</span>' +
       '<div class="briefing__copy"><strong>' + escapeHtml(briefTitle(item)) + '</strong>' +
       (body ? '<span>' + escapeHtml(body) + '</span>' : '') +
+      renderSources(item.sources) +
       '</div></li>';
   }).join('');
   return [
-    '<section class="briefing' + (compact ? ' briefing--compact' : '') + '" id="briefing" aria-labelledby="briefing-title">',
-    '  <h2 class="section-label" id="briefing-title">' + (start > 0 ? 'Còn lại trong<br>60 giây' : '60 giây<br>nắm bắt') + '</h2>',
+    '<section class="briefing' + (compact ? ' briefing--compact' : '') + '" id="' + escapeHtml(id) + '" aria-labelledby="' + escapeHtml(id) + '-title">',
+    '  <h2 class="section-label" id="' + escapeHtml(id) + '-title">' + (start > 0 ? 'Còn lại trong<br>60 giây' : '60 giây<br>nắm bắt') + '</h2>',
     '  <ol>' + items + '</ol>',
     '</section>'
   ].join('\n');
@@ -666,6 +681,7 @@ function renderReleases(edition, { compact = false, assetPrefix = '' } = {}) {
   const releaseItems = compact
     ? edition.releases.filter((release) => !(release.sources ?? []).some((source) => leadSourceUrls.has(source.url)))
     : edition.releases;
+  if (releaseItems.length === 0) return '';
   const explicitFeaturedIndex = releaseItems.findIndex((release) => release.importance === 'LEAD');
   const featuredIndex = explicitFeaturedIndex >= 0
     ? explicitFeaturedIndex
@@ -717,8 +733,10 @@ function renderMemo(edition) {
 }
 
 function renderRadar(edition) {
+  if (edition.radar.length === 0) return '';
   const items = edition.radar.map((item) =>
-    '<li><strong>' + escapeHtml(item.status) + '</strong><span>' + escapeHtml(item.text) + '</span></li>'
+    '<li><strong>' + escapeHtml(item.status) + '</strong><div class="radar-list__copy"><span>' +
+    escapeHtml(item.text) + '</span>' + renderSources(item.sources) + '</div></li>'
   ).join('');
   return '<section id="radar" aria-labelledby="radar-title">\n' +
     '<h2 id="radar-title">Những tín hiệu cần tiếp tục nhìn</h2>\n' +
@@ -758,7 +776,7 @@ function renderEditionBody(edition, assetPrefix = '') {
   let main;
 
   if (mode === 'QUIET') {
-    briefing = renderBriefing(edition, { start: 3, max: 3, compact: true });
+    briefing = renderBriefing(edition, { start: 3, max: 3, compact: true, id: 'briefing-more' });
     main = [
       renderReleases(edition, { compact: true, assetPrefix }),
       renderTrendDepartment([lead], edition.trends, { label: 'Bài đọc chính', assetPrefix }),
@@ -799,14 +817,31 @@ function renderEditionBody(edition, assetPrefix = '') {
   ].join('\n');
 }
 
-function renderRightRail(edition) {
-  const indexItems = [
+function sectionIndexItems(edition) {
+  return [
     { href: '#briefing', label: '60 giây nắm bắt' },
     { href: '#trends', label: edition.trends[0] ? edition.trends[0].title : 'Phân tích' },
-    { href: '#releases', label: 'Release notebook' },
+    edition.releases.length > 0 ? { href: '#releases', label: 'Release notebook' } : null,
     { href: '#developer', label: 'Developer memo' },
-    { href: '#radar', label: 'Radar 72 giờ' }
-  ].map((item, index) =>
+    edition.radar.length > 0 ? { href: '#radar', label: 'Radar 72 giờ' } : null
+  ].filter(Boolean);
+}
+
+function renderQuickToc(edition) {
+  const shortLabels = {
+    '#briefing': '60 giây',
+    '#trends': 'Phân tích',
+    '#releases': 'Release',
+    '#developer': 'Memo',
+    '#radar': 'Radar'
+  };
+  return sectionIndexItems(edition)
+    .map((item) => '<a href="' + item.href + '">' + shortLabels[item.href] + '</a>')
+    .join('');
+}
+
+function renderRightRail(edition) {
+  const indexItems = sectionIndexItems(edition).map((item, index) =>
     '<a href="' + item.href + '"><span>' + pad2(index + 1) + '</span>' + escapeHtml(item.label) + '</a>'
   ).join('');
 
@@ -885,6 +920,7 @@ function renderArticlePage(template, edition, editions, context) {
     ASSET_PREFIX: context.assetPrefix,
     PAGE_CLASS: pageKind + ' edition-page--' + mode.toLowerCase(),
     HOME_HREF: context.homeHref,
+    TOC_MENU: renderQuickToc(edition),
     EDITIONS_MENU: renderEditionsMenu(editions, context),
     DATELINE: renderDateline(edition, editions, context),
     HERO: renderHero(edition, context),

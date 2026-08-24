@@ -4,227 +4,120 @@
   "locale": "vi-VN",
   "edition_type": "daily_ai_catchup",
   "edition_mode": "QUIET",
-  "headline": "Cuộc đua AI cuối tuần dịch sang hiệu quả: Sol giảm giá, agent stack tối ưu sâu hơn",
-  "dek": "Không có frontier-model launch mới đủ lớn trong 24 giờ qua. Tín hiệu đáng chú ý hơn nằm ở economics và system quality: OpenAI đang áp dụng promotional pricing cho GPT-5.6 Sol, AWS mở rộng cross-Region inference, còn EnvHarness và các primitive mới của Anthropic tiếp tục cho thấy agent production ngày càng phụ thuộc vào môi trường, toolchain và verification.",
+  "headline": "MCP đặt lại ưu tiên, còn tooling chuyển sang kiểm tra readiness",
+  "dek": "Trong cửa sổ kết thúc lúc 07:00 ngày 23/8, thay đổi đáng chú ý nhất không phải một model mới mà là cách hệ sinh thái MCP chuẩn bị cho production. Roadmap chính thức xác định năm hướng phát triển tiếp theo, MCPJam đưa readiness vào CLI và conformance workflow, còn llm 0.33 cải thiện quản lý key cùng khả năng quan sát tool-call.",
   "meta": {
     "primary_scan_hours": 24,
     "context_window_hours": 72,
-    "reading_minutes": 5,
+    "window_started_at": "2026-08-22T07:00:00+07:00",
+    "cutoff_at": "2026-08-23T07:00:00+07:00",
+    "reading_minutes": 4,
     "source_policy": "official-first"
   },
   "hero_visual": {
     "kind": "editorial",
-    "key": "cost-down-system-up",
-    "caption": "Không có model launch lớn sáng nay; câu chuyện mạnh hơn là chi phí inference giảm trong khi chất lượng hệ thống quanh model ngày càng quyết định hiệu quả agent."
+    "key": "mcp-roadmap-readiness-observability",
+    "caption": "Roadmap định hướng protocol tương lai; readiness và conformance tooling giúp kiểm tra integration đang chạy hôm nay."
   },
   "brief": [
     {
-      "freshness": "CONTEXT_72H",
-      "text": "OpenAI API hiện niêm yết GPT-5.6 Sol ở mức promotional 4 USD/triệu input token và 20 USD/triệu output token, áp dụng ít nhất tới 21/11/2026."
-    },
-    {
-      "freshness": "CONTEXT_72H",
-      "text": "Amazon Bedrock cũng áp dụng mức 4/20 USD cho Sol, thấp hơn 20% ở input và 33,3% ở output so với giá trước đó trên Bedrock."
-    },
-    {
-      "freshness": "CONTEXT_72H",
-      "text": "EnvHarness báo cáo cải thiện tới 9 điểm trên held-out tasks và giảm 9,8% số bước thực thi bằng cách tối ưu environment quanh agent."
-    },
-    {
-      "freshness": "CONTEXT_72H",
-      "text": "Anthropic đã đưa Computer Use, Browser Use, Skills API và Files API lên GA, củng cố hướng xây agent bằng reusable primitives thay vì giant prompt."
-    },
-    {
-      "freshness": "CONTEXT_72H",
-      "text": "AWS mở rộng GPT-5.6 Sol, Terra và Luna tới hơn 25 region với cross-Region inference để tăng capacity pool và throughput."
+      "event_id": "simonw-llm-0-33",
+      "event_signature": {
+        "organization": "simonw",
+        "product": "llm",
+        "action": "release",
+        "artifact": "0-33"
+      },
+      "published_at": "2026-08-22T17:01:16Z",
+      "freshness": "NEW_TODAY",
+      "title": "llm 0.33 tách API key theo từng lệnh và làm log tool-call rõ hơn",
+      "text": "llm 0.33 nâng thư viện OpenAI Python lên 3.x, đổi dependency HTTP từ httpx sang httpx2 và cho phép truyền API key riêng cho từng lần embedding mà không thay đổi state dùng chung của model. Release còn đưa kết quả server-side tool call vào llm logs, hỗ trợ ghép nhiều template theo thứ tự và giữ metadata reasoning của provider. Trước khi nâng cấp, hãy kiểm tra plugin compatibility; sau đó dùng log mới để debug workflow có tool.",
+      "sources": [
+        {
+          "label": "Simon Willison — llm 0.33 release notes",
+          "url": "https://github.com/simonw/llm/releases/tag/0.33",
+          "type": "official",
+          "published_at": "2026-08-22T17:01:16Z"
+        }
+      ]
     }
   ],
   "trends": [
     {
-      "id": "price-performance",
-      "freshness": "CONTEXT_72H",
-      "strength": "ACCELERATING",
-      "title": "Chi phí inference đang trở thành một phần của product strategy",
-      "paragraphs": [
-        "Promotional pricing mới của GPT-5.6 Sol đáng chú ý hơn một đợt giảm giá thông thường vì agentic workloads thường tạo nhiều tool calls, output dài và các vòng lặp kiểm tra. Với loại workload này, cost per completed task có ý nghĩa hơn nhiều so với việc chỉ so sánh giá một token.",
-        "OpenAI hiện niêm yết Sol ở mức 4 USD cho mỗi triệu token đầu vào và 20 USD cho mỗi triệu token đầu ra trên trang API chính thức, với chương trình khuyến mại kéo dài ít nhất tới 21/11/2026. AWS áp dụng cùng mức giá trên Bedrock và cho biết đây tương ứng với mức giảm 20% ở input và 33,3% ở output so với trước.",
-        "Điểm thực dụng là pricing không còn là chi tiết sau cùng. Với coding agents, deep research và workflow dài, model selection ngày càng phải đi cùng đo lường chất lượng, latency và tổng chi phí hoàn thành task."
-      ],
-      "pullquote": "Benchmark vẫn quan trọng, nhưng cost per completed task đang trở thành metric thực dụng hơn cho agent workloads.",
-      "action": "Nếu đang chạy Sol cho workflow dài, hãy rerun benchmark trên task thật với pricing mới và so cả chất lượng, output length, tool-call count lẫn tổng chi phí.",
-      "visual": {
-        "kind": "editorial",
-        "key": "sol-promotional-pricing",
-        "caption": "GPT-5.6 Sol promotional pricing hiện ở mức 4 USD input và 20 USD output trên mỗi triệu token."
+      "event_id": "model-context-protocol-august-2026-roadmap",
+      "event_signature": {
+        "organization": "model-context-protocol",
+        "product": "mcp-specification",
+        "action": "roadmap",
+        "artifact": "august-2026-roadmap"
       },
-      "sources": [
-        {
-          "label": "OpenAI API — GPT-5.6 Sol promotional pricing",
-          "url": "https://openai.com/api/",
-          "type": "official"
-        },
-        {
-          "label": "AWS — reduced pricing for GPT-5.6 Sol",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/bedrock-openai-gpt-56-sol-reduced-pricing/",
-          "type": "official"
-        },
-        {
-          "label": "Reuters — OpenAI cuts GPT-5.6 Sol developer pricing",
-          "url": "https://www.reuters.com/technology/openai-cuts-developer-pricing-frontier-gpt-56-sol-model-by-more-than-20-2026-08-21/",
-          "type": "reporting"
-        }
-      ]
-    },
-    {
-      "id": "agent-environment",
-      "freshness": "CONTEXT_72H",
-      "strength": "ACCELERATING",
-      "title": "Agent performance đang dịch chuyển từ model sang environment và harness",
-      "paragraphs": [
-        "EnvHarness bổ sung thêm bằng chứng cho một xu hướng đã bắt đầu rõ: agent không chỉ là model. Nghiên cứu này đặt một programmable layer quanh môi trường tĩnh, quan sát execution trajectory rồi tự tạo các component nhắm vào điểm yếu của agent mà không sửa logic nền.",
-        "Trên năm benchmark thuộc bốn domain, nhóm tác giả báo cáo cải thiện tới 9 điểm trên held-out instances và giảm 9,8% execution steps. Đây là kết quả nghiên cứu, không phải bảo đảm cho mọi workload, nhưng nó cho thấy một hướng tối ưu rất đáng thử trước khi phản xạ bằng cách đổi model.",
-        "Đặt cạnh Computer Use, Browser Use, Skills API và Files API của Anthropic, agent stack ngày càng có hình dạng rõ hơn: model, tools, memory, environment, supervisor và verification."
-      ],
-      "pullquote": "Model mạnh hơn không tự động biến thành agent đáng tin cậy hơn nếu environment và execution loop vẫn yếu.",
-      "action": "Nếu agent hay fail ở task dài, đo tool success, recovery, context loss và số bước hoàn thành trước. Thử cải thiện harness hoặc environment trên một workflow nhỏ trước khi đổi model.",
-      "visual": {
-        "kind": "editorial",
-        "key": "model-harness-environment-verification",
-        "caption": "Một agent production nên được nhìn như một hệ thống gồm model, harness, environment, tools và verification."
-      },
-      "sources": [
-        {
-          "label": "EnvHarness paper",
-          "url": "https://arxiv.org/abs/2608.19880",
-          "type": "research"
-        },
-        {
-          "label": "Anthropic — Computer Use, Skills API and Files API",
-          "url": "https://claude.com/blog/computer-use-skills-api-files-api",
-          "type": "official"
-        }
-      ]
-    },
-    {
-      "id": "runtime-routing",
-      "freshness": "CONTEXT_72H",
+      "published_at": "2026-08-22T09:00:00Z",
+      "id": "mcp-roadmap-production-priorities",
+      "freshness": "NEW_TODAY",
       "strength": "EMERGING",
-      "title": "AI infrastructure đang tối ưu runtime routing, không chỉ mua thêm compute",
+      "importance": "LEAD",
+      "title": "Roadmap mới của MCP ưu tiên messaging, identity và progressive discovery",
       "paragraphs": [
-        "Amazon Bedrock hiện hỗ trợ GPT-5.6 Sol, Terra và Luna qua cross-Region inference ở hơn 25 AWS Regions. Cơ chế này cho phép request dùng pool compute rộng hơn thay vì bị khóa vào capacity của một region duy nhất.",
-        "Với production workloads, throughput, availability và placement bắt đầu trở thành một phần của AI architecture. Khi agent workload dài và đắt hơn, cách route inference có thể ảnh hưởng trực tiếp tới latency, reliability và cost."
+        "Nhóm duy trì Model Context Protocol công bố roadmap cập nhật cho bản đặc tả tiếp theo và các tháng sau đó, với năm vùng ưu tiên: primitive cho agentic messaging, hợp nhất và gia cố transport theo hướng HTTP-native, danh tính agent cùng bảo mật doanh nghiệp, cải thiện primitive, và trải nghiệm SDK. Đây là định hướng phát triển chứ chưa phải một bản specification mới. Cách phân biệt này quan trọng: server-initiated event, DPoP, workload identity hay progressive discovery đều là vùng công việc được ưu tiên, không phải API mà developer có thể mặc định đã ổn định và triển khai ngay.",
+        "Hai hướng có tác động kiến trúc rõ nhất là agent identity và progressive discovery. MCP hiện vẫn thường dựa vào một người phê duyệt quyền truy cập trong trình duyệt, trong khi agent chạy như cloud workload cần danh tính riêng, có thể hành động thay người dùng hoặc ủy quyền hẹp hơn cho sub-agent. Roadmap muốn xây đường chuẩn dựa trên DPoP, Workload Identity Federation, ID-JAG và token exchange. Ở mặt tool discovery, nhóm duy trì thừa nhận việc gửi danh sách hàng trăm tool ngay khi kết nối làm tốn context và khiến lựa chọn kém đi; hướng đề xuất là lộ một entry point nhỏ rồi mở dần catalog theo cuộc hội thoại.",
+        "Với team đang xây MCP server, giá trị thực dụng hôm nay là dùng roadmap để tránh khóa kiến trúc vào giả định sắp lỗi thời, không phải lập tức viết code theo từng mục. Hãy xác định phần nào của hệ thống phụ thuộc vào polling, danh sách tool lớn, token dài hạn hoặc result contract chưa rõ, rồi theo dõi SEP và Working Group tương ứng. Chỉ đưa thay đổi vào production khi nó xuất hiện trong specification hoặc extension có trạng thái phù hợp, kèm SDK và conformance test. Roadmap cho biết nơi maintainer sẽ tập trung review; nó không thay thế version pinning, compatibility matrix hay kiểm thử liên vận hành."
       ],
-      "action": "Nếu đang dùng Bedrock cho workload lớn, hãy đánh giá cross-Region inference dựa trên throughput, data boundary và cost. Không bật global routing chỉ vì capability mới có sẵn.",
+      "pullquote": "Roadmap cho biết MCP đang đi đâu; specification và conformance test mới quyết định code nào có thể chạy ổn hôm nay.",
+      "action": "Lập danh sách các giả định về polling, agent identity, tool discovery và result shape trong MCP stack hiện tại; gắn từng giả định với SEP hoặc Working Group cần theo dõi.",
       "sources": [
         {
-          "label": "AWS — cross-Region inference for GPT-5.6",
-          "url": "https://aws.amazon.com/blogs/machine-learning/introducing-cross-region-inference-for-openai-gpt-5-6-models-on-amazon-bedrock/",
-          "type": "official"
+          "label": "Model Context Protocol — The New MCP Roadmap",
+          "url": "https://blog.modelcontextprotocol.io/posts/mcp-roadmap/",
+          "type": "official",
+          "published_at": "2026-08-22T09:00:00Z"
         }
       ]
     }
   ],
   "releases": [
     {
-      "product": "OpenAI API · GPT-5.6 Sol",
-      "feature": "Promotional pricing",
-      "freshness": "CONTEXT_72H",
-      "status": "RELEASED_PROMOTIONAL",
-      "summary": "OpenAI hiện niêm yết Sol ở mức 4 USD/triệu input token và 20 USD/triệu output token; promotion áp dụng ít nhất tới 21/11/2026.",
-      "who_gets_it": "OpenAI API users; plan/credit-based product surfaces may have separate metering rules.",
-      "verdict": "TRY_NOW",
-      "verdict_note": "Rerun cost benchmark nếu workload đang dùng Sol cho coding, research hoặc agent task dài.",
-      "sources": [
-        {
-          "label": "OpenAI API",
-          "url": "https://openai.com/api/",
-          "type": "official"
-        }
-      ]
-    },
-    {
-      "product": "Claude Platform",
-      "feature": "Computer Use, Browser Use, Skills API, Files API",
-      "freshness": "CONTEXT_72H",
-      "status": "GA",
-      "summary": "Anthropic đưa một nhóm primitive dành cho production agents lên GA; Browser Use bổ sung page structure, Skills API đóng gói capability tái sử dụng và Files API hỗ trợ reuse file trong workflow.",
-      "verdict": "TRY_NOW",
-      "verdict_note": "POC hợp lý nếu đang xây browser/computer agent. Nếu Playwright hiện tại đã ổn thì chưa cần migrate.",
-      "sources": [
-        {
-          "label": "Anthropic announcement",
-          "url": "https://claude.com/blog/computer-use-skills-api-files-api",
-          "type": "official"
-        }
-      ]
-    },
-    {
-      "product": "Amazon Bedrock × GPT-5.6",
-      "feature": "Cross-Region inference",
-      "freshness": "CONTEXT_72H",
+      "event_id": "mcpjam-inspector-2-45-0",
+      "event_signature": {
+        "organization": "mcpjam",
+        "product": "inspector",
+        "action": "release",
+        "artifact": "2-45-0"
+      },
+      "published_at": "2026-08-22T00:55:55Z",
+      "product": "MCPJam Inspector",
+      "feature": "Directory readiness và local conformance workflow",
+      "freshness": "NEW_TODAY",
       "status": "RELEASED",
-      "summary": "Sol, Terra và Luna có thể dùng inference profiles để route request qua nhiều AWS Regions, mở rộng capacity pool và hỗ trợ throughput ổn định hơn dưới tải.",
-      "verdict": "WATCH",
-      "verdict_note": "Đáng thử cho production workload bị giới hạn capacity; kiểm tra data residency và cost trước.",
+      "summary": "MCPJam Inspector 2.45.0 đưa việc đánh giá connector hoặc plugin gần hơn với workflow local và CI, đồng thời mở rộng registry cho nhiều app directory.",
+      "what_changed": "Bản 2.45.0 thêm lệnh mcpjam readiness check để chấm connector hoặc plugin ngay trên máy local, đưa directory readiness vào các bề mặt conformance, MCP tools, agent, chat và CLI. Release cũng bổ sung lịch sử conformance bền vững, upload từ CLI, GitHub dual-check worker, organization subregistries và ChatGPT app directory bên cạnh directory dành cho Claude.",
+      "who_gets_it": "Người dùng nâng Inspector, CLI hoặc SDK của MCPJam lên nhánh phát hành v2.45.0; một số phép kiểm tra vẫn cần tài khoản hoặc OAuth client đã đăng ký trước.",
+      "why_it_matters": "Readiness có thể trở thành một cổng kiểm tra lặp lại thay vì checklist thủ công trước khi đưa MCP integration vào directory hoặc CI. Việc lưu lịch sử và trả finding cùng verdict cũng giúp team theo dõi regression, nhưng kết quả của MCPJam không thay thế kiểm thử bảo mật, quyền truy cập và hành vi host thực tế.",
+      "verdict": "TRY_NOW",
+      "verdict_note": "Đáng chạy thử trên một connector không chứa secret, lưu baseline rồi cố ý tạo một lỗi cấu hình để xác nhận CLI, report và CI check phản ánh đúng failure mode.",
       "sources": [
         {
-          "label": "AWS technical announcement",
-          "url": "https://aws.amazon.com/blogs/machine-learning/introducing-cross-region-inference-for-openai-gpt-5-6-models-on-amazon-bedrock/",
-          "type": "official"
+          "label": "MCPJam Inspector v2.45.0 release notes",
+          "url": "https://github.com/MCPJam/inspector/releases/tag/v2.45.0",
+          "type": "official",
+          "published_at": "2026-08-22T00:55:55Z"
         }
       ]
     }
   ],
   "developer_memo": {
-    "title": "Có cần đổi workflow hôm nay không?",
-    "direct_answer": "Chưa cần thay đổi workflow hiện tại.",
+    "title": "Có cần đổi MCP stack ngay hôm nay không?",
+    "direct_answer": "Chưa cần đổi protocol implementation; nên bổ sung readiness check và theo dõi các SEP liên quan tới rủi ro kiến trúc hiện tại.",
     "actions": [
-      "Nếu đang dùng GPT-5.6 Sol cho agent workload dài, rerun cost per completed task với promotional pricing mới.",
-      "Nếu agent fail ở long-horizon task, thử cải thiện harness/environment trước khi đổi model.",
-      "Nếu workload Bedrock thường xuyên chạm capacity, đánh giá cross-Region inference trên một workload có đo throughput, cost và data boundary rõ ràng."
+      "Chạy readiness check trên một connector mẫu và lưu kết quả làm baseline trước khi đưa bước này vào CI.",
+      "Đánh dấu nơi hệ thống đang phụ thuộc vào polling, danh sách tool lớn, token dài hạn hoặc result shape chưa rõ để theo dõi roadmap.",
+      "Kiểm tra plugin compatibility trước khi nâng llm vì dependency OpenAI Python và HTTP client đã thay đổi."
     ],
     "avoid": [
-      "Không đổi model chỉ vì headline về giá.",
-      "Không migrate browser automation đang ổn chỉ vì Browser Use đã GA.",
-      "Không bật global routing nếu chưa kiểm tra data residency và cost."
+      "Không trình bày các mục trong roadmap như capability đã phát hành hoặc API đã ổn định.",
+      "Không xem một verdict readiness là bằng chứng thay thế cho security review và kiểm thử trên host thật.",
+      "Không đưa credential production vào harness hoặc báo cáo conformance nếu chưa xác nhận cơ chế redaction."
     ]
   },
-  "radar": [
-    {
-      "status": "CONFIRMED",
-      "text": "GPT-5.6 Sol promotional pricing được OpenAI và AWS xác nhận áp dụng ít nhất tới 21/11/2026."
-    },
-    {
-      "status": "WATCH",
-      "text": "Một số trang model chi tiết của OpenAI có thể cập nhật chậm hơn trang API pricing chính; khi lập budget nên lấy pricing page hiện hành làm nguồn chuẩn."
-    },
-    {
-      "status": "WATCH",
-      "text": "Các nghiên cứu như EnvHarness đang chuyển trọng tâm agent optimization sang environment, harness và execution loop."
-    },
-    {
-      "status": "WATCH",
-      "text": "Cross-Region inference cho thấy runtime routing đang trở thành một lớp tối ưu riêng của AI infrastructure."
-    }
-  ],
-  "takeaway": "Nếu hôm nay chỉ nhớ một điều: không có model launch lớn, nhưng economics và system quality đang dịch chuyển rất nhanh. Với agent production, giá inference, harness, environment và runtime routing ngày càng cùng quyết định một workflow có đáng scale hay không.",
-  "content_contract": {
-    "renderer_must_not_require_html_in_content": true,
-    "allowed_rich_content": [
-      "paragraph",
-      "bullet",
-      "pullquote",
-      "source_link",
-      "editorial_visual_hint"
-    ],
-    "freshness_values": [
-      "NEW_TODAY",
-      "CONTEXT_72H"
-    ],
-    "verdict_values": [
-      "TRY_NOW",
-      "WATCH",
-      "SKIP_FOR_NOW"
-    ]
-  }
+  "radar": [],
+  "takeaway": "Nếu hôm nay chỉ nhớ một điều: roadmap định hình chuẩn tương lai, còn readiness và conformance tooling mới là thứ giúp kỹ sư kiểm tra integration đang có."
 }

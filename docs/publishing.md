@@ -12,21 +12,25 @@ AI Morning follows one deterministic flow:
 
 ## Daily workflow
 
-1. Generate or add content/YYYY-MM-DD.json.
-2. Run npm run build.
-3. Serve and verify the generated site:
+1. Research and add content/YYYY-MM-DD.json according to `AGENTS.md`.
+2. Run `npm run news:index` to validate events and regenerate the cross-edition news ledger.
+3. Run npm run build.
+4. Serve and verify the generated site:
 
        cd dist
        python -m http.server 8080
 
-4. Check /, /YYYY-MM-DD/, older date routes, and /archive/.
-5. Commit the JSON file. Templates, CSS, JavaScript, and generated HTML do not need daily edits.
-6. Push to main. GitHub Actions builds the site and uploads only dist/.
+5. Check /, /YYYY-MM-DD/, older date routes, and /archive/.
+6. Commit the JSON file together with `data/news-index.json`. Templates, CSS, JavaScript, and generated HTML do not need daily edits.
+7. Push to main. GitHub Actions validates, builds the site and uploads only dist/.
 
 ## Build behavior
 
 npm run build:
 
+- runs the news-quality regression suite;
+- checks that every item has event identity, source evidence, adequate depth and valid freshness;
+- rejects duplicate or likely duplicate events and a stale `data/news-index.json`;
 - scans every content/*.json file;
 - validates the content contract;
 - sorts editions newest first;

@@ -3,234 +3,158 @@
   "edition_date": "2026-08-24",
   "locale": "vi-VN",
   "edition_type": "daily_ai_catchup",
-  "edition_mode": "QUIET",
-  "headline": "Coding agent đang rời tab riêng: shared workflow và data boundary trở thành câu chuyện lớn hơn model mới",
-  "dek": "Không có frontier-model launch mới đủ lớn trong 24 giờ qua. Tín hiệu đáng chú ý hơn nằm ở lớp vận hành quanh agent: Slack Code đưa coding agent vào không gian làm việc chung có review và audit trail, còn Ox Alpha cho thấy capability miễn phí vẫn phải được cân cùng provider identity, retention policy và data boundary.",
+  "edition_mode": "NORMAL",
+  "headline": "Ray siết serving và sandbox; AI tooling thêm guardrail production",
+  "dek": "Cửa sổ kết thúc lúc 07:00 ngày 24/8 có bốn thay đổi kỹ thuật độc lập. Ray hoàn thiện routing nhận biết KV cache và thêm sandbox experimental, LiteLLM mở rộng kiểm soát chi phí cùng routing, Airflow Common AI thêm guardrail, còn llama.cpp hỗ trợ MTP cho GLM-4.5-Air.",
   "meta": {
     "primary_scan_hours": 24,
     "context_window_hours": 72,
-    "reading_minutes": 5,
+    "window_started_at": "2026-08-23T07:00:00+07:00",
+    "cutoff_at": "2026-08-24T07:00:00+07:00",
+    "reading_minutes": 6,
     "source_policy": "official-first"
   },
   "hero_visual": {
     "kind": "editorial",
-    "key": "agents-move-into-team-workspace",
-    "caption": "Không có model launch lớn sáng nay; câu chuyện mạnh hơn là agent work đang dịch từ phiên cá nhân sang workflow chung có context, review, approval và data boundary rõ hơn."
+    "key": "serving-routing-sandbox-guardrails",
+    "caption": "Các release sáng nay tập trung vào phần khó của production AI: routing theo trạng thái cache, cô lập workload, kiểm soát chi phí và approval trước thao tác nhạy cảm."
   },
   "brief": [
     {
-      "freshness": "CONTEXT_72H",
-      "text": "Slack Code tạo code channel riêng khi coding agent được gọi vào task, gom conversation, planning, code diff, preview và approval vào cùng một nơi."
-    },
-    {
-      "freshness": "CONTEXT_72H",
-      "text": "Slack Code hiện live với Claude, Devin, GitHub Copilot và Vercel; Slack ghi ChatGPT by OpenAI là coming soon ở phần availability."
-    },
-    {
-      "freshness": "CONTEXT_72H",
-      "text": "Ox Alpha xuất hiện từ 20/8 như một stealth coding model miễn phí với context khoảng 1.05M token; reporting ngày 23/8 làm nổi bật rủi ro provider identity và prompt retention."
-    },
-    {
-      "freshness": "CONTEXT_72H",
-      "text": "Shared context, reviewability, permission boundary và audit trail đang trở thành tiêu chí production quan trọng hơn khi coding agents được đưa sâu hơn vào team workflow."
-    },
-    {
-      "freshness": "CONTEXT_72H",
-      "text": "GPT-5.6 Sol vẫn ở promotional pricing 4 USD/triệu input và 20 USD/triệu output token; không có thay đổi pricing mới đáng kể trong scan sáng nay."
+      "event_id": "llama-cpp-b10603-glm-4-5-air-mtp",
+      "event_signature": {
+        "organization": "ggml-org",
+        "product": "llama-cpp",
+        "action": "release",
+        "artifact": "b10603-glm-4-5-air-mtp"
+      },
+      "published_at": "2026-08-24T01:45:59+07:00",
+      "freshness": "NEW_TODAY",
+      "title": "llama.cpp b10603 thêm MTP cho GLM-4.5-Air",
+      "text": "Daily build b10603 bổ sung hỗ trợ multi-token prediction cho GLM-4.5-Air. Thay đổi mở đường để developer thử luồng MTP của model trong local inference, nhưng release note không công bố benchmark nên chưa có cơ sở khẳng định tốc độ hay chất lượng tăng. Đây là prerelease; hãy pin build và chạy test đầu ra trước khi đưa vào workflow ổn định.",
+      "sources": [
+        {
+          "label": "llama.cpp b10603 release notes",
+          "url": "https://github.com/ggml-org/llama.cpp/releases/tag/b10603",
+          "type": "official",
+          "published_at": "2026-08-23T18:45:59Z"
+        }
+      ]
     }
   ],
   "trends": [
     {
-      "id": "multiplayer-agent-work",
-      "freshness": "CONTEXT_72H",
-      "strength": "ACCELERATING",
-      "title": "Coding agent đang trở thành workflow của team, không còn chỉ là tool cá nhân",
+      "event_id": "ray-2-58-0",
+      "event_signature": {
+        "organization": "ray-project",
+        "product": "ray",
+        "action": "release",
+        "artifact": "2-58-0"
+      },
+      "published_at": "2026-08-23T12:42:08+07:00",
+      "id": "ray-kv-routing-sandbox-security",
+      "freshness": "NEW_TODAY",
+      "strength": "CONFIRMED_RELEASE",
+      "importance": "LEAD",
+      "title": "Ray 2.58 đưa trạng thái KV cache vào quyết định routing LLM",
       "paragraphs": [
-        "Slack Code là một tín hiệu rõ về hướng đi tiếp theo của coding agents: thay vì một developer mở tab riêng, prompt agent rồi mang kết quả về sau, agent được đưa vào một code channel có cả team cùng quan sát và can thiệp.",
-        "Slack cho biết channel có thể chứa planning document, code diff và live HTML preview; khi công việc hoàn tất, channel tự archive nhưng lịch sử vẫn searchable như audit trail. Slack công bố Anthropic, Cognition, GitHub, OpenAI và Vercel là các launch partners, nhưng phần availability hiện ghi Slack Code live với Claude, Devin, GitHub Copilot và Vercel, còn ChatGPT by OpenAI là coming soon.",
-        "Điểm đáng chú ý không phải Slack thay IDE. Giá trị nằm ở shared context và governance: PM, designer và engineer có thể nhìn cùng một execution trace, phản hồi sớm và giữ quyết định quanh agent work trong một nơi có thể truy vết."
+        "Ray 2.58.0 hoàn thiện luồng routing nhận biết KV cache và số token cho Ray Serve LLM, bao gồm cả cache được offload xuống CPU. Thay vì chỉ phân phối request theo tải tổng quát, router có thêm tín hiệu về prefix đã nằm ở replica nào và lượng công việc ước tính. Với agent có context dài hoặc lặp lại prefix qua nhiều bước, đây là hướng tối ưu thực tế hơn việc chỉ tăng số worker, vì một quyết định routing sai có thể làm mất cache reuse và buộc prefill chạy lại.",
+        "Release cũng đưa Ray Sandbox dùng gVisor vào trạng thái experimental để cô lập task và actor, đồng thời mở rộng hỗ trợ TPU, Delta Lake và shuffle v2. Các phần này giải quyết những lớp khác nhau của production stack: scheduling accelerator, data movement và ranh giới thực thi. Sandbox mới vẫn là experimental, vì vậy không nên xem nó như sự thay thế cho threat model, image hardening, network policy hay credential ngắn hạn. Giá trị trước mắt là có thêm một primitive để thử nghiệm isolation trong môi trường canary.",
+        "Để biết KV-aware routing có giúp workload của mình hay không, hãy đo riêng time-to-first-token, cache-hit ratio, số token prefill bị lặp, queue time và cost per completed task. Chạy canary với cùng trace request trước và sau nâng cấp, rồi kiểm tra fairness giữa replica cùng hành vi khi cache bị evict. Với sandbox, dùng một task không tin cậy nhưng không chứa secret để xác nhận filesystem, network và process boundary thực tế; chỉ mở rộng rollout sau khi log và failure mode khớp với threat model của hệ thống."
       ],
-      "pullquote": "Bước tiến tiếp theo của coding agent có thể không phải code nhanh hơn, mà là làm cho agent work nhìn thấy được, review được và phối hợp được.",
-      "action": "Nếu team đang dùng coding agent mạnh nhưng workflow vẫn là private session → PR, thử một task nhỏ theo mô hình shared agent session: giữ requirement, plan, diff, preview và approval trong cùng một luồng trước khi đầu tư platform lớn.",
+      "pullquote": "Routing tốt không chỉ tìm worker rảnh; nó cần biết context nào đã được tính ở đâu.",
+      "action": "Canary Ray 2.58 với một trace agent có prefix lặp, theo dõi cache hit và prefill; thử gVisor sandbox riêng bằng workload không chứa secret.",
       "visual": {
-        "kind": "editorial",
-        "key": "shared-code-channel",
-        "caption": "Một task agent tốt cho team cần shared context, visible execution, review artifact và explicit approval."
+        "kind": "diagram",
+        "key": "ray-kv-aware-request-routing",
+        "caption": "Router cân bằng tải cùng vị trí KV cache để hạn chế prefill lặp lại, trong khi sandbox tạo thêm ranh giới cho task không tin cậy."
       },
       "sources": [
         {
-          "label": "Slack — Slack Code: Where Your Team and Agents Build Together",
-          "url": "https://slack.com/blog/news/slack-code-channels-for-agents",
-          "type": "official"
-        },
-        {
-          "label": "Slack — Code Channels availability",
-          "url": "https://slack.com/features/code-channels",
-          "type": "official"
-        }
-      ]
-    },
-    {
-      "id": "stealth-model-data-boundary",
-      "freshness": "CONTEXT_72H",
-      "strength": "EMERGING",
-      "title": "Stealth models tạo một trade-off mới: capability miễn phí đổi lấy data boundary mơ hồ",
-      "paragraphs": [
-        "Ox Alpha xuất hiện trên OpenRouter từ 20/8 như một stealth reasoning model dành cho coding và sustained agentic work, với context khoảng 1.05M token và free preview. Reporting ngày 23/8 tiếp tục kéo sự chú ý về model này, nhưng đó là coverage mới của một event đã bắt đầu trước đó chứ không phải release mới trong 24 giờ.",
-        "Điểm cần đọc kỹ nằm ở data policy và provider identity. Các báo cáo cho biết provider đứng sau model chưa được công khai, trong khi prompt retention là một phần đáng cân nhắc trước khi gửi source code hoặc dữ liệu nội bộ.",
-        "Với developer, đây là lời nhắc rằng benchmark hoặc giá 0 không đủ để quyết định model routing. Một model có thể rất hấp dẫn cho public benchmark, toy repo hoặc synthetic workload nhưng không phù hợp với secrets, customer data hay proprietary code."
-      ],
-      "pullquote": "Free inference không có nghĩa là free risk budget.",
-      "action": "Nếu muốn thử Ox Alpha hoặc stealth model tương tự, chỉ dùng repo public hoặc synthetic task. Không gửi secrets, proprietary code hay dữ liệu khách hàng cho tới khi provider identity, retention và contractual controls đủ rõ.",
-      "sources": [
-        {
-          "label": "Business Insider — mysterious free coding model Ox Alpha",
-          "url": "https://www.businessinsider.com/ox-alpha-ai-model-mystery-2026-8",
-          "type": "reporting"
-        },
-        {
-          "label": "SiliconANGLE — Ox Alpha provider and data concerns",
-          "url": "https://siliconangle.com/2026/08/23/nobody-knows-who-built-ai-coding-model-ox-alpha-or-where-the-code-goes/",
-          "type": "reporting"
-        }
-      ]
-    },
-    {
-      "id": "agent-governance",
-      "freshness": "CONTEXT_72H",
-      "strength": "ACCELERATING",
-      "title": "Permission boundary và reviewability đang trở thành phần của agent architecture",
-      "paragraphs": [
-        "Khi coding agent được đưa từ private session sang shared workspace, câu chuyện governance trở nên cụ thể hơn. Team cần biết agent đang đọc context nào, có quyền ghi vào đâu, artifact nào cần review và lịch sử execution có thể truy vết hay không.",
-        "Điều này không đòi hỏi một platform governance lớn ngay lập tức. Với phần lớn team, bước đầu tốt hơn là giữ scope permission nhỏ, tách read/write access, có review trước thay đổi quan trọng và lưu execution trace đủ để debug khi agent đi sai hướng.",
-        "Shared workflow như Slack Code làm phần visibility dễ hơn, nhưng application permission và data policy của từng agent vẫn phải được đánh giá riêng."
-      ],
-      "action": "Chọn một production agent và kiểm tra bốn thứ: context nó đọc được, write access, bước nào cần human approval và log nào còn lại sau khi task kết thúc.",
-      "sources": [
-        {
-          "label": "Slack — Slack Code",
-          "url": "https://slack.com/blog/news/slack-code-channels-for-agents",
-          "type": "official"
-        },
-        {
-          "label": "Slack — Code Channels security and permissions",
-          "url": "https://slack.com/features/code-channels",
-          "type": "official"
+          "label": "Ray 2.58.0 release notes",
+          "url": "https://github.com/ray-project/ray/releases/tag/ray-2.58.0",
+          "type": "official",
+          "published_at": "2026-08-23T05:42:08Z"
         }
       ]
     }
   ],
   "releases": [
     {
-      "product": "Slack Code",
-      "feature": "Code channels for AI agents",
-      "freshness": "CONTEXT_72H",
+      "event_id": "litellm-v1-98-0",
+      "event_signature": {
+        "organization": "berriai",
+        "product": "litellm",
+        "action": "release",
+        "artifact": "1-98-0"
+      },
+      "published_at": "2026-08-23T07:28:24+07:00",
+      "product": "LiteLLM",
+      "feature": "v1.98.0 — PTU accounting và routing controls",
+      "freshness": "NEW_TODAY",
       "status": "RELEASED",
-      "summary": "Slack đưa coding agents vào project-specific code channels với shared conversation, planning, diffs, previews, feedback và approval; channel tự archive khi task hoàn tất.",
-      "who_gets_it": "Slack Code hiện live cho teams dùng Claude, Devin, GitHub Copilot và Vercel integrations; ChatGPT by OpenAI được Slack ghi là coming soon.",
+      "summary": "LiteLLM 1.98.0 bổ sung cấu hình flat cost cho provisioned throughput và đưa phần phân bổ đó vào báo cáo sử dụng hằng ngày. Release còn thêm ngưỡng failure hoặc cooldown theo deployment, routing group có thể gọi như virtual model, SSE keepalive và nhiều sửa lỗi về provider, chi phí cùng security scoping.",
+      "who_gets_it": "Các đội dùng LiteLLM Proxy để định tuyến nhiều provider, theo dõi chi phí hoặc vận hành deployment có capacity mua trước.",
+      "why_it_matters": "PTU thường có economics khác pay-per-token, nên cách quy đổi sai có thể làm dashboard và quyết định router lệch nhau. Failure policy theo deployment cũng cho phép cô lập endpoint xấu mà không hạ cả model group, nhưng có thể đổi hành vi failover hiện tại.",
       "verdict": "TRY_NOW",
-      "verdict_note": "Đáng POC nếu team đã dùng coding agents nhưng context và review đang bị phân mảnh giữa chat, terminal và PR.",
+      "verdict_note": "Nâng thử trong staging, đối chiếu một ngày usage với hóa đơn hoặc capacity contract, rồi cố ý làm một deployment lỗi để xác nhận cooldown, fallback và alert hoạt động như mong đợi.",
       "sources": [
         {
-          "label": "Slack announcement",
-          "url": "https://slack.com/blog/news/slack-code-channels-for-agents",
-          "type": "official"
-        },
-        {
-          "label": "Slack Code Channels",
-          "url": "https://slack.com/features/code-channels",
-          "type": "official"
+          "label": "LiteLLM v1.98.0 release notes",
+          "url": "https://github.com/BerriAI/litellm/releases/tag/v1.98.0",
+          "type": "official",
+          "published_at": "2026-08-23T00:28:24Z"
         }
       ]
     },
     {
-      "product": "OpenRouter · Ox Alpha",
-      "feature": "Stealth coding/agent model preview",
-      "freshness": "CONTEXT_72H",
-      "status": "PREVIEW",
-      "summary": "Ox Alpha xuất hiện từ 20/8 với khoảng 1.05M context và free preview; provider identity cùng retention policy vẫn là điểm cần thận trọng.",
-      "verdict": "WATCH",
-      "verdict_note": "Có thể benchmark bằng public/synthetic data; không dùng cho proprietary workload khi data boundary còn mơ hồ.",
+      "event_id": "airflow-common-ai-provider-0-8-0",
+      "event_signature": {
+        "organization": "apache",
+        "product": "airflow-common-ai-provider",
+        "action": "release",
+        "artifact": "0-8-0"
+      },
+      "published_at": "2026-08-24T03:08:00.204775+07:00",
+      "product": "Apache Airflow Common AI provider",
+      "feature": "v0.8.0 — sandbox, approval và giới hạn dữ liệu tool",
+      "freshness": "NEW_TODAY",
+      "status": "RELEASED",
+      "summary": "Provider 0.8.0 thêm SandboxToolset cho thao tác shell và file được cô lập, require_approval cho LLMSchemaCompareOperator, giới hạn kết quả SQL theo byte cùng redaction và message cap tùy chỉnh trong retry policy. Query output của SQLToolset và DataFusionToolset đổi sang dạng columns, rows, row_count và có metadata truncation.",
+      "who_gets_it": "Developer dùng apache-airflow-providers-common-ai, đặc biệt DAG hoặc prompt gọi trực tiếp SQLToolset, DataFusionToolset và schema comparison.",
+      "why_it_matters": "Guardrail mới giúp thu hẹp blast radius và buộc người duyệt vào thao tác nhạy cảm. Tuy nhiên, thay đổi result shape trong package 0.x có thể làm hỏng code hoặc prompt đang mong danh sách row dictionary, nên đây không phải bản nâng cấp mù quáng.",
+      "verdict": "TRY_NOW",
+      "verdict_note": "Tìm mọi consumer của kết quả query, thêm test cho truncation và migrate sang shape mới trước khi nâng. Sau đó thử approval path với một thay đổi schema giả để chắc chắn task thực sự dừng chờ người duyệt.",
       "sources": [
         {
-          "label": "Business Insider — Ox Alpha",
-          "url": "https://www.businessinsider.com/ox-alpha-ai-model-mystery-2026-8",
-          "type": "reporting"
+          "label": "Apache Airflow Common AI provider changelog",
+          "url": "https://airflow.apache.org/docs/apache-airflow-providers-common-ai/stable/changelog.html",
+          "type": "official",
+          "published_at": "2026-08-23"
         },
         {
-          "label": "SiliconANGLE — Ox Alpha",
-          "url": "https://siliconangle.com/2026/08/23/nobody-knows-who-built-ai-coding-model-ox-alpha-or-where-the-code-goes/",
-          "type": "reporting"
-        }
-      ]
-    },
-    {
-      "product": "OpenAI API · GPT-5.6 Sol",
-      "feature": "Promotional pricing",
-      "freshness": "CONTEXT_72H",
-      "status": "RELEASED_PROMOTIONAL",
-      "summary": "Mức 4 USD/triệu input và 20 USD/triệu output token vẫn đang áp dụng; không có thay đổi mới đáng kể trong scan sáng nay.",
-      "verdict": "TRY_NOW",
-      "verdict_note": "Tiếp tục benchmark theo cost per completed task thay vì chỉ nhìn token price.",
-      "sources": [
-        {
-          "label": "OpenAI — GPT-5.6",
-          "url": "https://openai.com/index/gpt-5-6/",
-          "type": "official"
+          "label": "PyPI — apache-airflow-providers-common-ai 0.8.0",
+          "url": "https://pypi.org/project/apache-airflow-providers-common-ai/0.8.0/",
+          "type": "official",
+          "published_at": "2026-08-23T20:08:00.204775Z"
         }
       ]
     }
   ],
   "developer_memo": {
-    "title": "Có cần đổi workflow hôm nay không?",
-    "direct_answer": "Chưa cần thay đổi workflow hiện tại.",
+    "title": "Thứ tự nâng cấp hợp lý hôm nay",
+    "direct_answer": "Ưu tiên contract dữ liệu và guardrail trước, sau đó mới tối ưu routing hoặc cost dashboard.",
     "actions": [
-      "Nếu team đang dùng coding agent mạnh nhưng review bị phân mảnh, thử một bug hoặc UI change nhỏ theo shared-agent workflow trước khi đổi platform.",
-      "Nếu benchmark stealth model, chỉ dùng public hoặc synthetic data cho tới khi retention và provider identity đủ rõ.",
-      "Kiểm tra context access, write permissions, human approval và execution log của một production agent trước khi tăng autonomy."
+      "Canary Ray 2.58 bằng trace có prefix lặp và đo cache hit, prefill, queue time cùng task completion.",
+      "Thêm contract test cho query shape của Airflow Common AI trước khi nâng provider lên 0.8.0.",
+      "Đối chiếu PTU accounting của LiteLLM với số liệu billing thật và diễn tập failure theo từng deployment."
     ],
     "avoid": [
-      "Không migrate toàn bộ development workflow chỉ vì Slack Code mới ra mắt.",
-      "Không đưa proprietary code vào model miễn phí nếu data retention không phù hợp.",
-      "Không tăng agent autonomy nếu chưa biết rõ permission boundary và review path."
+      "Không coi gVisor sandbox experimental là ranh giới bảo mật duy nhất cho code không tin cậy.",
+      "Không suy ra llama.cpp nhanh hơn từ một release note chỉ xác nhận hỗ trợ MTP.",
+      "Không thay routing policy production nếu chưa có trace so sánh cache hit, retry và task completion."
     ]
   },
-  "radar": [
-    {
-      "status": "CONFIRMED",
-      "text": "Slack Code đã được công bố; availability hiện live với Claude, Devin, GitHub Copilot và Vercel, còn ChatGPT by OpenAI được ghi là coming soon."
-    },
-    {
-      "status": "WATCH",
-      "text": "Slack nói code-channel APIs sẽ mở rộng cho developer community; đáng theo dõi khi custom enterprise agents có thể tham gia cùng workflow."
-    },
-    {
-      "status": "WATCH",
-      "text": "Ox Alpha đang có sức hút nhờ free preview và context lớn, nhưng provider identity cùng retention policy khiến nó chưa phù hợp cho sensitive workloads."
-    },
-    {
-      "status": "WATCH",
-      "text": "Permission boundary, reviewability và observable execution đang trở thành tiêu chí architecture quan trọng khi agent có nhiều tool access hơn."
-    }
-  ],
-  "takeaway": "Nếu hôm nay chỉ nhớ một điều: không có model launch lớn, nhưng agent adoption đang bước sang giai đoạn team workflow và governance. Shared context, reviewability và data boundary có thể tạo nhiều giá trị production hơn việc săn thêm một model mạnh hơn vài điểm benchmark.",
-  "content_contract": {
-    "renderer_must_not_require_html_in_content": true,
-    "allowed_rich_content": [
-      "paragraph",
-      "bullet",
-      "pullquote",
-      "source_link",
-      "editorial_visual_hint"
-    ],
-    "freshness_values": [
-      "NEW_TODAY",
-      "CONTEXT_72H"
-    ],
-    "verdict_values": [
-      "TRY_NOW",
-      "WATCH",
-      "SKIP_FOR_NOW"
-    ]
-  }
+  "radar": [],
+  "takeaway": "Nếu hôm nay chỉ nhớ một điều: release AI production đáng chú ý nhất thường nằm ở contract, isolation và routing; hãy nâng theo test đo được thay vì theo danh sách feature."
 }

@@ -1,0 +1,590 @@
+{
+  "schema_version": 3,
+  "generated_from": {
+    "first_edition": "2026-08-22",
+    "last_edition": "2026-08-25",
+    "edition_count": 4,
+    "source_registry_count": 39
+  },
+  "events": [
+    {
+      "event_id": "openai-gpt-5-6-sol-promotional-price-cut",
+      "event_signature": {
+        "organization": "openai",
+        "product": "gpt-5-6-sol",
+        "action": "pricing",
+        "artifact": "three-month-promotional-price-cut"
+      },
+      "signature_key": "openai|gpt-5-6-sol|pricing|three-month-promotional-price-cut",
+      "current_event_signature": {
+        "organization": "openai",
+        "product": "gpt-5-6-sol",
+        "action": "pricing",
+        "artifact": "three-month-promotional-price-cut"
+      },
+      "current_signature_key": "openai|gpt-5-6-sol|pricing|three-month-promotional-price-cut",
+      "first_published_at": "2026-08-21T19:41:58.778Z",
+      "first_edition": "2026-08-22",
+      "title": "Giá Sol giảm, model routing cần được tính lại bằng task hoàn chỉnh",
+      "fingerprint": "gia sol giam model routing can duoc tinh lai bang task hoan chinh",
+      "canonical_sources": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/bedrock-openai-gpt-56-sol-reduced-pricing",
+        "https://community.openai.com/t/20-price-reduction-for-gpt-5-6-sol-api-codex-credits-and-chatgpt-work/1391726"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-22",
+          "section": "trends",
+          "published_at": "2026-08-21T19:41:58.778Z",
+          "event_signature": {
+            "organization": "openai",
+            "product": "gpt-5-6-sol",
+            "action": "pricing",
+            "artifact": "three-month-promotional-price-cut"
+          },
+          "signature_key": "openai|gpt-5-6-sol|pricing|three-month-promotional-price-cut",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "plannotator-v0-27-6-live-app-annotation",
+      "event_signature": {
+        "organization": "backnotprop",
+        "product": "plannotator",
+        "action": "release",
+        "artifact": "v0-27-6-live-app-annotation"
+      },
+      "signature_key": "backnotprop|plannotator|release|v0-27-6-live-app-annotation",
+      "current_event_signature": {
+        "organization": "backnotprop",
+        "product": "plannotator",
+        "action": "release",
+        "artifact": "v0-27-6-live-app-annotation"
+      },
+      "current_signature_key": "backnotprop|plannotator|release|v0-27-6-live-app-annotation",
+      "first_published_at": "2026-08-21T17:43:15Z",
+      "first_edition": "2026-08-22",
+      "title": "Plannotator đưa phản hồi trực tiếp lên ứng dụng localhost",
+      "fingerprint": "plannotator dua phan hoi truc tiep len ung dung localhost",
+      "canonical_sources": [
+        "https://github.com/backnotprop/plannotator/releases/tag/v0.27.6"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-22",
+          "section": "brief",
+          "published_at": "2026-08-21T17:43:15Z",
+          "event_signature": {
+            "organization": "backnotprop",
+            "product": "plannotator",
+            "action": "release",
+            "artifact": "v0-27-6-live-app-annotation"
+          },
+          "signature_key": "backnotprop|plannotator|release|v0-27-6-live-app-annotation",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "mcpjam-inspector-2-45-0",
+      "event_signature": {
+        "organization": "mcpjam",
+        "product": "inspector",
+        "action": "release",
+        "artifact": "2-45-0"
+      },
+      "signature_key": "mcpjam|inspector|release|2-45-0",
+      "current_event_signature": {
+        "organization": "mcpjam",
+        "product": "inspector",
+        "action": "release",
+        "artifact": "2-45-0"
+      },
+      "current_signature_key": "mcpjam|inspector|release|2-45-0",
+      "first_published_at": "2026-08-22T00:55:55Z",
+      "first_edition": "2026-08-23",
+      "title": "MCPJam Inspector — Directory readiness và local conformance workflow",
+      "fingerprint": "mcpjam inspector directory readiness va local conformance workflow",
+      "canonical_sources": [
+        "https://github.com/MCPJam/inspector/releases/tag/v2.45.0"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-23",
+          "section": "releases",
+          "published_at": "2026-08-22T00:55:55Z",
+          "event_signature": {
+            "organization": "mcpjam",
+            "product": "inspector",
+            "action": "release",
+            "artifact": "2-45-0"
+          },
+          "signature_key": "mcpjam|inspector|release|2-45-0",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "model-context-protocol-august-2026-roadmap",
+      "event_signature": {
+        "organization": "model-context-protocol",
+        "product": "mcp-specification",
+        "action": "roadmap",
+        "artifact": "august-2026-roadmap"
+      },
+      "signature_key": "model-context-protocol|mcp-specification|roadmap|august-2026-roadmap",
+      "current_event_signature": {
+        "organization": "model-context-protocol",
+        "product": "mcp-specification",
+        "action": "roadmap",
+        "artifact": "august-2026-roadmap"
+      },
+      "current_signature_key": "model-context-protocol|mcp-specification|roadmap|august-2026-roadmap",
+      "first_published_at": "2026-08-22T09:00:00Z",
+      "first_edition": "2026-08-23",
+      "title": "Roadmap mới của MCP ưu tiên messaging, identity và progressive discovery",
+      "fingerprint": "roadmap moi cua mcp uu tien messaging identity va progressive discovery",
+      "canonical_sources": [
+        "https://blog.modelcontextprotocol.io/posts/mcp-roadmap"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-23",
+          "section": "trends",
+          "published_at": "2026-08-22T09:00:00Z",
+          "event_signature": {
+            "organization": "model-context-protocol",
+            "product": "mcp-specification",
+            "action": "roadmap",
+            "artifact": "august-2026-roadmap"
+          },
+          "signature_key": "model-context-protocol|mcp-specification|roadmap|august-2026-roadmap",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "simonw-llm-0-33",
+      "event_signature": {
+        "organization": "simonw",
+        "product": "llm",
+        "action": "release",
+        "artifact": "0-33"
+      },
+      "signature_key": "simonw|llm|release|0-33",
+      "current_event_signature": {
+        "organization": "simonw",
+        "product": "llm",
+        "action": "release",
+        "artifact": "0-33"
+      },
+      "current_signature_key": "simonw|llm|release|0-33",
+      "first_published_at": "2026-08-22T17:01:16Z",
+      "first_edition": "2026-08-23",
+      "title": "llm 0.33 tách API key theo từng lệnh và làm log tool-call rõ hơn",
+      "fingerprint": "llm 0 33 tach api key theo tung lenh va lam log tool call ro hon",
+      "canonical_sources": [
+        "https://github.com/simonw/llm/releases/tag/0.33"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-23",
+          "section": "brief",
+          "published_at": "2026-08-22T17:01:16Z",
+          "event_signature": {
+            "organization": "simonw",
+            "product": "llm",
+            "action": "release",
+            "artifact": "0-33"
+          },
+          "signature_key": "simonw|llm|release|0-33",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "airflow-common-ai-provider-0-8-0",
+      "event_signature": {
+        "organization": "apache",
+        "product": "airflow-common-ai-provider",
+        "action": "release",
+        "artifact": "0-8-0"
+      },
+      "signature_key": "apache|airflow-common-ai-provider|release|0-8-0",
+      "current_event_signature": {
+        "organization": "apache",
+        "product": "airflow-common-ai-provider",
+        "action": "release",
+        "artifact": "0-8-0"
+      },
+      "current_signature_key": "apache|airflow-common-ai-provider|release|0-8-0",
+      "first_published_at": "2026-08-24T03:08:00.204775+07:00",
+      "first_edition": "2026-08-24",
+      "title": "Apache Airflow Common AI provider — v0.8.0 — sandbox, approval và giới hạn dữ liệu tool",
+      "fingerprint": "apache airflow common ai provider v0 8 0 sandbox approval va gioi han du lieu tool",
+      "canonical_sources": [
+        "https://airflow.apache.org/docs/apache-airflow-providers-common-ai/stable/changelog.html",
+        "https://pypi.org/project/apache-airflow-providers-common-ai/0.8.0"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-24",
+          "section": "releases",
+          "published_at": "2026-08-24T03:08:00.204775+07:00",
+          "event_signature": {
+            "organization": "apache",
+            "product": "airflow-common-ai-provider",
+            "action": "release",
+            "artifact": "0-8-0"
+          },
+          "signature_key": "apache|airflow-common-ai-provider|release|0-8-0",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "litellm-v1-98-0",
+      "event_signature": {
+        "organization": "berriai",
+        "product": "litellm",
+        "action": "release",
+        "artifact": "1-98-0"
+      },
+      "signature_key": "berriai|litellm|release|1-98-0",
+      "current_event_signature": {
+        "organization": "berriai",
+        "product": "litellm",
+        "action": "release",
+        "artifact": "1-98-0"
+      },
+      "current_signature_key": "berriai|litellm|release|1-98-0",
+      "first_published_at": "2026-08-23T07:28:24+07:00",
+      "first_edition": "2026-08-24",
+      "title": "LiteLLM — v1.98.0 — PTU accounting và routing controls",
+      "fingerprint": "litellm v1 98 0 ptu accounting va routing controls",
+      "canonical_sources": [
+        "https://github.com/BerriAI/litellm/releases/tag/v1.98.0"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-24",
+          "section": "releases",
+          "published_at": "2026-08-23T07:28:24+07:00",
+          "event_signature": {
+            "organization": "berriai",
+            "product": "litellm",
+            "action": "release",
+            "artifact": "1-98-0"
+          },
+          "signature_key": "berriai|litellm|release|1-98-0",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "llama-cpp-b10603-glm-4-5-air-mtp",
+      "event_signature": {
+        "organization": "ggml-org",
+        "product": "llama-cpp",
+        "action": "release",
+        "artifact": "b10603-glm-4-5-air-mtp"
+      },
+      "signature_key": "ggml-org|llama-cpp|release|b10603-glm-4-5-air-mtp",
+      "current_event_signature": {
+        "organization": "ggml-org",
+        "product": "llama-cpp",
+        "action": "release",
+        "artifact": "b10603-glm-4-5-air-mtp"
+      },
+      "current_signature_key": "ggml-org|llama-cpp|release|b10603-glm-4-5-air-mtp",
+      "first_published_at": "2026-08-24T01:45:59+07:00",
+      "first_edition": "2026-08-24",
+      "title": "llama.cpp b10603 thêm MTP cho GLM-4.5-Air",
+      "fingerprint": "llama cpp b10603 them mtp cho glm 4 5 air",
+      "canonical_sources": [
+        "https://github.com/ggml-org/llama.cpp/releases/tag/b10603"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-24",
+          "section": "brief",
+          "published_at": "2026-08-24T01:45:59+07:00",
+          "event_signature": {
+            "organization": "ggml-org",
+            "product": "llama-cpp",
+            "action": "release",
+            "artifact": "b10603-glm-4-5-air-mtp"
+          },
+          "signature_key": "ggml-org|llama-cpp|release|b10603-glm-4-5-air-mtp",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "ray-2-58-0",
+      "event_signature": {
+        "organization": "ray-project",
+        "product": "ray",
+        "action": "release",
+        "artifact": "2-58-0"
+      },
+      "signature_key": "ray-project|ray|release|2-58-0",
+      "current_event_signature": {
+        "organization": "ray-project",
+        "product": "ray",
+        "action": "release",
+        "artifact": "2-58-0"
+      },
+      "current_signature_key": "ray-project|ray|release|2-58-0",
+      "first_published_at": "2026-08-23T12:42:08+07:00",
+      "first_edition": "2026-08-24",
+      "title": "Ray 2.58 đưa trạng thái KV cache vào quyết định routing LLM",
+      "fingerprint": "ray 2 58 dua trang thai kv cache vao quyet dinh routing llm",
+      "canonical_sources": [
+        "https://github.com/ray-project/ray/releases/tag/ray-2.58.0"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-24",
+          "section": "trends",
+          "published_at": "2026-08-23T12:42:08+07:00",
+          "event_signature": {
+            "organization": "ray-project",
+            "product": "ray",
+            "action": "release",
+            "artifact": "2-58-0"
+          },
+          "signature_key": "ray-project|ray|release|2-58-0",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "fdb-script-agent-first-commercial-deployment",
+      "event_signature": {
+        "organization": "fdb",
+        "product": "script-agent",
+        "action": "deployment",
+        "artifact": "tebra-first-commercial"
+      },
+      "signature_key": "fdb|script-agent|deployment|tebra-first-commercial",
+      "current_event_signature": {
+        "organization": "fdb",
+        "product": "script-agent",
+        "action": "deployment",
+        "artifact": "tebra-first-commercial"
+      },
+      "current_signature_key": "fdb|script-agent|deployment|tebra-first-commercial",
+      "first_published_at": "2026-08-24",
+      "first_edition": "2026-08-25",
+      "title": "FDB Script Agent chuyển hội thoại khám bệnh thành đơn thuốc để bác sĩ duyệt",
+      "fingerprint": "fdb script agent chuyen hoi thoai kham benh thanh don thuoc de bac si duyet",
+      "canonical_sources": [
+        "https://fdbhealth.com/about-us/press-releases/2026-08-24-fdb-moves-ambient-listening-beyond-notes-with-ai-powered-prescribing-agent"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-25",
+          "section": "brief",
+          "published_at": "2026-08-24",
+          "event_signature": {
+            "organization": "fdb",
+            "product": "script-agent",
+            "action": "deployment",
+            "artifact": "tebra-first-commercial"
+          },
+          "signature_key": "fdb|script-agent|deployment|tebra-first-commercial",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "lexisnexis-protege-agentic-orchestration",
+      "event_signature": {
+        "organization": "lexisnexis",
+        "product": "lexis-plus-protege",
+        "action": "launch",
+        "artifact": "agentic-orchestration-engine"
+      },
+      "signature_key": "lexisnexis|lexis-plus-protege|launch|agentic-orchestration-engine",
+      "current_event_signature": {
+        "organization": "lexisnexis",
+        "product": "lexis-plus-protege",
+        "action": "launch",
+        "artifact": "agentic-orchestration-engine"
+      },
+      "current_signature_key": "lexisnexis|lexis-plus-protege|launch|agentic-orchestration-engine",
+      "first_published_at": "2026-08-24T08:00:00Z",
+      "first_edition": "2026-08-25",
+      "title": "Lexis+ with Protégé — Agentic orchestration with carried context and review-ready outputs",
+      "fingerprint": "lexis with protege agentic orchestration with carried context and review ready outputs",
+      "canonical_sources": [
+        "https://lawnext.com/2026/08/lexisnexis-unveils-legal-intelligence-engine-rebuilding-protege-around-dynamic-agentic-orchestration.html",
+        "https://lexisnexis.com/community/pressroom/b/news/posts/lexis-with-protege-accelerates-frictionless-agentic-productivity-from-first-idea-to-review-ready-legal-work-product"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-25",
+          "section": "releases",
+          "published_at": "2026-08-24T08:00:00Z",
+          "event_signature": {
+            "organization": "lexisnexis",
+            "product": "lexis-plus-protege",
+            "action": "launch",
+            "artifact": "agentic-orchestration-engine"
+          },
+          "signature_key": "lexisnexis|lexis-plus-protege|launch|agentic-orchestration-engine",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "nvidia-groq-3-lpx-production",
+      "event_signature": {
+        "organization": "nvidia",
+        "product": "groq-3-lpx",
+        "action": "production",
+        "artifact": "vera-rubin-nvl72-decode-accelerator"
+      },
+      "signature_key": "nvidia|groq-3-lpx|production|vera-rubin-nvl72-decode-accelerator",
+      "current_event_signature": {
+        "organization": "nvidia",
+        "product": "groq-3-lpx",
+        "action": "production",
+        "artifact": "vera-rubin-nvl72-decode-accelerator"
+      },
+      "current_signature_key": "nvidia|groq-3-lpx|production|vera-rubin-nvl72-decode-accelerator",
+      "first_published_at": "2026-08-24T15:00:41Z",
+      "first_edition": "2026-08-25",
+      "title": "NVIDIA tách decode latency thành một lớp tăng tốc riêng cho agent",
+      "fingerprint": "nvidia tach decode latency thanh mot lop tang toc rieng cho agent",
+      "canonical_sources": [
+        "https://blogs.nvidia.com/blog/vera-rubin-lpx-spectrum-x-nvlink-fusion",
+        "https://siliconangle.com/2026/08/24/nvidias-dedicated-inference-accelerator-groq-3-lpx-enters-full-production-to-supercharge-ai-agents"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-25",
+          "section": "trends",
+          "published_at": "2026-08-24T15:00:41Z",
+          "event_signature": {
+            "organization": "nvidia",
+            "product": "groq-3-lpx",
+            "action": "production",
+            "artifact": "vera-rubin-nvl72-decode-accelerator"
+          },
+          "signature_key": "nvidia|groq-3-lpx|production|vera-rubin-nvl72-decode-accelerator",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "okta-agent-sso-ga",
+      "event_signature": {
+        "organization": "okta",
+        "product": "agent-sso",
+        "action": "general-availability",
+        "artifact": "cross-app-access"
+      },
+      "signature_key": "okta|agent-sso|general-availability|cross-app-access",
+      "current_event_signature": {
+        "organization": "okta",
+        "product": "agent-sso",
+        "action": "general-availability",
+        "artifact": "cross-app-access"
+      },
+      "current_signature_key": "okta|agent-sso|general-availability|cross-app-access",
+      "first_published_at": "2026-08-24",
+      "first_edition": "2026-08-25",
+      "title": "Okta đưa Agent SSO lên GA",
+      "fingerprint": "okta dua agent sso len ga",
+      "canonical_sources": [
+        "https://okta.com/es-mx/newsroom/press-releases/okta-brings-first-class-identity-to-ai-agents-with-agent-sso"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-25",
+          "section": "brief",
+          "published_at": "2026-08-24",
+          "event_signature": {
+            "organization": "okta",
+            "product": "agent-sso",
+            "action": "general-availability",
+            "artifact": "cross-app-access"
+          },
+          "signature_key": "okta|agent-sso|general-availability|cross-app-access",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "thomson-reuters-thomson-model-launch",
+      "event_signature": {
+        "organization": "thomson-reuters",
+        "product": "thomson-model",
+        "action": "launch",
+        "artifact": "first-proprietary-domain-llm"
+      },
+      "signature_key": "thomson-reuters|thomson-model|launch|first-proprietary-domain-llm",
+      "current_event_signature": {
+        "organization": "thomson-reuters",
+        "product": "thomson-model",
+        "action": "launch",
+        "artifact": "first-proprietary-domain-llm"
+      },
+      "current_signature_key": "thomson-reuters|thomson-model|launch|first-proprietary-domain-llm",
+      "first_published_at": "2026-08-24T09:00:02-04:00",
+      "first_edition": "2026-08-25",
+      "title": "Thomson Reuters đặt cược 40 triệu USD vào model chuyên ngành mà họ tự kiểm soát",
+      "fingerprint": "thomson reuters dat cuoc 40 trieu usd vao model chuyen nganh ma ho tu kiem soat",
+      "canonical_sources": [
+        "https://siliconangle.com/2026/08/24/thomson-reuters-launches-proprietary-ai-model-for-legal-work",
+        "https://thomsonreuters.com/en/press-releases/2026/august/thomson-reuters-leverages-its-world-class-data-assets-to-launch-its-own-frontier-model"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-25",
+          "section": "trends",
+          "published_at": "2026-08-24T09:00:02-04:00",
+          "event_signature": {
+            "organization": "thomson-reuters",
+            "product": "thomson-model",
+            "action": "launch",
+            "artifact": "first-proprietary-domain-llm"
+          },
+          "signature_key": "thomson-reuters|thomson-model|launch|first-proprietary-domain-llm",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    }
+  ]
+}

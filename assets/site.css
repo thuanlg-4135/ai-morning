@@ -548,10 +548,16 @@ a:hover {
 }
 
 .hero__grid {
+  min-width: 0;
+  width: 100%;
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(24rem, 0.78fr);
   align-items: center;
   gap: clamp(2.5rem, 6vw, 6rem);
+}
+
+.hero__grid > * {
+  min-width: 0;
 }
 
 .hero--quiet {
@@ -742,23 +748,27 @@ h1 {
   font-weight: 800;
 }
 
-.hero__instead strong,
-.hero__instead span:not(.hero__instead-index) {
+.hero__instead > li > div > strong,
+.hero__instead > li > div > span {
   display: block;
 }
 
-.hero__instead strong {
+.hero__instead > li > div > strong {
   font-family: var(--font-ui);
   font-size: 0.88rem;
   letter-spacing: -0.015em;
   line-height: 1.35;
 }
 
-.hero__instead span:not(.hero__instead-index) {
+.hero__instead > li > div > span {
   margin-top: 0.3rem;
   color: var(--muted);
   font-size: 0.88rem;
   line-height: 1.55;
+}
+
+.hero__instead .sources {
+  margin-top: 0.55rem;
 }
 
 .meta {
@@ -874,6 +884,7 @@ figcaption {
 }
 
 .briefing__copy {
+  min-width: 0;
   grid-column: 1 / -1;
   display: grid;
   gap: 0.28rem;
@@ -889,6 +900,15 @@ figcaption {
   font-size: 0.86rem;
   font-weight: 500;
   line-height: 1.45;
+}
+
+.briefing__copy .sources {
+  margin-top: 0.3rem;
+  gap: 0.35rem 0.75rem;
+}
+
+.briefing__copy .sources a {
+  font-size: 0.65rem;
 }
 
 .briefing__freshness {
@@ -1273,9 +1293,24 @@ figcaption {
 }
 
 .sources a {
+  min-width: 0;
+  max-width: 100%;
   display: inline-flex;
+  flex-wrap: wrap;
   align-items: baseline;
   gap: 0.4rem;
+  overflow-wrap: anywhere;
+}
+
+.sources a > span:not(.source-type) {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.sources time {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
 .source-type {
@@ -1503,6 +1538,14 @@ figcaption {
   font-size: 0.72rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+.radar-list__copy {
+  min-width: 0;
+}
+
+.radar-list__copy .sources {
+  margin-top: 0.5rem;
 }
 
 .wildcard {
@@ -1966,7 +2009,7 @@ html[data-reading="true"] .edition-body {
     padding-inline: 1.25rem;
   }
 
-  .hero--quiet .hero__instead span:not(.hero__instead-index) {
+  .hero--quiet .hero__instead > li > div > span {
     display: none;
   }
 

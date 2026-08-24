@@ -3,163 +3,192 @@
   "edition_date": "2026-08-25",
   "locale": "vi-VN",
   "edition_type": "daily_ai_catchup",
-  "edition_mode": "QUIET",
-  "headline": "Agent coding đang dịch từ công cụ cá nhân sang workflow có context, quyền hạn và review chung",
-  "dek": "24 giờ qua không có frontier-model launch hay coding-agent release đủ lớn để buộc software engineer đổi workflow ngay. Tín hiệu đáng theo dõi hơn nằm ở cách agent được đưa vào môi trường làm việc chung, nơi context, approval, auditability và cost control bắt đầu quan trọng ngang với chất lượng model.",
+  "edition_mode": "NORMAL",
+  "headline": "AI doanh nghiệp đi sâu vào model riêng, danh tính agent và hạ tầng inference",
+  "dek": "Các thông báo mới trong cửa sổ sáng nay không xoay quanh một chatbot tổng quát mới. Thomson Reuters tự xây model chuyên ngành, Okta đưa danh tính agent vào hệ thống IAM, còn NVIDIA tách phần xử lý context và sinh token để phục vụ workload agent dài hơn.",
   "meta": {
     "primary_scan_hours": 24,
     "context_window_hours": 72,
-    "reading_minutes": 5,
+    "window_started_at": "2026-08-24T07:00:00+07:00",
+    "cutoff_at": "2026-08-25T07:00:00+07:00",
+    "reading_minutes": 7,
     "source_policy": "official-first"
   },
   "hero_visual": {
     "kind": "editorial",
-    "key": "agent-workflow-context-permission-review",
-    "caption": "Không có model launch lớn sáng nay; trọng tâm chuyển sang cách agent nhận context, quyền thực thi và human review trong workflow thật."
+    "key": "enterprise-ai-model-identity-inference",
+    "caption": "Năm sự kiện độc lập sáng nay cùng cho thấy AI production đang được chuyên môn hóa ở model, quyền truy cập, workflow và hạ tầng phục vụ."
   },
   "brief": [
     {
-      "freshness": "NEW_TODAY",
-      "text": "Không ghi nhận frontier-model launch hoặc coding-agent release lớn trong primary scan 24 giờ đủ để thay đổi workflow hiện tại."
-    },
-    {
-      "freshness": "CONTEXT_72H",
-      "text": "Slack Code đưa Claude, Devin, GitHub Copilot và Vercel agent vào code channel chung, biến agent task thành workflow có shared context, diff, preview và approval ngay trong hội thoại."
-    },
-    {
-      "freshness": "CONTEXT_72H",
-      "text": "Slack cho biết code channel kế thừa permission và admin controls hiện có, cho thấy agent adoption đang gắn chặt hơn với governance thay vì chỉ thêm một chat surface mới."
-    },
-    {
-      "freshness": "CONTEXT_72H",
-      "text": "OpenAI hiện không có release note mới hơn ngày 20/08; Codex và ChatGPT gần đây tập trung vào integrations, shared threads và cross-surface workflows hơn là một model jump mới."
-    },
-    {
-      "freshness": "CONTEXT_72H",
-      "text": "GitHub Copilot changelog gần nhất vẫn thiên về model availability, enterprise controls và agent plugins; chưa có tín hiệu mới trong 24 giờ đủ mạnh để justify migration."
-    }
-  ],
-  "trends": [
-    {
-      "id": "agents-move-into-shared-workflows",
-      "freshness": "CONTEXT_72H",
-      "strength": "ACCELERATING",
-      "title": "Coding agent đang rời tab riêng để vào workflow có nhiều người cùng quan sát",
-      "paragraphs": [
-        "Slack Code là ví dụ rõ cho một chuyển dịch quan trọng: agent không còn chỉ là công cụ riêng của từng developer. Thay vào đó, task được đặt vào một không gian chung nơi engineer, reviewer và agent cùng nhìn thấy context, diff, preview và trạng thái thực thi.",
-        "Giá trị thực tế không nằm ở việc thêm một UI mới cho agent, mà ở việc giảm context handoff. Khi bug report, constraint và review comment cùng tồn tại trong một workspace, agent có ít cơ hội chạy theo giả định riêng rồi chỉ báo kết quả ở cuối vòng lặp.",
-        "Điều này cũng làm auditability trở thành product feature. Một agent production tốt không chỉ cần output đúng; team còn cần biết nó đã thấy context nào, thực hiện hành động gì, ai có thể dừng hoặc approve và artifact cuối cùng được review ở đâu."
-      ],
-      "pullquote": "Agent càng tự chủ, shared context và audit trail càng trở thành một phần của developer experience.",
-      "action": "Nếu đang thử coding agent cho team, hãy pilot trên một workflow nhỏ có shared context và human review rõ ràng trước khi mở rộng sang task dài hoặc quyền ghi trực tiếp vào production.",
-      "visual": {
-        "kind": "editorial",
-        "key": "agent-shared-context-audit-trail",
-        "caption": "Workflow agent ngày càng gồm context chung, execution, review và audit trail thay vì một cửa sổ chat tách biệt."
+      "event_id": "okta-agent-sso-ga",
+      "event_signature": {
+        "organization": "okta",
+        "product": "agent-sso",
+        "action": "general-availability",
+        "artifact": "cross-app-access"
       },
+      "published_at": "2026-08-24",
+      "freshness": "NEW_TODAY",
+      "title": "Okta đưa Agent SSO lên GA",
+      "text": "Agent SSO áp dụng Cross App Access để agent được quản lý như một danh tính hạng nhất, thay cho việc rải API key tĩnh. Team có thể đưa kết nối của agent vào cùng chính sách truy cập, consent và kiểm soát tập trung đang dùng cho con người.",
       "sources": [
         {
-          "label": "Slack — Slack Code: Where Your Team and Agents Build Together",
-          "url": "https://slack.com/blog/news/slack-code-channels-for-agents",
-          "type": "official"
-        },
-        {
-          "label": "Slack updates — Slack Code, Agents & tools, agentic threads",
-          "url": "https://slack.com/help/articles/115004846068-Slack-updates-and-changes",
-          "type": "official"
+          "label": "Okta — Agent SSO is generally available",
+          "url": "https://www.okta.com/es-mx/newsroom/press-releases/okta-brings-first-class-identity-to-ai-agents-with-agent-sso/",
+          "type": "official",
+          "published_at": "2026-08-24"
         }
       ]
     },
     {
-      "id": "agent-governance-is-runtime-design",
-      "freshness": "CONTEXT_72H",
-      "strength": "EMERGING",
-      "title": "Permission, approval và stop controls đang trở thành primitive của agent runtime",
-      "paragraphs": [
-        "Khi coding agents được đặt vào môi trường làm việc chung, governance không còn là policy viết bên ngoài hệ thống. Permission inheritance, explicit approval và khả năng stop một agent đang chạy phải được thiết kế trực tiếp vào execution loop.",
-        "Đây là thay đổi có ý nghĩa cho software engineer vì nó đẩy architecture từ 'prompt + tool' sang một runtime có boundary rõ ràng. Một agent có thể rất mạnh nhưng vẫn không phù hợp cho production nếu quyền quá rộng, không có audit log hoặc không thể pause trước hành động irreversible.",
-        "Xu hướng này phù hợp với hướng phát triển gần đây của các agent platform: nhiều capability hơn nhưng đồng thời nhiều control surface hơn cho admin, reviewer và operator."
-      ],
-      "action": "Khi đánh giá agent framework, thêm permission scope, approval hooks, cancellation, audit log và rollback/retry vào acceptance criteria; đừng chỉ benchmark coding quality.",
+      "event_id": "fdb-script-agent-first-commercial-deployment",
+      "event_signature": {
+        "organization": "fdb",
+        "product": "script-agent",
+        "action": "deployment",
+        "artifact": "tebra-first-commercial"
+      },
+      "published_at": "2026-08-24",
+      "freshness": "NEW_TODAY",
+      "title": "FDB Script Agent chuyển hội thoại khám bệnh thành đơn thuốc để bác sĩ duyệt",
+      "text": "First Databank công bố triển khai thương mại đầu tiên cùng Tebra: agent chuyển lời thoại trong buổi khám thành đơn thuốc có cấu trúc, nhưng vẫn đặt bước clinician review ở cuối. Đây là ví dụ rõ về automation có domain validation và người chịu trách nhiệm phê duyệt.",
       "sources": [
         {
-          "label": "Slack — Slack Code enterprise controls and approvals",
-          "url": "https://slack.com/blog/news/slack-code-channels-for-agents",
-          "type": "official"
+          "label": "FDB — First commercial deployment of FDB Script Agent",
+          "url": "https://www.fdbhealth.com/about-us/press-releases/2026-08-24-fdb-moves-ambient-listening-beyond-notes-with-ai-powered-prescribing-agent",
+          "type": "official",
+          "published_at": "2026-08-24"
+        }
+      ]
+    }
+  ],
+  "trends": [
+    {
+      "event_id": "thomson-reuters-thomson-model-launch",
+      "event_signature": {
+        "organization": "thomson-reuters",
+        "product": "thomson-model",
+        "action": "launch",
+        "artifact": "first-proprietary-domain-llm"
+      },
+      "published_at": "2026-08-24T09:00:02-04:00",
+      "id": "thomson-domain-model",
+      "freshness": "NEW_TODAY",
+      "strength": "NEW_SIGNAL",
+      "importance": "LEAD",
+      "title": "Thomson Reuters đặt cược 40 triệu USD vào model chuyên ngành mà họ tự kiểm soát",
+      "paragraphs": [
+        "Thomson Reuters công bố Thomson, model ngôn ngữ lớn đầu tiên do công ty tự phát triển. Công ty nói đã bắt đầu từ một foundation model mã nguồn mở rồi đầu tư 40 triệu USD cho nhân sự và compute để mid-train, post-train trên bài toán pháp lý, thuế và công việc chuyên môn. Cần đọc con số và nhãn ‘frontier’ như tuyên bố của nhà cung cấp: trang công bố chưa đưa ra benchmark độc lập đầy đủ để so sánh trực tiếp với các model tổng quát hàng đầu.",
+        "Điểm đáng chú ý hơn benchmark marketing là quyền kiểm soát toàn bộ vòng đời. Thomson Reuters sở hữu model, dữ liệu chuyên ngành, chuyên gia đánh giá và các công cụ như Westlaw, Practical Law; họ cũng nói dữ liệu khách hàng không được dùng để train nếu chưa có đồng ý rõ ràng. Model đầu tiên sẽ được dùng trong Tabular Analysis của CoCounsel Legal, trong khi CoCounsel vẫn giữ kiến trúc multi-model để chọn model phù hợp theo nhiệm vụ.",
+        "Với team xây sản phẩm AI, thông báo này củng cố một lựa chọn kiến trúc khác với việc chỉ ghép RAG vào API tổng quát. Khi domain có dữ liệu độc quyền, tiêu chuẩn kiểm chứng cao và volume đủ lớn, specialized training cộng evaluation bởi chuyên gia có thể tạo lợi thế về chi phí, chủ quyền dữ liệu và hành vi. Tuy vậy, hãy yêu cầu technical report, bộ test ngoài vendor và tổng chi phí vận hành trước khi dùng trường hợp này làm bằng chứng cho chiến lược tự train."
+      ],
+      "pullquote": "Model chuyên ngành chỉ có giá trị khi dữ liệu, evaluation và quyền kiểm soát cùng nằm trong một hệ thống có thể kiểm chứng.",
+      "action": "Nếu đang cân nhắc model riêng, hãy lập bảng so sánh RAG, fine-tuning và mid/post-training theo chất lượng domain, quyền dữ liệu, chi phí inference và khả năng audit; đừng bắt đầu bằng kích thước model.",
+      "visual": {
+        "kind": "editorial",
+        "key": "domain-model-data-evaluation-control",
+        "caption": "Thomson kết hợp foundation model, dữ liệu chuyên ngành, chuyên gia đánh giá và công cụ nghiệp vụ trong một vòng kiểm soát riêng."
+      },
+      "sources": [
+        {
+          "label": "Thomson Reuters — Launch of the Thomson proprietary model",
+          "url": "https://www.thomsonreuters.com/en/press-releases/2026/august/thomson-reuters-leverages-its-world-class-data-assets-to-launch-its-own-frontier-model",
+          "type": "official",
+          "published_at": "2026-08-24"
         },
         {
-          "label": "OpenAI release notes — recent Codex and ChatGPT workflow integrations",
-          "url": "https://openai.com/products/release-notes/",
-          "type": "official"
+          "label": "SiliconANGLE — Thomson Reuters launches proprietary AI model",
+          "url": "https://siliconangle.com/2026/08/24/thomson-reuters-launches-proprietary-ai-model-for-legal-work/",
+          "type": "reporting",
+          "published_at": "2026-08-24T09:00:02-04:00"
+        }
+      ]
+    },
+    {
+      "event_id": "nvidia-groq-3-lpx-production",
+      "event_signature": {
+        "organization": "nvidia",
+        "product": "groq-3-lpx",
+        "action": "production",
+        "artifact": "vera-rubin-nvl72-decode-accelerator"
+      },
+      "published_at": "2026-08-24T15:00:41Z",
+      "id": "nvidia-groq-lpx-inference",
+      "freshness": "NEW_TODAY",
+      "strength": "CONFIRMED_RELEASE",
+      "importance": "SECONDARY",
+      "title": "NVIDIA tách decode latency thành một lớp tăng tốc riêng cho agent",
+      "paragraphs": [
+        "Tại Hot Chips, NVIDIA cho biết Groq 3 LPX đã vào full production như phần mở rộng của hệ Vera Rubin NVL72. Kiến trúc phân công Rubin GPU xử lý context quy mô lớn còn LPX tăng tốc giai đoạn decode nhạy với độ trễ. Nebius là cloud đầu tiên công bố áp dụng. Đây là một event hạ tầng duy nhất; các thông số Spectrum-X, Scale-In và NVLink Fusion trong cùng bài công bố không được tách thành nhiều tin riêng.",
+        "NVIDIA báo cáo 3.400 output token mỗi giây với Gemma 4 31B trong bài test context 100.000 token và tuyên bố nhanh gấp bốn lần nền tảng gần nhất. Những số này do vendor cung cấp, trên cấu hình và workload cụ thể, nên chưa thể suy rộng thành hiệu năng cho mọi model hay agent. Giá trị kỹ thuật của thông báo nằm ở việc thừa nhận prefill, decode, networking và cache có bottleneck khác nhau và cần được đo riêng.",
+        "Đối với đội đang vận hành agent, bài học thực dụng là theo dõi time-to-first-token, inter-token latency, cache hit, context growth và cost per completed task thay vì chỉ nhìn token/giây cực đại. Disaggregated serving có thể cải thiện độ phản hồi nhưng cũng làm scheduling, routing và capacity planning phức tạp hơn. Chỉ cân nhắc phần cứng chuyên dụng sau khi trace production chỉ ra decode thực sự là giới hạn của workload."
+      ],
+      "action": "Tách dashboard inference thành prefill, decode, cache và tool-wait; dùng phân bố latency của task hoàn tất để quyết định có cần disaggregated serving hay không.",
+      "sources": [
+        {
+          "label": "NVIDIA — Groq 3 LPX in full production",
+          "url": "https://blogs.nvidia.com/blog/vera-rubin-lpx-spectrum-x-nvlink-fusion/",
+          "type": "official",
+          "published_at": "2026-08-24T15:00:41Z"
+        },
+        {
+          "label": "SiliconANGLE — Groq 3 LPX production overview",
+          "url": "https://siliconangle.com/2026/08/24/nvidias-dedicated-inference-accelerator-groq-3-lpx-enters-full-production-to-supercharge-ai-agents/",
+          "type": "reporting",
+          "published_at": "2026-08-24T15:00:23Z"
         }
       ]
     }
   ],
   "releases": [
     {
-      "product": "Slack Code",
-      "feature": "Code channels for collaborative coding agents",
-      "freshness": "CONTEXT_72H",
-      "status": "RELEASED",
-      "summary": "Slack Code tạo code channel riêng cho agent task, hỗ trợ shared context, diffs, live previews, review và approval. Claude, Devin, GitHub Copilot và Vercel integrations hiện được Slack công bố là dùng được; ChatGPT được ghi là available soon.",
-      "who_gets_it": "Teams using supported Slack coding-agent integrations; availability depends on the integration.",
+      "event_id": "lexisnexis-protege-agentic-orchestration",
+      "event_signature": {
+        "organization": "lexisnexis",
+        "product": "lexis-plus-protege",
+        "action": "launch",
+        "artifact": "agentic-orchestration-engine"
+      },
+      "published_at": "2026-08-24T08:00:00Z",
+      "product": "Lexis+ with Protégé",
+      "feature": "Agentic orchestration with carried context and review-ready outputs",
+      "freshness": "NEW_TODAY",
+      "status": "ANNOUNCED",
+      "summary": "LexisNexis mở rộng Protégé để tự chọn model, agent, skill và nguồn theo mục tiêu người dùng, giữ context qua các bước nghiên cứu, phân tích, soạn thảo và review. Hệ thống có thể tạo đầu ra Word, Excel hoặc PowerPoint, kết nối tài liệu tổ chức và kiểm tra thẩm quyền pháp lý bằng citation cùng Shepard’s.",
+      "who_gets_it": "Lexis+ with Protégé customers; một số model do LexisNexis phát triển mới được preview vào cuối năm.",
       "verdict": "WATCH",
-      "verdict_note": "Đáng pilot nếu team đã sống trong Slack và có pain point context handoff. Không cần migrate khỏi workflow hiện tại chỉ để dùng code channels.",
+      "verdict_note": "Đáng theo dõi như một mẫu orchestration cho domain có nguồn authoritative và output phải review. Thông báo chưa cung cấp benchmark độc lập về độ chính xác hoặc thời gian tiết kiệm, vì vậy chưa nên coi ‘tự chọn model’ là bằng chứng chất lượng nếu thiếu trace và evaluation theo từng loại việc.",
       "sources": [
         {
-          "label": "Slack Code announcement",
-          "url": "https://slack.com/blog/news/slack-code-channels-for-agents",
-          "type": "official"
+          "label": "LexisNexis — Protégé agentic productivity update",
+          "url": "https://www.lexisnexis.com/community/pressroom/b/news/posts/lexis-with-protege-accelerates-frictionless-agentic-productivity-from-first-idea-to-review-ready-legal-work-product",
+          "type": "official",
+          "published_at": "2026-08-24T08:00:00Z"
+        },
+        {
+          "label": "LawSites — Analysis of the Legal Intelligence Engine",
+          "url": "https://www.lawnext.com/2026/08/lexisnexis-unveils-legal-intelligence-engine-rebuilding-protege-around-dynamic-agentic-orchestration.html",
+          "type": "reporting",
+          "published_at": "2026-08-24T08:00:03-04:00"
         }
       ]
     }
   ],
   "developer_memo": {
-    "title": "Có cần đổi workflow hôm nay không?",
-    "direct_answer": "Chưa cần thay đổi workflow hiện tại.",
+    "title": "Điều nên mang vào kiến trúc tuần này",
+    "direct_answer": "Tách rõ bốn lớp: model, domain data, agent identity và inference runtime.",
     "actions": [
-      "Nếu team đang thử coding agents, thêm shared context, approval và audit trail vào tiêu chí POC thay vì chỉ đo tốc độ code generation.",
-      "Pilot agent trên một flow nhỏ như bug fix hoặc UI tweak trước khi cho quyền rộng hơn.",
-      "Đo số lần context handoff, số lần human correction và thời gian review để biết agent có thực sự giúp ship nhanh hơn không."
+      "Gắn mỗi agent với một identity riêng, scope ngắn hạn và audit log thay vì dùng chung API key của service.",
+      "Đo latency theo prefill, decode, tool wait và task completion trước khi thay đổi serving architecture.",
+      "Với domain có rủi ro cao, thiết kế expert evaluation và bước human approval như thành phần sản phẩm, không phải checklist sau cùng."
     ],
     "avoid": [
-      "Không chuyển tool chỉ vì agent đã xuất hiện trong Slack hoặc một chat surface mới.",
-      "Không cấp write permission rộng cho agent nếu chưa có approval và stop control rõ ràng.",
-      "Không coi một ngày yên ắng về release là lý do để ép đủ số lượng tin."
+      "Không lấy benchmark hoặc nhãn ‘frontier’ do vendor tự công bố làm so sánh độc lập.",
+      "Không để orchestration tự chọn model nếu team không lưu được model, nguồn và tool đã tạo ra từng artifact.",
+      "Không cấp danh tính dài hạn cho agent chỉ để giảm ma sát tích hợp."
     ]
   },
-  "radar": [
-    {
-      "status": "CONFIRMED",
-      "text": "Slack Code hiện hỗ trợ Claude, Devin, GitHub Copilot và Vercel integrations; Slack ghi ChatGPT là available soon."
-    },
-    {
-      "status": "WATCH",
-      "text": "Collaborative agent surfaces có thể trở thành lớp điều phối mới giữa issue, code review, preview và deployment nếu các vendor tiếp tục đưa agent vào team chat."
-    },
-    {
-      "status": "WATCH",
-      "text": "Permission inheritance, approval và cancellation đang nổi lên như các primitive cần có của agent runtime production."
-    }
-  ],
-  "takeaway": "Nếu hôm nay chỉ nhớ một điều: chưa có release mới đủ lớn để đổi workflow, nhưng cách team vận hành coding agents đang đổi nhanh. Lợi thế tiếp theo có thể đến ít hơn từ model mạnh hơn và nhiều hơn từ shared context, permission boundary, review và auditability.",
-  "content_contract": {
-    "renderer_must_not_require_html_in_content": true,
-    "allowed_rich_content": [
-      "paragraph",
-      "bullet",
-      "pullquote",
-      "source_link",
-      "editorial_visual_hint"
-    ],
-    "freshness_values": [
-      "NEW_TODAY",
-      "CONTEXT_72H"
-    ],
-    "verdict_values": [
-      "TRY_NOW",
-      "WATCH",
-      "SKIP_FOR_NOW"
-    ]
-  }
+  "radar": [],
+  "takeaway": "Nếu hôm nay chỉ nhớ một điều: lợi thế AI production đang chuyển từ một model mạnh sang khả năng kết hợp model phù hợp, dữ liệu có quyền sử dụng, identity có kiểm soát và hạ tầng được đo theo workload thật."
 }
