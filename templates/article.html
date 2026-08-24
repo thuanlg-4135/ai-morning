@@ -23,16 +23,9 @@
   <div class="reading-progress" data-reading-progress aria-hidden="true"></div>
   <div class="page-grain" aria-hidden="true"></div>
 
-  <header class="masthead">
-    <div class="masthead__inner">
-      <a class="brand" href="{{HOME_HREF}}" data-i18n-aria="home-label" aria-label="AI Morning, trang mới nhất">
-        <span class="brand__mark" aria-hidden="true">AI</span>
-        <span class="brand__copy">
-          <span class="brand__name">AI MORNING</span>
-          <span class="brand__tagline" data-i18n="tagline">Bản tin AI buổi sáng cho software engineer</span>
-        </span>
-      </a>
-
+  <header class="masthead" data-masthead>
+    <div class="masthead__utility">
+      {{DATELINE}}
       <nav class="masthead__nav" data-i18n-aria="main-navigation" aria-label="Điều hướng chính">
         <details class="toc-menu">
           <summary data-i18n-aria="table-of-contents" aria-label="Mục lục trong số này">
@@ -57,7 +50,24 @@
         <button class="control" type="button" data-type-toggle data-i18n-aria="font-size" aria-label="Đổi cỡ chữ" aria-pressed="false">Aa</button>
       </nav>
     </div>
-    {{DATELINE}}
+
+    <div class="masthead__brandline">
+      <a class="brand" href="{{HOME_HREF}}" data-i18n-aria="home-label" aria-label="AI Morning, trang mới nhất">
+        <span class="brand__mark" aria-hidden="true">AI</span>
+        <span class="brand__copy">
+          <span class="brand__name">AI MORNING</span>
+          <span class="brand__tagline" data-i18n="tagline">Bản tin AI buổi sáng cho software engineer</span>
+        </span>
+      </a>
+    </div>
+
+    <nav class="masthead__sections" aria-label="Chuyên mục">
+      <a href="#briefing">Tin nhanh</a>
+      <a href="#trends">Phân tích</a>
+      <a href="#releases">Releases</a>
+      <a href="#developer">Developer memo</a>
+      <a href="{{ARCHIVE_HREF}}">Bài cũ</a>
+    </nav>
   </header>
 
   <main class="page-shell" id="main-content">

@@ -276,7 +276,7 @@ function renderDateline(edition, editions, context) {
   const state = context.kind === 'latest' ? 'Số mới' : 'Bản lưu';
   return [
     '<div class="dateline">',
-    '  <p class="dateline__date">' + longDate(edition.edition_date) + '</p>',
+    '  <p class="dateline__date"><span class="dateline__date-long">' + longDate(edition.edition_date) + '</span><span class="dateline__date-short">' + formatDate(edition.edition_date) + '</span></p>',
     '  <p class="dateline__meta">',
     '    <span>Số ' + pad2(number) + '</span>',
     '    <span>' + modeLabels[mode] + '</span>',
@@ -342,15 +342,11 @@ function renderHero(edition, context) {
 
   return [
     '<header class="hero hero--normal' + longTitle + '">',
-    '  <div class="hero__grid">',
-    '    <div>',
-    '      <div class="freshness-strip"><span class="edition-state">' + modeLabels[mode] + '</span>' + newToday + '<span>24H NEWS · 72H CONTEXT</span></div>',
-      '      <h1 id="edition-title">' + escapeHtml(edition.headline) + '</h1>',
-    '      <p class="dek">' + escapeHtml(edition.dek) + '</p>',
-    '      ' + metaRow,
-    '    </div>',
-    '    ' + visual,
-    '  </div>',
+    '  <div class="freshness-strip"><span class="edition-state">' + modeLabels[mode] + '</span>' + newToday + '<span>24H NEWS · 72H CONTEXT</span></div>',
+    '  <h1 id="edition-title">' + escapeHtml(edition.headline) + '</h1>',
+    '  <p class="dek">' + escapeHtml(edition.dek) + '</p>',
+    '  ' + visual,
+    '  ' + metaRow,
     '</header>'
   ].join('\n');
 }
@@ -794,6 +790,7 @@ function localizeChrome(html, language) {
     ['AI Morning, trang mới nhất', 'AI Morning, latest edition'],
     ['Bản tin AI buổi sáng cho software engineer', 'The morning AI briefing for software engineers'],
     ['Điều hướng chính', 'Main navigation'],
+    ['Chuyên mục', 'Sections'],
     ['Mục lục trong số này', 'Table of contents for this edition'],
     ['Mục lục nhanh', 'Quick table of contents'],
     ['Chế độ đọc', 'Reading mode'],
@@ -809,6 +806,7 @@ function localizeChrome(html, language) {
     ['Đọc số mới nhất', 'Read the latest edition'],
     ['Edition theo ngày là snapshot được tái tạo từ JSON của chính ngày đó. Trang chủ luôn hiển thị edition mới nhất.', 'Each dated edition is a snapshot generated from that day’s JSON. The homepage always shows the latest edition.'],
     ['Bản tin mới nhất', 'Latest briefing'],
+    ['Tin nhanh', 'Briefing'],
     ['Xem toàn bộ editions →', 'View all editions →'],
     ['Không có launch lớn', 'No major launch'],
     ['Việc đáng đọc thay thế', 'Worth reading instead'],
@@ -904,6 +902,7 @@ function renderArticlePage(template, edition, editions, context) {
     ASSET_PREFIX: context.assetPrefix,
     PAGE_CLASS: pageKind + ' edition-page--' + mode.toLowerCase(),
     HOME_HREF: context.homeHref,
+    ARCHIVE_HREF: context.archiveHref,
     TOC_MENU: renderQuickToc(edition),
     EDITIONS_MENU: renderEditionsMenu(editions, context),
     DATELINE: renderDateline(edition, editions, context),

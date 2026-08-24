@@ -5,6 +5,7 @@
   const typeButton = document.querySelector('[data-type-toggle]');
   const readingButton = document.querySelector('[data-reading-toggle]');
   const progress = document.querySelector('[data-reading-progress]');
+  const masthead = document.querySelector('[data-masthead]');
   const choices = ['auto', 'light', 'dark'];
   const translations = {
     en: {
@@ -121,6 +122,13 @@
   };
 
   applyTheme(theme);
+
+  const updateMasthead = () => {
+    masthead?.classList.toggle('is-compact', scrollY > 96);
+  };
+
+  updateMasthead();
+  addEventListener('scroll', updateMasthead, { passive: true });
 
   themeButton?.addEventListener('click', () => {
     const next = choices[(choices.indexOf(theme) + 1) % choices.length];

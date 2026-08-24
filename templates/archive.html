@@ -21,16 +21,12 @@
   <a class="skip-link" href="#main-content" data-i18n="skip-navigation">Bỏ qua điều hướng</a>
   <div class="page-grain" aria-hidden="true"></div>
 
-  <header class="masthead">
-    <div class="masthead__inner">
-      <a class="brand" href="{{HOME_HREF}}" data-i18n-aria="home-label" aria-label="AI Morning, trang mới nhất">
-        <span class="brand__mark" aria-hidden="true">AI</span>
-        <span class="brand__copy">
-          <span class="brand__name">AI MORNING</span>
-          <span class="brand__tagline" data-i18n="tagline">Bản tin AI buổi sáng cho software engineer</span>
-        </span>
-      </a>
-
+  <header class="masthead" data-masthead>
+    <div class="masthead__utility">
+      <div class="dateline">
+        <p class="dateline__date" data-i18n="archive">Kho lưu trữ</p>
+        <p class="dateline__meta"><span>{{EDITION_COUNT}}</span></p>
+      </div>
       <nav class="masthead__nav" data-i18n-aria="main-navigation" aria-label="Điều hướng chính">
         <a class="masthead__link section-link" href="{{HOME_HREF}}" data-i18n="latest-edition">Số mới</a>
         <details class="editions">
@@ -47,10 +43,24 @@
         <button class="control" type="button" data-type-toggle data-i18n-aria="font-size" aria-label="Đổi cỡ chữ" aria-pressed="false">Aa</button>
       </nav>
     </div>
-    <div class="dateline">
-      <p class="dateline__date" data-i18n="archive">Kho lưu trữ</p>
-      <p class="dateline__meta"><span>{{EDITION_COUNT}}</span></p>
+
+    <div class="masthead__brandline">
+      <a class="brand" href="{{HOME_HREF}}" data-i18n-aria="home-label" aria-label="AI Morning, trang mới nhất">
+        <span class="brand__mark" aria-hidden="true">AI</span>
+        <span class="brand__copy">
+          <span class="brand__name">AI MORNING</span>
+          <span class="brand__tagline" data-i18n="tagline">Bản tin AI buổi sáng cho software engineer</span>
+        </span>
+      </a>
     </div>
+
+    <nav class="masthead__sections" aria-label="Chuyên mục">
+      <a href="{{HOME_HREF}}#briefing">Tin nhanh</a>
+      <a href="{{HOME_HREF}}#trends">Phân tích</a>
+      <a href="{{HOME_HREF}}#releases">Releases</a>
+      <a href="{{HOME_HREF}}#developer">Developer memo</a>
+      <a href="./" aria-current="page">Bài cũ</a>
+    </nav>
   </header>
 
   <main class="page-shell" id="main-content">
