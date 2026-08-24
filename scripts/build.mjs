@@ -39,6 +39,11 @@ const verdictLabels = {
   WATCH: 'WATCH',
   SKIP_FOR_NOW: 'SKIP FOR NOW'
 };
+const sourceTypeLabels = {
+  official: 'Nguồn gốc',
+  reporting: 'Đối chiếu',
+  research: 'Nghiên cứu'
+};
 const modeLabels = {
   BIG: 'Ngày lớn',
   NORMAL: 'Số thường',
@@ -317,13 +322,14 @@ function renderSources(sources = []) {
     const published = hasText(source.published_at) && /^\d{4}-\d{2}-\d{2}/.test(source.published_at)
       ? '<time datetime="' + escapeHtml(source.published_at) + '">' + formatDate(source.published_at.slice(0, 10)) + '</time>'
       : '';
-    return '<a href="' + escapeHtml(source.url) + '" target="_blank" rel="noopener noreferrer">' +
-      '<span class="source-type">' + escapeHtml(type) + '</span>' +
+    return '<li><a href="' + escapeHtml(source.url) + '" target="_blank" rel="noopener noreferrer">' +
+      '<span class="source-type">' + escapeHtml(sourceTypeLabels[type] ?? type) + '</span>' +
       '<span>' + escapeHtml(source.label) + '</span>' +
       published +
-      '</a>';
+      '</a></li>';
   }).join('');
-  return '<div class="sources" role="group" aria-label="Nguồn">' + links + '</div>';
+  return '<footer class="sources" aria-label="Nguồn kiểm chứng">' +
+    '<p class="sources__label">Nguồn kiểm chứng · ' + sources.length + '</p><ol class="sources__items">' + links + '</ol></footer>';
 }
 
 function pageContext(kind, currentDate) {
@@ -500,7 +506,8 @@ function renderHero(edition, context) {
   ].join('\n');
 
   if (mode === 'QUIET') {
-    const instead = frontBriefs(edition).slice(0, 3).map((item, index) =>
+    const heroBriefs = frontBriefs(edition).slice(0, 3);
+    const instead = heroBriefs.map((item, index) =>
       '<li><span class="hero__instead-index">' + pad2(index + 1) + '</span><div><strong>' +
       escapeHtml(briefTitle(item)) + '</strong>' +
       (briefBody(item) ? '<span>' + escapeHtml(briefBody(item)) + '</span>' : '') +
@@ -510,12 +517,12 @@ function renderHero(edition, context) {
     return [
       '<header class="hero hero--quiet' + longTitle + '">',
       '  <div class="freshness-strip"><span class="edition-state">' + modeLabels[mode] + '</span>' + newToday + '<span>Không có launch lớn</span></div>',
-      '  <h1>' + escapeHtml(edition.headline) + '</h1>',
+      '  <h1 id="edition-title">' + escapeHtml(edition.headline) + '</h1>',
       '  <p class="dek">' + escapeHtml(edition.dek) + '</p>',
       '  ' + metaRow,
-      '  <div class="hero__instead-wrap" id="briefing">',
+      '  <div class="hero__instead-wrap" id="briefing" data-scroll-section>',
       '    <p class="section-label">Việc đáng đọc thay thế</p>',
-      '    <ol class="hero__instead">' + instead + '</ol>',
+      '    <ol class="hero__instead hero__instead--count-' + heroBriefs.length + '">' + instead + '</ol>',
       '  </div>',
       '  ' + visual,
       '</header>'
@@ -526,7 +533,7 @@ function renderHero(edition, context) {
     return [
       '<header class="hero hero--big' + longTitle + '">',
       '  <div class="freshness-strip"><span class="edition-state">' + modeLabels[mode] + '</span>' + newToday + '<span>24H NEWS · 72H CONTEXT</span></div>',
-      '  <h1>' + escapeHtml(edition.headline) + '</h1>',
+      '  <h1 id="edition-title">' + escapeHtml(edition.headline) + '</h1>',
       '  <p class="dek">' + escapeHtml(edition.dek) + '</p>',
       '  ' + metaRow,
       '  ' + visual,
@@ -539,7 +546,7 @@ function renderHero(edition, context) {
     '  <div class="hero__grid">',
     '    <div>',
     '      <div class="freshness-strip"><span class="edition-state">' + modeLabels[mode] + '</span>' + newToday + '<span>24H NEWS · 72H CONTEXT</span></div>',
-    '      <h1>' + escapeHtml(edition.headline) + '</h1>',
+      '      <h1 id="edition-title">' + escapeHtml(edition.headline) + '</h1>',
     '      <p class="dek">' + escapeHtml(edition.dek) + '</p>',
     '      ' + metaRow,
     '    </div>',
@@ -562,7 +569,7 @@ function renderBriefing(edition, { start = 0, max = 5, compact = false, id = 'br
       '</div></li>';
   }).join('');
   return [
-    '<section class="briefing' + (compact ? ' briefing--compact' : '') + '" id="' + escapeHtml(id) + '" aria-labelledby="' + escapeHtml(id) + '-title">',
+    '<section class="briefing' + (compact ? ' briefing--compact' : '') + ' briefing--count-' + selected.length + '" id="' + escapeHtml(id) + '" aria-labelledby="' + escapeHtml(id) + '-title" data-scroll-section>',
     '  <h2 class="section-label" id="' + escapeHtml(id) + '-title">' + (start > 0 ? 'Còn lại trong<br>60 giây' : '60 giây<br>nắm bắt') + '</h2>',
     '  <ol>' + items + '</ol>',
     '</section>'
@@ -580,12 +587,21 @@ function trendShape(trend, index, { compact = false } = {}) {
   return 'secondary-story';
 }
 
-function renderTrendHeader(trend, id, shape) {
-  const heading = shape === 'news-brief' ? 'h3' : 'h2';
+function renderTrendHeader(trend, id, shape, index) {
+  const heading = 'h3';
+  const published = hasText(trend.published_at) && /^\d{4}-\d{2}-\d{2}/.test(trend.published_at)
+    ? '<time datetime="' + escapeHtml(trend.published_at) + '">' + formatDate(trend.published_at.slice(0, 10)) + '</time>'
+    : '';
+  const evidenceCount = Array.isArray(trend.sources) && trend.sources.length > 0
+    ? '<span>' + trend.sources.length + ' nguồn</span>'
+    : '';
   return [
     '<header class="story-shape__header">',
-    '  <div class="trend__meta">' + renderFreshness(trend.freshness) + (hasText(trend.strength) ? '<span>' + escapeHtml(trend.strength) + '</span>' : '') + '</div>',
-    '  <' + heading + '>' + escapeHtml(trend.title) + '</' + heading + '>',
+    '  <div class="story-shape__topline">',
+    '    <div class="trend__meta">' + renderFreshness(trend.freshness) + (hasText(trend.strength) ? '<span>' + escapeHtml(trend.strength) + '</span>' : '') + published + evidenceCount + '</div>',
+    '    <span class="story-index">Phân tích ' + pad2(index + 1) + '</span>',
+    '  </div>',
+    '  <' + heading + ' id="' + escapeHtml(id) + '-title">' + escapeHtml(trend.title) + '</' + heading + '>',
     '</header>',
     renderSectionTools(id, trend.title)
   ].join('\n');
@@ -622,14 +638,20 @@ function renderTrendStory(trend, index, options = {}) {
   if (compactSupporting) {
     body = '<div class="story-prose">' + renderParagraphs(first) + stat + '</div>';
   } else if (shape === 'lead-story') {
+    const openingClass = visual ? ' lead-story__opening--with-visual' : ' lead-story__opening--prose-only';
+    const continuation = rest.length > 0
+      ? '<div class="story-prose story-prose--continuation">' + renderParagraphs(rest) + '</div>'
+      : '';
+    const continuationBlock = continuation && quote
+      ? '<div class="lead-story__continuation">' + continuation + quote + '</div>'
+      : continuation + quote;
     body = [
-      '<div class="lead-story__opening">',
+      '<div class="lead-story__opening' + openingClass + '">',
       '  <div class="story-prose">' + renderParagraphs(first, { lead: true }) + '</div>',
       '  ' + visual,
       '</div>',
       stat,
-      quote,
-      '<div class="story-prose story-prose--continuation">' + renderParagraphs(rest) + '</div>',
+      continuationBlock,
       action
     ].join('\n');
   } else if (shape === 'visual-explainer') {
@@ -652,11 +674,11 @@ function renderTrendStory(trend, index, options = {}) {
   }
 
   return [
-    '<section class="story-shape ' + shape + ' trend--' + importance.toLowerCase() + '" id="' + escapeHtml(id) + '">',
-    renderTrendHeader(trend, id, shape),
+    '<article class="story-shape ' + shape + ' trend--' + importance.toLowerCase() + '" id="' + escapeHtml(id) + '" aria-labelledby="' + escapeHtml(id) + '-title" data-scroll-section>',
+    renderTrendHeader(trend, id, shape, index),
     body,
     renderSources(trend.sources),
-    '</section>'
+    '</article>'
   ].join('\n');
 }
 
@@ -675,12 +697,16 @@ function renderSecondaryGrid(trends, allTrends, { compact = false, assetPrefix =
     '</section>';
 }
 
-function renderReleases(edition, { compact = false, assetPrefix = '' } = {}) {
+function releaseItemsForEdition(edition, { compact = false } = {}) {
   const lead = edition.trends.find((trend, index) => trendImportance(trend, index) === 'LEAD') ?? edition.trends[0];
   const leadSourceUrls = new Set((lead?.sources ?? []).map((source) => source.url));
-  const releaseItems = compact
+  return compact
     ? edition.releases.filter((release) => !(release.sources ?? []).some((source) => leadSourceUrls.has(source.url)))
     : edition.releases;
+}
+
+function renderReleases(edition, { compact = false, assetPrefix = '' } = {}) {
+  const releaseItems = releaseItemsForEdition(edition, { compact });
   if (releaseItems.length === 0) return '';
   const explicitFeaturedIndex = releaseItems.findIndex((release) => release.importance === 'LEAD');
   const featuredIndex = explicitFeaturedIndex >= 0
@@ -691,26 +717,37 @@ function renderReleases(edition, { compact = false, assetPrefix = '' } = {}) {
     const whoGetsIt = hasText(release.who_gets_it)
       ? '<p class="release__audience"><strong>Phạm vi:</strong> ' + escapeHtml(release.who_gets_it) + '</p>'
       : '';
-    const changed = hasText(release.what_changed) ? release.what_changed : release.summary;
-    const why = hasText(release.why_it_matters) ? release.why_it_matters : release.verdict_note;
+    const changed = hasText(release.what_changed) ? release.what_changed : '';
+    const why = hasText(release.why_it_matters) ? release.why_it_matters : '';
     const visual = isRecord(release.visual) ? renderVisual(release.visual, { assetPrefix }) : '';
+    const sources = renderSources(release.sources);
+    const detailBlocks = [
+      changed ? '<div class="release__detail"><p class="release__body-label">Thay đổi</p><p>' + escapeHtml(changed) + '</p></div>' : '',
+      why ? '<div class="release__detail"><p class="release__body-label">Vì sao đáng chú ý</p><p>' + escapeHtml(why) + '</p></div>' : ''
+    ].filter(Boolean);
+    const details = detailBlocks.length > 0
+      ? '<div class="release__details release__details--count-' + detailBlocks.length + '">' + detailBlocks.join('') + '</div>'
+      : '';
     return [
-      '<article class="release' + (featured ? ' release--featured' : '') + '">',
+      '<article class="release' + (featured ? ' release--featured' : '') + '" id="release-' + escapeHtml(release.event_id) + '" aria-labelledby="release-' + escapeHtml(release.event_id) + '-title">',
       '  <div class="release__head">',
-      '    <div><p class="release__product">' + escapeHtml(release.product) + '</p><h3>' + escapeHtml(release.feature) + '</h3></div>',
-      '    <div class="release__flags"><span class="status">' + escapeHtml(release.status) + '</span>' + renderFreshness(release.freshness, true) + '</div>',
+      '    <div><p class="release__product">' + escapeHtml(release.product) + '</p><h3 id="release-' + escapeHtml(release.event_id) + '-title">' + escapeHtml(release.feature) + '</h3></div>',
+      '    <div class="release__flags"><span class="status">' + escapeHtml(release.status) + '</span>' + renderFreshness(release.freshness, true) +
+      (hasText(release.published_at) ? '<time datetime="' + escapeHtml(release.published_at) + '">' + formatDate(release.published_at.slice(0, 10)) + '</time>' : '') + '</div>',
       '  </div>',
       '  ' + visual,
-      '  <p class="release__changed"><strong>What changed</strong> ' + escapeHtml(changed) + '</p>',
-      '  ' + whoGetsIt,
-      '  <p class="verdict"><strong>' + verdictLabels[release.verdict] + '</strong> ' + escapeHtml(why) + '</p>',
-      '  ' + renderSources(release.sources),
+      '  <div class="release__body">',
+      '    <p class="release__summary">' + escapeHtml(release.summary) + '</p>',
+      '    ' + details,
+      '    <div class="release__decision"><p class="release__body-label">Khuyến nghị</p>' + whoGetsIt,
+      '      <p class="verdict"><strong>' + verdictLabels[release.verdict] + '</strong> ' + escapeHtml(release.verdict_note) + '</p>' + sources + '</div>',
+      '  </div>',
       '</article>'
     ].join('\n');
   }).join('\n');
 
   const gridClass = releaseItems.length > 1 ? ' release-list--grid' : '';
-  return '<section class="release-notebook' + (compact ? ' release-notebook--compact' : '') + '" id="releases" aria-labelledby="release-title">\n' +
+  return '<section class="release-notebook' + (compact ? ' release-notebook--compact' : '') + '" id="releases" aria-labelledby="release-title" data-scroll-section>\n' +
     '<header class="department-heading"><p>Release notebook</p><h2 id="release-title">Những thay đổi đáng biết</h2></header>\n' +
     '<div class="release-list' + gridClass + '">' + releases + '</div>\n' +
     '</section>';
@@ -721,9 +758,11 @@ function renderMemo(edition) {
   const actions = memo.actions.map((item) => '<li>' + escapeHtml(item) + '</li>').join('');
   const avoid = memo.avoid.map((item) => '<li>' + escapeHtml(item) + '</li>').join('');
   return [
-    '<section class="memo" id="developer" aria-labelledby="developer-title">',
-    '  <h2 id="developer-title">' + escapeHtml(memo.title) + '</h2>',
-    '  <p class="direct-answer">' + escapeHtml(memo.direct_answer) + '</p>',
+    '<section class="memo" id="developer" aria-labelledby="developer-title" data-scroll-section>',
+    '  <div class="memo__intro">',
+    '    <div><p class="memo__kicker">Developer memo</p><h2 id="developer-title">' + escapeHtml(memo.title) + '</h2></div>',
+    '    <p class="direct-answer">' + escapeHtml(memo.direct_answer) + '</p>',
+    '  </div>',
     '  <div class="memo__grid">',
     '    <div class="memo-card memo-card--do"><h3>Nên làm</h3><ol>' + actions + '</ol></div>',
     '    <div class="memo-card memo-card--dont"><h3>Tránh</h3><ol>' + avoid + '</ol></div>',
@@ -738,7 +777,7 @@ function renderRadar(edition) {
     '<li><strong>' + escapeHtml(item.status) + '</strong><div class="radar-list__copy"><span>' +
     escapeHtml(item.text) + '</span>' + renderSources(item.sources) + '</div></li>'
   ).join('');
-  return '<section id="radar" aria-labelledby="radar-title">\n' +
+  return '<section id="radar" aria-labelledby="radar-title" data-scroll-section>\n' +
     '<h2 id="radar-title">Những tín hiệu cần tiếp tục nhìn</h2>\n' +
     '<ul class="radar-list">' + items + '</ul>\n' +
     '</section>';
@@ -748,7 +787,7 @@ function renderWildcard(edition) {
   if (!isRecord(edition.wildcard) || !hasText(edition.wildcard.text)) return '';
   const title = hasText(edition.wildcard.title) ? edition.wildcard.title : 'Một góc lệch';
   return [
-    '<section class="wildcard" id="wildcard" aria-labelledby="wildcard-title">',
+    '<section class="wildcard" id="wildcard" aria-labelledby="wildcard-title" data-scroll-section>',
     '  <h2 id="wildcard-title">' + escapeHtml(title) + '</h2>',
     '  <p>' + escapeHtml(edition.wildcard.text) + '</p>',
     '</section>'
@@ -757,14 +796,15 @@ function renderWildcard(edition) {
 
 function renderTakeaway(edition) {
   const text = edition.takeaway.replace(/^Nếu hôm nay chỉ nhớ một điều\s*:\s*/i, '');
-  return '<section class="takeaway" id="takeaway" aria-labelledby="takeaway-title">\n' +
+  return '<section class="takeaway" id="takeaway" aria-labelledby="takeaway-title" data-scroll-section>\n' +
     '<h2 id="takeaway-title">Nếu hôm nay chỉ nhớ một điều</h2>\n' +
     '<p>' + escapeHtml(text) + '</p>\n' +
     '</section>';
 }
 
 function renderMemoRadarPair(edition) {
-  return '<div class="closing-grid">' + renderMemo(edition) + renderRadar(edition) + '</div>';
+  const radar = renderRadar(edition);
+  return '<div class="closing-grid' + (radar ? '' : ' closing-grid--memo-only') + '">' + renderMemo(edition) + radar + '</div>';
 }
 
 function renderEditionBody(edition, assetPrefix = '') {
@@ -778,8 +818,8 @@ function renderEditionBody(edition, assetPrefix = '') {
   if (mode === 'QUIET') {
     briefing = renderBriefing(edition, { start: 3, max: 3, compact: true, id: 'briefing-more' });
     main = [
-      renderReleases(edition, { compact: true, assetPrefix }),
       renderTrendDepartment([lead], edition.trends, { label: 'Bài đọc chính', assetPrefix }),
+      renderReleases(edition, { compact: true, assetPrefix }),
       renderSecondaryGrid(supporting, edition.trends, { compact: true, assetPrefix }),
       renderMemoRadarPair(edition),
       renderWildcard(edition),
@@ -811,32 +851,47 @@ function renderEditionBody(edition, assetPrefix = '') {
   return [
     briefing,
     '<div class="edition-body edition-body--' + mode.toLowerCase() + '">',
-    '  <article class="edition-body__main">' + main + '</article>',
+    '  <div class="edition-body__main">' + main + '</div>',
     '  ' + rail,
     '</div>'
   ].join('\n');
 }
 
 function sectionIndexItems(edition) {
+  const mode = inferEditionMode(edition);
+  const lead = edition.trends.find((trend, index) => trendImportance(trend, index) === 'LEAD') ?? edition.trends[0];
+  const supporting = edition.trends.filter((trend) => trend !== lead);
+  const trendItem = (trend) => {
+    const index = edition.trends.indexOf(trend);
+    const id = hasText(trend?.id) ? trend.id : 'trend-' + (index + 1);
+    return {
+      href: '#' + id,
+      label: trend?.title ?? 'Phân tích',
+      shortLabel: 'Phân tích ' + pad2(index + 1)
+    };
+  };
+  const releaseItem = releaseItemsForEdition(edition, { compact: mode === 'QUIET' }).length > 0
+    ? { href: '#releases', label: 'Release notebook', shortLabel: 'Release' }
+    : null;
+  const trendAndReleaseItems = mode === 'BIG'
+    ? [lead ? trendItem(lead) : null, ...supporting.slice(0, 2).map(trendItem), releaseItem, ...supporting.slice(2).map(trendItem)]
+    : [lead ? trendItem(lead) : null, releaseItem, ...supporting.map(trendItem)];
+
   return [
-    { href: '#briefing', label: '60 giây nắm bắt' },
-    { href: '#trends', label: edition.trends[0] ? edition.trends[0].title : 'Phân tích' },
-    edition.releases.length > 0 ? { href: '#releases', label: 'Release notebook' } : null,
-    { href: '#developer', label: 'Developer memo' },
-    edition.radar.length > 0 ? { href: '#radar', label: 'Radar 72 giờ' } : null
+    { href: '#briefing', label: '60 giây nắm bắt', shortLabel: '60 giây' },
+    ...trendAndReleaseItems,
+    { href: '#developer', label: 'Developer memo', shortLabel: 'Memo' },
+    edition.radar.length > 0 ? { href: '#radar', label: 'Radar 72 giờ', shortLabel: 'Radar' } : null,
+    isRecord(edition.wildcard) && hasText(edition.wildcard.text)
+      ? { href: '#wildcard', label: edition.wildcard.title ?? 'Một góc lệch', shortLabel: 'Góc lệch' }
+      : null,
+    { href: '#takeaway', label: 'Điều cần nhớ', shortLabel: 'Kết luận' }
   ].filter(Boolean);
 }
 
 function renderQuickToc(edition) {
-  const shortLabels = {
-    '#briefing': '60 giây',
-    '#trends': 'Phân tích',
-    '#releases': 'Release',
-    '#developer': 'Memo',
-    '#radar': 'Radar'
-  };
   return sectionIndexItems(edition)
-    .map((item) => '<a href="' + item.href + '">' + shortLabels[item.href] + '</a>')
+    .map((item) => '<a href="' + item.href + '">' + escapeHtml(item.shortLabel) + '</a>')
     .join('');
 }
 
@@ -855,10 +910,32 @@ function renderRightRail(edition) {
     ? '<section class="rail__block"><h3>Watching</h3><ul class="rail__watch">' + watching + '</ul></section>'
     : '';
 
+  const items = [...edition.brief, ...edition.trends, ...edition.releases, ...edition.radar];
+  const sourceMap = new Map();
+  items.flatMap((item) => item.sources ?? []).forEach((source) => sourceMap.set(source.url, source));
+  const sources = [...sourceMap.values()];
+  const newCount = items.filter((item) => item.freshness === 'NEW_TODAY').length;
+  const officialCount = sources.filter((source) => source.type === 'official').length;
+  const cutoff = isRecord(edition.meta) && hasText(edition.meta.cutoff_at)
+    ? edition.meta.cutoff_at.slice(11, 16)
+    : '07:00';
+  const evidenceBlock = [
+    '<section class="rail__block rail__block--surface rail__coverage">',
+    '  <h3>Phạm vi số này</h3>',
+    '  <dl>',
+    '    <div><dt>Sự kiện mới</dt><dd>' + newCount + '</dd></div>',
+    '    <div><dt>Nguồn trực tiếp</dt><dd>' + sources.length + '</dd></div>',
+    '    <div><dt>Nguồn gốc</dt><dd>' + officialCount + '</dd></div>',
+    '    <div><dt>Chốt bản tin</dt><dd>' + escapeHtml(cutoff) + '</dd></div>',
+    '  </dl>',
+    '</section>'
+  ].join('');
+
   return [
     '<aside aria-label="Mục lục số hôm nay">',
     '  <div class="rail">',
     '    <section class="rail__block"><h3>Trong số này</h3><nav class="rail__index" aria-label="Mục lục">' + indexItems + '</nav></section>',
+    '    ' + evidenceBlock,
     '    ' + numberBlock,
     '    ' + watchingBlock,
     '  </div>',

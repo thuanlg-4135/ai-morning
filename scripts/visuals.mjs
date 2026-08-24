@@ -149,18 +149,18 @@ visuals['model-harness-verification'] = visuals['model-harness-environment-verif
 const fallbackVisual = {
   label: 'Minh hoạ biên tập trung tính cho tín hiệu AI',
   svg: () => svgShell('Minh hoạ biên tập trung tính cho tín hiệu AI', lines(
-    '<text x="52" y="60" class="svg-type svg-muted" font-size="14" font-weight="700" letter-spacing="2">EDITORIAL CONTEXT</text>',
+    '<text x="52" y="60" class="svg-type svg-muted" font-size="14" font-weight="700" letter-spacing="2">BỐI CẢNH BIÊN TẬP</text>',
     '<g class="svg-type">',
     '  <rect x="52" y="126" width="220" height="170" class="svg-paper svg-line" stroke-width="1.5"/>',
-    '  <text x="82" y="179" class="svg-accent" font-size="13" font-weight="800">01</text><text x="82" y="224" class="svg-text" font-size="25" font-weight="800">SIGNAL</text><text x="82" y="256" class="svg-muted" font-size="13">what changed</text>',
+    '  <text x="82" y="179" class="svg-accent" font-size="13" font-weight="800">01</text><text x="82" y="224" class="svg-text" font-size="25" font-weight="800">TÍN HIỆU</text><text x="82" y="256" class="svg-muted" font-size="13">điều vừa đổi</text>',
     '  <path d="M272 211h52" fill="none" class="svg-accent-line" stroke-width="3"/>',
     '  <rect x="324" y="106" width="272" height="210" class="svg-accent-soft"/>',
-    '  <text x="358" y="162" class="svg-accent" font-size="13" font-weight="800">02</text><text x="358" y="211" class="svg-text" font-size="28" font-weight="800">SYSTEM</text><text x="358" y="246" class="svg-muted" font-size="13">where it matters</text>',
+    '  <text x="358" y="162" class="svg-accent" font-size="13" font-weight="800">02</text><text x="358" y="211" class="svg-text" font-size="28" font-weight="800">HỆ THỐNG</text><text x="358" y="246" class="svg-muted" font-size="13">nơi bị tác động</text>',
     '  <path d="M596 211h52" fill="none" class="svg-accent-line" stroke-width="3"/>',
     '  <rect x="648" y="126" width="220" height="170" class="svg-text"/>',
-    '  <text x="678" y="179" class="svg-accent" font-size="13" font-weight="800">03</text><text x="678" y="224" class="svg-paper" font-size="25" font-weight="800">ACTION</text><text x="678" y="256" class="svg-paper" font-size="13">what to test next</text>',
+    '  <text x="678" y="179" class="svg-accent" font-size="13" font-weight="800">03</text><text x="678" y="224" class="svg-paper" font-size="25" font-weight="800">HÀNH ĐỘNG</text><text x="678" y="256" class="svg-paper" font-size="13">việc cần thử</text>',
     '</g>',
-    '<text x="52" y="414" class="svg-type svg-muted" font-size="14">The editorial structure remains intact without custom artwork.</text>'
+    '<text x="52" y="414" class="svg-type svg-muted" font-size="14">Minh hoạ biên tập · không biểu diễn dữ liệu định lượng.</text>'
   ), '0 0 920 460')
 };
 

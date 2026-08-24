@@ -166,22 +166,37 @@
     });
   });
 
-  const observedSections = [...document.querySelectorAll('main section[id]')];
+  const observedSections = [...document.querySelectorAll('[data-scroll-section][id]')];
   const sectionLinks = [...document.querySelectorAll('a[href^="#"]')];
-  if ('IntersectionObserver' in window && observedSections.length && sectionLinks.length) {
-    const activeSections = new Map();
+  if (observedSections.length && sectionLinks.length) {
     const updateActiveLink = () => {
-      const visible = [...activeSections.entries()]
-        .filter(([, entry]) => entry.isIntersecting)
-        .sort((a, b) => Math.abs(a[1].boundingClientRect.top) - Math.abs(b[1].boundingClientRect.top));
-      const id = visible[0]?.[0];
-      sectionLinks.forEach((link) => link.classList.toggle('is-active', link.hash === `#${id}`));
+      const marker = Math.max(96, Math.min(innerHeight * 0.24, 240));
+      let current = observedSections[0];
+      observedSections.forEach((section) => {
+        if (section.getBoundingClientRect().top <= marker) current = section;
+      });
+      const id = current?.id;
+      sectionLinks.forEach((link) => {
+        const active = link.hash === `#${id}`;
+        link.classList.toggle('is-active', active);
+        if (active) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
     };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => activeSections.set(entry.target.id, entry));
-      updateActiveLink();
-    }, { rootMargin: '-18% 0px -68% 0px', threshold: [0, 0.01] });
-    observedSections.forEach((section) => observer.observe(section));
+
+    let activeLinkFrame = 0;
+    const scheduleActiveLinkUpdate = () => {
+      if (activeLinkFrame) return;
+      activeLinkFrame = requestAnimationFrame(() => {
+        activeLinkFrame = 0;
+        updateActiveLink();
+      });
+    };
+
+    updateActiveLink();
+    addEventListener('scroll', scheduleActiveLinkUpdate, { passive: true });
+    addEventListener('resize', scheduleActiveLinkUpdate, { passive: true });
+    addEventListener('hashchange', scheduleActiveLinkUpdate);
   }
 
   document.querySelectorAll('.editions, .toc-menu').forEach((menu) => {
@@ -190,6 +205,10 @@
         menu.removeAttribute('open');
         menu.querySelector('summary')?.focus();
       }
+    });
+
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => menu.removeAttribute('open'));
     });
   });
 
