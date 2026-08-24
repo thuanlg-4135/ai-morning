@@ -5,7 +5,7 @@ These rules apply to every task in this repository. The product is a Vietnamese 
 ## Before researching an edition
 
 1. Read `docs/content-schema.md`, `docs/news-pipeline-plan.md`, `config/news-sources.json`, and `data/news-index.json`.
-2. Define the edition cutoff as 07:00 Asia/Ho_Chi_Minh on `edition_date`. The primary scan covers the preceding 24 hours; context may look back at most 72 hours.
+2. Define the scheduled cutoff as 07:00 Asia/Ho_Chi_Minh on `edition_date`, then use `effective_cutoff = min(scheduled_cutoff, meta.generated_at or the actual run time)`. The primary scan covers the preceding 24 hours; context may look back at most 72 hours.
 3. Search the event index before drafting. Treat matching product/version, organization, action, artifact, and canonical source URL as the same event even when headlines differ.
 4. Never copy the previous edition as a content starting point. Start from an empty candidate list.
 
@@ -32,7 +32,7 @@ Open the source page and confirm all of the following before using it:
 
 - canonical article URL, not a search page or generic homepage;
 - visible publication or update date and, when available, timestamp/time zone;
-- exact timestamp is strictly before the 07:00 Asia/Ho_Chi_Minh edition cutoff; reject events at the cutoff, future-scheduled pages, and pre-accessible pages;
+- exact timestamp is strictly before the effective cutoff; reject events at the cutoff, after the actual generation time, future-scheduled pages, and pre-accessible pages;
 - the source explicitly supports the stated change, number, availability and product/version name;
 - the event falls inside the edition window or is honestly labelled `CONTEXT_72H`;
 - rumors, leaks and unnamed-source reporting are labelled as reported or speculative, never confirmed;
@@ -59,7 +59,7 @@ Consider two reports the same event when they share most of:
 
 Merge same-event reports into one candidate and attach multiple sources. A second article is additional evidence, not another news item.
 
-An indexed event may return only when there is a material update: status transition, changed availability, new price/version/region, independent confirmation or correction, incident outcome, or another concrete delta. Reuse the same `event_id`, add a concrete `material_update`, and classify it with `update_kind` (`status-change`, `availability-change`, `version-change`, `pricing-change`, `scope-change`, `independent-confirmation`, `correction`, `incident-resolution`, or `other-material-change`). The returning occurrence must also have structural evidence: either a canonical source URL not seen on earlier occurrences, or a later item `published_at` backed by a later `published_at` on an already indexed source. Tracking and unknown query-string variants count as the same canonical source; known resource IDs such as a YouTube video ID remain distinct. `independent-confirmation` always requires a chronologically later `reporting` or `research` source from a publisher host not used earlier for that event. Typed changes must carry the matching semantic delta: pricing changes need a changed pricing artifact, incident resolutions must move to the resolution action, and status/version/scope/availability changes must alter their relevant structured identity. Commentary, renewed social attention, self-asserted timestamps, and unchanged-source rewrites are not material updates.
+An indexed event may return only when there is a material update: status transition, changed availability, new price/version/region, independent confirmation or correction, incident outcome, or another concrete delta. Reuse the same `event_id`, add a concrete `material_update`, and classify it with `update_kind` (`status-change`, `availability-change`, `version-change`, `pricing-change`, `scope-change`, `independent-confirmation`, `correction`, `incident-resolution`, or `other-material-change`). The returning occurrence must also have structural evidence: either a canonical source URL not seen on earlier occurrences, or a later item `published_at` backed by a later `published_at` on an already indexed source. Known tracking parameters count as the same canonical source, but unknown query parameters are preserved by default because they may identify distinct resources; host-specific IDs such as YouTube `v`, Hacker News `id`, OpenReview `id`, and SSRN `abstract_id` remain authoritative. `independent-confirmation` always requires a chronologically later `reporting` or `research` source from a publisher host not used earlier for that event. Typed changes must carry the matching semantic delta: pricing changes need a changed pricing artifact, incident resolutions must move to the resolution action, and status/version/scope/availability changes must alter their relevant structured identity. Commentary, renewed social attention, self-asserted timestamps, and unchanged-source rewrites are not material updates.
 
 ## One event, one home
 
@@ -85,9 +85,11 @@ Every brief, trend, release, and radar item must include:
 
 When an existing `event_id` returns, it must additionally include `material_update` and `update_kind` and meet the structural-evidence rule above.
 
-Briefs require distinct `title` and `text` fields. Write at least 40 words of explanatory body. Trends need at least 200 words across their paragraphs. Releases need at least 75 words across their change and verdict copy. Radar items need at least 12 words and cannot repeat confirmed news from another section.
+Briefs require distinct `title` and explanatory `text` fields; tiny fragments are hard errors, while unusually short or long copy is a warning. Trends require at least two substantive paragraphs, a practical `action`, and sources; releases require summary, audience/impact context, verdict, and evidence. Radar items must be meaningful sentences and cannot repeat confirmed news from another section. Do not pad copy to cross a word threshold.
 
-Full timestamps must fall inside the exact half-open window: the prior 24 hours for `NEW_TODAY` or prior 72 hours for `CONTEXT_72H`, ending at the cutoff. A date-only value may use the documented calendar fallback, but a date-only value on the edition date is rejected because it cannot prove the event existed before 07:00. Source publication dates follow the same freshness window as their item.
+Full timestamps must fall inside the exact half-open window: the prior 24 hours for `NEW_TODAY` or prior 72 hours for `CONTEXT_72H`, ending at the effective cutoff. Set optional `meta.generated_at` to the real zoned generation timestamp; when present, `meta.cutoff_at` and `meta.window_started_at` must describe that effective window. A date-only value may use the documented calendar fallback, but a date-only value on the edition date is rejected because it cannot prove the event existed before the effective cutoff. Source publication dates follow the same freshness window as their item.
+
+For developed trends, optionally record kebab-case `editorial_theme` and `editorial_angle`. Reusing a lead theme across the previous three editions produces a warning; reusing the same theme and angle produces a stronger warning. `editorial_repeat_reason` may document an intentional return, but never bypasses factual duplicate or material-update rules. Trend `strength` must be one of `EARLY_SIGNAL`, `EMERGING`, `ACCELERATING`, or `ESTABLISHED`.
 
 Write in clear Vietnamese. Lead with the verified change, distinguish fact from analysis, explain why a software engineer should care, and include a practical implication. Fewer strong stories are preferable to recycled context on a quiet day.
 
@@ -96,14 +98,18 @@ Write in clear Vietnamese. Lead with the verified change, distinguish fact from 
 After editing content, always run:
 
 ```text
+npm run test:news
 npm run news:index
+npm run news:check
 npm run build
 ```
 
-`npm run news:index` validates evidence, depth, exact freshness windows, structured event identity, canonical source reuse, same-edition duplicates, normalized semantic aliases across adjacent dates, and likely title near-duplicates across 14 days. It then regenerates `data/news-index.json`.
+`npm run news:index` validates evidence, structural depth, exact freshness windows, structured event identity, canonical source reuse, same-edition duplicates, normalized semantic aliases, editorial fatigue, and likely title near-duplicates inside the bounded 14-day comparison window. It then explicitly regenerates `data/news-index.json`. `npm run news:check` performs the same validation and fails when the ledger is stale without rewriting it.
 
-The normal build checks that the index is current and must remain failing when content violates a news-quality rule. Do not bypass the validator, weaken a threshold to make a draft pass, or use `dedupe_override_reason` without documenting the concrete reason the two events are different.
+The normal build runs tests, quality/schema validation, and the stale-ledger check before rendering; it never regenerates the ledger silently. Hard failures protect schema, factual integrity, evidence, freshness, event identity, duplicates, and material updates. Editorial-theme fatigue and unusual length are warnings only. Do not bypass the validator or use `dedupe_override_reason` without documenting the concrete reason the two events are different.
 
 When changing the validator itself, run `npm run test:news`; the normal build also runs this regression suite.
 
 Before handing off, inspect the generated root page and each changed dated page. Confirm that brief titles have readable body copy, source links point to the cited pages, and no fact is presented more than once.
+
+The normal daily edition remains data-only: research, edit `content/YYYY-MM-DD.json`, run the commands above, and commit the JSON plus generated ledger. Do not touch templates, CSS, JavaScript, validators, or schema documentation unless the contract itself changes.

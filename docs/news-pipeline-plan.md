@@ -12,10 +12,11 @@ The first enforceable slice now exists:
 
 - `config/news-sources.json` is the tiered research registry;
 - `data/news-index.json` is the generated cross-edition event ledger;
-- `scripts/news-quality.mjs` checks identity, timestamps, evidence, depth, canonical URLs, same-edition placement, normalized signature aliases, structurally evidenced cross-edition updates, and likely title duplicates;
+- focused modules in `scripts/news/` own the shared schema, effective cutoff, canonical URLs, identity, material updates, bounded dedupe, source registry, deterministic ledger, and structured diagnostics;
+- `scripts/news-quality.mjs` is a thin CLI that reports hard errors separately from editorial warnings;
 - `npm run build` runs the validator regression suite and refuses stale index data before rendering.
 
-The ingestion, raw-entry storage, richer claim mapping, and scheduled review queue described below remain future phases.
+There is deliberately no crawler, feed ingestion, embeddings/vector database, external database, or agent framework. The ingestion, raw-entry storage, richer claim mapping, and scheduled review queue described below remain future ideas that require evidence from more real editions before implementation.
 
 ## Pre-change baseline audit — 25 August 2026
 
@@ -55,9 +56,9 @@ When an event returns, the copy must state the delta first and link to the earli
 
 ### Minimum useful depth
 
-- Brief: title plus at least 40 words covering what changed and why it matters.
-- Main story: at least 200 words, normally 220–500, with facts, context, impact, and a practical implication.
-- Release: at least 75 words across the change, audience, impact, verdict, and source-backed caution; dedicated `what_changed` and `why_it_matters` fields are preferred when they improve clarity.
+- Brief: meaningful title plus an explanatory body covering what changed and why it matters; tiny fragments fail, while unusual length warns.
+- Main story: at least two developed paragraphs with facts, context, impact, sources, and a practical implication. Unusual length warns instead of encouraging padding.
+- Release: summary, affected audience/impact context, verdict, and source-backed caution; dedicated `what_changed` and `why_it_matters` fields are preferred when they improve clarity.
 - Quiet day: fewer stories is acceptable; recycled context must not be used to fill space.
 
 The target is 4–7 distinct events per normal edition, with 1–3 developed stories. Source diversity is a quality signal, not a quota: a weak story should not be published merely to hit the target.
@@ -84,7 +85,7 @@ quality gate
 content/YYYY-MM-DD.json → existing static build → GitHub Pages
 ```
 
-The current foundation uses the first, third, and fourth paths below. As ingestion is added, keep raw inputs and editorial output separate:
+The current foundation uses only the source registry, generated ledger, daily content JSON, and validator/renderer paths below. If ingestion is justified later, keep raw inputs and editorial output separate:
 
 - `config/news-sources.json`: source name, tier, topics, kind, and canonical entry URL;
 - `data/raw/YYYY-MM-DD/*.json`: immutable fetched metadata and excerpts;
@@ -120,7 +121,7 @@ Use RSS/Atom or an official API where available. Parse an HTML page only when no
 
 Apply four gates in order:
 
-1. **Canonical URL:** remove tracking parameters, normalize host/path, follow redirects, and honor canonical links.
+1. **Canonical URL:** remove known tracking parameters, preserve unknown identity parameters, and normalize host/path locally. Current build validation never follows redirects or performs network I/O.
 2. **Exact content:** hash normalized source, title, and publication date; reject an already-seen hash.
 3. **Event cluster:** compare normalized title tokens, named entities, product/version, event type, source overlap, and a text-similarity score. Merge reports about the same announcement into one event with multiple sources.
 4. **Edition placement:** fail validation when one `event_id` appears in more than one primary section or when a previously published event lacks `material_update`, `update_kind`, and either a genuinely new canonical source or a newer item timestamp backed by a newer source timestamp.
@@ -145,7 +146,7 @@ Block publication when:
 - a disputed, consequential, or provider-identity claim has fewer than two independent sources;
 - a URL is unreachable, points to a homepage instead of the cited item, or duplicates another canonical URL;
 - a claim is presented as confirmed while its source only reports a rumor;
-- a brief has no separate title/body or a main story is below its depth threshold;
+- a brief has no separate title/body or a developed story is missing its structural depth;
 - an event appears in multiple primary sections;
 - more than 30% of normal-edition items come from one publisher, unless an editor records an override reason.
 

@@ -54,8 +54,10 @@
       "published_at": "2026-08-21T19:41:58.778Z",
       "id": "sol-price-economics",
       "freshness": "NEW_TODAY",
-      "strength": "CONFIRMED_CHANGE",
+      "strength": "ESTABLISHED",
       "importance": "LEAD",
+      "editorial_theme": "model-economics",
+      "editorial_angle": "cost-per-completed-task",
       "title": "Giá Sol giảm, model routing cần được tính lại bằng task hoàn chỉnh",
       "paragraphs": [
         "OpenAI công bố chương trình giảm hơn 20% giá API và một số loại credit đủ điều kiện cho GPT-5.6 Sol trong ba tháng. AWS xác nhận mức giá Sol trên Bedrock là 4 USD cho mỗi triệu token đầu vào và 20 USD cho mỗi triệu token đầu ra, tương ứng giảm 20% và 33,3% so với mức trước đó trên nền tảng này; chương trình được duy trì ít nhất tới ngày 21/11/2026. Thông báo không thay đổi hạn mức sử dụng đi kèm các gói thuê bao ChatGPT Pro, Plus hoặc Business.",

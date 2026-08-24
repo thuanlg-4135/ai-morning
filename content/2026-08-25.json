@@ -9,8 +9,9 @@
   "meta": {
     "primary_scan_hours": 24,
     "context_window_hours": 72,
-    "window_started_at": "2026-08-24T07:00:00+07:00",
-    "cutoff_at": "2026-08-25T07:00:00+07:00",
+    "generated_at": "2026-08-25T02:38:00+07:00",
+    "window_started_at": "2026-08-24T02:38:00+07:00",
+    "cutoff_at": "2026-08-25T02:38:00+07:00",
     "reading_minutes": 7,
     "source_policy": "official-first"
   },
@@ -75,8 +76,10 @@
       "published_at": "2026-08-24T09:00:02-04:00",
       "id": "thomson-domain-model",
       "freshness": "NEW_TODAY",
-      "strength": "NEW_SIGNAL",
+      "strength": "EARLY_SIGNAL",
       "importance": "LEAD",
+      "editorial_theme": "domain-models",
+      "editorial_angle": "data-evaluation-control",
       "title": "Thomson Reuters đặt cược 40 triệu USD vào model chuyên ngành mà họ tự kiểm soát",
       "paragraphs": [
         "Thomson Reuters công bố Thomson, model ngôn ngữ lớn đầu tiên do công ty tự phát triển. Công ty nói đã bắt đầu từ một foundation model mã nguồn mở rồi đầu tư 40 triệu USD cho nhân sự và compute để mid-train, post-train trên bài toán pháp lý, thuế và công việc chuyên môn. Cần đọc con số và nhãn ‘frontier’ như tuyên bố của nhà cung cấp: trang công bố chưa đưa ra benchmark độc lập đầy đủ để so sánh trực tiếp với các model tổng quát hàng đầu.",
@@ -116,8 +119,10 @@
       "published_at": "2026-08-24T15:00:41Z",
       "id": "nvidia-groq-lpx-inference",
       "freshness": "NEW_TODAY",
-      "strength": "CONFIRMED_RELEASE",
+      "strength": "ESTABLISHED",
       "importance": "SECONDARY",
+      "editorial_theme": "ai-infrastructure",
+      "editorial_angle": "disaggregated-serving",
       "title": "NVIDIA tách decode latency thành một lớp tăng tốc riêng cho agent",
       "paragraphs": [
         "Tại Hot Chips, NVIDIA cho biết Groq 3 LPX đã vào full production như phần mở rộng của hệ Vera Rubin NVL72. Kiến trúc phân công Rubin GPU xử lý context quy mô lớn còn LPX tăng tốc giai đoạn decode nhạy với độ trễ. Nebius là cloud đầu tiên công bố áp dụng. Đây là một event hạ tầng duy nhất; các thông số Spectrum-X, Scale-In và NVLink Fusion trong cùng bài công bố không được tách thành nhiều tin riêng.",

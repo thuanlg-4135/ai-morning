@@ -23,7 +23,7 @@ The renderer schema remains version 1. The news-quality contract below additiona
 
 - locale: normally vi-VN.
 - edition_type: normally daily_ai_catchup.
-- meta: scan hours, context window, reading time, and source policy.
+- meta: scan hours, context window, reading time, source policy, and optional zoned `generated_at`. When retained, `cutoff_at` and `window_started_at` must match the effective window.
 - hero_visual: a visual hint consumed by the visual renderer.
 - edition_mode: BIG, NORMAL, or QUIET. If omitted, the renderer infers a mode.
 - edition_number: explicit issue number; otherwise derived chronologically.
@@ -58,6 +58,13 @@ Source type:
 - official
 - research
 - reporting
+
+Trend strength:
+
+- EARLY_SIGNAL
+- EMERGING
+- ACCELERATING
+- ESTABLISHED
 
 ## Nested structures
 
@@ -100,6 +107,8 @@ Source type:
       "freshness": "NEW_TODAY",
       "strength": "ACCELERATING",
       "importance": "LEAD",
+      "editorial_theme": "agent-governance",
+      "editorial_angle": "identity-and-access",
       "title": "Tiêu đề phân tích",
       "paragraphs": [
         "Đoạn văn thứ nhất.",
@@ -127,7 +136,7 @@ Source type:
       ]
     }
 
-id, importance, pullquote, stat, action, and visual are optional. `event_id`, `event_signature`, `published_at`, and a non-empty `sources` array are required by the news-quality validator. `importance` accepts `LEAD`, `SECONDARY`, or `BRIEF`. paragraphs is plain text; do not put HTML or presentation classes in it.
+id, importance, pullquote, stat, and visual are optional. `event_id`, `event_signature`, `published_at`, at least two developed paragraphs, a practical `action`, and a non-empty `sources` array are required by the news-quality validator. `importance` accepts `LEAD`, `SECONDARY`, or `BRIEF`. `strength` uses the four canonical values above. Optional `editorial_theme` and `editorial_angle` are free kebab-case labels used for warning-only lead-story fatigue checks; `editorial_repeat_reason` documents an intentional return but bypasses no factual gate. paragraphs is plain text; do not put HTML or presentation classes in it.
 
 ### Release
 
@@ -197,12 +206,13 @@ id, importance, pullquote, stat, action, and visual are optional. `event_id`, `e
 - `event_signature.action` must use the canonical vocabulary enforced by `scripts/news-quality.mjs`; tense or synonym variants are rejected instead of becoming a duplicate bypass.
 - One `event_id` may appear in only one primary section of an edition.
 - If a material change makes an old event newsworthy again, reuse its `event_id`, add a concrete `material_update`, and add an `update_kind`: `status-change`, `availability-change`, `version-change`, `pricing-change`, `scope-change`, `independent-confirmation`, `correction`, `incident-resolution`, or `other-material-change`.
-- A returning event must prove a structural delta with at least one genuinely new canonical source URL, or with both a later item `published_at` and a later source `published_at` on an already indexed URL. HTTP/HTTPS variants, tracking parameters, and unknown query variants count as the same URL; host-specific resource identifiers such as YouTube's `v` remain distinct. An unchanged-source rewrite is rejected even when its explanation is long enough.
+- A returning event must prove a structural delta with at least one genuinely new canonical source URL, or with both a later item `published_at` and a later source `published_at` on an already indexed URL. HTTP/HTTPS variants and known tracking parameters count as the same URL. Unknown query parameters are preserved by default because `?id=123` and `?id=456` may identify different resources; host-specific identifiers for YouTube, Hacker News, OpenReview, and SSRN remain authoritative. An unchanged-source rewrite is rejected even when its explanation is long enough.
 - `independent-confirmation` requires a chronologically later `reporting` or `research` source from a publisher host not previously used for the event. Typed update kinds enforce matching semantic signature changes; for example, a pricing update needs a changed pricing artifact and an incident resolution must use the resolution action.
 - Normalized signature matching treats common organization/product suffixes as aliases. A weak artifact-token match also needs topical title overlap, so date proximity or one generic shared token alone does not merge unrelated releases.
 - Reusing the same canonical URL for a different event is rejected.
-- Full timestamps use exact half-open 24-hour or 72-hour windows ending at 07:00 Asia/Ho_Chi_Minh. Date-only values use a calendar fallback, but the edition date itself is rejected without a time because pre-cutoff publication cannot be proven.
-- Briefs need at least 40 words, trends 200 words, releases 75 words, and radar items 12 words.
+- The scheduled cutoff is 07:00 Asia/Ho_Chi_Minh. The exact half-open 24-hour or 72-hour window ends at `effective_cutoff = min(scheduled_cutoff, meta.generated_at or actual run time)`, so a manual pre-07 run cannot accept a future publication. Date-only values use a calendar fallback, but the edition date itself is rejected without a time because pre-cutoff publication cannot be proven.
+- Hard depth gates block missing copy, evidence, practical trend structure, and obvious fragments. Unusually short/long briefs, trends, and releases are warnings; a 199-word complete story does not fail merely for missing an arbitrary threshold.
+- Reusing the same lead `editorial_theme` across the previous three editions produces an editorial warning. Reusing the same theme plus angle within three editions produces a stronger warning. These never fail the build by themselves.
 - Each source must link directly to supporting evidence and include its own `published_at`.
 - Each source also requires a readable `label` and a `type` of `official`, `research`, or `reporting`.
 
@@ -240,7 +250,7 @@ An unknown key renders a neutral editorial fallback and does not fail the build.
 2. Research from an empty candidate list; do not copy an older edition.
 3. Add `content/YYYY-MM-DD.json` and set `edition_date` to match the filename.
 4. Keep all prose as plain JSON strings.
-5. Run `npm run news:index` followed by `npm run build`.
+5. Run `npm run test:news`, `npm run news:index`, `npm run news:check`, and `npm run build`.
 6. Review dist/index.html, dist/YYYY-MM-DD/index.html, and dist/archive/index.html.
 
-The build fails before writing dist when a required field or enum is invalid.
+`npm run news:index` is the only normal command that rewrites the generated ledger. The build checks that it is current and fails before writing dist when a required field, enum, factual quality rule, or ledger check is invalid. Daily publication otherwise requires JSON edits only.

@@ -54,8 +54,10 @@
       "published_at": "2026-08-23T12:42:08+07:00",
       "id": "ray-kv-routing-sandbox-security",
       "freshness": "NEW_TODAY",
-      "strength": "CONFIRMED_RELEASE",
+      "strength": "ESTABLISHED",
       "importance": "LEAD",
+      "editorial_theme": "ai-infrastructure",
+      "editorial_angle": "cache-aware-routing",
       "title": "Ray 2.58 đưa trạng thái KV cache vào quyết định routing LLM",
       "paragraphs": [
         "Ray 2.58.0 hoàn thiện luồng routing nhận biết KV cache và số token cho Ray Serve LLM, bao gồm cả cache được offload xuống CPU. Thay vì chỉ phân phối request theo tải tổng quát, router có thêm tín hiệu về prefix đã nằm ở replica nào và lượng công việc ước tính. Với agent có context dài hoặc lặp lại prefix qua nhiều bước, đây là hướng tối ưu thực tế hơn việc chỉ tăng số worker, vì một quyết định routing sai có thể làm mất cache reuse và buộc prefill chạy lại.",

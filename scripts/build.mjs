@@ -1,6 +1,7 @@
 import { copyFile, mkdir, readdir, readFile, rm, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertEditionSchema, EDITION_MODES, IMPORTANCE_VALUES } from './news/schema.mjs';
 import { renderVisual } from './visuals.mjs';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
@@ -10,26 +11,8 @@ const templatesDir = path.join(repoRoot, 'templates');
 const assetsDir = path.join(repoRoot, 'assets');
 const distDir = path.join(repoRoot, 'dist');
 
-const requiredFields = [
-  'schema_version',
-  'edition_date',
-  'headline',
-  'dek',
-  'brief',
-  'trends',
-  'releases',
-  'developer_memo',
-  'radar',
-  'takeaway'
-];
-
-const freshnessValues = new Set(['NEW_TODAY', 'CONTEXT_72H']);
-const verdictValues = new Set(['TRY_NOW', 'WATCH', 'SKIP_FOR_NOW']);
-const sourceTypes = new Set(['official', 'research', 'reporting']);
-const radarStatuses = new Set(['CONFIRMED', 'WATCH', 'LIKELY', 'SPECULATION']);
-const editionModes = new Set(['BIG', 'NORMAL', 'QUIET']);
-const importanceValues = new Set(['LEAD', 'SECONDARY', 'BRIEF']);
-const visualKinds = new Set(['editorial', 'image', 'screenshot', 'chart', 'diagram', 'stat']);
+const editionModes = EDITION_MODES;
+const importanceValues = IMPORTANCE_VALUES;
 const monthNames = [
   'tháng 1', 'tháng 2', 'tháng 3', 'tháng 4', 'tháng 5', 'tháng 6',
   'tháng 7', 'tháng 8', 'tháng 9', 'tháng 10', 'tháng 11', 'tháng 12'
@@ -60,232 +43,6 @@ const escapeHtml = (value) => String(value ?? '')
 const isRecord = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
 const hasText = (value) => typeof value === 'string' && value.trim().length > 0;
 const pad2 = (value) => String(value).padStart(2, '0');
-
-function isValidDate(value) {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
-  const parsed = new Date(value + 'T00:00:00Z');
-  return !Number.isNaN(parsed.valueOf()) && parsed.toISOString().slice(0, 10) === value;
-}
-
-function validateSource(source, field, errors) {
-  if (!isRecord(source)) {
-    errors.push('invalid field "' + field + '": expected object');
-    return;
-  }
-  if (!hasText(source.label)) errors.push('missing required field "' + field + '.label"');
-  if (!hasText(source.url)) {
-    errors.push('missing required field "' + field + '.url"');
-  } else {
-    try {
-      const parsed = new URL(source.url);
-      if (!['http:', 'https:'].includes(parsed.protocol)) throw new Error('unsupported protocol');
-    } catch {
-      errors.push('invalid field "' + field + '.url": expected http(s) URL');
-    }
-  }
-  if (!sourceTypes.has(source.type)) {
-    errors.push('invalid field "' + field + '.type": expected official, research, or reporting');
-  }
-}
-
-function validateFreshness(value, field, errors) {
-  if (!freshnessValues.has(value)) {
-    errors.push('invalid field "' + field + '": expected NEW_TODAY or CONTEXT_72H');
-  }
-}
-
-function validateOptionalString(value, field, errors) {
-  if (value !== undefined && !hasText(value)) {
-    errors.push('invalid field "' + field + '": expected non-empty string');
-  }
-}
-
-function validateVisual(visual, field, errors) {
-  if (visual === undefined) return;
-  if (!isRecord(visual)) {
-    errors.push('invalid field "' + field + '": expected object');
-    return;
-  }
-  const kind = visual.kind ?? 'editorial';
-  if (!visualKinds.has(kind)) {
-    errors.push('invalid field "' + field + '.kind": expected editorial, image, screenshot, chart, diagram, or stat');
-  }
-  if ((kind === 'image' || kind === 'screenshot') && !hasText(visual.src)) {
-    errors.push('missing required field "' + field + '.src"');
-  }
-  for (const key of ['src', 'alt', 'caption', 'credit', 'key']) {
-    validateOptionalString(visual[key], field + '.' + key, errors);
-  }
-}
-
-function validateEdition(edition, filename) {
-  const errors = [];
-  if (!isRecord(edition)) {
-    throw new Error('ERROR content/' + filename + ':\nexpected a JSON object');
-  }
-
-  for (const field of requiredFields) {
-    if (!Object.hasOwn(edition, field) || edition[field] === null || edition[field] === '') {
-      errors.push('missing required field "' + field + '"');
-    }
-  }
-
-  if (edition.schema_version !== 1) {
-    errors.push('invalid field "schema_version": expected 1');
-  }
-
-  if (!hasText(edition.edition_date) || !isValidDate(edition.edition_date)) {
-    errors.push('invalid field "edition_date": expected YYYY-MM-DD');
-  } else if (path.basename(filename, '.json') !== edition.edition_date) {
-    errors.push('invalid field "edition_date": must match filename');
-  }
-
-  if (!hasText(edition.headline)) errors.push('invalid field "headline": expected non-empty string');
-  if (!hasText(edition.dek)) errors.push('invalid field "dek": expected non-empty string');
-  validateVisual(edition.hero_visual, 'hero_visual', errors);
-
-  if (edition.edition_mode !== undefined && !editionModes.has(edition.edition_mode)) {
-    errors.push('invalid field "edition_mode": expected BIG, NORMAL, or QUIET');
-  }
-
-  if (edition.one_number !== undefined) {
-    if (!isRecord(edition.one_number) || !hasText(edition.one_number.value) || !hasText(edition.one_number.label)) {
-      errors.push('invalid field "one_number": expected object with value and label');
-    }
-  }
-
-  if (edition.wildcard !== undefined) {
-    if (!isRecord(edition.wildcard) || !hasText(edition.wildcard.text)) {
-      errors.push('invalid field "wildcard": expected object with text');
-    }
-  }
-
-  if (edition.watching !== undefined) {
-    if (!Array.isArray(edition.watching) || edition.watching.some((item) => !hasText(item))) {
-      errors.push('invalid field "watching": expected string array');
-    }
-  }
-
-  if (!Array.isArray(edition.brief) || edition.brief.length === 0) {
-    errors.push('invalid field "brief": expected non-empty array');
-  } else {
-    edition.brief.forEach((item, index) => {
-      const field = 'brief[' + index + ']';
-      if (!isRecord(item)) {
-        errors.push('invalid field "' + field + '": expected object');
-        return;
-      }
-      validateFreshness(item.freshness, field + '.freshness', errors);
-      if (!hasText(item.text) && !hasText(item.title)) {
-        errors.push('missing required field "' + field + '.text"');
-      }
-      validateOptionalString(item.title, field + '.title', errors);
-    });
-  }
-
-  if (!Array.isArray(edition.trends) || edition.trends.length === 0) {
-    errors.push('invalid field "trends": expected non-empty array');
-  } else {
-    edition.trends.forEach((trend, index) => {
-      const field = 'trends[' + index + ']';
-      if (!isRecord(trend)) {
-        errors.push('invalid field "' + field + '": expected object');
-        return;
-      }
-      validateFreshness(trend.freshness, field + '.freshness', errors);
-      if (!hasText(trend.title)) errors.push('missing required field "' + field + '.title"');
-      if (!Array.isArray(trend.paragraphs) || trend.paragraphs.length === 0 || trend.paragraphs.some((item) => !hasText(item))) {
-        errors.push('invalid field "' + field + '.paragraphs": expected non-empty string array');
-      }
-      if (trend.importance !== undefined && !importanceValues.has(trend.importance)) {
-        errors.push('invalid field "' + field + '.importance": expected LEAD, SECONDARY, or BRIEF');
-      }
-      if (trend.stat !== undefined) {
-        if (!isRecord(trend.stat) || !hasText(trend.stat.value) || !hasText(trend.stat.label)) {
-          errors.push('invalid field "' + field + '.stat": expected object with value and label');
-        }
-      }
-      validateVisual(trend.visual, field + '.visual', errors);
-      if (trend.sources !== undefined) {
-        if (!Array.isArray(trend.sources)) {
-          errors.push('invalid field "' + field + '.sources": expected array');
-        } else {
-          trend.sources.forEach((source, sourceIndex) => validateSource(source, field + '.sources[' + sourceIndex + ']', errors));
-        }
-      }
-    });
-  }
-
-  if (!Array.isArray(edition.releases)) {
-    errors.push('invalid field "releases": expected array');
-  } else {
-    edition.releases.forEach((release, index) => {
-      const field = 'releases[' + index + ']';
-      if (!isRecord(release)) {
-        errors.push('invalid field "' + field + '": expected object');
-        return;
-      }
-      for (const key of ['product', 'feature', 'status', 'summary', 'verdict', 'verdict_note']) {
-        if (!hasText(release[key])) errors.push('missing required field "' + field + '.' + key + '"');
-      }
-      validateFreshness(release.freshness, field + '.freshness', errors);
-      if (!verdictValues.has(release.verdict)) {
-        errors.push('invalid field "' + field + '.verdict": expected TRY_NOW, WATCH, or SKIP_FOR_NOW');
-      }
-      validateVisual(release.visual, field + '.visual', errors);
-      if (release.sources !== undefined) {
-        if (!Array.isArray(release.sources)) {
-          errors.push('invalid field "' + field + '.sources": expected array');
-        } else {
-          release.sources.forEach((source, sourceIndex) => validateSource(source, field + '.sources[' + sourceIndex + ']', errors));
-        }
-      }
-    });
-  }
-
-  if (!isRecord(edition.developer_memo)) {
-    errors.push('invalid field "developer_memo": expected object');
-  } else {
-    for (const key of ['title', 'direct_answer']) {
-      if (!hasText(edition.developer_memo[key])) errors.push('missing required field "developer_memo.' + key + '"');
-    }
-    for (const key of ['actions', 'avoid']) {
-      if (!Array.isArray(edition.developer_memo[key]) || edition.developer_memo[key].some((item) => !hasText(item))) {
-        errors.push('invalid field "developer_memo.' + key + '": expected string array');
-      }
-    }
-  }
-
-  if (!Array.isArray(edition.radar)) {
-    errors.push('invalid field "radar": expected array');
-  } else {
-    edition.radar.forEach((item, index) => {
-      const field = 'radar[' + index + ']';
-      if (!isRecord(item)) {
-        errors.push('invalid field "' + field + '": expected object');
-        return;
-      }
-      if (!radarStatuses.has(item.status)) {
-        errors.push('invalid field "' + field + '.status": expected CONFIRMED, WATCH, LIKELY, or SPECULATION');
-      }
-      validateFreshness(item.freshness, field + '.freshness', errors);
-      if (!hasText(item.text)) errors.push('missing required field "' + field + '.text"');
-      if (item.sources !== undefined) {
-        if (!Array.isArray(item.sources)) {
-          errors.push('invalid field "' + field + '.sources": expected array');
-        } else {
-          item.sources.forEach((source, sourceIndex) => validateSource(source, field + '.sources[' + sourceIndex + ']', errors));
-        }
-      }
-    });
-  }
-
-  if (!hasText(edition.takeaway)) errors.push('invalid field "takeaway": expected non-empty string');
-
-  if (errors.length > 0) {
-    throw new Error('ERROR content/' + filename + ':\n' + errors.join('\n'));
-  }
-}
 
 function formatDate(date) {
   const [year, month, day] = date.split('-');
@@ -1035,7 +792,7 @@ async function loadEditions() {
     } catch (error) {
       throw new Error('ERROR content/' + filename + ':\ninvalid JSON: ' + error.message);
     }
-    validateEdition(parsed, filename);
+    assertEditionSchema(parsed, { filename });
     editions.push(parsed);
   }
 

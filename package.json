@@ -4,9 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "test": "npm run test:news",
     "news:index": "node scripts/news-quality.mjs --write",
     "news:check": "node scripts/news-quality.mjs --check",
-    "test:news": "node scripts/news-quality.mjs --self-test",
+    "test:news": "node --test tests/news-*.test.mjs",
     "build": "npm run test:news && npm run news:check && node scripts/build.mjs"
   },
   "engines": {

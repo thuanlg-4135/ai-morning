@@ -56,6 +56,8 @@
       "freshness": "NEW_TODAY",
       "strength": "EMERGING",
       "importance": "LEAD",
+      "editorial_theme": "agent-protocols",
+      "editorial_angle": "production-readiness",
       "title": "Roadmap mới của MCP ưu tiên messaging, identity và progressive discovery",
       "paragraphs": [
         "Nhóm duy trì Model Context Protocol công bố roadmap cập nhật cho bản đặc tả tiếp theo và các tháng sau đó, với năm vùng ưu tiên: primitive cho agentic messaging, hợp nhất và gia cố transport theo hướng HTTP-native, danh tính agent cùng bảo mật doanh nghiệp, cải thiện primitive, và trải nghiệm SDK. Đây là định hướng phát triển chứ chưa phải một bản specification mới. Cách phân biệt này quan trọng: server-initiated event, DPoP, workload identity hay progressive discovery đều là vùng công việc được ưu tiên, không phải API mà developer có thể mặc định đã ổn định và triển khai ngay.",
