@@ -2,8 +2,8 @@
   "schema_version": 3,
   "generated_from": {
     "first_edition": "2026-08-22",
-    "last_edition": "2026-08-25",
-    "edition_count": 4,
+    "last_edition": "2026-08-26",
+    "edition_count": 5,
     "source_registry_count": 39
   },
   "events": [
@@ -580,6 +580,213 @@
             "artifact": "first-proprietary-domain-llm"
           },
           "signature_key": "thomson-reuters|thomson-model|launch|first-proprietary-domain-llm",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "anthropic-claude-unified-memory",
+      "event_signature": {
+        "organization": "anthropic",
+        "product": "claude-memory",
+        "action": "feature-update",
+        "artifact": "chat-cowork-memory"
+      },
+      "signature_key": "anthropic|claude-memory|feature-update|chat-cowork-memory",
+      "current_event_signature": {
+        "organization": "anthropic",
+        "product": "claude-memory",
+        "action": "feature-update",
+        "artifact": "chat-cowork-memory"
+      },
+      "current_signature_key": "anthropic|claude-memory|feature-update|chat-cowork-memory",
+      "first_published_at": "2026-08-25",
+      "first_edition": "2026-08-26",
+      "title": "Claude dùng chung memory giữa chat và Cowork",
+      "fingerprint": "claude dung chung memory giua chat va cowork",
+      "canonical_sources": [
+        "https://claude.com/blog/claudes-memory-works-everywhere-and-you-decide-whats-in-it"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-26",
+          "section": "brief",
+          "published_at": "2026-08-25",
+          "event_signature": {
+            "organization": "anthropic",
+            "product": "claude-memory",
+            "action": "feature-update",
+            "artifact": "chat-cowork-memory"
+          },
+          "signature_key": "anthropic|claude-memory|feature-update|chat-cowork-memory",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "openai-admin-plugin-launch",
+      "event_signature": {
+        "organization": "openai",
+        "product": "admin-plugin",
+        "action": "launch",
+        "artifact": "chatgpt-work-codex-admin-actions"
+      },
+      "signature_key": "openai|admin-plugin|launch|chatgpt-work-codex-admin-actions",
+      "current_event_signature": {
+        "organization": "openai",
+        "product": "admin-plugin",
+        "action": "launch",
+        "artifact": "chatgpt-work-codex-admin-actions"
+      },
+      "current_signature_key": "openai|admin-plugin|launch|chatgpt-work-codex-admin-actions",
+      "first_published_at": "2026-08-25",
+      "first_edition": "2026-08-26",
+      "title": "ChatGPT Work / Codex — Admin plugin",
+      "fingerprint": "chatgpt work codex admin plugin",
+      "canonical_sources": [
+        "https://openai.com/index/introducing-admin-plugin"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-26",
+          "section": "releases",
+          "published_at": "2026-08-25",
+          "event_signature": {
+            "organization": "openai",
+            "product": "admin-plugin",
+            "action": "launch",
+            "artifact": "chatgpt-work-codex-admin-actions"
+          },
+          "signature_key": "openai|admin-plugin|launch|chatgpt-work-codex-admin-actions",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "openai-jalapeno-first-results",
+      "event_signature": {
+        "organization": "openai",
+        "product": "jalapeno",
+        "action": "benchmark-result",
+        "artifact": "custom-inference-chip"
+      },
+      "signature_key": "openai|jalapeno|benchmark-result|custom-inference-chip",
+      "current_event_signature": {
+        "organization": "openai",
+        "product": "jalapeno",
+        "action": "benchmark-result",
+        "artifact": "custom-inference-chip"
+      },
+      "current_signature_key": "openai|jalapeno|benchmark-result|custom-inference-chip",
+      "first_published_at": "2026-08-25",
+      "first_edition": "2026-08-26",
+      "title": "Agent economics đang kéo tối ưu inference xuống tận silicon",
+      "fingerprint": "agent economics dang keo toi uu inference xuong tan silicon",
+      "canonical_sources": [
+        "https://openai.com/index/jalapeno-first-results",
+        "https://openai.com/index/the-full-stack-behind-abundant-intelligence"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-26",
+          "section": "trends",
+          "published_at": "2026-08-25",
+          "event_signature": {
+            "organization": "openai",
+            "product": "jalapeno",
+            "action": "benchmark-result",
+            "artifact": "custom-inference-chip"
+          },
+          "signature_key": "openai|jalapeno|benchmark-result|custom-inference-chip",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "perplexity-portable-computer-launch",
+      "event_signature": {
+        "organization": "perplexity",
+        "product": "portable-computer",
+        "action": "launch",
+        "artifact": "local-first-agent-runtime"
+      },
+      "signature_key": "perplexity|portable-computer|launch|local-first-agent-runtime",
+      "current_event_signature": {
+        "organization": "perplexity",
+        "product": "portable-computer",
+        "action": "launch",
+        "artifact": "local-first-agent-runtime"
+      },
+      "current_signature_key": "perplexity|portable-computer|launch|local-first-agent-runtime",
+      "first_published_at": "2026-08-25",
+      "first_edition": "2026-08-26",
+      "title": "Local AI đang tiến từ 'model chạy trên máy' thành một agent runtime hoàn chỉnh",
+      "fingerprint": "local ai dang tien tu model chay tren may thanh mot agent runtime hoan chinh",
+      "canonical_sources": [
+        "https://blogs.nvidia.com/blog/local-ai-open-source-models-agents-nemotron",
+        "https://perplexity.ai/hub/blog/introducing-portable-computer-for-local-first-ai"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-26",
+          "section": "trends",
+          "published_at": "2026-08-25",
+          "event_signature": {
+            "organization": "perplexity",
+            "product": "portable-computer",
+            "action": "launch",
+            "artifact": "local-first-agent-runtime"
+          },
+          "signature_key": "perplexity|portable-computer|launch|local-first-agent-runtime",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "salesforce-headless-360-expansion",
+      "event_signature": {
+        "organization": "salesforce",
+        "product": "headless-360",
+        "action": "feature-update",
+        "artifact": "agent-capability-layer"
+      },
+      "signature_key": "salesforce|headless-360|feature-update|agent-capability-layer",
+      "current_event_signature": {
+        "organization": "salesforce",
+        "product": "headless-360",
+        "action": "feature-update",
+        "artifact": "agent-capability-layer"
+      },
+      "current_signature_key": "salesforce|headless-360|feature-update|agent-capability-layer",
+      "first_published_at": "2026-08-25",
+      "first_edition": "2026-08-26",
+      "title": "Salesforce biến business capability thành lớp có thể tái sử dụng bởi agent",
+      "fingerprint": "salesforce bien business capability thanh lop co the tai su dung boi agent",
+      "canonical_sources": [
+        "https://salesforce.com/ap/news/press-releases/2026/08/25/salesforce-turns-enterprise-applications-into-enterprise-capabilities"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-26",
+          "section": "brief",
+          "published_at": "2026-08-25",
+          "event_signature": {
+            "organization": "salesforce",
+            "product": "headless-360",
+            "action": "feature-update",
+            "artifact": "agent-capability-layer"
+          },
+          "signature_key": "salesforce|headless-360|feature-update|agent-capability-layer",
           "material_update": null,
           "update_kind": null,
           "dedupe_override_reason": null
