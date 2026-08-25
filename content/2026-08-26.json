@@ -1,0 +1,360 @@
+{
+  "schema_version": 1,
+  "edition_date": "2026-08-26",
+  "locale": "vi-VN",
+  "edition_type": "daily_ai_catchup",
+  "edition_mode": "NORMAL",
+  "headline": "Local-first agent bước vào production: Perplexity đưa cả harness xuống máy",
+  "dek": "Trong 24 giờ qua, tín hiệu đáng chú ý nhất không phải một frontier model mới mà là cách agent được vận hành: Perplexity Portable Computer chạy planner, router, queue và search index ngay trên máy rồi chỉ xin phép khi cần cloud. OpenAI cùng lúc công bố số đo đầu tiên của chip inference Jalapeño và plugin Admin cho ChatGPT Work/Codex, còn Claude hợp nhất memory giữa chat và Cowork.",
+  "meta": {
+    "primary_scan_hours": 24,
+    "context_window_hours": 72,
+    "generated_at": "2026-08-26T03:44:00+07:00",
+    "window_started_at": "2026-08-25T03:44:00+07:00",
+    "cutoff_at": "2026-08-26T03:44:00+07:00",
+    "reading_minutes": 7,
+    "source_policy": "official-first"
+  },
+  "hero_visual": {
+    "kind": "editorial",
+    "key": "local-first-hybrid-agent-runtime",
+    "caption": "Agent local đang chuyển từ chạy một model trên máy sang sở hữu cả harness: planner, tool router, scheduler, queue, search index và ranh giới rõ khi nào được phép gọi cloud."
+  },
+  "brief": [
+    {
+      "event_id": "perplexity-portable-computer-launch",
+      "event_signature": {
+        "organization": "perplexity",
+        "product": "portable-computer",
+        "action": "launch",
+        "artifact": "local-first-agent-runtime"
+      },
+      "published_at": "2026-08-25",
+      "freshness": "NEW_TODAY",
+      "title": "Perplexity đưa Computer xuống DGX Spark theo mô hình local-first",
+      "text": "Portable Computer chạy toàn bộ agent stack trên thiết bị, gồm orchestrator, planner, tool router, scheduler, durable task queue và local search index. Tác vụ local không tiêu tốn credit; khi cần web, connected apps hoặc frontier reasoning, hệ thống xin phép trước khi gửi phần việc ra cloud.",
+      "sources": [
+        {
+          "label": "Perplexity — Introducing Portable Computer for local-first AI",
+          "url": "https://www.perplexity.ai/hub/blog/introducing-portable-computer-for-local-first-ai",
+          "type": "official",
+          "published_at": "2026-08-25"
+        },
+        {
+          "label": "NVIDIA — Perplexity brings local AI agents to DGX Spark",
+          "url": "https://blogs.nvidia.com/blog/local-ai-open-source-models-agents-nemotron/",
+          "type": "official",
+          "published_at": "2026-08-25"
+        }
+      ]
+    },
+    {
+      "event_id": "openai-jalapeno-first-results",
+      "event_signature": {
+        "organization": "openai",
+        "product": "jalapeno",
+        "action": "benchmark-results",
+        "artifact": "custom-inference-chip"
+      },
+      "published_at": "2026-08-25",
+      "freshness": "NEW_TODAY",
+      "title": "OpenAI công bố số đo đầu tiên của chip inference Jalapeño",
+      "text": "OpenAI nói Jalapeño đạt 1,5–1,9 lần nhiều AI work hơn trên mỗi watt và 1,7–3,6 lần thấp hơn về end-to-end latency so với các hệ so sánh trên ba model public. Chip dự kiến bắt đầu được đưa vào hạ tầng OpenAI cuối năm.",
+      "sources": [
+        {
+          "label": "OpenAI — Jalapeño’s first results",
+          "url": "https://openai.com/index/jalapeno-first-results/",
+          "type": "official",
+          "published_at": "2026-08-25"
+        }
+      ]
+    },
+    {
+      "event_id": "openai-admin-plugin-launch",
+      "event_signature": {
+        "organization": "openai",
+        "product": "admin-plugin",
+        "action": "launch",
+        "artifact": "chatgpt-work-codex-admin-actions"
+      },
+      "published_at": "2026-08-25",
+      "freshness": "NEW_TODAY",
+      "title": "OpenAI đưa quản trị Work và Codex vào một plugin có quyền đọc/ghi",
+      "text": "Admin plugin cho phép xem adoption, credit usage, quyền truy cập, giới hạn chi tiêu và thực hiện các thao tác như quản lý member, group hoặc approve request trong cùng một hội thoại, nhưng vẫn giữ nguyên role, permission và approval boundary hiện có.",
+      "sources": [
+        {
+          "label": "OpenAI — Introducing the Admin plugin for ChatGPT Work and Codex",
+          "url": "https://openai.com/index/introducing-admin-plugin/",
+          "type": "official",
+          "published_at": "2026-08-25"
+        }
+      ]
+    },
+    {
+      "event_id": "anthropic-claude-unified-memory",
+      "event_signature": {
+        "organization": "anthropic",
+        "product": "claude-memory",
+        "action": "unify",
+        "artifact": "chat-cowork-memory"
+      },
+      "published_at": "2026-08-25",
+      "freshness": "NEW_TODAY",
+      "title": "Claude dùng chung memory giữa chat và Cowork",
+      "text": "Anthropic hợp nhất memory giữa Claude chat và Cowork để cloud tasks có thể tiếp tục từ context đã biết. Người dùng có thể xem, sửa hoặc xóa memory; các chủ đề nhạy cảm không được lưu mặc định và cần bật riêng nếu muốn.",
+      "sources": [
+        {
+          "label": "Anthropic — Claude's memory works everywhere",
+          "url": "https://claude.com/blog/claudes-memory-works-everywhere-and-you-decide-whats-in-it",
+          "type": "official",
+          "published_at": "2026-08-25"
+        }
+      ]
+    }
+  ],
+  "trends": [
+    {
+      "event_id": "perplexity-portable-computer-launch",
+      "event_signature": {
+        "organization": "perplexity",
+        "product": "portable-computer",
+        "action": "launch",
+        "artifact": "local-first-agent-runtime"
+      },
+      "published_at": "2026-08-25",
+      "id": "local-first-agent-runtime",
+      "freshness": "NEW_TODAY",
+      "strength": "ACCELERATING",
+      "importance": "LEAD",
+      "editorial_theme": "local-ai",
+      "editorial_angle": "hybrid-agent-runtime",
+      "title": "Local AI đang tiến từ 'model chạy trên máy' thành một agent runtime hoàn chỉnh",
+      "paragraphs": [
+        "Portable Computer đáng chú ý vì phần local không chỉ là model inference. Perplexity nói orchestrator, planner, tool router, scheduler, durable task queue và local search index đều chạy trên thiết bị. Trên DGX Spark, hệ thống có thể dùng Qwen 3.8 27B hoặc PPLX 27B; Nemotron 3.5 Lightning sẽ được thêm sau.",
+        "Thiết kế hybrid khá thực dụng: dữ liệu riêng và phần lớn tác vụ ở local; khi cần thông tin thời gian thực, browser use, connected apps hoặc một trong hơn 15 frontier models, agent có thể escalate phần việc ra cloud. Điểm quan trọng là việc gửi nội dung khỏi máy cần người dùng cho phép, thay vì cloud là default.",
+        "Đối với đội kỹ thuật, pattern này mở ra một cách khác để tính economics và privacy. Local compute có chi phí vốn và giới hạn model, nhưng workload lặp lại hoặc nhạy cảm không còn bị tính theo token/credit từng request. Điều cần benchmark không phải chỉ tokens/second mà là tỷ lệ task hoàn tất local, số lần phải escalate, latency tổng và chi phí điện/phần cứng trên mỗi completed task."
+      ],
+      "pullquote": "Local-first agent chỉ thật sự khác cloud agent khi ranh giới dữ liệu và quyết định escalate nằm trong runtime, không nằm trong checklist của con người.",
+      "action": "Nếu có workload chứa source code hoặc tài liệu nội bộ, thử phân loại task thành local-only, hybrid và cloud-only; đo tỷ lệ completion, thời gian, chất lượng và số lần phải gửi dữ liệu ra ngoài trước khi mua thêm phần cứng.",
+      "visual": {
+        "kind": "editorial",
+        "key": "local-runtime-cloud-escalation",
+        "caption": "Local runtime xử lý dữ liệu, planning và tool execution; cloud chỉ được gọi khi task thực sự cần thêm capability hoặc thông tin mới."
+      },
+      "sources": [
+        {
+          "label": "Perplexity — Introducing Portable Computer for local-first AI",
+          "url": "https://www.perplexity.ai/hub/blog/introducing-portable-computer-for-local-first-ai",
+          "type": "official",
+          "published_at": "2026-08-25"
+        },
+        {
+          "label": "NVIDIA — Local AI and intelligent agents",
+          "url": "https://blogs.nvidia.com/blog/local-ai-open-source-models-agents-nemotron/",
+          "type": "official",
+          "published_at": "2026-08-25"
+        }
+      ]
+    },
+    {
+      "event_id": "openai-jalapeno-first-results",
+      "event_signature": {
+        "organization": "openai",
+        "product": "jalapeno",
+        "action": "benchmark-results",
+        "artifact": "custom-inference-chip"
+      },
+      "published_at": "2026-08-25",
+      "id": "inference-silicon-for-agents",
+      "freshness": "NEW_TODAY",
+      "strength": "ACCELERATING",
+      "importance": "SECONDARY",
+      "editorial_theme": "ai-infrastructure",
+      "editorial_angle": "latency-per-watt",
+      "title": "Agent economics đang kéo tối ưu inference xuống tận silicon",
+      "paragraphs": [
+        "OpenAI công bố kết quả đầu tiên cho Jalapeño, chip inference tự thiết kế. Trên các benchmark công khai dùng GPT-OSS 120B, DeepSeek R1 và Kimi K2.5, OpenAI báo cáo 1,5–1,9 lần nhiều AI work hơn trên mỗi watt ở peak throughput và 1,7–3,6 lần thấp hơn về end-to-end latency so với hệ so sánh.",
+        "Điểm kỹ thuật quan trọng là OpenAI tối ưu chip, memory, network và serving software như một hệ thống duy nhất, với mục tiêu giữ KV cache gần compute và giảm data movement giữa prefill, decode và communication phases. Công ty nói thiết kế này đặc biệt phù hợp với agent vì latency ở nhiều bước nối tiếp có thể cộng dồn thành thời gian task rất lớn.",
+        "Các số liệu vẫn do vendor cung cấp và cần đọc trong phạm vi benchmark, model và operating point được công bố. Nhưng hướng đi có ý nghĩa: cạnh tranh inference không còn chỉ là mua GPU nhanh hơn; model provider lớn đang tự tối ưu full stack để giảm cost per successful task và tăng responsiveness của agent."
+      ],
+      "action": "Trong benchmark agent, thêm time-to-first-token, decode latency, energy hoặc compute cost và số bước tuần tự vào cùng một trace; đừng dùng một con số tokens/second để đại diện cho UX của toàn task.",
+      "sources": [
+        {
+          "label": "OpenAI — Jalapeño’s first results",
+          "url": "https://openai.com/index/jalapeno-first-results/",
+          "type": "official",
+          "published_at": "2026-08-25"
+        },
+        {
+          "label": "OpenAI — The full stack behind abundant intelligence",
+          "url": "https://openai.com/index/the-full-stack-behind-abundant-intelligence/",
+          "type": "official",
+          "published_at": "2026-08-25"
+        }
+      ]
+    },
+    {
+      "event_id": "openai-admin-plugin-launch",
+      "event_signature": {
+        "organization": "openai",
+        "product": "admin-plugin",
+        "action": "launch",
+        "artifact": "chatgpt-work-codex-admin-actions"
+      },
+      "published_at": "2026-08-25",
+      "id": "permission-aware-agent-operations",
+      "freshness": "NEW_TODAY",
+      "strength": "EMERGING",
+      "importance": "SECONDARY",
+      "editorial_theme": "agent-governance",
+      "editorial_angle": "admin-actions-with-existing-permissions",
+      "title": "Agent governance đang chuyển từ dashboard sang permission-aware actions",
+      "paragraphs": [
+        "OpenAI Admin plugin cho ChatGPT Work và Codex biến các thao tác quản trị như xem credit usage, kiểm tra effective permissions, quản lý member/group và xử lý spending requests thành tool actions trong hội thoại. Điểm đáng chú ý là plugin không tạo quyền mới; nó ánh xạ yêu cầu sang các read/write actions mà role hiện tại vốn đã được phép thực hiện.",
+        "Salesforce cùng ngày mở rộng Headless 360 theo hướng tương tự ở quy mô enterprise: business capabilities, MCP servers, Skills và workflows được expose cho agent nhưng vẫn kế thừa identity, permissions, metadata và governance hiện hữu. Hai thông báo độc lập cùng cho thấy control plane đang trở thành lớp sản phẩm rõ ràng của agent stack.",
+        "Với developer, implication khá thẳng: tool calling production không nên bypass hệ quyền của ứng dụng. Agent cần gọi cùng business capability mà con người hoặc service account được phép dùng, với audit trail, approval cho thay đổi rộng và kết quả có cấu trúc để xác nhận hành động đã thực sự xảy ra."
+      ],
+      "action": "Chọn một agent có write access và kiểm tra xem tool layer có tái sử dụng permission model hiện tại hay đang dùng credential quyền quá rộng. Nếu là vế sau, ưu tiên sửa boundary trước khi thêm tool mới.",
+      "sources": [
+        {
+          "label": "OpenAI — Introducing the Admin plugin for ChatGPT Work and Codex",
+          "url": "https://openai.com/index/introducing-admin-plugin/",
+          "type": "official",
+          "published_at": "2026-08-25"
+        },
+        {
+          "label": "Salesforce — Headless 360 expansion",
+          "url": "https://www.salesforce.com/ap/news/press-releases/2026/08/25/salesforce-turns-enterprise-applications-into-enterprise-capabilities/",
+          "type": "official",
+          "published_at": "2026-08-25"
+        }
+      ]
+    }
+  ],
+  "releases": [
+    {
+      "event_id": "perplexity-portable-computer-launch",
+      "event_signature": {
+        "organization": "perplexity",
+        "product": "portable-computer",
+        "action": "launch",
+        "artifact": "local-first-agent-runtime"
+      },
+      "published_at": "2026-08-25",
+      "product": "Perplexity Portable Computer",
+      "feature": "Local-first Computer runtime on NVIDIA DGX Spark",
+      "freshness": "NEW_TODAY",
+      "status": "RELEASED",
+      "summary": "Perplexity Computer có thể chạy local trên DGX Spark với Qwen 3.8 27B hoặc PPLX 27B, giữ dữ liệu riêng trên máy và chỉ chuyển phần việc ra cloud sau khi người dùng cho phép.",
+      "who_gets_it": "Perplexity Pro và Max trên NVIDIA DGX Spark; bản đầu tiên chạy Linux. Hỗ trợ Windows và RTX GPU PC được công bố là đang tới.",
+      "verdict": "TRY_NOW",
+      "verdict_note": "Đáng POC cho private code, tài liệu nội bộ hoặc workload lặp lại nếu có phần cứng phù hợp; benchmark completed-task quality và escalation rate trước khi coi local là rẻ hơn.",
+      "sources": [
+        {
+          "label": "Perplexity launch",
+          "url": "https://www.perplexity.ai/hub/blog/introducing-portable-computer-for-local-first-ai",
+          "type": "official",
+          "published_at": "2026-08-25"
+        }
+      ]
+    },
+    {
+      "event_id": "openai-admin-plugin-launch",
+      "event_signature": {
+        "organization": "openai",
+        "product": "admin-plugin",
+        "action": "launch",
+        "artifact": "chatgpt-work-codex-admin-actions"
+      },
+      "published_at": "2026-08-25",
+      "product": "ChatGPT Work / Codex",
+      "feature": "Admin plugin",
+      "freshness": "NEW_TODAY",
+      "status": "RELEASED",
+      "summary": "Admins có thể phân tích usage và credits, quản lý member/group, kiểm tra quyền, điều chỉnh giới hạn và xử lý spending requests trực tiếp trong hội thoại.",
+      "who_gets_it": "Workspace admins trong ChatGPT Work; plugin cài từ Plugins directory và tuân theo role, permissions và approval requirements hiện có.",
+      "verdict": "TRY_NOW",
+      "verdict_note": "Đáng thử ngay với workspace có Codex usage lớn vì giảm thời gian dò credit, access và limit issues mà không cần build dashboard riêng.",
+      "sources": [
+        {
+          "label": "OpenAI announcement",
+          "url": "https://openai.com/index/introducing-admin-plugin/",
+          "type": "official",
+          "published_at": "2026-08-25"
+        }
+      ]
+    },
+    {
+      "event_id": "anthropic-claude-unified-memory",
+      "event_signature": {
+        "organization": "anthropic",
+        "product": "claude-memory",
+        "action": "unify",
+        "artifact": "chat-cowork-memory"
+      },
+      "published_at": "2026-08-25",
+      "product": "Claude",
+      "feature": "Unified memory across chat and Cowork",
+      "freshness": "NEW_TODAY",
+      "status": "RELEASED",
+      "summary": "Memory dùng trong Claude chat giờ được chia sẻ với Cowork; người dùng có thể xem theo chủ đề, sửa hoặc xóa nội dung được nhớ.",
+      "verdict": "WATCH",
+      "verdict_note": "Tiện cho long-running work nhưng cần review memory policy trước khi dùng cho workflow chứa context nhạy cảm hoặc thay đổi thường xuyên.",
+      "sources": [
+        {
+          "label": "Anthropic announcement",
+          "url": "https://claude.com/blog/claudes-memory-works-everywhere-and-you-decide-whats-in-it",
+          "type": "official",
+          "published_at": "2026-08-25"
+        }
+      ]
+    }
+  ],
+  "developer_memo": {
+    "title": "Điều nên thử trong workflow hôm nay",
+    "direct_answer": "Có: thử một bài toán local-first nhỏ và audit permission boundary của một agent đang có write access.",
+    "actions": [
+      "Chọn một repo hoặc bộ tài liệu không quá lớn, chạy task bằng local model trước rồi chỉ cho phép cloud khi local không đủ; ghi lại chính xác phần dữ liệu nào rời máy.",
+      "Đổi dashboard agent sang cost per completed task, gồm số step, latency, retry, token/credit và tỷ lệ escalation thay vì chỉ theo token price.",
+      "Với agent có quyền thay đổi tài nguyên, map từng tool action về role/permission hiện có và thêm explicit approval cho hành động có blast radius lớn."
+    ],
+    "avoid": [
+      "Không mua phần cứng local chỉ vì inference không bị tính credit; tổng chi phí còn gồm hardware, điện, vận hành và chất lượng thấp hơn nếu phải retry nhiều.",
+      "Không coi benchmark chip do vendor công bố là hiệu năng trực tiếp của workload production.",
+      "Không để memory hoặc agent tool access trở thành đường vòng vượt qua permission model hiện hữu."
+    ]
+  },
+  "radar": [
+    {
+      "status": "CONFIRMED",
+      "text": "Portable Computer đã ra mắt cho Pro/Max trên NVIDIA DGX Spark, bản đầu chạy Linux; Perplexity nói Windows và RTX GPU PC support sẽ tới sau."
+    },
+    {
+      "status": "WATCH",
+      "text": "OpenAI dự kiến bắt đầu đưa Jalapeño vào hạ tầng inference cuối năm 2026; cần theo dõi xem lợi ích latency-per-watt có chuyển thành thay đổi giá hoặc fast-mode economics cho developer hay không."
+    },
+    {
+      "status": "WATCH",
+      "text": "Claude đang hợp nhất memory qua nhiều surfaces. Điều đáng theo dõi tiếp theo là enterprise controls cho retention, scope và portability của memory giữa chat, Cowork và agent workflows."
+    },
+    {
+      "status": "WATCH",
+      "text": "Salesforce Headless 360 đang biến business capabilities thành MCP servers và reusable Skills có governance; pattern 'build once, expose safely to many agents' có thể trở thành kiến trúc enterprise phổ biến."
+    }
+  ],
+  "takeaway": "Nếu hôm nay chỉ nhớ một điều: local AI đang trưởng thành ở phần harness, không chỉ ở model. Khi planner, router, queue, memory và tool execution có thể ở trên thiết bị, quyết định kiến trúc sẽ xoay quanh data boundary, escalation policy và cost per completed task nhiều hơn là chọn model nào đứng đầu benchmark.",
+  "content_contract": {
+    "renderer_must_not_require_html_in_content": true,
+    "allowed_rich_content": [
+      "paragraph",
+      "bullet",
+      "pullquote",
+      "source_link",
+      "editorial_visual_hint"
+    ],
+    "freshness_values": [
+      "NEW_TODAY",
+      "CONTEXT_72H"
+    ]
+  }
+}
