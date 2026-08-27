@@ -1,0 +1,44 @@
+name: Fix AI Morning 2026-08-27 once
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-2026-08-27-once.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Fix cutoff metadata
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFile, writeFile } from 'node:fs/promises';
+          const path = 'content/2026-08-27.json';
+          const edition = JSON.parse(await readFile(path, 'utf8'));
+          edition.meta.window_started_at = '2026-08-26T07:00:00+07:00';
+          edition.meta.cutoff_at = '2026-08-27T07:00:00+07:00';
+          await writeFile(path, JSON.stringify(edition, null, 2) + '\n');
+          NODE
+
+      - name: Refresh news index
+        run: npm run news:index
+
+      - name: Commit fix and remove one-shot workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/fix-2026-08-27-once.yml
+          git add content/2026-08-27.json data/news-index.json
+          git commit -m "Fix AI Morning 2026-08-27 metadata and news index"
+          git push
