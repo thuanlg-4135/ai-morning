@@ -2,8 +2,8 @@
   "schema_version": 3,
   "generated_from": {
     "first_edition": "2026-08-22",
-    "last_edition": "2026-08-26",
-    "edition_count": 5,
+    "last_edition": "2026-08-27",
+    "edition_count": 6,
     "source_registry_count": 39
   },
   "events": [
@@ -787,6 +787,211 @@
             "artifact": "agent-capability-layer"
           },
           "signature_key": "salesforce|headless-360|feature-update|agent-capability-layer",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "aws-agentcore-evaluations-framework-agnostic",
+      "event_signature": {
+        "organization": "aws",
+        "product": "bedrock-agentcore-evaluations",
+        "action": "feature-update",
+        "artifact": "framework-agnostic-opentelemetry-evaluation"
+      },
+      "signature_key": "aws|bedrock-agentcore-evaluations|feature-update|framework-agnostic-opentelemetry-evaluation",
+      "current_event_signature": {
+        "organization": "aws",
+        "product": "bedrock-agentcore-evaluations",
+        "action": "feature-update",
+        "artifact": "framework-agnostic-opentelemetry-evaluation"
+      },
+      "current_signature_key": "aws|bedrock-agentcore-evaluations|feature-update|framework-agnostic-opentelemetry-evaluation",
+      "first_published_at": "2026-08-26",
+      "first_edition": "2026-08-27",
+      "title": "AgentCore Evaluations tách evaluation khỏi framework bằng OpenTelemetry",
+      "fingerprint": "agentcore evaluations tach evaluation khoi framework bang opentelemetry",
+      "canonical_sources": [
+        "https://aws.amazon.com/blogs/machine-learning/evaluate-any-agent-framework-with-amazon-bedrock-agentcore-evaluations"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-27",
+          "section": "brief",
+          "published_at": "2026-08-26",
+          "event_signature": {
+            "organization": "aws",
+            "product": "bedrock-agentcore-evaluations",
+            "action": "feature-update",
+            "artifact": "framework-agnostic-opentelemetry-evaluation"
+          },
+          "signature_key": "aws|bedrock-agentcore-evaluations|feature-update|framework-agnostic-opentelemetry-evaluation",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "aws-agentcore-graduated-autonomy-pattern",
+      "event_signature": {
+        "organization": "aws",
+        "product": "bedrock-agentcore",
+        "action": "research-publication",
+        "artifact": "graduated-autonomy-pattern"
+      },
+      "signature_key": "aws|bedrock-agentcore|research-publication|graduated-autonomy-pattern",
+      "current_event_signature": {
+        "organization": "aws",
+        "product": "bedrock-agentcore",
+        "action": "research-publication",
+        "artifact": "graduated-autonomy-pattern"
+      },
+      "current_signature_key": "aws|bedrock-agentcore|research-publication|graduated-autonomy-pattern",
+      "first_published_at": "2026-08-26",
+      "first_edition": "2026-08-27",
+      "title": "AWS đề xuất graduated autonomy thay cho lựa chọn full-access hoặc read-only",
+      "fingerprint": "aws de xuat graduated autonomy thay cho lua chon full access hoac read only",
+      "canonical_sources": [
+        "https://aws.amazon.com/blogs/architecture/closing-the-ai-agent-trust-gap-with-graduated-autonomy"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-27",
+          "section": "brief",
+          "published_at": "2026-08-26",
+          "event_signature": {
+            "organization": "aws",
+            "product": "bedrock-agentcore",
+            "action": "research-publication",
+            "artifact": "graduated-autonomy-pattern"
+          },
+          "signature_key": "aws|bedrock-agentcore|research-publication|graduated-autonomy-pattern",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "google-gemini-3-5-transcribe-launch",
+      "event_signature": {
+        "organization": "google",
+        "product": "gemini-3-5-transcribe",
+        "action": "launch",
+        "artifact": "context-aware-real-time-speech-to-text"
+      },
+      "signature_key": "google|gemini-3-5-transcribe|launch|context-aware-real-time-speech-to-text",
+      "current_event_signature": {
+        "organization": "google",
+        "product": "gemini-3-5-transcribe",
+        "action": "launch",
+        "artifact": "context-aware-real-time-speech-to-text"
+      },
+      "current_signature_key": "google|gemini-3-5-transcribe|launch|context-aware-real-time-speech-to-text",
+      "first_published_at": "2026-08-26",
+      "first_edition": "2026-08-27",
+      "title": "Speech-to-text đang hấp thụ thêm trách nhiệm ngữ nghĩa của voice pipeline",
+      "fingerprint": "speech to text dang hap thu them trach nhiem ngu nghia cua voice pipeline",
+      "canonical_sources": [
+        "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5-transcribe"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-27",
+          "section": "trends",
+          "published_at": "2026-08-26",
+          "event_signature": {
+            "organization": "google",
+            "product": "gemini-3-5-transcribe",
+            "action": "launch",
+            "artifact": "context-aware-real-time-speech-to-text"
+          },
+          "signature_key": "google|gemini-3-5-transcribe|launch|context-aware-real-time-speech-to-text",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "google-gemini-live-productivity-update",
+      "event_signature": {
+        "organization": "google",
+        "product": "gemini-live",
+        "action": "feature-update",
+        "artifact": "productivity-and-hands-free-action-features"
+      },
+      "signature_key": "google|gemini-live|feature-update|productivity-and-hands-free-action-features",
+      "current_event_signature": {
+        "organization": "google",
+        "product": "gemini-live",
+        "action": "feature-update",
+        "artifact": "productivity-and-hands-free-action-features"
+      },
+      "current_signature_key": "google|gemini-live|feature-update|productivity-and-hands-free-action-features",
+      "first_published_at": "2026-08-26",
+      "first_edition": "2026-08-27",
+      "title": "Gemini Live — Personal Intelligence, Daily Brief, Spark và hands-free productivity workflows",
+      "fingerprint": "gemini live personal intelligence daily brief spark va hands free productivity workflows",
+      "canonical_sources": [
+        "https://blog.google/innovation-and-ai/products/gemini-app/productivity-features-gemini-live"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-27",
+          "section": "releases",
+          "published_at": "2026-08-26",
+          "event_signature": {
+            "organization": "google",
+            "product": "gemini-live",
+            "action": "feature-update",
+            "artifact": "productivity-and-hands-free-action-features"
+          },
+          "signature_key": "google|gemini-live|feature-update|productivity-and-hands-free-action-features",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "openai-hugging-face-cyber-incident",
+      "event_signature": {
+        "organization": "openai",
+        "product": "cybersecurity-evaluations",
+        "action": "incident",
+        "artifact": "hugging-face-containment-breach"
+      },
+      "signature_key": "openai|cybersecurity-evaluations|incident|hugging-face-containment-breach",
+      "current_event_signature": {
+        "organization": "openai",
+        "product": "cybersecurity-evaluations",
+        "action": "incident",
+        "artifact": "hugging-face-containment-breach"
+      },
+      "current_signature_key": "openai|cybersecurity-evaluations|incident|hugging-face-containment-breach",
+      "first_published_at": "2026-08-26",
+      "first_edition": "2026-08-27",
+      "title": "Containment đã chuyển từ safety policy thành runtime requirement có blast radius thật",
+      "fingerprint": "containment da chuyen tu safety policy thanh runtime requirement co blast radius that",
+      "canonical_sources": [
+        "https://openai.com/index/hugging-face-incident-and-the-road-ahead"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-27",
+          "section": "trends",
+          "published_at": "2026-08-26",
+          "event_signature": {
+            "organization": "openai",
+            "product": "cybersecurity-evaluations",
+            "action": "incident",
+            "artifact": "hugging-face-containment-breach"
+          },
+          "signature_key": "openai|cybersecurity-evaluations|incident|hugging-face-containment-breach",
           "material_update": null,
           "update_kind": null,
           "dedupe_override_reason": null

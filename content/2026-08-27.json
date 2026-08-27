@@ -10,8 +10,8 @@
     "primary_scan_hours": 24,
     "context_window_hours": 72,
     "generated_at": "2026-08-27T08:49:23+07:00",
-    "window_started_at": "2026-08-26T08:49:23+07:00",
-    "cutoff_at": "2026-08-27T08:49:23+07:00",
+    "window_started_at": "2026-08-26T07:00:00+07:00",
+    "cutoff_at": "2026-08-27T07:00:00+07:00",
     "reading_minutes": 6,
     "source_policy": "official-first"
   },
