@@ -3,131 +3,165 @@
   "edition_date": "2026-08-27",
   "locale": "vi-VN",
   "edition_type": "daily_ai_catchup",
-  "edition_mode": "QUIET",
-  "headline": "Assistants API qua hạn: agent stack buộc phải rời object model cũ",
-  "dek": "Cửa sổ 24 giờ qua khá yên về frontier model, nhưng có một thay đổi vận hành không nên bỏ qua: ngày sunset 26/8 của OpenAI Assistants API đã tới. Với đội còn giữ assistant/thread/run semantics, ưu tiên hôm nay không phải đổi model mà là xác nhận production traffic đã nằm trên Responses/Conversations và kiểm tra dữ liệu hội thoại cần giữ lại.",
+  "edition_mode": "NORMAL",
+  "headline": "Voice agent bớt phụ thuộc pipeline ghép: Gemini 3.5 Transcribe đưa hiểu ngữ cảnh vào speech-to-text",
+  "dek": "Tín hiệu mới đáng thử nhất trong cửa sổ hôm nay đến từ lớp audio: Google giới thiệu Gemini 3.5 Transcribe cho transcription thời gian thực, nhắm vào tiếng ồn, jargon và định dạng đầu ra thay vì chỉ chép âm thanh thô. Song song, mốc sunset Assistants API của OpenAI đã qua, nên với agent production, việc cần làm vẫn là kiểm tra boundary và migration thay vì đổi framework theo tin mới.",
   "meta": {
     "primary_scan_hours": 24,
     "context_window_hours": 72,
-    "generated_at": "2026-08-27T08:29:51+07:00",
-    "window_started_at": "2026-08-26T08:29:51+07:00",
-    "cutoff_at": "2026-08-27T08:29:51+07:00",
-    "reading_minutes": 4,
+    "generated_at": "2026-08-27T08:49:23+07:00",
+    "window_started_at": "2026-08-26T08:49:23+07:00",
+    "cutoff_at": "2026-08-27T08:49:23+07:00",
+    "reading_minutes": 5,
     "source_policy": "official-first"
   },
   "hero_visual": {
     "kind": "editorial",
-    "key": "assistants-to-responses-migration-boundary",
-    "caption": "Sunset API là ranh giới vận hành: model có thể giữ nguyên, nhưng state, tool orchestration và conversation lifecycle phải chuyển sang surface được hỗ trợ."
+    "key": "audio-context-to-structured-transcript",
+    "caption": "Speech-to-text đang dịch từ bước tiền xử lý độc lập sang một primitive có hiểu ngữ cảnh, định dạng và hội thoại thời gian thực."
   },
   "brief": [
     {
       "freshness": "NEW_TODAY",
-      "text": "Mốc sunset 26/8 của OpenAI Assistants API đã qua; developer nên kiểm tra production không còn phụ thuộc vào assistant/thread/run flow cũ và chuyển sang Responses API cùng conversation state phù hợp."
+      "text": "Google giới thiệu Gemini 3.5 Transcribe, model speech-to-text mới cho transcription thời gian thực, tập trung vào tiếng ồn, jargon, disfluency cleanup và đầu ra đã được định dạng."
+    },
+    {
+      "freshness": "NEW_TODAY",
+      "text": "Gemini Live tiếp tục dịch từ voice chat sang agent surface có thể xử lý inbox và các tác vụ nhiều bước; với developer, signal quan trọng là voice đang trở thành input/action channel chứ không chỉ giao diện hội thoại."
+    },
+    {
+      "freshness": "NEW_TODAY",
+      "text": "Mốc sunset 26/8 của OpenAI Assistants API đã qua; production còn assistant/thread/run dependency cần ưu tiên cutover và regression test trên Responses/Conversations."
     },
     {
       "freshness": "CONTEXT_72H",
-      "text": "OpenAI đã deprecate lệnh `codex mcp-server`; hướng tích hợp Codex hiện tại là Codex app server, còn Claude Code có Codex plugin riêng. Đây là thay đổi integration surface, không phải lý do để thay toàn bộ MCP stack."
+      "text": "OpenAI đã deprecate `codex mcp-server`; hướng tích hợp Codex hiện tại là Codex app server, còn Claude Code có Codex plugin riêng. Đây là thay đổi integration surface, không phải lý do thay toàn bộ MCP stack."
     },
     {
       "freshness": "CONTEXT_72H",
-      "text": "Perplexity Portable Computer đẩy local AI từ model-on-device sang cả agent harness chạy local, làm data boundary và escalation policy trở thành metric kiến trúc thực tế hơn token price đơn lẻ."
-    },
-    {
-      "freshness": "CONTEXT_72H",
-      "text": "OpenAI Jalapeño cho thấy agent economics đang được tối ưu xuống silicon, nhưng số đo hiện tại vẫn là benchmark do vendor công bố và chưa nên dùng thay production trace."
-    },
-    {
-      "freshness": "CONTEXT_72H",
-      "text": "Claude đã hợp nhất memory giữa chat và Cowork, tiếp tục xu hướng agent state đi xuyên qua nhiều bề mặt làm việc thay vì bị khóa trong một session riêng."
+      "text": "Các agent runtime gần đây tiếp tục đẩy state, permission, tool routing và local/cloud escalation thành metric kiến trúc quan trọng hơn việc chỉ so token price."
     }
   ],
   "trends": [
     {
-      "id": "agent-platforms-retire-hosted-object-models",
+      "id": "speech-to-text-becomes-context-aware-agent-primitive",
       "freshness": "NEW_TODAY",
-      "strength": "ESTABLISHED",
-      "title": "Agent platform đang chuyển từ object model riêng sang primitive dùng chung",
+      "strength": "EMERGING",
+      "title": "Speech-to-text đang trở thành primitive có ngữ cảnh cho voice agent",
       "paragraphs": [
-        "Assistants API từng gom model configuration, thread, message và run thành một object model riêng cho agent. Khi mốc sunset 26/8 đi qua, hướng được OpenAI đặt ở trung tâm developer platform là Responses API cho model/tool execution và Agents SDK cho orchestration code-first. Điều đáng chú ý không phải tên endpoint mới, mà là ranh giới trách nhiệm dịch về phía application rõ hơn.",
-        "Với hệ thống production, migration không nên được hiểu là tìm một wrapper có API giống Assistants rồi thay import. Hãy kiểm tra từng dependency: nơi lưu conversation state, cách resume turn, tool schema, file search/vector store, retry, tracing và approval. Nếu application từng coi thread ID là nguồn sự thật duy nhất, đây là lúc xác định dữ liệu nào thực sự phải tồn tại lâu dài và ai sở hữu lifecycle của nó.",
-        "Đây cũng là lý do không nên mở rộng scope thành một agent-platform rewrite. Nếu workload đã chạy ổn trên Responses, giữ nguyên architecture và chỉ đóng compatibility gap. Nếu vẫn còn Assistants traffic, ưu tiên cutover, regression test và observability trước khi thêm framework hoặc abstraction mới."
+        "Google giới thiệu Gemini 3.5 Transcribe như một speech-to-text model cho transcription thời gian thực, với mục tiêu xử lý tốt hơn background noise, jargon và disfluency đồng thời tạo transcript đã được làm sạch và định dạng. Điểm đáng chú ý với software engineer không nằm ở việc có thêm một ASR model, mà ở chỗ lớp transcription bắt đầu nhận nhiều trách nhiệm ngữ nghĩa vốn thường được xử lý bằng các bước hậu kỳ riêng.",
+        "Trong voice agent truyền thống, audio thường đi qua ASR, normalization, punctuation, entity cleanup rồi mới tới LLM. Nếu một model transcription có thể hấp thụ một phần các bước đó mà vẫn giữ latency phù hợp, pipeline có thể ngắn hơn và giảm số điểm failure. Tuy nhiên, claim chất lượng hiện chủ yếu đến từ Google; production evaluation vẫn phải dùng audio thật của domain, đặc biệt với tiếng Việt, code-switching, tên riêng và thuật ngữ kỹ thuật.",
+        "Gemini Live cùng ngày cũng mở rộng voice thành bề mặt để xử lý inbox và multi-step work. Hai thay đổi cùng cho thấy voice đang dịch từ một modality nhập liệu sang một agent interface có action. Điều đó làm permission, confirmation và transcript observability quan trọng hơn: sai một từ trong chat gây khó chịu, nhưng sai entity trước một tool call có thể tạo side effect."
       ],
-      "pullquote": "API sunset không yêu cầu đổi model; nó yêu cầu biết chính xác application đang giao state và orchestration cho ai.",
-      "action": "Search codebase và telemetry cho `/v1/assistants`, `/v1/threads`, beta Assistants SDK calls và persisted thread IDs; với mỗi hit, map sang Responses/Conversations hoặc application-owned state rồi chạy một regression suite trên các flow có tool.",
+      "pullquote": "Khi transcript đứng ngay trước tool call, word error rate không còn là metric duy nhất; entity accuracy và confirmation boundary mới quyết định agent có an toàn hay không.",
+      "action": "Nếu có voice workflow, dựng một eval nhỏ bằng audio thật gồm tiếng Việt, code-switching, tên người, tên sản phẩm và jargon; đo entity accuracy, latency và tỷ lệ cần sửa thủ công trước khi cân nhắc thay pipeline hiện tại.",
       "visual": {
         "kind": "editorial",
-        "key": "assistant-object-model-to-response-primitives",
-        "caption": "Tách model/tool execution khỏi conversation state giúp migration được kiểm tra theo boundary thay vì thay cả agent framework."
+        "key": "voice-pipeline-collapse-with-guardrails",
+        "caption": "Pipeline voice có thể ngắn hơn, nhưng trước action vẫn cần entity validation, permission và confirmation."
       },
       "sources": [
         {
-          "label": "OpenAI API Platform — Responses API and Agents SDK build paths",
-          "url": "https://platform.openai.com/overview",
+          "label": "Google — Intelligent transcription with Gemini 3.5 Transcribe",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5-transcribe/",
           "type": "official"
         },
         {
-          "label": "OpenAI Developer Community — Assistants API beta deprecation notice",
-          "url": "https://community.openai.com/c/announcements/6",
+          "label": "Google — Turn your voice into action with new productivity features in Gemini Live",
+          "url": "https://blog.google/innovation-and-ai/products/gemini-app/productivity-features-gemini-live/",
           "type": "official"
         }
       ]
     },
     {
-      "id": "agent-runtime-boundaries-over-model-churn",
-      "freshness": "CONTEXT_72H",
-      "strength": "ACCELERATING",
-      "title": "Agent engineering đang tập trung vào runtime boundary hơn là model churn",
+      "id": "agent-platform-boundaries-over-framework-churn",
+      "freshness": "NEW_TODAY",
+      "strength": "ESTABLISHED",
+      "title": "Agent production vẫn là bài toán boundary, không phải framework churn",
       "paragraphs": [
-        "Ba tín hiệu trong vài ngày gần đây cùng chỉ về một hướng: local-first runtime của Perplexity đặt ranh giới local/cloud vào harness; Claude memory mở state xuyên bề mặt; OpenAI tiếp tục thu gọn các integration surface cũ quanh Codex và developer API. Phần tạo khác biệt ngày càng nằm ở state, permissions, tool routing, approval và escalation chứ không chỉ ở model đứng sau agent.",
-        "Điều này thay đổi cách benchmark. Một agent nhanh hơn ở single prompt vẫn có thể kém hơn trong production nếu retry nhiều, gọi cloud quá thường xuyên, giữ permission quá rộng hoặc không resume được state. Metric có ích hơn là completion rate, end-to-end latency, retries, tool failures, escalation rate và cost per completed task.",
-        "Với team phần mềm, chưa có lý do đổi framework chỉ để theo trend. Giá trị ngắn hạn là instrument các boundary hiện có để biết failure nằm ở model, harness, tool hay permission. Khi dữ liệu đó rõ, quyết định migrate framework hoặc đưa workload xuống local mới có cơ sở."
+        "Mốc sunset Assistants API 26/8 đã qua. Với hệ thống còn giữ assistant/thread/run semantics, migration nên được chia theo boundary: conversation state, tool schema, file search, retry, tracing và approval. Việc endpoint cũ hết vòng đời không tự động tạo lý do để thay model hoặc viết lại toàn bộ orchestration.",
+        "Các tín hiệu 72 giờ gần đây cũng đi cùng hướng: Codex thu gọn integration surface cũ, agent runtime quan tâm nhiều hơn tới state và permission, còn voice agent tăng khả năng tạo side effect. Khi capability tăng, giá trị engineering nằm ở việc biết model được phép làm gì, state nằm ở đâu, tool call nào cần approval và failure được trace thế nào.",
+        "Do đó, metric nên đi từ model benchmark sang completed-task rate, tool failure, retry, latency, permission denial và escalation. Chỉ khi các số này cho thấy bottleneck nằm ở harness hoặc framework thì refactor lớn mới có cơ sở."
       ],
-      "action": "Thêm trace cho một workflow agent quan trọng theo từng step: model call, tool call, approval, retry, state read/write và cloud escalation; dùng completed-task metrics làm baseline trước mọi refactor lớn.",
+      "action": "Search production telemetry cho Assistants API dependency và instrument một workflow agent quan trọng theo model call, tool call, approval, retry và state read/write trước mọi quyết định đổi framework.",
       "sources": [
         {
-          "label": "OpenAI — Product release notes",
-          "url": "https://openai.com/products/release-notes/",
+          "label": "OpenAI — Developer platform overview",
+          "url": "https://platform.openai.com/overview",
           "type": "official"
         },
         {
-          "label": "OpenAI API Platform — Developer build paths",
-          "url": "https://platform.openai.com/overview",
+          "label": "OpenAI — Product release notes",
+          "url": "https://openai.com/products/release-notes/",
           "type": "official"
         }
       ]
     }
   ],
-  "releases": [],
+  "releases": [
+    {
+      "product": "Gemini 3.5 Transcribe",
+      "feature": "Context-aware real-time speech-to-text",
+      "freshness": "NEW_TODAY",
+      "status": "RELEASED",
+      "summary": "Google giới thiệu model transcription mới nhằm tạo transcript chính xác và được làm sạch trực tiếp từ audio, kể cả trong điều kiện noise, jargon và disfluency phức tạp.",
+      "who_gets_it": "Các bề mặt Gemini/Android được Google mô tả đang dùng capability transcription mới; developer nên kiểm tra tài liệu API và availability theo region/project trước khi đưa vào production.",
+      "verdict": "TRY_NOW",
+      "verdict_note": "Đáng benchmark trên một tập audio domain nhỏ nếu sản phẩm có voice, meeting, support hoặc dictation; chưa nên thay ASR production chỉ dựa trên benchmark/vendor claim.",
+      "sources": [
+        {
+          "label": "Google — Gemini 3.5 Transcribe announcement",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5-transcribe/",
+          "type": "official"
+        }
+      ]
+    },
+    {
+      "product": "Gemini Live",
+      "feature": "Personal Intelligence, Daily Brief, Spark và hands-free inbox workflows",
+      "freshness": "NEW_TODAY",
+      "status": "ROLLING_OUT",
+      "summary": "Gemini Live mở rộng voice interaction sang các tác vụ productivity và multi-step delegation, củng cố hướng voice-as-action surface.",
+      "verdict": "WATCH",
+      "verdict_note": "Theo dõi permission model, confirmation UX và API surface; đây chưa phải lý do thay workflow developer hiện tại.",
+      "sources": [
+        {
+          "label": "Google — Gemini Live productivity features",
+          "url": "https://blog.google/innovation-and-ai/products/gemini-app/productivity-features-gemini-live/",
+          "type": "official"
+        }
+      ]
+    }
+  ],
   "developer_memo": {
     "title": "Có cần đổi workflow hôm nay không?",
-    "direct_answer": "Chưa cần thay đổi workflow hiện tại, trừ khi production vẫn còn phụ thuộc vào Assistants API.",
+    "direct_answer": "Chưa cần thay đổi workflow hiện tại; chỉ nên chạy một eval nhỏ nếu sản phẩm thực sự có voice workflow hoặc còn Assistants API dependency.",
     "actions": [
-      "Grep code và kiểm tra telemetry cho Assistants/thread/run calls; nếu không còn hit production, ghi nhận migration hoàn tất và không mở thêm scope.",
-      "Nếu còn dependency, ưu tiên một vertical slice sang Responses/Conversations, giữ nguyên model và business behavior để regression dễ đo.",
-      "Đưa completion rate, tool failure, retry và end-to-end latency vào trace trước khi cân nhắc đổi agent framework."
+      "Nếu có voice feature, tạo eval 20-50 audio sample thật và đo entity accuracy, latency, code-switching cùng tỷ lệ sửa transcript trước khi thử thay ASR.",
+      "Grep code và telemetry cho Assistants/thread/run calls; nếu không còn production hit, đóng migration thay vì mở thêm scope.",
+      "Với agent có side effect, log transcript/entity được dùng để tạo tool arguments và giữ confirmation ở action nhạy cảm."
     ],
     "avoid": [
+      "Không thay voice stack chỉ vì model transcription mới được công bố; benchmark trên dữ liệu domain trước.",
       "Không biến API sunset thành lý do rewrite toàn bộ agent architecture nếu compatibility gap có thể đóng nhỏ hơn.",
-      "Không giả định conversation state tự động được bảo toàn chỉ vì model và tool tương đương.",
-      "Không thêm abstraction mới trước khi migration path hiện tại đã có regression test."
+      "Không cho voice transcript chưa xác nhận đi thẳng vào destructive tool call."
     ]
   },
   "radar": [
     {
       "status": "CONFIRMED",
-      "text": "OpenAI đang đặt Responses API và Agents SDK làm hai build path chính trên developer platform; nên coi đây là baseline khi bắt đầu integration mới."
+      "text": "Google đang đẩy voice từ conversation sang action surface; theo dõi developer API và availability của các capability mới trước khi thiết kế integration production."
     },
     {
       "status": "WATCH",
-      "text": "Theo dõi incident hoặc migration edge case xuất hiện sau mốc Assistants sunset, đặc biệt với thread history, file search và long-running tool workflows."
+      "text": "Theo dõi independent evaluation của Gemini 3.5 Transcribe trên multilingual audio, đặc biệt tiếng Việt, code-switching và domain jargon."
     },
     {
       "status": "WATCH",
-      "text": "MCP tiếp tục có các working group về fine-grained authorization, gateways và inspector; chỉ đưa thay đổi vào production khi specification/extension và conformance tooling đủ ổn định."
+      "text": "Theo dõi migration edge case sau mốc Assistants API sunset, nhất là thread history, file search và long-running tool workflows."
     }
   ],
-  "takeaway": "Nếu hôm nay chỉ nhớ một điều: đừng dùng API sunset để biện minh cho một cuộc rewrite. Xác nhận traffic cũ đã hết, bảo toàn state và behavior, đo regression, rồi mới tối ưu agent stack.",
+  "takeaway": "Nếu hôm nay chỉ nhớ một điều: voice agent đang tiến gần hơn tới pipeline hiểu ngữ cảnh và có action, nhưng đừng đổi stack theo announcement. Eval trên audio thật, giữ confirmation boundary, và chỉ refactor khi số liệu production chứng minh có giá trị.",
   "content_contract": {
     "renderer_must_not_require_html_in_content": true,
     "allowed_rich_content": ["paragraph", "bullet", "pullquote", "source_link", "editorial_visual_hint"],
