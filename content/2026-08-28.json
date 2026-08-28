@@ -55,7 +55,7 @@
       "event_signature": {
         "organization": "anthropic",
         "product": "model-hardware-standard",
-        "action": "research-preview",
+        "action": "preview",
         "artifact": "shared-agent-device-interface"
       },
       "published_at": "2026-08-27",
@@ -157,7 +157,7 @@
       "event_signature": {
         "organization": "vercel",
         "product": "ai-sdk-harness",
-        "action": "adapter-release",
+        "action": "integration",
         "artifact": "cursor-harness-adapter"
       },
       "published_at": "2026-08-27",
@@ -183,7 +183,7 @@
       "event_signature": {
         "organization": "vercel",
         "product": "ai-gateway",
-        "action": "model-availability",
+        "action": "release",
         "artifact": "ling-3-0-flash-fin"
       },
       "published_at": "2026-08-27",
