@@ -4,8 +4,8 @@
   "locale": "vi-VN",
   "edition_type": "daily_ai_catchup",
   "edition_mode": "NORMAL",
-  "headline": "Agent bắt đầu chạm tới hardware thật, còn coding workflow tiếp tục thu hẹp khoảng cách giữa agent, repo và review",
-  "dek": "Cửa sổ 24 giờ qua không có một frontier model mới đủ sức chi phối câu chuyện. Signal đáng chú ý hơn nằm ở integration surface: Anthropic mở research preview cho Model Hardware Standard để agent điều khiển thiết bị vật lý qua interface chung; Cursor cho Cloud Agent khởi tạo dự án mà chưa cần repo; GitHub và Vercel tiếp tục biến review và harness thành lớp trung gian giữa nhiều coding agent. Với software engineer, trọng tâm hôm nay là boundary và portability, không phải đổi model.",
+  "headline": "AI agent đang làm được nhiều việc hơn ngoài chuyện viết code",
+  "dek": "Hôm nay không có model mới nào đủ lớn để buộc developer phải đổi công cụ. Điều đáng chú ý hơn là agent đang mở rộng phạm vi làm việc: Anthropic thử cho agent điều khiển thiết bị thật, Cursor cho agent tạo project trước khi có repo, còn GitHub giúp AI review cả pull request do AI khác tạo. Với phần lớn developer, đây là ngày để quan sát và thử nhỏ, chưa phải ngày để đổi workflow.",
   "meta": {
     "primary_scan_hours": 24,
     "context_window_hours": 72,
@@ -18,7 +18,7 @@
   "hero_visual": {
     "kind": "editorial",
     "key": "agent-interface-expands-from-code-to-hardware",
-    "caption": "Agent interface đang mở rộng từ code và browser sang repo lifecycle, review loop và thiết bị vật lý, kéo theo yêu cầu chặt hơn về permission, portability và failure recovery."
+    "caption": "Agent đang đi từ viết code và dùng browser sang review code, tạo project và thậm chí điều khiển thiết bị vật lý."
   },
   "brief": [
     {
@@ -31,8 +31,8 @@
       },
       "published_at": "2026-08-27",
       "freshness": "NEW_TODAY",
-      "title": "Copilot code review mở full agentic review cho PR do agent tạo và bỏ giới hạn PR rất lớn",
-      "text": "GitHub mở rộng Copilot code review cho pull request được tạo bởi bot, gồm PR từ Copilot cloud agent, và loại bỏ giới hạn cũ 300 file hoặc 20.000 dòng. Với org bật policy cho review không cần Copilot license, usage của bot-authored PR có thể được bill trực tiếp về tổ chức. Practical impact là agent-to-agent review dễ đưa vào flow tự động hơn, nhưng team cần theo dõi AI Credits và GitHub Actions minutes thay vì xem review loop là miễn phí.",
+      "title": "GitHub Copilot giờ review được cả PR do AI agent tạo",
+      "text": "GitHub mở rộng Copilot code review để review pull request do bot tạo, gồm cả PR từ Copilot cloud agent. Giới hạn cũ với PR trên 300 file hoặc 20.000 dòng cũng được bỏ. Nói đơn giản: một AI agent có thể viết code và tạo PR, sau đó Copilot tiếp tục làm vòng review. Điều cần để ý là các vòng review tự động này vẫn có thể tiêu tốn AI Credits và GitHub Actions minutes.",
       "sources": [
         {
           "label": "GitHub — Copilot code review: Resolution reasons and expanded capabilities",
@@ -65,18 +65,18 @@
       "importance": "LEAD",
       "editorial_theme": "agent-infrastructure",
       "editorial_angle": "physical-device-control",
-      "title": "Agent interface đang vượt khỏi software tool và tiến vào hardware có side effect vật lý",
+      "title": "Anthropic đang thử cho AI agent điều khiển thiết bị thật",
       "paragraphs": [
-        "Anthropic mở research preview của Model Hardware Standard, một specification chung để AI agent vận hành các thiết bị có programmable interface như microscope, liquid handler và robotic arm. MHS được phát triển cùng HHMI Janelia Research Campus, hiện mới mở cho nhóm lab và nhà sản xuất đầu tiên, trước khi Anthropic dự kiến open source standard. Đây chưa phải GA và cũng chưa phải một tiêu chuẩn ngành đã được kiểm chứng rộng.",
-        "Điểm đáng chú ý với software engineer là cách MHS cố tách device integration khỏi từng model hoặc harness. Anthropic mô tả MHS là model-agnostic và có thể được agent harness truy cập qua protocol chuẩn như MCP. Nếu hướng này giữ được interoperability, cùng một orchestration layer có thể đi từ tool call thuần software sang device action mà không phải viết bespoke adapter cho từng thiết bị.",
-        "Nhưng physical actuation làm failure model đổi hẳn. Retry một HTTP request sai đã khó; retry sai một liquid handler hoặc robotic arm có thể phá mẫu, thiết bị hoặc quy trình. Vì vậy permission scope, simulation mode, idempotency, state verification, emergency stop và audit trail phải trở thành part of interface contract chứ không chỉ nằm ở business logic phía sau."
+        "Anthropic giới thiệu bản thử nghiệm Model Hardware Standard, gọi tắt là MHS. Ý tưởng khá dễ hiểu: thay vì mỗi loại máy cần một cách tích hợp riêng, MHS muốn tạo một giao diện chung để AI agent có thể ra lệnh cho các thiết bị lập trình được như kính hiển vi, máy xử lý chất lỏng hay cánh tay robot. Hiện đây mới là research preview cho một số phòng lab và nhà sản xuất, chưa phải sản phẩm GA.",
+        "Với developer, điểm thú vị là cách kết nối. Anthropic muốn giao diện này không phụ thuộc vào một model cụ thể và có thể đi qua những protocol như MCP. Nếu cách làm này trưởng thành, developer có thể dùng một lớp agent để nói chuyện với nhiều loại thiết bị thay vì tự viết adapter riêng cho từng máy.",
+        "Nhưng điều khiển hardware khác hẳn gọi API. Một request lỗi có thể retry, còn một cánh tay robot hoặc máy thí nghiệm chạy sai có thể làm hỏng đồ thật. Vì vậy quyền hạn, chế độ mô phỏng, bước xác nhận và nút dừng an toàn quan trọng hơn chuyện agent có thông minh tới đâu."
       ],
-      "pullquote": "Khi tool call chạm vào thế giới vật lý, 'can the agent do it?' phải đứng sau 'can we bound and verify the side effect?'.",
-      "action": "Nếu team có robotics, lab automation hoặc IoT workflow, chưa cần migrate. Hãy map trước các command có side effect, command nào idempotent, command nào cần human confirmation và command nào bắt buộc có hardware-level interlock; sau đó mới đánh giá MHS như một adapter layer.",
+      "pullquote": "Khi AI có thể tác động lên đồ vật thật, câu hỏi đầu tiên không còn là 'agent làm được không?' mà là 'nếu nó làm sai thì chuyện gì xảy ra?'.",
+      "action": "Nếu công việc không liên quan robotics, IoT hoặc lab automation thì chỉ cần theo dõi. Nếu có, hãy thử trong môi trường mô phỏng trước và xác định rõ lệnh nào cần người xác nhận.",
       "visual": {
         "kind": "editorial",
         "key": "software-agent-to-physical-device-boundaries",
-        "caption": "Một agent có thể gọi cùng interface chung, nhưng simulation, permission, interlock và audit vẫn phải nằm giữa reasoning và hardware action."
+        "caption": "Giữa quyết định của agent và hành động của thiết bị thật vẫn cần permission, simulation, kiểm tra trạng thái và cơ chế dừng an toàn."
       },
       "sources": [
         {
@@ -102,13 +102,13 @@
       "importance": "SECONDARY",
       "editorial_theme": "coding-agents",
       "editorial_angle": "workspace-before-repository",
-      "title": "Coding agent bắt đầu tạo workspace trước cả khi repository tồn tại",
+      "title": "Cursor Agent giờ có thể tạo project dù chưa có Git repo",
       "paragraphs": [
-        "Cursor Cloud Agents giờ có thể bắt đầu từ một prompt mà không cần repo hoặc SCM provider đã kết nối. Cursor tạo workspace và Origin repo ở phía sau, cho phép user preview kết quả trong browser rồi chỉ lưu thành repo khi muốn. Đây là thay đổi nhỏ về UI nhưng là signal lớn hơn về ownership: agent workspace đang dịch từ consumer của repository sang nơi repository có thể được sinh ra.",
-        "Với prototyping, flow này giảm friction rõ rệt. Nhưng với production engineering, source control vẫn là boundary quan trọng cho review, policy, provenance và rollback. Repo được tạo sau không có nghĩa repo không còn quan trọng; nó chỉ cho thấy quá trình tạo software đang có thêm một staging layer trước version control.",
-        "Team nên xem các workspace kiểu này như disposable build environment cho discovery và spike. Khi work vượt khỏi prototype, branch policy, CI, secret handling và ownership cần được materialize rõ vào repository thay vì để project sống lâu trong một agent-managed sandbox."
+        "Cursor Cloud Agents giờ có thể bắt đầu chỉ từ một prompt. Bạn không cần tạo Git repo hay kết nối GitHub trước. Cursor tự dựng workspace để agent làm việc, cho bạn xem kết quả trên browser, rồi mới lưu thành repo khi cần.",
+        "Điều này khá tiện cho prototype: có ý tưởng, mô tả cho agent và xem thử sản phẩm trước khi phải chuẩn bị repository. Nhưng với code thật đi production, Git vẫn rất quan trọng vì đó là nơi team review thay đổi, chạy CI, quản lý lịch sử và rollback.",
+        "Cách dùng hợp lý nhất hiện tại là coi workspace không có repo như một bàn nháp. Khi prototype bắt đầu trở thành feature thật, hãy đưa code vào repo và quay lại quy trình review, CI và quản lý secret bình thường."
       ],
-      "action": "Dùng repo-less agent flow cho spike hoặc prototype có exit criteria rõ. Trước khi tiếp tục thành feature thật, materialize code vào repo có CI, review policy, secret boundary và ownership thay vì kéo dài sandbox lifecycle.",
+      "action": "Đáng thử cho prototype hoặc spike nhỏ. Đừng bỏ Git khỏi workflow production chỉ vì agent giờ có thể bắt đầu trước khi repo tồn tại.",
       "sources": [
         {
           "label": "Cursor — Start from scratch, without a repo",
@@ -130,13 +130,13 @@
       },
       "published_at": "2026-08-27",
       "product": "Gemini Omni 1.1 Flash",
-      "feature": "GA video generation/editing với scene extension, first/last-frame interpolation và resolution control tới 4K",
+      "feature": "Tạo và chỉnh video, hỗ trợ output tới 4K",
       "freshness": "NEW_TODAY",
       "status": "GA",
-      "summary": "Google đưa `gemini-omni-1.1-flash` lên GA trong Gemini API. Model hỗ trợ extend clip, interpolation giữa first và last frame, preview 360p, 720p mặc định và upscale 1080p/4K; endpoint preview cũ được lên lịch deprecate ngày 30/9/2026.",
-      "who_gets_it": "Developer có thể truy cập qua Gemini API/Google AI Studio theo availability của Google; tài liệu changelog xác nhận model GA ngày 27/8.",
+      "summary": "Google đã đưa `gemini-omni-1.1-flash` lên GA trong Gemini API. Model có thể nối dài clip, tạo chuyển tiếp giữa frame đầu và cuối, preview ở 360p và xuất chất lượng cao hơn tới 4K. Endpoint preview cũ dự kiến ngừng ngày 30/9/2026.",
+      "who_gets_it": "Developer dùng Gemini API hoặc Google AI Studio theo availability của Google.",
       "verdict": "TRY_NOW",
-      "verdict_note": "Đáng thử nếu sản phẩm thực sự có generative video workflow. Benchmark 360p preview cho iteration cost/latency trước, rồi chỉ upscale final artifact thay vì mặc định render 1080p/4K ở mọi vòng.",
+      "verdict_note": "Nếu sản phẩm có tính năng tạo video, đáng làm một thử nghiệm nhỏ. Dùng preview 360p trong lúc chỉnh prompt để tiết kiệm thời gian và chi phí, chỉ render độ phân giải cao cho kết quả cuối.",
       "sources": [
         {
           "label": "Google AI for Developers — Gemini API release notes",
@@ -162,13 +162,13 @@
       },
       "published_at": "2026-08-27",
       "product": "Vercel AI SDK Harness",
-      "feature": "Official Cursor adapter qua `@ai-sdk/harness-cursor` và ACP",
+      "feature": "Thêm adapter chính thức cho Cursor",
       "freshness": "NEW_TODAY",
       "status": "RELEASED",
-      "summary": "Vercel thêm Cursor vào harness layer qua `@ai-sdk/harness-cursor`, nối vào `HarnessAgent` bằng Agent Client Protocol. Cùng abstraction hiện có thể chạy Cursor, Claude Code, Codex, Cline, Grok Build, OpenCode, Pi và các harness khác mà không đổi application-facing interface.",
-      "who_gets_it": "Developer dùng AI SDK harness layer và cài adapter Cursor tương ứng.",
+      "summary": "Vercel thêm Cursor vào AI SDK Harness. Mục đích của Harness là cho ứng dụng gọi nhiều coding agent như Cursor, Claude Code hay Codex qua một giao diện chung, thay vì viết integration riêng cho từng tool.",
+      "who_gets_it": "Developer đang dùng AI SDK Harness có thể cài adapter Cursor.",
       "verdict": "WATCH",
-      "verdict_note": "Hữu ích nếu ứng dụng thực sự cần runtime-switch giữa nhiều coding harness. Nếu team chỉ dùng một coding agent, thêm abstraction này sớm sẽ tăng surface area mà chưa tạo giá trị rõ.",
+      "verdict_note": "Chỉ đáng thêm nếu sản phẩm thực sự cần chạy hoặc đổi qua lại giữa nhiều coding agent. Nếu team đang dùng tốt một agent thì chưa cần thêm lớp abstraction này.",
       "sources": [
         {
           "label": "Vercel — Cursor is now available in the AI SDK harness layer",
@@ -188,13 +188,13 @@
       },
       "published_at": "2026-08-27",
       "product": "Ling 3.0 Flash Fin on Vercel AI Gateway",
-      "feature": "Finance-focused reasoning model với 256K context và function calling",
+      "feature": "Model reasoning tập trung vào tài chính, context 256K",
       "freshness": "NEW_TODAY",
       "status": "RELEASED_PROMOTIONAL",
-      "summary": "Vercel đưa Inclusion AI Ling 3.0 Flash Fin lên AI Gateway, miễn phí tới 25/9. Model có 256K context, tối đa 32K output, reasoning và function calling; có model ID riêng để dừng phục vụ sau free period thay vì tự chuyển sang billing.",
-      "who_gets_it": "Người dùng Vercel AI Gateway; free availability có thời hạn tới 25/9 theo changelog.",
+      "summary": "Vercel đưa model Ling 3.0 Flash Fin của Inclusion AI lên AI Gateway và cho dùng miễn phí tới 25/9. Model hỗ trợ context 256K, reasoning và function calling. Đây chủ yếu là lựa chọn mới cho các use case nghiên cứu hoặc xử lý dữ liệu tài chính.",
+      "who_gets_it": "Người dùng Vercel AI Gateway; chương trình miễn phí có thời hạn tới 25/9 theo changelog.",
       "verdict": "SKIP_FOR_NOW",
-      "verdict_note": "Chỉ đáng eval nếu có finance research use case cụ thể. Free pricing không phải lý do đủ để thêm một model mới vào production routing.",
+      "verdict_note": "Không cần thử chỉ vì đang miễn phí. Chỉ benchmark nếu team có bài toán tài chính cụ thể mà model hiện tại xử lý chưa tốt.",
       "sources": [
         {
           "label": "Vercel — Ling 3.0 Flash Fin now available on AI Gateway for free",
@@ -209,19 +209,19 @@
     "title": "Có cần đổi workflow hôm nay không?",
     "direct_answer": "Chưa cần thay đổi workflow hiện tại.",
     "actions": [
-      "Nếu đang dùng coding agent tạo PR, đo riêng cost và signal quality của agent-to-agent review trước khi bật auto-review rộng cho bot-authored PR.",
-      "Nếu cần multi-agent portability, thử một spike nhỏ với HarnessAgent trên hai harness thật sự đang dùng; không thêm abstraction nếu chưa có use case switch runtime.",
-      "Nếu sản phẩm có generative video, thử 360p preview loop trước để đo iteration latency và cost rồi mới quyết định tích hợp Omni 1.1.",
-      "Nếu có hardware automation, lập side-effect map và interlock boundary trước khi thử bất kỳ agent-control standard nào."
+      "Nếu coding agent đang tự tạo PR, thử Copilot review trên vài PR thật và theo dõi chất lượng review cùng AI Credits trước khi bật tự động cho cả team.",
+      "Nếu cần dùng nhiều coding agent trong cùng sản phẩm, thử Vercel Harness với đúng hai agent đang dùng. Nếu không có nhu cầu đổi agent khi runtime thì chưa cần thêm abstraction.",
+      "Nếu đang xây tính năng tạo video, thử Gemini Omni bằng preview 360p trước rồi đo latency và chi phí.",
+      "Nếu làm robotics hoặc IoT, hãy thử agent trong simulation trước khi cho phép điều khiển thiết bị thật."
     ],
     "avoid": [
-      "Không biến research preview của MHS thành production dependency trước khi interoperability và safety eval được chứng minh.",
-      "Không chuyển source-of-truth khỏi Git chỉ vì agent có thể bootstrap project trước repo.",
-      "Không thêm model hoặc harness abstraction chỉ vì đang miễn phí hoặc mới được hỗ trợ."
+      "Không đưa MHS vào production chỉ vì Anthropic vừa công bố research preview.",
+      "Không bỏ Git khỏi workflow production chỉ vì Cursor có thể tạo project trước repo.",
+      "Không thêm model hoặc framework mới chỉ vì nó mới hoặc đang miễn phí."
     ]
   },
   "radar": [],
-  "takeaway": "Nếu hôm nay chỉ nhớ một điều: integration surface của agent đang mở rộng nhanh hơn model capability, từ repo và review loop tới hardware thật. Giá trị cho engineer nằm ở việc giữ boundary, provenance và portability rõ ràng trước khi tăng autonomy.",
+  "takeaway": "Nếu hôm nay chỉ nhớ một điều: AI agent đang dần làm nhiều việc hơn ngoài viết code, nhưng chưa có gì buộc developer phải đổi workflow ngay. Hãy thử nhỏ ở nơi có lợi ích rõ ràng, còn Git, review, permission và kiểm soát chi phí vẫn nên giữ nguyên.",
   "content_contract": {
     "renderer_must_not_require_html_in_content": true,
     "allowed_rich_content": [
