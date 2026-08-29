@@ -251,12 +251,7 @@
       "Không xem permission bên trong coding agent là lớp sandbox duy nhất khi xử lý repo không tin cậy."
     ]
   },
-  "radar": [
-    {
-      "status": "WATCH",
-      "text": "Anthropic công bố research cho thấy Claude có thể tự động hóa một phần nghiên cứu alignment. Đây mới là kết quả nghiên cứu, chưa phải capability production để đưa vào workflow engineering."
-    }
-  ],
+  "radar": [],
   "takeaway": "Nếu hôm nay chỉ nhớ một điều: coding agent đang tiến từ 'làm được nhiều hơn' sang 'phải kiểm soát được nhiều hơn'. Với developer, update security boundary và quan sát agent rõ ràng đáng giá hơn việc chạy theo một abstraction mới chưa giải quyết pain point thật.",
   "content_contract": {
     "renderer_must_not_require_html_in_content": true,
