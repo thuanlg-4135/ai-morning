@@ -1,0 +1,267 @@
+{
+  "schema_version": 1,
+  "edition_date": "2026-08-29",
+  "locale": "vi-VN",
+  "edition_type": "daily_ai_catchup",
+  "edition_mode": "NORMAL",
+  "headline": "Claude Code siết an toàn khi chạy agent, còn agent trên chat ngày càng ít phải tự quản hạ tầng",
+  "dek": "Tin đáng chú ý nhất với developer sáng nay không phải model mới. Claude Code 2.1.251 sửa nhiều điểm có thể làm quyền truy cập bị vượt ranh giới, đồng thời bổ sung cách theo dõi model switch, chi phí và subagent. Ở phía ứng dụng, Vercel và Anthropic cho thấy một hướng khác: để dịch vụ managed giữ session và chạy agent loop, còn app chỉ tập trung vào giao diện chat.",
+  "meta": {
+    "primary_scan_hours": 24,
+    "context_window_hours": 72,
+    "window_started_at": "2026-08-28T07:00:00+07:00",
+    "cutoff_at": "2026-08-29T07:00:00+07:00",
+    "reading_minutes": 4,
+    "source_policy": "official-first"
+  },
+  "hero_visual": {
+    "kind": "editorial",
+    "key": "agent-safety-and-managed-runtime",
+    "caption": "Coding agent đang mạnh hơn, nhưng thay đổi đáng quan tâm hôm nay nằm ở hai thứ rất thực tế: giới hạn quyền truy cập rõ hơn và bớt hạ tầng phải tự quản."
+  },
+  "brief": [
+    {
+      "event_id": "claude-code-2-1-251",
+      "event_signature": {
+        "organization": "anthropic",
+        "product": "claude-code",
+        "action": "release",
+        "artifact": "2-1-251"
+      },
+      "published_at": "2026-08-28",
+      "freshness": "NEW_TODAY",
+      "title": "Claude Code 2.1.251 tập trung mạnh vào security và khả năng quan sát agent",
+      "text": "Bản 2.1.251 sửa các trường hợp liên quan symlink, plugin path và project settings có thể làm quyền truy cập rộng hơn dự kiến. Bản này cũng thêm hook trước/sau khi đổi model, hiển thị spend limit và thông tin prompt cache. Nếu Claude Code đang được phép sửa file hoặc chạy command trong repo không hoàn toàn tin cậy, đây là bản update đáng ưu tiên kiểm tra.",
+      "sources": [
+        {
+          "label": "Anthropic — Claude Code package 2.1.251",
+          "url": "https://www.npmjs.com/package/@anthropic-ai/claude-code",
+          "type": "official",
+          "published_at": "2026-08-28"
+        },
+        {
+          "label": "Anthropic — Claude Code changelog",
+          "url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
+          "type": "official",
+          "published_at": "2026-08-28"
+        }
+      ]
+    },
+    {
+      "event_id": "vercel-claude-managed-agents-chat-sdk",
+      "event_signature": {
+        "organization": "vercel",
+        "product": "chat-sdk",
+        "action": "integration",
+        "artifact": "claude-managed-agents"
+      },
+      "published_at": "2026-08-28",
+      "freshness": "NEW_TODAY",
+      "title": "Claude Managed Agents có thể nối trực tiếp với Vercel Chat SDK",
+      "text": "Integration mới cho phép Claude giữ agent loop, tool execution và session state ở phía managed service, trong khi Chat SDK đưa cùng agent ra Slack, Teams, Discord, WhatsApp và các bề mặt chat khác. Ý nghĩa thực tế là team có thể bỏ bớt code tự lưu transcript và tự chạy vòng lặp agent, nhưng đổi lại session của Anthropic trở thành một dependency quan trọng của hệ thống.",
+      "sources": [
+        {
+          "label": "Vercel — Run Claude Managed Agents with Chat SDK",
+          "url": "https://vercel.com/changelog/claude-managed-agents-with-chat-sdk",
+          "type": "official",
+          "published_at": "2026-08-28"
+        },
+        {
+          "label": "Anthropic — Managed Agents quickstart",
+          "url": "https://platform.claude.com/docs/en/managed-agents/quickstart",
+          "type": "official",
+          "published_at": "2026-08-28"
+        }
+      ]
+    },
+    {
+      "event_id": "anthropic-automated-alignment-researchers",
+      "event_signature": {
+        "organization": "anthropic",
+        "product": "alignment-research",
+        "action": "research-publication",
+        "artifact": "automated-researchers"
+      },
+      "published_at": "2026-08-28",
+      "freshness": "NEW_TODAY",
+      "title": "Anthropic thử để Claude tự nghiên cứu cách giảm lỗi alignment của model",
+      "text": "Anthropic công bố thí nghiệm trong đó Claude tự huấn luyện và đánh giá model trên nhiều nhóm lỗi alignment như deception, sycophancy và jailbreak. Đây là research chứ không phải tính năng production, nhưng đáng theo dõi vì AI đang được dùng để tự động hóa một phần công việc đánh giá và cải thiện chính hệ thống AI.",
+      "sources": [
+        {
+          "label": "Anthropic — Automated researchers can reliably mitigate alignment failures",
+          "url": "https://www.anthropic.com/research/automated-researchers-mitigate-alignment-failures",
+          "type": "research",
+          "published_at": "2026-08-28"
+        }
+      ]
+    }
+  ],
+  "trends": [
+    {
+      "event_id": "claude-code-2-1-251",
+      "event_signature": {
+        "organization": "anthropic",
+        "product": "claude-code",
+        "action": "release",
+        "artifact": "2-1-251"
+      },
+      "published_at": "2026-08-28",
+      "id": "coding-agent-permission-boundaries",
+      "freshness": "NEW_TODAY",
+      "strength": "ACCELERATING",
+      "importance": "LEAD",
+      "editorial_theme": "coding-agents",
+      "editorial_angle": "security-boundaries",
+      "title": "Coding agent càng tự động thì ranh giới quyền truy cập càng quan trọng",
+      "paragraphs": [
+        "Claude Code 2.1.251 có nhiều thay đổi, nhưng phần đáng chú ý nhất không phải một nút mới. Anthropic sửa một loạt trường hợp liên quan tới symlink, đường dẫn plugin và project settings. Nói đơn giản: agent có quyền đọc file, sửa file và chạy command thì việc bảo đảm nó chỉ hoạt động trong vùng đã cho phép là cực kỳ quan trọng.",
+        "Bản mới cũng giúp quan sát agent rõ hơn. Developer có hook trước và sau khi Claude Code đổi model, Remote Control có thể thấy tool call của subagent đang chạy, còn `/usage` và `/cost` hiển thị thêm spend limit và prompt-cache. Những thứ này không làm agent thông minh hơn, nhưng giúp team biết nó đang làm gì và tốn bao nhiêu.",
+        "Với team dùng coding agent hằng ngày, bài học khá đơn giản: đừng chỉ test xem agent có hoàn thành task hay không. Hãy test luôn nó được phép chạm vào file nào, command nào và configuration nào, đặc biệt khi chạy trên repo tải từ bên ngoài hoặc khi dùng plugin."
+      ],
+      "pullquote": "Agent làm được nhiều việc hơn chỉ hữu ích khi team vẫn biết nó được phép làm tới đâu.",
+      "action": "Nếu đang dùng Claude Code trên repo không hoàn toàn tin cậy hoặc có plugin, kiểm tra version hiện tại và thử update 2.1.251 trong một repo test trước. Sau đó chạy lại các flow có file access, shell command và project settings quan trọng.",
+      "visual": {
+        "kind": "editorial",
+        "key": "coding-agent-permission-boundary",
+        "caption": "Model nằm bên trong; file, shell, plugin và settings là các cổng cần giới hạn và quan sát."
+      },
+      "sources": [
+        {
+          "label": "Anthropic — Claude Code package 2.1.251",
+          "url": "https://www.npmjs.com/package/@anthropic-ai/claude-code",
+          "type": "official",
+          "published_at": "2026-08-28"
+        },
+        {
+          "label": "Anthropic — Claude Code changelog",
+          "url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
+          "type": "official",
+          "published_at": "2026-08-28"
+        }
+      ]
+    },
+    {
+      "event_id": "vercel-claude-managed-agents-chat-sdk",
+      "event_signature": {
+        "organization": "vercel",
+        "product": "chat-sdk",
+        "action": "integration",
+        "artifact": "claude-managed-agents"
+      },
+      "published_at": "2026-08-28",
+      "id": "agent-runtime-becomes-managed-infrastructure",
+      "freshness": "NEW_TODAY",
+      "strength": "EMERGING",
+      "importance": "SECONDARY",
+      "editorial_theme": "agent-infrastructure",
+      "editorial_angle": "managed-runtime",
+      "title": "Làm bot có agent đang bớt dần phần hạ tầng phải tự viết",
+      "paragraphs": [
+        "Vercel Chat SDK giờ có ví dụ chính thức để chạy Claude Managed Agents. Claude giữ model, tools, session state và agent loop ở server; Chat SDK lo phần đưa cuộc hội thoại ra Slack, Teams, Discord, WhatsApp hoặc web.",
+        "Điểm hay không phải là thêm một integration mới. Trước đây một bot có agent thường phải tự lưu lịch sử chat, map thread với session, chạy tool loop và phục hồi state. Managed Agents gom phần đó thành dịch vụ. App của bạn có thể mỏng hơn và tập trung vào UX cùng business logic.",
+        "Đổi lại, team cần hiểu dependency mới: transcript và trạng thái agent nằm ở managed session. Trước khi dùng cho dữ liệu quan trọng, cần kiểm tra retention, quyền truy cập, networking và cách export hoặc phục hồi dữ liệu."
+      ],
+      "action": "Nếu đang định làm internal bot mới, có thể spike integration này trong một use case nhỏ. Đừng migrate bot đang chạy ổn chỉ để giảm vài file infrastructure code; trước tiên đo xem phần state và agent loop hiện tại có thật sự là pain point hay không.",
+      "sources": [
+        {
+          "label": "Vercel — Run Claude Managed Agents with Chat SDK",
+          "url": "https://vercel.com/changelog/claude-managed-agents-with-chat-sdk",
+          "type": "official",
+          "published_at": "2026-08-28"
+        },
+        {
+          "label": "Anthropic — Managed Agents quickstart",
+          "url": "https://platform.claude.com/docs/en/managed-agents/quickstart",
+          "type": "official",
+          "published_at": "2026-08-28"
+        }
+      ]
+    }
+  ],
+  "releases": [
+    {
+      "event_id": "claude-code-2-1-251",
+      "event_signature": {
+        "organization": "anthropic",
+        "product": "claude-code",
+        "action": "release",
+        "artifact": "2-1-251"
+      },
+      "published_at": "2026-08-28",
+      "product": "Claude Code",
+      "feature": "2.1.251: security fixes, model-switch hooks và cost visibility",
+      "freshness": "NEW_TODAY",
+      "status": "RELEASED",
+      "summary": "Bản 2.1.251 siết nhiều boundary liên quan file, symlink, plugin và settings. Đồng thời nó thêm PreModelSwitch/PostModelSwitch hooks, live subagent tool activity, spend-limit display và thông tin prompt-cache theo session.",
+      "who_gets_it": "Người dùng Claude Code có thể cài package @anthropic-ai/claude-code 2.1.251.",
+      "verdict": "TRY_NOW",
+      "verdict_note": "Đáng ưu tiên test nếu agent có quyền shell/file rộng, dùng plugin hoặc chạy trên repo từ bên ngoài. Nếu workflow hiện tại ổn định, update trong môi trường test trước rồi mới rollout.",
+      "sources": [
+        {
+          "label": "Anthropic — Claude Code package 2.1.251",
+          "url": "https://www.npmjs.com/package/@anthropic-ai/claude-code",
+          "type": "official",
+          "published_at": "2026-08-28"
+        }
+      ]
+    },
+    {
+      "event_id": "vercel-claude-managed-agents-chat-sdk",
+      "event_signature": {
+        "organization": "vercel",
+        "product": "chat-sdk",
+        "action": "integration",
+        "artifact": "claude-managed-agents"
+      },
+      "published_at": "2026-08-28",
+      "product": "Vercel Chat SDK + Claude Managed Agents",
+      "feature": "Một managed agent có thể dùng chung cho web và nhiều nền tảng chat",
+      "freshness": "NEW_TODAY",
+      "status": "RELEASED",
+      "summary": "Chat SDK có integration để map mỗi conversation vào một Claude Managed Agents session và stream kết quả cùng tool activity. Agent loop và session state được Anthropic quản lý thay vì app phải tự triển khai toàn bộ.",
+      "who_gets_it": "Developer dùng Vercel Chat SDK và Claude Managed Agents; Managed Agents hiện dùng beta API header theo tài liệu Anthropic.",
+      "verdict": "WATCH",
+      "verdict_note": "Rất hợp để thử với internal bot mới. Với production bot hiện tại, chưa có lý do migrate nếu state management và agent loop chưa gây vấn đề rõ ràng.",
+      "sources": [
+        {
+          "label": "Vercel — Run Claude Managed Agents with Chat SDK",
+          "url": "https://vercel.com/changelog/claude-managed-agents-with-chat-sdk",
+          "type": "official",
+          "published_at": "2026-08-28"
+        },
+        {
+          "label": "Anthropic — Managed Agents quickstart",
+          "url": "https://platform.claude.com/docs/en/managed-agents/quickstart",
+          "type": "official",
+          "published_at": "2026-08-28"
+        }
+      ]
+    }
+  ],
+  "developer_memo": {
+    "title": "Có cần đổi workflow hôm nay không?",
+    "direct_answer": "Chưa cần thay đổi workflow hiện tại.",
+    "actions": [
+      "Nếu dùng Claude Code với quyền shell/file rộng, test 2.1.251 trên một repo mẫu rồi mới rollout cho team.",
+      "Kiểm tra các coding-agent job đang chạy trên code không tin cậy: repo clone từ ngoài, PR từ fork và plugin bên thứ ba nên có isolation rõ ràng.",
+      "Nếu sắp làm bot nội bộ mới, thử một spike nhỏ với Managed Agents + Chat SDK để xem có thật sự giảm code quản lý session và tool loop hay không."
+    ],
+    "avoid": [
+      "Không migrate bot đang chạy ổn sang managed runtime chỉ vì integration mới trông gọn hơn.",
+      "Không xem permission bên trong coding agent là lớp sandbox duy nhất khi xử lý repo không tin cậy."
+    ]
+  },
+  "radar": [
+    {
+      "status": "WATCH",
+      "text": "Anthropic công bố research cho thấy Claude có thể tự động hóa một phần nghiên cứu alignment. Đây mới là kết quả nghiên cứu, chưa phải capability production để đưa vào workflow engineering."
+    }
+  ],
+  "takeaway": "Nếu hôm nay chỉ nhớ một điều: coding agent đang tiến từ 'làm được nhiều hơn' sang 'phải kiểm soát được nhiều hơn'. Với developer, update security boundary và quan sát agent rõ ràng đáng giá hơn việc chạy theo một abstraction mới chưa giải quyết pain point thật.",
+  "content_contract": {
+    "renderer_must_not_require_html_in_content": true,
+    "allowed_rich_content": ["paragraph", "bullet", "pullquote", "source_link", "editorial_visual_hint"],
+    "freshness_values": ["NEW_TODAY", "CONTEXT_72H"],
+    "verdict_values": ["TRY_NOW", "WATCH", "SKIP_FOR_NOW"]
+  }
+}
