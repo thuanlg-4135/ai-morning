@@ -2,8 +2,8 @@
   "schema_version": 3,
   "generated_from": {
     "first_edition": "2026-08-22",
-    "last_edition": "2026-08-27",
-    "edition_count": 6,
+    "last_edition": "2026-08-30",
+    "edition_count": 9,
     "source_registry_count": 39
   },
   "events": [
@@ -992,6 +992,462 @@
             "artifact": "hugging-face-containment-breach"
           },
           "signature_key": "openai|cybersecurity-evaluations|incident|hugging-face-containment-breach",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "anthropic-model-hardware-standard-preview",
+      "event_signature": {
+        "organization": "anthropic",
+        "product": "model-hardware-standard",
+        "action": "preview",
+        "artifact": "shared-agent-device-interface"
+      },
+      "signature_key": "anthropic|model-hardware-standard|preview|shared-agent-device-interface",
+      "current_event_signature": {
+        "organization": "anthropic",
+        "product": "model-hardware-standard",
+        "action": "preview",
+        "artifact": "shared-agent-device-interface"
+      },
+      "current_signature_key": "anthropic|model-hardware-standard|preview|shared-agent-device-interface",
+      "first_published_at": "2026-08-27",
+      "first_edition": "2026-08-28",
+      "title": "Anthropic đang thử cho AI agent điều khiển thiết bị thật",
+      "fingerprint": "anthropic dang thu cho ai agent dieu khien thiet bi that",
+      "canonical_sources": [
+        "https://anthropic.com/news/model-hardware-standard-research-preview"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-28",
+          "section": "trends",
+          "published_at": "2026-08-27",
+          "event_signature": {
+            "organization": "anthropic",
+            "product": "model-hardware-standard",
+            "action": "preview",
+            "artifact": "shared-agent-device-interface"
+          },
+          "signature_key": "anthropic|model-hardware-standard|preview|shared-agent-device-interface",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "cursor-cloud-agent-start-from-scratch",
+      "event_signature": {
+        "organization": "cursor",
+        "product": "cloud-agents",
+        "action": "feature-update",
+        "artifact": "repo-independent-project-bootstrap"
+      },
+      "signature_key": "cursor|cloud-agents|feature-update|repo-independent-project-bootstrap",
+      "current_event_signature": {
+        "organization": "cursor",
+        "product": "cloud-agents",
+        "action": "feature-update",
+        "artifact": "repo-independent-project-bootstrap"
+      },
+      "current_signature_key": "cursor|cloud-agents|feature-update|repo-independent-project-bootstrap",
+      "first_published_at": "2026-08-27",
+      "first_edition": "2026-08-28",
+      "title": "Cursor Agent giờ có thể tạo project dù chưa có Git repo",
+      "fingerprint": "cursor agent gio co the tao project du chua co git repo",
+      "canonical_sources": [
+        "https://cursor.com/changelog/start-from-scratch"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-28",
+          "section": "trends",
+          "published_at": "2026-08-27",
+          "event_signature": {
+            "organization": "cursor",
+            "product": "cloud-agents",
+            "action": "feature-update",
+            "artifact": "repo-independent-project-bootstrap"
+          },
+          "signature_key": "cursor|cloud-agents|feature-update|repo-independent-project-bootstrap",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-copilot-code-review-bot-prs-large-prs",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot-code-review",
+        "action": "feature-update",
+        "artifact": "bot-authored-and-large-pr-review"
+      },
+      "signature_key": "github|copilot-code-review|feature-update|bot-authored-and-large-pr-review",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "copilot-code-review",
+        "action": "feature-update",
+        "artifact": "bot-authored-and-large-pr-review"
+      },
+      "current_signature_key": "github|copilot-code-review|feature-update|bot-authored-and-large-pr-review",
+      "first_published_at": "2026-08-27",
+      "first_edition": "2026-08-28",
+      "title": "GitHub Copilot giờ review được cả PR do AI agent tạo",
+      "fingerprint": "github copilot gio review duoc ca pr do ai agent tao",
+      "canonical_sources": [
+        "https://docs.github.com/en/copilot/concepts/agents/code-review",
+        "https://github.blog/changelog/2026-08-27-copilot-code-review-resolution-reasons-and-expanded-capabilities"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-28",
+          "section": "brief",
+          "published_at": "2026-08-27",
+          "event_signature": {
+            "organization": "github",
+            "product": "copilot-code-review",
+            "action": "feature-update",
+            "artifact": "bot-authored-and-large-pr-review"
+          },
+          "signature_key": "github|copilot-code-review|feature-update|bot-authored-and-large-pr-review",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "google-gemini-omni-1-1-flash-ga",
+      "event_signature": {
+        "organization": "google",
+        "product": "gemini-omni-1-1-flash",
+        "action": "launch",
+        "artifact": "ga-video-generation-and-editing"
+      },
+      "signature_key": "google|gemini-omni-1-1-flash|launch|ga-video-generation-and-editing",
+      "current_event_signature": {
+        "organization": "google",
+        "product": "gemini-omni-1-1-flash",
+        "action": "launch",
+        "artifact": "ga-video-generation-and-editing"
+      },
+      "current_signature_key": "google|gemini-omni-1-1-flash|launch|ga-video-generation-and-editing",
+      "first_published_at": "2026-08-27",
+      "first_edition": "2026-08-28",
+      "title": "Gemini Omni 1.1 Flash — Tạo và chỉnh video, hỗ trợ output tới 4K",
+      "fingerprint": "gemini omni 1 1 flash tao va chinh video ho tro output toi 4k",
+      "canonical_sources": [
+        "https://ai.google.dev/gemini-api/docs/changelog",
+        "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-omni-1-1-flash"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-28",
+          "section": "releases",
+          "published_at": "2026-08-27",
+          "event_signature": {
+            "organization": "google",
+            "product": "gemini-omni-1-1-flash",
+            "action": "launch",
+            "artifact": "ga-video-generation-and-editing"
+          },
+          "signature_key": "google|gemini-omni-1-1-flash|launch|ga-video-generation-and-editing",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "vercel-ai-gateway-ling-3-flash-fin",
+      "event_signature": {
+        "organization": "vercel",
+        "product": "ai-gateway",
+        "action": "release",
+        "artifact": "ling-3-0-flash-fin"
+      },
+      "signature_key": "vercel|ai-gateway|release|ling-3-0-flash-fin",
+      "current_event_signature": {
+        "organization": "vercel",
+        "product": "ai-gateway",
+        "action": "release",
+        "artifact": "ling-3-0-flash-fin"
+      },
+      "current_signature_key": "vercel|ai-gateway|release|ling-3-0-flash-fin",
+      "first_published_at": "2026-08-27",
+      "first_edition": "2026-08-28",
+      "title": "Ling 3.0 Flash Fin on Vercel AI Gateway — Model reasoning tập trung vào tài chính, context 256K",
+      "fingerprint": "ling 3 0 flash fin on vercel ai gateway model reasoning tap trung vao tai chinh context 256k",
+      "canonical_sources": [
+        "https://vercel.com/changelog/ling-3-0-flash-fin-now-available-on-ai-gateway-for-free"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-28",
+          "section": "releases",
+          "published_at": "2026-08-27",
+          "event_signature": {
+            "organization": "vercel",
+            "product": "ai-gateway",
+            "action": "release",
+            "artifact": "ling-3-0-flash-fin"
+          },
+          "signature_key": "vercel|ai-gateway|release|ling-3-0-flash-fin",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "vercel-ai-sdk-cursor-harness-adapter",
+      "event_signature": {
+        "organization": "vercel",
+        "product": "ai-sdk-harness",
+        "action": "integration",
+        "artifact": "cursor-harness-adapter"
+      },
+      "signature_key": "vercel|ai-sdk-harness|integration|cursor-harness-adapter",
+      "current_event_signature": {
+        "organization": "vercel",
+        "product": "ai-sdk-harness",
+        "action": "integration",
+        "artifact": "cursor-harness-adapter"
+      },
+      "current_signature_key": "vercel|ai-sdk-harness|integration|cursor-harness-adapter",
+      "first_published_at": "2026-08-27",
+      "first_edition": "2026-08-28",
+      "title": "Vercel AI SDK Harness — Thêm adapter chính thức cho Cursor",
+      "fingerprint": "vercel ai sdk harness them adapter chinh thuc cho cursor",
+      "canonical_sources": [
+        "https://vercel.com/changelog/cursor-ai-sdk-harness-adapter"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-28",
+          "section": "releases",
+          "published_at": "2026-08-27",
+          "event_signature": {
+            "organization": "vercel",
+            "product": "ai-sdk-harness",
+            "action": "integration",
+            "artifact": "cursor-harness-adapter"
+          },
+          "signature_key": "vercel|ai-sdk-harness|integration|cursor-harness-adapter",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "anthropic-automated-alignment-researchers",
+      "event_signature": {
+        "organization": "anthropic",
+        "product": "alignment-research",
+        "action": "research-publication",
+        "artifact": "automated-researchers"
+      },
+      "signature_key": "anthropic|alignment-research|research-publication|automated-researchers",
+      "current_event_signature": {
+        "organization": "anthropic",
+        "product": "alignment-research",
+        "action": "research-publication",
+        "artifact": "automated-researchers"
+      },
+      "current_signature_key": "anthropic|alignment-research|research-publication|automated-researchers",
+      "first_published_at": "2026-08-28",
+      "first_edition": "2026-08-29",
+      "title": "Anthropic thử để Claude tự nghiên cứu cách giảm lỗi alignment của model",
+      "fingerprint": "anthropic thu de claude tu nghien cuu cach giam loi alignment cua model",
+      "canonical_sources": [
+        "https://anthropic.com/research/automated-researchers-mitigate-alignment-failures"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-29",
+          "section": "brief",
+          "published_at": "2026-08-28",
+          "event_signature": {
+            "organization": "anthropic",
+            "product": "alignment-research",
+            "action": "research-publication",
+            "artifact": "automated-researchers"
+          },
+          "signature_key": "anthropic|alignment-research|research-publication|automated-researchers",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "claude-code-2-1-251",
+      "event_signature": {
+        "organization": "anthropic",
+        "product": "claude-code",
+        "action": "release",
+        "artifact": "2-1-251"
+      },
+      "signature_key": "anthropic|claude-code|release|2-1-251",
+      "current_event_signature": {
+        "organization": "anthropic",
+        "product": "claude-code",
+        "action": "release",
+        "artifact": "2-1-251"
+      },
+      "current_signature_key": "anthropic|claude-code|release|2-1-251",
+      "first_published_at": "2026-08-28",
+      "first_edition": "2026-08-29",
+      "title": "Coding agent càng tự động thì ranh giới quyền truy cập càng quan trọng",
+      "fingerprint": "coding agent cang tu dong thi ranh gioi quyen truy cap cang quan trong",
+      "canonical_sources": [
+        "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
+        "https://npmjs.com/package/@anthropic-ai/claude-code"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-29",
+          "section": "trends",
+          "published_at": "2026-08-28",
+          "event_signature": {
+            "organization": "anthropic",
+            "product": "claude-code",
+            "action": "release",
+            "artifact": "2-1-251"
+          },
+          "signature_key": "anthropic|claude-code|release|2-1-251",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "vercel-claude-managed-agents-chat-sdk",
+      "event_signature": {
+        "organization": "vercel",
+        "product": "chat-sdk",
+        "action": "integration",
+        "artifact": "claude-managed-agents"
+      },
+      "signature_key": "vercel|chat-sdk|integration|claude-managed-agents",
+      "current_event_signature": {
+        "organization": "vercel",
+        "product": "chat-sdk",
+        "action": "integration",
+        "artifact": "claude-managed-agents"
+      },
+      "current_signature_key": "vercel|chat-sdk|integration|claude-managed-agents",
+      "first_published_at": "2026-08-28",
+      "first_edition": "2026-08-29",
+      "title": "Làm bot có agent đang bớt dần phần hạ tầng phải tự viết",
+      "fingerprint": "lam bot co agent dang bot dan phan ha tang phai tu viet",
+      "canonical_sources": [
+        "https://platform.claude.com/docs/en/managed-agents/quickstart",
+        "https://vercel.com/changelog/claude-managed-agents-with-chat-sdk"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-29",
+          "section": "trends",
+          "published_at": "2026-08-28",
+          "event_signature": {
+            "organization": "vercel",
+            "product": "chat-sdk",
+            "action": "integration",
+            "artifact": "claude-managed-agents"
+          },
+          "signature_key": "vercel|chat-sdk|integration|claude-managed-agents",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "openai-cursor-model-access-winddown",
+      "event_signature": {
+        "organization": "openai",
+        "product": "cursor-model-access",
+        "action": "policy-change",
+        "artifact": "november-12-model-access-winddown"
+      },
+      "signature_key": "openai|cursor-model-access|policy-change|november-12-model-access-winddown",
+      "current_event_signature": {
+        "organization": "openai",
+        "product": "cursor-model-access",
+        "action": "policy-change",
+        "artifact": "november-12-model-access-winddown"
+      },
+      "current_signature_key": "openai|cursor-model-access|policy-change|november-12-model-access-winddown",
+      "first_published_at": "2026-08-28",
+      "first_edition": "2026-08-30",
+      "title": "Model portability đang chuyển từ nice-to-have thành rủi ro vận hành thật",
+      "fingerprint": "model portability dang chuyen tu nice to have thanh rui ro van hanh that",
+      "canonical_sources": [
+        "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex",
+        "https://reuters.com/business/media-telecom/openai-end-partnership-with-spacexs-cursor-2026-08-29"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-30",
+          "section": "trends",
+          "published_at": "2026-08-28",
+          "event_signature": {
+            "organization": "openai",
+            "product": "cursor-model-access",
+            "action": "policy-change",
+            "artifact": "november-12-model-access-winddown"
+          },
+          "signature_key": "openai|cursor-model-access|policy-change|november-12-model-access-winddown",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "tencent-hy4-preview-open-weights",
+      "event_signature": {
+        "organization": "tencent",
+        "product": "hy4-preview",
+        "action": "open-source",
+        "artifact": "hy4-preview-open-weights"
+      },
+      "signature_key": "tencent|hy4-preview|open-source|hy4-preview-open-weights",
+      "current_event_signature": {
+        "organization": "tencent",
+        "product": "hy4-preview",
+        "action": "open-source",
+        "artifact": "hy4-preview-open-weights"
+      },
+      "current_signature_key": "tencent|hy4-preview|open-source|hy4-preview-open-weights",
+      "first_published_at": "2026-08-28",
+      "first_edition": "2026-08-30",
+      "title": "Tencent mở weights Hy4 preview, nhưng đây không phải model nhẹ để kéo về laptop",
+      "fingerprint": "tencent mo weights hy4 preview nhung day khong phai model nhe de keo ve laptop",
+      "canonical_sources": [
+        "https://tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-30",
+          "section": "brief",
+          "published_at": "2026-08-28",
+          "event_signature": {
+            "organization": "tencent",
+            "product": "hy4-preview",
+            "action": "open-source",
+            "artifact": "hy4-preview-open-weights"
+          },
+          "signature_key": "tencent|hy4-preview|open-source|hy4-preview-open-weights",
           "material_update": null,
           "update_kind": null,
           "dedupe_override_reason": null

@@ -526,6 +526,7 @@ function renderReleases(edition, { compact = false, assetPrefix = '' } = {}) {
     return [
       '<article class="release' + (featured ? ' release--featured' : '') + '" id="release-' + escapeHtml(release.event_id) + '" aria-labelledby="release-' + escapeHtml(release.event_id) + '-title">',
       '  <div class="release__head">',
+      '    <span class="release__index" aria-hidden="true">' + String(index + 1).padStart(2, '0') + '</span>',
       '    <div><p class="release__product">' + escapeHtml(release.product) + '</p><h3 id="release-' + escapeHtml(release.event_id) + '-title">' + escapeHtml(release.feature) + '</h3></div>',
       '    <div class="release__flags"><span class="status">' + escapeHtml(release.status) + '</span>' + renderFreshness(release.freshness, true) +
       (hasText(release.published_at) ? '<time datetime="' + escapeHtml(release.published_at) + '">' + formatDate(release.published_at.slice(0, 10)) + '</time>' : '') + '</div>',
@@ -673,7 +674,11 @@ function sectionIndexItems(edition) {
     : [lead ? trendItem(lead) : null, releaseItem, ...supporting.map(trendItem)];
 
   return [
-    { href: '#briefing', label: '60 giây nắm bắt', shortLabel: '60 giây' },
+    edition.brief.length > 0
+      ? mode === 'QUIET'
+        ? { href: '#briefing', label: 'Việc đáng đọc thay thế', shortLabel: 'Đọc thêm' }
+        : { href: '#briefing', label: '60 giây nắm bắt', shortLabel: '60 giây' }
+      : null,
     ...trendAndReleaseItems,
     { href: '#developer', label: 'Developer memo', shortLabel: 'Memo' },
     edition.radar.length > 0 ? { href: '#radar', label: 'Radar 72 giờ', shortLabel: 'Radar' } : null,
@@ -682,6 +687,25 @@ function sectionIndexItems(edition) {
       : null,
     { href: '#takeaway', label: 'Điều cần nhớ', shortLabel: 'Kết luận' }
   ].filter(Boolean);
+}
+
+function renderSectionNav(edition, context) {
+  const mode = inferEditionMode(edition);
+  const items = [
+    edition.brief.length > 0
+      ? { href: '#briefing', label: mode === 'QUIET' ? 'Đọc thêm' : 'Tin nhanh' }
+      : null,
+    edition.trends.length > 0 ? { href: '#trends', label: 'Phân tích' } : null,
+    releaseItemsForEdition(edition, { compact: mode === 'QUIET' }).length > 0
+      ? { href: '#releases', label: 'Releases' }
+      : null,
+    isRecord(edition.developer_memo) ? { href: '#developer', label: 'Developer memo' } : null,
+    edition.radar.length > 0 ? { href: '#radar', label: 'Radar' } : null
+  ].filter(Boolean);
+
+  return items
+    .map((item) => '<a href="' + item.href + '">' + escapeHtml(item.label) + '</a>')
+    .join('') + '<a href="' + context.archiveHref + '">Bài cũ</a>';
 }
 
 function renderQuickToc(edition) {
@@ -903,6 +927,7 @@ function renderArticlePage(template, edition, editions, context) {
     PAGE_CLASS: pageKind + ' edition-page--' + mode.toLowerCase(),
     HOME_HREF: context.homeHref,
     ARCHIVE_HREF: context.archiveHref,
+    SECTION_NAV: renderSectionNav(edition, context),
     TOC_MENU: renderQuickToc(edition),
     EDITIONS_MENU: renderEditionsMenu(editions, context),
     DATELINE: renderDateline(edition, editions, context),
