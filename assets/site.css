@@ -1902,11 +1902,12 @@ figcaption {
 
 .rail a span {
   display: block;
-  margin-bottom: 0.22rem;
+  margin-bottom: 0.38rem;
   color: var(--muted);
   font-size: 0.65rem;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.05em;
+  line-height: 1;
 }
 
 .rail__coverage dl {
@@ -3402,7 +3403,7 @@ body {
 
 .rail a {
   margin: 0;
-  padding: 0.55rem 0;
+  padding: 0.72rem 0 0.78rem;
 }
 
 .site-footer {
@@ -3601,8 +3602,24 @@ body {
 
   .masthead__sections {
     min-height: 2.5rem;
-    gap: 1.25rem;
-    font-size: 0.62rem;
+    justify-content: space-between;
+    gap: 0.75rem;
+    overflow-x: visible;
+    font-size: 0.58rem;
+  }
+
+  .masthead__sections a {
+    flex: 0 0 auto;
+  }
+
+  .masthead__sections a[href="#developer"] {
+    font-size: 0;
+  }
+
+  .masthead__sections a[href="#developer"]::before {
+    content: "Memo";
+    font: 800 0.58rem/1 var(--font-ui);
+    letter-spacing: 0.085em;
   }
 
   .masthead.is-compact .masthead__brandline {

@@ -8,7 +8,7 @@
   <meta name="generator" content="AI Morning static renderer">
   <title>{{PAGE_TITLE}}</title>
   <link rel="icon" href="{{ASSET_PREFIX}}mark.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="{{ASSET_PREFIX}}site.css">
+  <link rel="stylesheet" href="{{ASSET_PREFIX}}site.css?v={{ASSET_VERSION}}">
   <script>
     try {
       const savedTheme = localStorage.getItem('ai-morning-theme');
@@ -16,7 +16,7 @@
       if (localStorage.getItem('ai-morning-reading') === 'true') document.documentElement.dataset.reading = 'true';
     } catch {}
   </script>
-  <script src="{{ASSET_PREFIX}}site.js" defer></script>
+  <script src="{{ASSET_PREFIX}}site.js?v={{ASSET_VERSION}}" defer></script>
 </head>
 <body class="{{PAGE_CLASS}}">
   <a class="skip-link" href="#main-content" data-i18n="skip-navigation">Bỏ qua điều hướng</a>

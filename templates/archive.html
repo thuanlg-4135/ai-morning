@@ -8,14 +8,14 @@
   <meta name="generator" content="AI Morning static renderer">
   <title>{{ARCHIVE_TITLE}}</title>
   <link rel="icon" href="{{ASSET_PREFIX}}mark.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="{{ASSET_PREFIX}}site.css">
+  <link rel="stylesheet" href="{{ASSET_PREFIX}}site.css?v={{ASSET_VERSION}}">
   <script>
     try {
       const savedTheme = localStorage.getItem('ai-morning-theme');
       if (savedTheme === 'light' || savedTheme === 'dark') document.documentElement.dataset.theme = savedTheme;
     } catch {}
   </script>
-  <script src="{{ASSET_PREFIX}}site.js" defer></script>
+  <script src="{{ASSET_PREFIX}}site.js?v={{ASSET_VERSION}}" defer></script>
 </head>
 <body class="archive-page">
   <a class="skip-link" href="#main-content" data-i18n="skip-navigation">Bỏ qua điều hướng</a>

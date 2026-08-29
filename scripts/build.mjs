@@ -1,4 +1,5 @@
 import { copyFile, mkdir, readdir, readFile, rm, stat, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { assertEditionSchema, EDITION_MODES, IMPORTANCE_VALUES } from './news/schema.mjs';
@@ -10,6 +11,12 @@ const contentDir = path.join(repoRoot, 'content');
 const templatesDir = path.join(repoRoot, 'templates');
 const assetsDir = path.join(repoRoot, 'assets');
 const distDir = path.join(repoRoot, 'dist');
+
+const assetRevision = createHash('sha256')
+  .update(await readFile(path.join(assetsDir, 'site.css')))
+  .update(await readFile(path.join(assetsDir, 'site.js')))
+  .digest('hex')
+  .slice(0, 10);
 
 const editionModes = EDITION_MODES;
 const importanceValues = IMPORTANCE_VALUES;
@@ -924,6 +931,7 @@ function renderArticlePage(template, edition, editions, context) {
     PAGE_TITLE: escapeHtml('AI Morning · ' + formatDate(edition.edition_date)),
     DESCRIPTION: escapeHtml(edition.dek),
     ASSET_PREFIX: context.assetPrefix,
+    ASSET_VERSION: assetRevision,
     PAGE_CLASS: pageKind + ' edition-page--' + mode.toLowerCase(),
     HOME_HREF: context.homeHref,
     ARCHIVE_HREF: context.archiveHref,
@@ -1069,6 +1077,7 @@ async function build() {
       ARCHIVE_DESCRIPTION: 'Archive of published AI Morning editions.',
       ARCHIVE_TITLE: 'Past editions · AI Morning',
       ASSET_PREFIX: englishArchiveContext.assetPrefix,
+      ASSET_VERSION: assetRevision,
       HOME_HREF: englishArchiveContext.homeHref,
       LANGUAGE_SWITCH_HREF: englishArchiveContext.languageSwitchHref,
       LANGUAGE_SWITCH_LABEL: 'VI',
@@ -1088,6 +1097,7 @@ async function build() {
     ARCHIVE_DESCRIPTION: 'Kho lưu trữ các edition đã xuất bản của AI Morning.',
     ARCHIVE_TITLE: 'Bài cũ · AI Morning',
     ASSET_PREFIX: archiveContext.assetPrefix,
+    ASSET_VERSION: assetRevision,
     HOME_HREF: archiveContext.homeHref,
     LANGUAGE_SWITCH_HREF: archiveContext.languageSwitchHref,
     LANGUAGE_SWITCH_LABEL: 'EN',
