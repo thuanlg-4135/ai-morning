@@ -267,7 +267,7 @@ Supported visual kinds:
 - `image`: meaningful editorial photography.
 - `screenshot`: real product or interface capture.
 
-For `image` and `screenshot`, provide `src`, `alt`, `caption`, and optional `credit`. For the code-native kinds, provide `key` and `caption`.
+For `image` and `screenshot`, `src` and meaningful `alt` text are required; provide `caption` and optional `credit`. For the code-native kinds, provide `key` and `caption`.
 
 Known keys:
 

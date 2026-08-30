@@ -59,6 +59,17 @@ test('shared schema requires meaningful brief copy and source structure', () => 
   assert(found.has('MISSING_SOURCE_PUBLICATION'));
 });
 
+test('image visuals require a source and meaningful alt text', () => {
+  const edition = makeEdition({
+    hero_visual: { kind: 'image', src: 'editorial/example.webp' },
+    trends: [makeTrend({ visual: { kind: 'screenshot', alt: 'A product settings screen.' } })]
+  });
+  const errors = validateEditionSchema(edition, { filename: '2026-08-25.json' });
+  const found = codes(errors);
+  assert(found.has('MISSING_VISUAL_ALT'));
+  assert(found.has('MISSING_VISUAL_SOURCE'));
+});
+
 test('optional generation and editorial metadata are zoned and kebab-case', () => {
   const valid = makeEdition({
     trends: [makeTrend({

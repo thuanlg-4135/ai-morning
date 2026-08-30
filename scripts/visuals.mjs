@@ -178,8 +178,11 @@ export function renderVisual(visual, { hero = false, assetPrefix = '' } = {}) {
     const alt = typeof visual?.alt === 'string' && visual.alt.trim() ? visual.alt.trim() : caption;
     const rawSrc = visual.src.trim();
     const src = /^(?:[a-z][a-z0-9+.-]*:|\/\/|\/|#)/i.test(rawSrc) ? rawSrc : assetPrefix + rawSrc;
+    const loading = hero
+      ? ' loading="eager" fetchpriority="high"'
+      : ' loading="lazy"';
     return '<figure class="' + classes + ' visual--' + kind + '" data-visual-kind="' + kind + '">\n' +
-      '<img src="' + escapeHtml(src) + '" alt="' + escapeHtml(alt) + '" loading="lazy" decoding="async">\n' +
+      '<img src="' + escapeHtml(src) + '" alt="' + escapeHtml(alt) + '"' + loading + ' decoding="async">\n' +
       '<figcaption>' + escapeHtml(caption) + credit + '</figcaption>\n' +
       '</figure>';
   }

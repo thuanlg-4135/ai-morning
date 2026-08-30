@@ -302,6 +302,7 @@ function renderHero(edition, context) {
   const mode = inferEditionMode(edition);
   const newToday = hasNewToday(edition) ? renderFreshness('NEW_TODAY') : '';
   const visual = isRecord(edition.hero_visual) ? renderVisual(edition.hero_visual, { hero: true, assetPrefix: context.assetPrefix }) : '';
+  const visualState = visual ? ' hero--has-visual' : ' hero--no-visual';
   const longTitle = edition.headline.length > 72 ? ' hero--long-title' : '';
   const metaRow = [
     '<div class="meta" role="group" aria-label="Thông tin bài viết">',
@@ -321,7 +322,7 @@ function renderHero(edition, context) {
       '</div></li>'
     ).join('');
     return [
-      '<header class="hero hero--quiet' + longTitle + '">',
+      '<header class="hero hero--quiet' + visualState + longTitle + '">',
       '  <div class="freshness-strip"><span class="edition-state">' + modeLabels[mode] + '</span>' + newToday + '<span>Không có launch lớn</span></div>',
       '  <h1 id="edition-title">' + escapeHtml(edition.headline) + '</h1>',
       '  <p class="dek">' + escapeHtml(edition.dek) + '</p>',
@@ -337,7 +338,7 @@ function renderHero(edition, context) {
 
   if (mode === 'BIG') {
     return [
-      '<header class="hero hero--big' + longTitle + '">',
+      '<header class="hero hero--big' + visualState + longTitle + '">',
       '  <div class="freshness-strip"><span class="edition-state">' + modeLabels[mode] + '</span>' + newToday + '<span>24H NEWS · 72H CONTEXT</span></div>',
       '  <h1 id="edition-title">' + escapeHtml(edition.headline) + '</h1>',
       '  <p class="dek">' + escapeHtml(edition.dek) + '</p>',
@@ -348,7 +349,7 @@ function renderHero(edition, context) {
   }
 
   return [
-    '<header class="hero hero--normal' + longTitle + '">',
+    '<header class="hero hero--normal' + visualState + longTitle + '">',
     '  <div class="freshness-strip"><span class="edition-state">' + modeLabels[mode] + '</span>' + newToday + '<span>24H NEWS · 72H CONTEXT</span></div>',
     '  <h1 id="edition-title">' + escapeHtml(edition.headline) + '</h1>',
     '  <p class="dek">' + escapeHtml(edition.dek) + '</p>',
@@ -358,8 +359,10 @@ function renderHero(edition, context) {
   ].join('\n');
 }
 
-function renderBriefing(edition, { start = 0, max = 5, compact = false, id = 'briefing' } = {}) {
-  const selected = edition.brief.slice(start, start + max);
+function renderBriefing(edition, { start = 0, max = null, compact = false, id = 'briefing' } = {}) {
+  const selected = Number.isInteger(max)
+    ? edition.brief.slice(start, start + max)
+    : edition.brief.slice(start);
   if (selected.length === 0) return '';
   const items = selected.map((item) => {
     const body = briefBody(item);
@@ -619,7 +622,7 @@ function renderEditionBody(edition, assetPrefix = '') {
   let main;
 
   if (mode === 'QUIET') {
-    briefing = renderBriefing(edition, { start: 3, max: 3, compact: true, id: 'briefing-more' });
+    briefing = renderBriefing(edition, { start: 3, compact: true, id: 'briefing-more' });
     main = [
       renderTrendDepartment([lead], edition.trends, { label: 'Bài đọc chính', assetPrefix }),
       renderReleases(edition, { compact: true, assetPrefix }),
@@ -654,8 +657,8 @@ function renderEditionBody(edition, assetPrefix = '') {
   return [
     briefing,
     '<div class="edition-body edition-body--' + mode.toLowerCase() + '">',
-    '  <div class="edition-body__main">' + main + '</div>',
     '  ' + rail,
+    '  <div class="edition-body__main">' + main + '</div>',
     '</div>'
   ].join('\n');
 }
@@ -758,7 +761,7 @@ function renderRightRail(edition) {
   ].join('');
 
   return [
-    '<aside aria-label="Mục lục số hôm nay">',
+    '<aside class="edition-overview" aria-label="Mục lục số hôm nay">',
     '  <div class="rail">',
     '    <section class="rail__block"><h3>Trong số này</h3><nav class="rail__index" aria-label="Mục lục">' + indexItems + '</nav></section>',
     '    ' + evidenceBlock,

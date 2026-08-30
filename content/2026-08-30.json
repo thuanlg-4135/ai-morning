@@ -13,9 +13,11 @@
     "source_policy": "official-first"
   },
   "hero_visual": {
-    "kind": "editorial",
-    "key": "model-provider-dependency-risk",
-    "caption": "Coding tool có thể giữ nguyên giao diện, nhưng model phía sau vẫn là dependency có thể thay đổi vì hợp đồng, chính sách hoặc chiến lược của provider."
+    "kind": "image",
+    "src": "editorial/2026-08-30/model-provider-portability.webp",
+    "alt": "Bàn chuyển mạch cơ khí với nhiều đầu cáp có thể thay thế và một đầu cáp đang được rút ra.",
+    "caption": "Workflow nên là phần ổn định; provider phía sau cần có khả năng thay thế khi hợp đồng, chính sách hoặc chiến lược thay đổi.",
+    "credit": "Minh hoạ tạo bằng AI · AI Morning"
   },
   "brief": [
     {
@@ -64,11 +66,6 @@
       ],
       "pullquote": "Model picker chỉ là UI; portability chỉ có thật khi một workflow quan trọng vẫn chạy được khi provider thay đổi.",
       "action": "Chọn một coding task quan trọng đang chạy tốt trên OpenAI model trong Cursor và thử lại trên một model dự phòng mà team thực sự có thể dùng. So sánh chất lượng output, latency và cost; chưa cần migrate nếu chưa thấy dependency nào gây rủi ro thực tế.",
-      "visual": {
-        "kind": "editorial",
-        "key": "coding-tool-provider-portability",
-        "caption": "Giữ coding workflow ở giữa, với nhiều provider có thể thay thế; eval và fallback mới là lớp chứng minh portability."
-      },
       "sources": [
         {
           "label": "OpenAI — Our decision on Cursor following its acquisition by SpaceX",

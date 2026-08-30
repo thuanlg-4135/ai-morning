@@ -76,6 +76,9 @@ function validateVisual(visual, field, filename, errors) {
   if ((kind === 'image' || kind === 'screenshot') && !hasText(visual.src)) {
     errors.push(schemaIssue(filename, field + '.src', 'MISSING_VISUAL_SOURCE', 'Image and screenshot visuals require src.'));
   }
+  if ((kind === 'image' || kind === 'screenshot') && !hasText(visual.alt)) {
+    errors.push(schemaIssue(filename, field + '.alt', 'MISSING_VISUAL_ALT', 'Image and screenshot visuals require meaningful alt text.'));
+  }
   for (const key of ['src', 'alt', 'caption', 'credit', 'key']) {
     validateOptionalString(visual[key], field + '.' + key, filename, errors);
   }

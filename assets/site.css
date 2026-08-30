@@ -2920,6 +2920,16 @@ body {
   align-self: start;
 }
 
+.hero--normal.hero--no-visual > :is(.freshness-strip, h1, .dek, .meta),
+.hero--quiet.hero--no-visual > :is(.freshness-strip, h1, .dek, .meta) {
+  grid-column: 1 / -1;
+}
+
+.hero--normal.hero--no-visual h1,
+.hero--quiet.hero--no-visual h1 {
+  max-width: 20ch;
+}
+
 .hero h1 {
   font-family: var(--font-editorial);
   font-variation-settings: "wght" 560;
@@ -2953,6 +2963,10 @@ body {
   grid-column: 1 / span 9;
   width: 100%;
   margin-top: 2.25rem;
+}
+
+.hero--big.hero--no-visual > :not(.hero-visual) {
+  grid-column: 1 / -1;
 }
 
 .hero--big h1 {
@@ -3004,14 +3018,21 @@ body {
   transform: none;
 }
 
-.hero-visual svg,
-.hero-visual img {
+.hero-visual svg {
   aspect-ratio: 4 / 3;
 }
 
 .hero-visual img {
   width: 100%;
+  aspect-ratio: 3 / 2;
+  border: var(--rule-hairline);
   object-fit: cover;
+}
+
+.hero-visual.visual--screenshot img {
+  aspect-ratio: auto;
+  background: var(--surface);
+  object-fit: contain;
 }
 
 .briefing {
@@ -3029,26 +3050,39 @@ body {
 
 .briefing > ol,
 .briefing--compact > ol {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 0;
-}
-
-.briefing--count-2 > ol {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .briefing > ol > li {
   position: relative;
-  min-height: 10rem;
+  max-width: none;
+  min-height: 0;
   padding: 0.35rem 1.25rem 0.5rem;
   border-top: 0;
   border-left: var(--rule-hairline);
   display: block;
+  grid-column: span 2;
 }
 
-.briefing > ol > li:first-child {
+.briefing > ol > li:nth-child(3n + 1) {
   padding-left: 0;
   border-left: 0;
+}
+
+.briefing > ol > li:nth-child(n + 4) {
+  margin-top: 1.15rem;
+  padding-top: 1.15rem;
+  border-top: var(--rule-hairline);
+}
+
+.briefing > ol > li:nth-child(3n + 1):last-child {
+  grid-column: span 6;
+}
+
+.briefing > ol > li:nth-child(3n + 1):nth-last-child(2),
+.briefing > ol > li:nth-child(3n + 2):last-child {
+  grid-column: span 3;
 }
 
 .briefing > ol > li::before {
@@ -3065,7 +3099,7 @@ body {
   left: 2.75rem;
 }
 
-.briefing > ol > li:first-child .briefing__freshness {
+.briefing > ol > li:nth-child(3n + 1) .briefing__freshness {
   left: 1.5rem;
 }
 
@@ -3103,8 +3137,11 @@ body {
 .edition-body {
   width: min(100% - 3rem, var(--page));
   padding: clamp(3rem, 5vw, 5rem) 0 clamp(5rem, 8vw, 8rem);
-  grid-template-columns: minmax(0, 9fr) minmax(13rem, 3fr);
-  gap: clamp(2rem, 4vw, 4.5rem);
+  display: block;
+}
+
+.edition-overview {
+  margin-bottom: clamp(3rem, 5vw, 4.75rem);
 }
 
 .edition-body__main > * + * {
@@ -3381,19 +3418,29 @@ body {
 }
 
 .rail {
-  top: 5.25rem;
+  position: static;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  border-block: var(--rule-section);
 }
 
-.rail__block {
-  margin-bottom: 2rem;
-  padding-top: 0.75rem;
-  border-top: var(--rule-section);
-}
-
+.rail__block,
 .rail__block--surface {
-  padding: 0.9rem 0;
-  border-top: var(--rule-section);
+  min-width: 0;
+  margin: 0;
+  padding: 1rem clamp(1rem, 2vw, 1.6rem) 1.2rem;
+  border-top: 0;
+  border-left: var(--rule-hairline);
   background: transparent;
+}
+
+.rail__block:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.rail__block:last-child {
+  padding-right: 0;
 }
 
 .rail h3 {
@@ -3404,6 +3451,21 @@ body {
 .rail a {
   margin: 0;
   padding: 0.72rem 0 0.78rem;
+}
+
+.rail__index,
+.rail__coverage dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 1rem;
+}
+
+.rail__index a {
+  min-width: 0;
+}
+
+.rail__coverage dl > div {
+  min-width: 0;
 }
 
 .site-footer {
@@ -3438,6 +3500,24 @@ body {
   grid-column: 8 / -1;
   margin: 0 0 0.5rem;
   font-size: 1.15rem;
+}
+
+@media (min-width: 64.01rem) {
+  .lead-story__opening--prose-only {
+    display: block;
+  }
+
+  .lead-story__opening--prose-only .story-prose {
+    max-width: none;
+    column-count: 2;
+    column-gap: clamp(2rem, 4vw, 4rem);
+    column-rule: var(--rule-hairline);
+    column-fill: balance;
+  }
+
+  .lead-story__opening--prose-only .story-prose p {
+    max-width: none;
+  }
 }
 
 @media (max-width: 79.99rem) {
@@ -3495,6 +3575,12 @@ body {
   .hero--quiet {
     display: flex;
     flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero > :is(.freshness-strip, h1, .dek, .meta) {
+    width: 100%;
+    min-width: 0;
   }
 
   .hero > .freshness-strip { order: 0; }
@@ -3522,7 +3608,28 @@ body {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .briefing > ol > li:nth-child(3) {
+  .briefing > ol > li,
+  .briefing > ol > li:nth-child(3n + 1):last-child,
+  .briefing > ol > li:nth-child(3n + 1):nth-last-child(2),
+  .briefing > ol > li:nth-child(3n + 2):last-child {
+    grid-column: span 1;
+  }
+
+  .briefing > ol > li:nth-child(3n + 1) {
+    padding-left: 1.25rem;
+    border-left: var(--rule-hairline);
+  }
+
+  .briefing > ol > li:nth-child(odd) {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .briefing > ol > li:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .briefing > ol > li:nth-child(3):last-child {
     grid-column: 1 / -1;
     padding-top: 1.25rem;
     border-top: var(--rule-hairline);
@@ -3602,9 +3709,9 @@ body {
 
   .masthead__sections {
     min-height: 2.5rem;
-    justify-content: space-between;
-    gap: 0.75rem;
-    overflow-x: visible;
+    justify-content: flex-start;
+    gap: 1.4rem;
+    overflow-x: auto;
     font-size: 0.58rem;
   }
 
@@ -3656,6 +3763,12 @@ body {
     padding: 2.5rem 1.25rem 3rem;
     display: flex;
     flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero > :is(.freshness-strip, h1, .dek, .meta) {
+    width: 100%;
+    min-width: 0;
   }
 
   .hero > .freshness-strip {
@@ -3675,6 +3788,10 @@ body {
     width: calc(100% + 2.5rem);
     max-width: none;
     margin: 1.8rem 0 0 -1.25rem;
+  }
+
+  .hero-visual figcaption {
+    padding-inline: 1.25rem;
   }
 
   .hero > .dek {
@@ -3733,6 +3850,13 @@ body {
   }
 
   .briefing > ol > li,
+  .briefing > ol > li:nth-child(3n + 1):last-child,
+  .briefing > ol > li:nth-child(3n + 1):nth-last-child(2),
+  .briefing > ol > li:nth-child(3n + 2):last-child {
+    grid-column: 1 / -1;
+  }
+
+  .briefing > ol > li,
   .briefing > ol > li:first-child {
     min-height: 0;
     padding: 1rem 0 1.25rem;
@@ -3745,7 +3869,8 @@ body {
   }
 
   .briefing__freshness,
-  .briefing > ol > li:first-child .briefing__freshness {
+  .briefing > ol > li:first-child .briefing__freshness,
+  .briefing > ol > li:nth-child(3n + 1) .briefing__freshness {
     top: 1rem;
     left: 2.4rem;
   }
