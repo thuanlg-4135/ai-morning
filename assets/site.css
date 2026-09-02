@@ -1667,9 +1667,9 @@ figcaption {
   padding-bottom: clamp(1.75rem, 3vw, 2.6rem);
   border-bottom: 1px solid var(--line-strong);
   display: grid;
-  grid-template-columns: minmax(15rem, 0.72fr) minmax(0, 1.28fr);
-  align-items: end;
-  gap: clamp(2rem, 5vw, 4.5rem);
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: 1.15rem;
 }
 
 .memo__kicker {
@@ -1703,8 +1703,8 @@ figcaption {
 .memo__grid {
   margin-top: clamp(1.75rem, 3vw, 2.5rem);
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(2rem, 5vw, 4.5rem);
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 3rem);
 }
 
 .memo__grid h3 {
@@ -1716,6 +1716,7 @@ figcaption {
 }
 
 .memo-card {
+  max-width: var(--article);
   min-width: 0;
 }
 
@@ -1749,9 +1750,9 @@ figcaption {
 
 .closing-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 0.85fr);
+  grid-template-columns: minmax(0, 1fr);
   align-items: start;
-  gap: clamp(2rem, 4vw, 3.5rem);
+  gap: clamp(3.5rem, 7vw, 6rem);
 }
 
 .closing-grid--memo-only {
@@ -1759,6 +1760,7 @@ figcaption {
 }
 
 .closing-grid > #radar {
+  max-width: var(--article);
   padding-top: 1.5rem;
   border-top: 0.24rem solid var(--text);
 }
