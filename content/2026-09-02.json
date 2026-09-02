@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "edition_date": "2026-09-02",
+  "locale": "vi-VN",
+  "edition_type": "daily_ai_catchup",
+  "edition_mode": "NORMAL",
+  "headline": "Frontier model đang chạm ngưỡng cyber mới, còn coding agent chuyển sang bài toán kiểm soát và chi phí",
+  "dek": "Signal lớn nhất sáng nay là OpenAI đánh giá Astra đã đạt ngưỡng Critical về cybersecurity: model có thể tìm lỗ hổng mới và phát triển exploit trên hệ thống được bảo vệ tốt khi có đủ tool và quyền truy cập. Cùng lúc, Anthropic ra Claude Fable 5.1 cho coding và long-running agent với giá cache thấp hơn đáng kể. Với software engineer, câu chuyện hôm nay không phải đổi model ngay mà là siết quyền, quan sát agent và benchmark chi phí trên workload thật.",
+  "meta": {
+    "primary_scan_hours": 24,
+    "context_window_hours": 72,
+    "window_started_at": "2026-09-01T07:00:00+07:00",
+    "cutoff_at": "2026-09-02T07:00:00+07:00",
+    "reading_minutes": 5,
+    "source_policy": "official-first"
+  },
+  "hero_visual": {
+    "kind": "editorial",
+    "key": "frontier-cyber-capability-control-cost",
+    "caption": "Model mạnh hơn đang đẩy bài toán từ 'agent làm được gì' sang 'agent được phép làm tới đâu, bị dừng khi nào và tốn bao nhiêu'."
+  },
+  "brief": [
+    {
+      "event_id": "cursor-composer-2-5-degraded-performance-2026-09-01",
+      "event_signature": {
+        "organization": "cursor",
+        "product": "composer-2-5",
+        "action": "incident-resolution",
+        "artifact": "degraded-performance-2026-09-01"
+      },
+      "published_at": "2026-09-01T01:14:00Z",
+      "freshness": "NEW_TODAY",
+      "title": "Cursor ghi nhận Composer 2.5 gây lỗi ở Automations, Cloud Agents, CLI và IDE",
+      "text": "Cursor báo degraded performance với Composer 2.5 khiến request có thể fail hoặc retry trong Automations, Cloud Agents, CLI và IDE; các model khác không bị ảnh hưởng. Sự cố được xác nhận lúc 01:01 UTC ngày 1/9 và resolved lúc 01:14 UTC. Với workflow production, đây là ví dụ rất thực tế cho việc không nên để một model cụ thể trở thành single point of failure: ít nhất phải có error path rõ ràng, giới hạn retry và cách chuyển model khi cần.",
+      "sources": [
+        {
+          "label": "Cursor Status — Composer 2.5 degraded performance",
+          "url": "https://status.cursor.com/",
+          "type": "official",
+          "published_at": "2026-09-01T01:14:00Z"
+        }
+      ]
+    }
+  ],
+  "trends": [
+    {
+      "event_id": "openai-astra-critical-cybersecurity-threshold",
+      "event_signature": {
+        "organization": "openai",
+        "product": "astra",
+        "action": "research-publication",
+        "artifact": "critical-cybersecurity-threshold"
+      },
+      "published_at": "2026-09-01",
+      "id": "frontier-cyber-capability-needs-runtime-control",
+      "freshness": "NEW_TODAY",
+      "strength": "ACCELERATING",
+      "importance": "LEAD",
+      "editorial_theme": "agent-security",
+      "editorial_angle": "runtime-control",
+      "title": "Astra cho thấy frontier model đang vượt khỏi phạm vi 'coding assistant' thông thường",
+      "paragraphs": [
+        "OpenAI công bố đánh giá mới cho Astra và xếp model này vào ngưỡng Critical về cybersecurity trong Preparedness Framework. Theo định nghĩa của OpenAI, đây là mức mà model có thể tìm lỗ hổng chưa biết và phát triển exploit trên nhiều hệ thống được bảo vệ tốt mà không cần người hướng dẫn từng bước. OpenAI nói Astra đạt 100% trên ExploitBench và trong benchmark nội bộ còn tìm ra hai zero-day trong quá trình dựng exploit chain. Đây là kết quả từ đánh giá an toàn của chính vendor, không phải benchmark độc lập, nhưng mức capability được mô tả đã vượt khá xa use case coding assistant thông thường.",
+        "Điểm đáng chú ý với developer không phải là có nên dùng Astra ngay hay không. OpenAI chưa mở rộng toàn bộ cyber capability cho mọi người; advanced cybersecurity access sẽ bị giới hạn và hệ thống có thêm lớp monitoring để dừng hành động bị xem là không được phép. OpenAI cũng nói task trong ChatGPT hoặc Codex có thể bị pause để người dùng review, còn trên API thì task có thể dừng hẳn. Khi model có khả năng tác động mạnh hơn lên hệ thống thật, permission boundary, network isolation, approval gate và audit log trở thành một phần của product design chứ không còn là lớp phụ.",
+        "Với team đang chạy coding agent hoặc security agent, bài học thực dụng là giữ nguyên nguyên tắc least privilege. Agent chỉ nên có đúng credential, filesystem scope và network access cần cho task. Những workflow có shell, browser, cloud console hoặc production token cần stop condition rõ ràng và log đủ để biết agent đã làm gì. Model capability tăng nhanh hơn không có nghĩa runtime policy nên nới nhanh hơn."
+      ],
+      "pullquote": "Model càng có khả năng tự hành động, runtime control càng phải được thiết kế như một phần của hệ thống.",
+      "action": "Chọn một agent đang có quyền shell hoặc network và rà lại ba thứ: quyền tối thiểu, điểm cần human approval và điều kiện dừng tự động. Nếu chưa có audit log cho tool call, ưu tiên bổ sung trước khi tăng autonomy.",
+      "visual": {
+        "kind": "editorial",
+        "key": "capability-permission-monitor-stop",
+        "caption": "Capability tăng cần đi cùng permission boundary, monitoring và stop condition."
+      },
+      "sources": [
+        {
+          "label": "OpenAI — Path to Astra: critical capabilities and frontier safeguards",
+          "url": "https://openai.com/index/path-to-astra/",
+          "type": "official",
+          "published_at": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "event_id": "anthropic-claude-code-cost-roi-google-cloud",
+      "event_signature": {
+        "organization": "anthropic",
+        "product": "claude-code",
+        "action": "research-publication",
+        "artifact": "cost-roi-google-cloud"
+      },
+      "published_at": "2026-09-01",
+      "id": "coding-agent-usage-needs-cost-governance",
+      "freshness": "NEW_TODAY",
+      "strength": "EMERGING",
+      "importance": "SECONDARY",
+      "editorial_theme": "coding-agent-operations",
+      "editorial_angle": "cost-governance",
+      "title": "Khi coding agent được dùng rộng hơn, cost governance bắt đầu thành việc của engineering",
+      "paragraphs": [
+        "Anthropic và Google Cloud tổ chức một technical session tập trung đúng vào vấn đề nhiều team bắt đầu gặp khi Claude Code được dùng ở quy mô lớn: chi phí thực tế là bao nhiêu và có tạo ra productivity đủ để biện minh cho chi phí đó hay không. Nội dung đi vào việc dùng gateway để đặt spend cap theo user, team hoặc organization, kiểm soát model access tập trung và nối usage data với các tín hiệu như commit, pull request hoặc cost per commit.",
+        "Đây không phải một product release, nhưng là signal đáng chú ý vì coding agent đang chuyển từ công cụ cá nhân sang infrastructure có ngân sách. Khi agent chạy background, dùng nhiều model, mở subagent hoặc tự retry, chi phí không còn tỷ lệ đơn giản với số developer. Team cần biết workload nào đáng dùng model đắt, task nào dùng model nhẹ hơn, và automation nào đang tiêu token nhưng không rút ngắn cycle time.",
+        "Practical approach nên rất nhỏ: đo trước khi tối ưu. Chọn một workflow có volume đủ rõ như code review, test generation hoặc issue triage; theo dõi token cost, số task thành công và thời gian người thật tiết kiệm được. Nếu chưa có baseline đó, việc đổi gateway hoặc viết hệ thống chargeback phức tạp chỉ là over-engineering."
+      ],
+      "action": "Chọn một coding-agent workflow có volume ổn định và đo ba số trong một tuần: chi phí mỗi task, tỷ lệ task usable, và thời gian review của người thật. Chưa cần xây platform cost riêng nếu ba số này còn chưa rõ.",
+      "sources": [
+        {
+          "label": "Anthropic — How to control costs and show ROI for Claude Code on Google Cloud",
+          "url": "https://www.anthropic.com/webinars/how-to-control-costs-and-show-roi-for-claude-code-on-google-cloud",
+          "type": "official",
+          "published_at": "2026-09-01"
+        }
+      ]
+    }
+  ],
+  "releases": [
+    {
+      "event_id": "anthropic-claude-fable-5-1",
+      "event_signature": {
+        "organization": "anthropic",
+        "product": "claude-fable",
+        "action": "release",
+        "artifact": "5-1"
+      },
+      "published_at": "2026-09-01",
+      "product": "Claude Fable 5.1",
+      "feature": "Frontier model mới cho coding và long-running agent",
+      "freshness": "NEW_TODAY",
+      "status": "GA",
+      "summary": "Anthropic phát hành Claude Fable 5.1 cho Pro, Max, Team, Enterprise và qua Claude Platform cùng các cloud marketplace. Model nhắm vào coding project lớn, code review, performance work và agent chạy nhiều giờ hoặc nhiều ngày. Giá là $10 mỗi triệu input token và $50 mỗi triệu output token; cache read giảm còn $0.25 mỗi triệu token.",
+      "who_gets_it": "Người dùng Claude Pro, Max, Team và Enterprise; developer có thể gọi model `claude-fable-5-1` qua Claude API và các marketplace được hỗ trợ.",
+      "why_it_matters": "Anthropic ước tính cache pricing mới có thể giảm chi phí workload thông thường khoảng 25% và workload agentic nhiều cache tới khoảng 45% so với Fable 5. Đây vẫn là claim của vendor, nên giá trị thật phụ thuộc pattern prompt, cache hit và độ dài task của từng team.",
+      "verdict": "TRY_NOW",
+      "verdict_note": "Đáng benchmark trên 5–10 task coding khó mà model hiện tại đang tốn nhiều vòng sửa. Không đổi default model cho cả team trước khi so chất lượng, latency và cost per completed task.",
+      "sources": [
+        {
+          "label": "Anthropic — Claude Fable 5.1",
+          "url": "https://www.anthropic.com/claude/fable",
+          "type": "official",
+          "published_at": "2026-09-01"
+        }
+      ]
+    }
+  ],
+  "developer_memo": {
+    "title": "Có cần đổi workflow hôm nay không?",
+    "direct_answer": "Chưa cần thay đổi workflow hiện tại.",
+    "actions": [
+      "Benchmark Claude Fable 5.1 trên một nhóm task coding khó thay vì đổi model mặc định ngay.",
+      "Rà một agent có shell hoặc network access và xác nhận least privilege, approval gate cùng stop condition.",
+      "Theo dõi cost per completed task cho một automation đang chạy thường xuyên trước khi đầu tư thêm lớp gateway hoặc chargeback."
+    ],
+    "avoid": [
+      "Không tăng quyền agent chỉ vì frontier model mới có capability tốt hơn.",
+      "Không dùng vendor benchmark làm bằng chứng duy nhất để đổi model cho production workload.",
+      "Không retry vô hạn khi model provider hoặc một model cụ thể đang degraded."
+    ]
+  },
+  "radar": [
+    {
+      "event_id": "openai-ai-native-company-workflows-2026-09-01",
+      "event_signature": {
+        "organization": "openai",
+        "product": "enterprise-agents",
+        "action": "research-publication",
+        "artifact": "ai-native-company-workflows-2026-09-01"
+      },
+      "published_at": "2026-09-01",
+      "freshness": "NEW_TODAY",
+      "status": "WATCH",
+      "text": "OpenAI công bố dữ liệu Enterprise Signals cho thấy nhóm doanh nghiệp dùng AI mạnh nhất đang tạo lượng output token trên mỗi active user cao hơn đáng kể và có xu hướng nối agent trực tiếp với context cùng tool nội bộ. Đây là dữ liệu do vendor công bố, nhưng đáng theo dõi vì nó củng cố hướng chuyển từ chat hỗ trợ sang workflow có execution và đo lường được.",
+      "sources": [
+        {
+          "label": "OpenAI — How AI-native companies turn workflows into operating capability",
+          "url": "https://openai.com/index/ai-native-company-workflows/",
+          "type": "official",
+          "published_at": "2026-09-01"
+        }
+      ]
+    }
+  ],
+  "takeaway": "Nếu hôm nay chỉ nhớ một điều: model mạnh hơn đang làm runtime control và cost governance quan trọng hơn, không ít hơn. Hãy benchmark model mới trên task thật, nhưng giữ permission, stop condition và đo chi phí như một phần của engineering.",
+  "content_contract": {
+    "renderer_must_not_require_html_in_content": true,
+    "allowed_rich_content": [
+      "paragraph",
+      "bullet",
+      "pullquote",
+      "source_link",
+      "editorial_visual_hint"
+    ],
+    "freshness_values": [
+      "NEW_TODAY",
+      "CONTEXT_72H"
+    ],
+    "verdict_values": [
+      "TRY_NOW",
+      "WATCH",
+      "SKIP_FOR_NOW"
+    ]
+  }
+}
