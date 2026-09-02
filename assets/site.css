@@ -78,6 +78,7 @@
   --surface: #f7f0e6;
   --surface-strong: #f1e6d6;
   --text: #1f1a16;
+  --text-strong: #1f1a16;
   --muted: #7d7168;
   --faint: #8a7e75;
   --line: #ded3c5;
@@ -99,39 +100,41 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     color-scheme: dark;
-    --bg: #11100e;
-    --paper: #171512;
-    --surface: #211d19;
-    --surface-strong: #2b241e;
-    --text: #f3eee8;
-    --muted: #b8aaa0;
-    --faint: #92877f;
-    --line: #38312c;
-    --line-strong: #5a4f47;
-    --accent: #d29162;
-    --accent-soft: #3b2b20;
-    --link: #dfd1c7;
-    --header: rgba(23, 21, 18, 0.96);
-    --shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+    --bg: #181714;
+    --paper: #1d1b18;
+    --surface: #25221e;
+    --surface-strong: #2d2924;
+    --text: #c8c1b8;
+    --text-strong: #e3ddd5;
+    --muted: #a89d93;
+    --faint: #887f77;
+    --line: #34302b;
+    --line-strong: #49433c;
+    --accent: #c07b50;
+    --accent-soft: #35281f;
+    --link: #cbb5a5;
+    --header: rgba(29, 27, 24, 0.95);
+    --shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
   }
 }
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #11100e;
-  --paper: #171512;
-  --surface: #211d19;
-  --surface-strong: #2b241e;
-  --text: #f3eee8;
-  --muted: #b8aaa0;
-  --faint: #92877f;
-  --line: #38312c;
-  --line-strong: #5a4f47;
-  --accent: #d29162;
-  --accent-soft: #3b2b20;
-  --link: #dfd1c7;
-  --header: rgba(23, 21, 18, 0.96);
-  --shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+  --bg: #181714;
+  --paper: #1d1b18;
+  --surface: #25221e;
+  --surface-strong: #2d2924;
+  --text: #c8c1b8;
+  --text-strong: #e3ddd5;
+  --muted: #a89d93;
+  --faint: #887f77;
+  --line: #34302b;
+  --line-strong: #49433c;
+  --accent: #c07b50;
+  --accent-soft: #35281f;
+  --link: #cbb5a5;
+  --header: rgba(29, 27, 24, 0.95);
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
 }
 
 :root[data-theme="light"] {
@@ -164,6 +167,17 @@ body {
 
 body.large-type {
   font-size: 1.25rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+b {
+  color: var(--text-strong);
 }
 
 .skip-link,
@@ -272,14 +286,14 @@ a:hover {
 }
 
 :root[data-theme="dark"] .page-grain {
-  opacity: 0.055;
-  mix-blend-mode: overlay;
+  opacity: 0.025;
+  mix-blend-mode: soft-light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .page-grain {
-    opacity: 0.055;
-    mix-blend-mode: overlay;
+    opacity: 0.025;
+    mix-blend-mode: soft-light;
   }
 }
 
