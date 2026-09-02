@@ -447,17 +447,18 @@ function renderTrendStory(trend, index, options = {}) {
     const continuation = rest.length > 0
       ? '<div class="story-prose story-prose--continuation">' + renderParagraphs(rest) + '</div>'
       : '';
-    const continuationBlock = continuation && quote
-      ? '<div class="lead-story__continuation">' + continuation + quote + '</div>'
-      : continuation + quote;
+    const contextualAside = quote + action;
+    const continuationBlock = continuation && contextualAside
+      ? '<div class="lead-story__continuation">' + continuation +
+        '<aside class="lead-story__sidebar">' + contextualAside + '</aside></div>'
+      : continuation + contextualAside;
     body = [
       '<div class="lead-story__opening' + openingClass + '">',
       '  <div class="story-prose">' + renderParagraphs(first, { lead: true }) + '</div>',
       '  ' + visual,
       '</div>',
       stat,
-      continuationBlock,
-      action
+      continuationBlock
     ].join('\n');
   } else if (shape === 'visual-explainer') {
     body = [
