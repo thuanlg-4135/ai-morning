@@ -241,12 +241,24 @@ a:hover {
 
 .reading-progress {
   position: fixed;
-  z-index: 20;
-  inset: 0 auto auto 0;
-  width: 0;
-  height: 0.1875rem;
+  z-index: 60;
+  inset: 0 0 auto;
+  width: 100%;
+  height: 0.25rem;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  pointer-events: none;
+}
+
+.reading-progress > span {
+  width: 100%;
+  height: 100%;
+  display: block;
   background: var(--accent);
+  box-shadow: 0 0 0.65rem color-mix(in srgb, var(--accent) 70%, transparent);
+  transform: scaleX(var(--reading-progress, 0));
   transform-origin: 0 50%;
+  transition: transform 80ms linear;
 }
 
 .page-grain {
@@ -3384,7 +3396,7 @@ body {
 }
 
 .release__head {
-  grid-column: 1 / span 5;
+  grid-column: 1 / -1;
   grid-row: 1;
   grid-template-columns: 2rem minmax(0, 1fr) auto;
   gap: 0.75rem clamp(1rem, 2.5vw, 2rem);
@@ -3401,7 +3413,7 @@ body {
 }
 
 .release__head h3 {
-  max-width: 27ch;
+  max-width: 34ch;
   font-family: var(--font-editorial);
   font-size: clamp(1.8rem, 2.7vw, 2.65rem);
   font-variation-settings: "wght" 560;
@@ -3416,9 +3428,13 @@ body {
 }
 
 .release__body {
-  grid-column: 6 / -1;
-  grid-row: 1;
-  margin: 0;
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin: var(--space-related) 0 0;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: start;
+  column-gap: var(--newspaper-gap);
 }
 
 .release > .inline-visual {
@@ -3429,6 +3445,7 @@ body {
 }
 
 .release__summary {
+  grid-column: 1 / span 4;
   max-width: 62ch;
   font-size: clamp(1.08rem, 1rem + 0.25vw, 1.22rem);
   font-weight: 400;
@@ -3441,16 +3458,25 @@ body {
 }
 
 .release__details {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-related);
+  grid-column: 5 / span 4;
+  margin-top: 0;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
 }
 
 .release__decision {
-  grid-template-columns: 8rem minmax(0, 1fr);
+  grid-column: 9 / -1;
+  margin-top: 0;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .release__decision > :not(.release__body-label) {
-  grid-column: 2;
+  grid-column: 1;
+}
+
+.release__decision .sources {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.45rem;
 }
 
 .sources {
@@ -3497,9 +3523,14 @@ body {
 
 .rail {
   position: static;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  display: block;
   border-block: var(--rule-section);
+}
+
+.rail__summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  align-items: start;
 }
 
 .rail__block,
@@ -3510,6 +3541,12 @@ body {
   border-top: 0;
   border-left: var(--rule-hairline);
   background: transparent;
+}
+
+.rail__block--index {
+  padding: 0.75rem 0 0.95rem;
+  border-bottom: var(--rule-hairline);
+  border-left: 0;
 }
 
 .rail__block:first-child {
@@ -3536,6 +3573,15 @@ body {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0 1rem;
+}
+
+.rail__block--index .rail__index {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.5rem), 1fr));
+  gap: 0 0.9rem;
+}
+
+.rail__block--index .rail__index a {
+  padding-right: 0.65rem;
 }
 
 .stat-break--rail .stat-break__value {
@@ -3585,6 +3631,32 @@ body {
 }
 
 @media (min-width: 64.01rem) {
+  .lead-story__continuation {
+    display: block;
+  }
+
+  .lead-story__continuation .story-prose--continuation {
+    margin: var(--space-related) auto 0;
+  }
+
+  .lead-story__continuation .pullquote {
+    max-width: 64rem;
+    margin: var(--space-related) auto 0;
+    padding: 1.35rem clamp(1.5rem, 3vw, 2.5rem) 1.5rem;
+  }
+
+  .lead-story > .action-note {
+    max-width: 64rem;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 8rem minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  .lead-story > .action-note p {
+    margin-top: 0;
+  }
+
   .memo__intro {
     grid-template-columns: minmax(18rem, 0.82fr) minmax(0, 1.18fr);
     align-items: end;
@@ -3651,6 +3723,29 @@ body {
   }
 }
 
+@media (max-width: 64rem) {
+  .release {
+    display: block;
+  }
+
+  .release__head,
+  .release__body,
+  .release > .inline-visual {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .release__body {
+    margin-top: 1.35rem;
+    display: block;
+  }
+
+  .release__details,
+  .release__decision {
+    margin-top: 1.5rem;
+  }
+}
+
 @media (max-width: 52rem) {
   .briefing--count-1 > ol > li,
   .briefing--count-1 > ol > li:nth-child(3n + 1):last-child,
@@ -3666,20 +3761,6 @@ body {
     margin-top: 0.65rem;
   }
 
-  .release {
-    display: block;
-  }
-
-  .release__head,
-  .release__body,
-  .release > .inline-visual {
-    grid-column: auto;
-    grid-row: auto;
-  }
-
-  .release__body {
-    margin-top: 1.35rem;
-  }
 }
 
 @media (max-width: 79.99rem) {

@@ -736,7 +736,7 @@ function renderRightRail(edition) {
 
   const watching = watchingItems(edition).map((item) => '<li>' + escapeHtml(item) + '</li>').join('');
   const watchingBlock = watching
-    ? '<section class="rail__block"><h3>Watching</h3><ul class="rail__watch">' + watching + '</ul></section>'
+    ? '<section class="rail__block rail__block--watching"><h3>Watching</h3><ul class="rail__watch">' + watching + '</ul></section>'
     : '';
 
   const items = [...edition.brief, ...edition.trends, ...edition.releases, ...edition.radar];
@@ -763,10 +763,8 @@ function renderRightRail(edition) {
   return [
     '<aside class="edition-overview" aria-label="Mục lục số hôm nay">',
     '  <div class="rail">',
-    '    <section class="rail__block"><h3>Trong số này</h3><nav class="rail__index" aria-label="Mục lục">' + indexItems + '</nav></section>',
-    '    ' + evidenceBlock,
-    '    ' + numberBlock,
-    '    ' + watchingBlock,
+    '    <section class="rail__block rail__block--index"><h3>Trong số này</h3><nav class="rail__index" aria-label="Mục lục">' + indexItems + '</nav></section>',
+    '    <div class="rail__summary">' + evidenceBlock + numberBlock + watchingBlock + '</div>',
     '  </div>',
     '</aside>'
   ].join('\n');
@@ -830,6 +828,7 @@ function localizeChrome(html, language) {
     ['Chế độ đọc', 'Reading mode'],
     ['Theme: auto. Chọn theme tiếp theo', 'Theme: auto. Choose the next theme'],
     ['Đổi cỡ chữ', 'Change font size'],
+    ['Tiến độ đọc', 'Reading progress'],
     ['AI Morning là bản tổng hợp có chọn lọc. Claim quan trọng nên được kiểm tra ở nguồn gốc trước khi dùng cho quyết định production, pháp lý hoặc tài chính.', 'AI Morning is a curated briefing. Verify consequential claims with their primary source before making production, legal, or financial decisions.'],
     ['Phiên bản khác', 'Other editions'],
     ['Mỗi buổi sáng, một lát cắt.', 'One morning, one clear slice.'],

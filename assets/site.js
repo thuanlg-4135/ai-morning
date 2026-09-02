@@ -5,6 +5,7 @@
   const typeButton = document.querySelector('[data-type-toggle]');
   const readingButton = document.querySelector('[data-reading-toggle]');
   const progress = document.querySelector('[data-reading-progress]');
+  const article = document.querySelector('.edition');
   const masthead = document.querySelector('[data-masthead]');
   const mastheadSpacer = masthead ? document.createElement('div') : null;
   const choices = ['auto', 'light', 'dark'];
@@ -218,9 +219,15 @@
 
   const updateProgress = () => {
     if (!progress) return;
-    const scrollable = root.scrollHeight - root.clientHeight;
-    const percent = scrollable > 0 ? Math.min(100, Math.max(0, (scrollY / scrollable) * 100)) : 0;
-    progress.style.width = `${percent}%`;
+    const articleTop = article ? article.getBoundingClientRect().top + scrollY : 0;
+    const articleHeight = article?.offsetHeight ?? root.scrollHeight;
+    const articleEnd = Math.max(articleTop, articleTop + articleHeight - root.clientHeight);
+    const distance = articleEnd - articleTop;
+    const percent = distance > 0
+      ? Math.min(100, Math.max(0, ((scrollY - articleTop) / distance) * 100))
+      : 100;
+    progress.style.setProperty('--reading-progress', String(percent / 100));
+    progress.setAttribute('aria-valuenow', String(Math.round(percent)));
   };
 
   updateProgress();
