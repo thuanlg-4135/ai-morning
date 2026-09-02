@@ -2,8 +2,8 @@
   "schema_version": 3,
   "generated_from": {
     "first_edition": "2026-08-22",
-    "last_edition": "2026-08-30",
-    "edition_count": 9,
+    "last_edition": "2026-09-02",
+    "edition_count": 11,
     "source_registry_count": 39
   },
   "events": [
@@ -1392,6 +1392,7 @@
       "title": "Model portability đang chuyển từ nice-to-have thành rủi ro vận hành thật",
       "fingerprint": "model portability dang chuyen tu nice to have thanh rui ro van hanh that",
       "canonical_sources": [
+        "https://help.openai.com/en/articles/20001506-using-openai-models-in-cursor",
         "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex",
         "https://reuters.com/business/media-telecom/openai-end-partnership-with-spacexs-cursor-2026-08-29"
       ],
@@ -1448,6 +1449,334 @@
             "artifact": "hy4-preview-open-weights"
           },
           "signature_key": "tencent|hy4-preview|open-source|hy4-preview-open-weights",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-agentic-workflows-0-87-9-prerelease",
+      "event_signature": {
+        "organization": "github",
+        "product": "agentic-workflows",
+        "action": "release",
+        "artifact": "0-87-9-prerelease"
+      },
+      "signature_key": "github|agentic-workflows|release|0-87-9-prerelease",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "agentic-workflows",
+        "action": "release",
+        "artifact": "0-87-9-prerelease"
+      },
+      "current_signature_key": "github|agentic-workflows|release|0-87-9-prerelease",
+      "first_published_at": "2026-08-31",
+      "first_edition": "2026-09-01",
+      "title": "Agentic workflow bắt đầu có guardrail giống một job scheduler nghiêm túc",
+      "fingerprint": "agentic workflow bat dau co guardrail giong mot job scheduler nghiem tuc",
+      "canonical_sources": [
+        "https://github.github.io/gh-aw/blog/2026-08-31-weekly-update"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-01",
+          "section": "trends",
+          "published_at": "2026-08-31",
+          "event_signature": {
+            "organization": "github",
+            "product": "agentic-workflows",
+            "action": "release",
+            "artifact": "0-87-9-prerelease"
+          },
+          "signature_key": "github|agentic-workflows|release|0-87-9-prerelease",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-agentic-workflows-issue-arborist-2026-08-31",
+      "event_signature": {
+        "organization": "github",
+        "product": "agentic-workflows",
+        "action": "research-publication",
+        "artifact": "issue-arborist-case-study-2026-08-31"
+      },
+      "signature_key": "github|agentic-workflows|research-publication|issue-arborist-case-study-2026-08-31",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "agentic-workflows",
+        "action": "research-publication",
+        "artifact": "issue-arborist-case-study-2026-08-31"
+      },
+      "current_signature_key": "github|agentic-workflows|research-publication|issue-arborist-case-study-2026-08-31",
+      "first_published_at": "2026-08-31",
+      "first_edition": "2026-09-01",
+      "title": "Agent hữu ích hơn khi có quyền nói 'không đủ chắc để làm'",
+      "fingerprint": "agent huu ich hon khi co quyen noi khong du chac de lam",
+      "canonical_sources": [
+        "https://github.github.io/gh-aw/blog/2026-08-31-agent-of-the-day"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-01",
+          "section": "trends",
+          "published_at": "2026-08-31",
+          "event_signature": {
+            "organization": "github",
+            "product": "agentic-workflows",
+            "action": "research-publication",
+            "artifact": "issue-arborist-case-study-2026-08-31"
+          },
+          "signature_key": "github|agentic-workflows|research-publication|issue-arborist-case-study-2026-08-31",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-copilot-openai-model-provider-incident-2026-08-31",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot-model-providers",
+        "action": "incident-resolution",
+        "artifact": "openai-model-errors-2026-08-31"
+      },
+      "signature_key": "github|copilot-model-providers|incident-resolution|openai-model-errors-2026-08-31",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "copilot-model-providers",
+        "action": "incident-resolution",
+        "artifact": "openai-model-errors-2026-08-31"
+      },
+      "current_signature_key": "github|copilot-model-providers|incident-resolution|openai-model-errors-2026-08-31",
+      "first_published_at": "2026-08-31T09:58:00Z",
+      "first_edition": "2026-09-01",
+      "title": "Copilot mất ổn định với một nhóm OpenAI models trong khoảng 43 phút",
+      "fingerprint": "copilot mat on dinh voi mot nhom openai models trong khoang 43 phut",
+      "canonical_sources": [
+        "https://githubstatus.com/"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-01",
+          "section": "brief",
+          "published_at": "2026-08-31T09:58:00Z",
+          "event_signature": {
+            "organization": "github",
+            "product": "copilot-model-providers",
+            "action": "incident-resolution",
+            "artifact": "openai-model-errors-2026-08-31"
+          },
+          "signature_key": "github|copilot-model-providers|incident-resolution|openai-model-errors-2026-08-31",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "anthropic-claude-code-cost-roi-google-cloud",
+      "event_signature": {
+        "organization": "anthropic",
+        "product": "claude-code",
+        "action": "research-publication",
+        "artifact": "cost-roi-google-cloud"
+      },
+      "signature_key": "anthropic|claude-code|research-publication|cost-roi-google-cloud",
+      "current_event_signature": {
+        "organization": "anthropic",
+        "product": "claude-code",
+        "action": "research-publication",
+        "artifact": "cost-roi-google-cloud"
+      },
+      "current_signature_key": "anthropic|claude-code|research-publication|cost-roi-google-cloud",
+      "first_published_at": "2026-09-01",
+      "first_edition": "2026-09-02",
+      "title": "Khi coding agent được dùng rộng hơn, cost governance bắt đầu thành việc của engineering",
+      "fingerprint": "khi coding agent duoc dung rong hon cost governance bat dau thanh viec cua engineering",
+      "canonical_sources": [
+        "https://anthropic.com/webinars/how-to-control-costs-and-show-roi-for-claude-code-on-google-cloud"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-02",
+          "section": "trends",
+          "published_at": "2026-09-01",
+          "event_signature": {
+            "organization": "anthropic",
+            "product": "claude-code",
+            "action": "research-publication",
+            "artifact": "cost-roi-google-cloud"
+          },
+          "signature_key": "anthropic|claude-code|research-publication|cost-roi-google-cloud",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "anthropic-claude-fable-5-1",
+      "event_signature": {
+        "organization": "anthropic",
+        "product": "claude-fable",
+        "action": "release",
+        "artifact": "5-1"
+      },
+      "signature_key": "anthropic|claude-fable|release|5-1",
+      "current_event_signature": {
+        "organization": "anthropic",
+        "product": "claude-fable",
+        "action": "release",
+        "artifact": "5-1"
+      },
+      "current_signature_key": "anthropic|claude-fable|release|5-1",
+      "first_published_at": "2026-09-01",
+      "first_edition": "2026-09-02",
+      "title": "Claude Fable 5.1 — Frontier model mới cho coding và long-running agent",
+      "fingerprint": "claude fable 5 1 frontier model moi cho coding va long running agent",
+      "canonical_sources": [
+        "https://anthropic.com/claude/fable"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-02",
+          "section": "releases",
+          "published_at": "2026-09-01",
+          "event_signature": {
+            "organization": "anthropic",
+            "product": "claude-fable",
+            "action": "release",
+            "artifact": "5-1"
+          },
+          "signature_key": "anthropic|claude-fable|release|5-1",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "cursor-composer-2-5-degraded-performance-2026-09-01",
+      "event_signature": {
+        "organization": "cursor",
+        "product": "composer-2-5",
+        "action": "incident-resolution",
+        "artifact": "degraded-performance-2026-09-01"
+      },
+      "signature_key": "cursor|composer-2-5|incident-resolution|degraded-performance-2026-09-01",
+      "current_event_signature": {
+        "organization": "cursor",
+        "product": "composer-2-5",
+        "action": "incident-resolution",
+        "artifact": "degraded-performance-2026-09-01"
+      },
+      "current_signature_key": "cursor|composer-2-5|incident-resolution|degraded-performance-2026-09-01",
+      "first_published_at": "2026-09-01T01:14:00Z",
+      "first_edition": "2026-09-02",
+      "title": "Cursor ghi nhận Composer 2.5 gây lỗi ở Automations, Cloud Agents, CLI và IDE",
+      "fingerprint": "cursor ghi nhan composer 2 5 gay loi o automations cloud agents cli va ide",
+      "canonical_sources": [
+        "https://status.cursor.com/"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-02",
+          "section": "brief",
+          "published_at": "2026-09-01T01:14:00Z",
+          "event_signature": {
+            "organization": "cursor",
+            "product": "composer-2-5",
+            "action": "incident-resolution",
+            "artifact": "degraded-performance-2026-09-01"
+          },
+          "signature_key": "cursor|composer-2-5|incident-resolution|degraded-performance-2026-09-01",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "openai-ai-native-company-workflows-2026-09-01",
+      "event_signature": {
+        "organization": "openai",
+        "product": "enterprise-agents",
+        "action": "research-publication",
+        "artifact": "ai-native-company-workflows-2026-09-01"
+      },
+      "signature_key": "openai|enterprise-agents|research-publication|ai-native-company-workflows-2026-09-01",
+      "current_event_signature": {
+        "organization": "openai",
+        "product": "enterprise-agents",
+        "action": "research-publication",
+        "artifact": "ai-native-company-workflows-2026-09-01"
+      },
+      "current_signature_key": "openai|enterprise-agents|research-publication|ai-native-company-workflows-2026-09-01",
+      "first_published_at": "2026-09-01",
+      "first_edition": "2026-09-02",
+      "title": "OpenAI công bố dữ liệu Enterprise Signals cho thấy nhóm doanh nghiệp dùng AI mạnh nhất đang tạo lượng output token trên mỗi active user cao hơn đáng kể và có xu hướng nối agent trực tiếp với context cùng tool nội bộ. Đây là dữ liệu do vendor công bố, nhưng đáng theo dõi vì nó củng cố hướng chuyển từ chat hỗ trợ sang workflow có execution và đo lường được.",
+      "fingerprint": "openai cong bo du lieu enterprise signals cho thay nhom doanh nghiep dung ai manh nhat dang tao luong output token tren moi active user cao hon dang ke va co xu huong noi agent truc tiep voi context cung tool noi bo day la du lieu do vendor cong bo nhung dang theo doi vi no cung co huong chuyen tu chat ho tro sang workflow co execution va do luong duoc",
+      "canonical_sources": [
+        "https://openai.com/index/ai-native-company-workflows"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-02",
+          "section": "radar",
+          "published_at": "2026-09-01",
+          "event_signature": {
+            "organization": "openai",
+            "product": "enterprise-agents",
+            "action": "research-publication",
+            "artifact": "ai-native-company-workflows-2026-09-01"
+          },
+          "signature_key": "openai|enterprise-agents|research-publication|ai-native-company-workflows-2026-09-01",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "openai-astra-critical-cybersecurity-threshold",
+      "event_signature": {
+        "organization": "openai",
+        "product": "astra",
+        "action": "research-publication",
+        "artifact": "critical-cybersecurity-threshold"
+      },
+      "signature_key": "openai|astra|research-publication|critical-cybersecurity-threshold",
+      "current_event_signature": {
+        "organization": "openai",
+        "product": "astra",
+        "action": "research-publication",
+        "artifact": "critical-cybersecurity-threshold"
+      },
+      "current_signature_key": "openai|astra|research-publication|critical-cybersecurity-threshold",
+      "first_published_at": "2026-09-01",
+      "first_edition": "2026-09-02",
+      "title": "Astra cho thấy frontier model đang vượt khỏi phạm vi 'coding assistant' thông thường",
+      "fingerprint": "astra cho thay frontier model dang vuot khoi pham vi coding assistant thong thuong",
+      "canonical_sources": [
+        "https://openai.com/index/path-to-astra"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-02",
+          "section": "trends",
+          "published_at": "2026-09-01",
+          "event_signature": {
+            "organization": "openai",
+            "product": "astra",
+            "action": "research-publication",
+            "artifact": "critical-cybersecurity-threshold"
+          },
+          "signature_key": "openai|astra|research-publication|critical-cybersecurity-threshold",
           "material_update": null,
           "update_kind": null,
           "dedupe_override_reason": null
