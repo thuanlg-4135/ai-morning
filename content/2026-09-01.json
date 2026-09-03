@@ -4,8 +4,8 @@
   "locale": "vi-VN",
   "edition_type": "daily_ai_catchup",
   "edition_mode": "QUIET",
-  "headline": "Agent chạy tự động đang cần guardrail tốt hơn, không chỉ model tốt hơn",
-  "dek": "Sáng nay không có frontier model mới đủ lớn để buộc developer đổi tool. Signal đáng chú ý hơn nằm ở cách agent được vận hành: GitHub Agentic Workflows thêm cooldown, stop-after và lỗi tool-schema dễ đọc hơn, trong khi một workflow triage thực tế cho thấy agent hữu ích nhất khi biết lúc nào không nên hành động. Với team đang tự động hóa repo, ưu tiên hôm nay là giới hạn run, quan sát failure và giữ quyền ghi ở mức tối thiểu.",
+  "headline": "Agent tự động cần cooldown và stop condition trước khi cần thêm autonomy",
+  "dek": "GitHub Agentic Workflows thêm cooldown, giới hạn run và lỗi tool-schema rõ hơn. Một case study trong cùng dự án cũng cho thấy agent triage đáng tin hơn khi `no-op có lý do` được xem là output hợp lệ.",
   "meta": {
     "primary_scan_hours": 24,
     "context_window_hours": 72,
@@ -17,7 +17,7 @@
   "hero_visual": {
     "kind": "editorial",
     "key": "agent-guardrails-over-more-autonomy",
-    "caption": "Agent tự động hữu ích hơn khi có giới hạn tần suất, điểm dừng rõ ràng và cách quan sát failure đủ tốt để con người biết khi nào cần can thiệp."
+    "caption": "Một agent production cần giới hạn tần suất, điểm dừng và cách từ chối hành động khi bằng chứng chưa đủ."
   },
   "brief": [
     {
@@ -30,8 +30,8 @@
       },
       "published_at": "2026-08-31T09:58:00Z",
       "freshness": "NEW_TODAY",
-      "title": "Copilot mất ổn định với một nhóm OpenAI models trong khoảng 43 phút",
-      "text": "GitHub ghi nhận tỷ lệ lỗi tăng trên các OpenAI models trong Copilot từ 09:15 UTC ngày 31/8 và xác nhận sự cố nằm ở upstream model provider. Đến 09:58 UTC, các model như gpt-5.3-codex, gpt-5.4-mini, gpt-5.4-nano, gpt-5.5 và dòng gpt-5.6 hoạt động lại. Với workflow phụ thuộc một model cụ thể, đây là lời nhắc thực tế rằng model availability cũng là một dependency vận hành; nên có fallback hoặc ít nhất thông báo lỗi rõ ràng thay vì retry vô hạn.",
+      "title": "Một nhóm OpenAI model trong Copilot lỗi khoảng 43 phút",
+      "text": "GitHub ghi nhận tỷ lệ lỗi tăng trên các OpenAI model trong Copilot từ 09:15 UTC ngày 31/8 và xác nhận nguyên nhân ở upstream provider. Đến 09:58 UTC, các model bị ảnh hưởng hoạt động lại. Workflow phụ thuộc một model cụ thể nên có error path rõ, giới hạn retry và fallback thay vì tự lặp vô hạn.",
       "sources": [
         {
           "label": "GitHub Status — Elevated rate of errors for OpenAI models provided by Copilot",
@@ -58,18 +58,18 @@
       "importance": "LEAD",
       "editorial_theme": "agent-operations",
       "editorial_angle": "run-guardrails",
-      "title": "Agentic workflow bắt đầu có guardrail giống một job scheduler nghiêm túc",
+      "title": "GitHub thêm cooldown và stop condition cho agent workflow",
       "paragraphs": [
-        "GitHub Agentic Workflows công bố chuỗi pre-release mới, trong đó v0.87.9 bổ sung hai primitive đáng chú ý cho workflow chạy tự động: `on.cooldown` để tránh trigger liên tiếp chồng lên cùng một target, và `on.stop-after` có kiểu dữ liệu rõ hơn để giới hạn thời gian hoặc số lần chạy bằng GitHub Actions expressions. Đây không phải thay đổi làm model thông minh hơn; nó giải quyết một vấn đề vận hành quen thuộc hơn nhiều: agent có thể bị đánh thức quá thường xuyên và tiếp tục chạy lâu hơn mức cần thiết.",
-        "Cùng đợt này, Codex harness có lỗi riêng cho trường hợp tool schema không được model hỗ trợ. Trước đây những lỗi dạng này dễ bị nhìn như provider failure chung chung; giờ workflow có thể phân biệt rõ lỗi cấu hình tool với lỗi model hoặc network. GitHub cũng tiếp tục cập nhật MCP Gateway và Agentic Workflow Firewall, cho thấy lớp runtime quanh agent đang dần được coi là phần sản phẩm cần hardening riêng, không phải phụ kiện của prompt.",
-        "Với software engineer, practical impact khá rõ: nếu agent đang chạy theo cron, PR event, issue event hoặc webhook, hãy đối xử nó như background job có chi phí và side effect. Cần giới hạn tần suất, điểm dừng và failure mode trước khi tăng thêm quyền tự động. Một agent chạy đúng 95% nhưng có thể tự lặp vô hạn vẫn là một hệ thống kém an toàn để đưa vào production."
+        "GitHub Agentic Workflows v0.87.9 thêm `on.cooldown` để tránh trigger liên tiếp chồng lên cùng target và làm rõ kiểu dữ liệu của `on.stop-after` để giới hạn run bằng GitHub Actions expressions. Đây là control của scheduler, không phải capability mới của model. Nó xử lý hai failure mode quen thuộc: agent bị đánh thức quá thường xuyên và tiếp tục chạy lâu hơn mức cần thiết.",
+        "Codex harness trong cùng đợt update cũng có lỗi riêng khi model không hỗ trợ tool schema. Workflow vì vậy có thể phân biệt lỗi cấu hình tool với lỗi provider hoặc network rõ hơn. GitHub còn tiếp tục cập nhật MCP Gateway và Agentic Workflow Firewall, cho thấy runtime quanh agent đang được harden như một hệ thống riêng.",
+        "Team chạy agent theo cron, PR, issue hoặc webhook nên đối xử nó như background job có chi phí và side effect. Thêm chống trigger chồng nhau, giới hạn run và failure classification trước khi mở thêm quyền ghi. Một agent chạy đúng phần lớn thời gian nhưng có thể tự lặp vô hạn vẫn chưa đủ an toàn cho production."
       ],
-      "pullquote": "Tăng autonomy mà không thêm cooldown, stop condition và observability chỉ làm failure chạy nhanh hơn.",
-      "action": "Nếu đang có agent chạy theo event hoặc schedule, thêm một guard đơn giản trước: chống trigger chồng nhau, đặt giới hạn run và tách lỗi tool-schema khỏi lỗi provider trước khi mở thêm quyền ghi.",
+      "pullquote": "Autonomy tăng mà không có cooldown, stop condition và observability chỉ làm failure chạy nhanh hơn.",
+      "action": "Rà một agent chạy theo event hoặc schedule và thêm chống trigger chồng nhau, giới hạn run cùng error classification trước khi mở thêm quyền ghi.",
       "visual": {
         "kind": "editorial",
         "key": "trigger-cooldown-stop-observe",
-        "caption": "Một workflow agent production cần ít nhất bốn lớp: trigger, cooldown, stop condition và observability."
+        "caption": "Trigger, cooldown, stop condition và observability là bốn control cơ bản cho agent workflow chạy nền."
       },
       "sources": [
         {
@@ -95,13 +95,13 @@
       "importance": "SECONDARY",
       "editorial_theme": "agent-reliability",
       "editorial_angle": "conservative-actions",
-      "title": "Agent hữu ích hơn khi có quyền nói 'không đủ chắc để làm'",
+      "title": "Issue Arborist coi no-op có lý do là một kết quả hợp lệ",
       "paragraphs": [
-        "Một case study mới từ chính repo GitHub Agentic Workflows mô tả Issue Arborist, workflow đọc các issue chưa có parent rồi đề xuất hoặc tạo quan hệ sub-issue. Điểm đáng chú ý không phải số lượng action mà agent làm được, mà là cách nó cố tình bỏ qua những cluster chưa đủ chắc. Trong các run gần đây, workflow liên kết những nhóm issue có quan hệ rõ ràng nhưng ghi riêng các nhóm mà nó thấy giống nhau nhưng chưa đủ bằng chứng để tự động sửa cấu trúc issue tracker.",
-        "Đây là một pattern đáng học cho agent production: confidence threshold nên quyết định quyền hành động. Với tác vụ reversible và ít rủi ro, agent có thể tự làm; với thao tác có khả năng tạo noise, thay đổi state hoặc ảnh hưởng nhiều người, lựa chọn tốt đôi khi là không làm gì và để lại bằng chứng cho người review. Điều này khác với cách demo agent thường được tối ưu để luôn tạo ra một output hữu hình.",
-        "Với team đang xây triage, review hoặc maintenance agent, nên coi `no-op có lý do` là một output hợp lệ. Khi agent không đủ chắc, hệ thống nên lưu candidate, lý do và evidence thay vì ép nó chọn một action. Cách này giảm false positive và giúp developer quan sát được vùng mà policy hoặc prompt còn mơ hồ."
+        "GitHub mô tả Issue Arborist, workflow đọc các issue chưa có parent rồi đề xuất hoặc tạo quan hệ sub-issue. Trong các run gần đây, agent liên kết nhóm issue có quan hệ rõ nhưng để nguyên những cluster chưa đủ bằng chứng. Hành vi đáng chú ý ở đây là agent được phép không sửa state.",
+        "Pattern này hữu ích cho triage, review và maintenance agent. Với action reversible và rủi ro thấp, agent có thể tự làm. Khi confidence chưa đủ hoặc thay đổi có thể tạo noise cho nhiều người, hệ thống nên lưu candidate, lý do và evidence để người review quyết định.",
+        "Team đang tối ưu agent cho 'luôn làm một thứ gì đó' nên thêm nhánh no-op và đo false positive. Giảm một action sai thường có giá trị hơn tăng số action tự động nhưng khiến người thật phải dọn lại state."
       ],
-      "action": "Chọn một automation có side effect và thêm nhánh `no-op`: nếu confidence dưới ngưỡng, chỉ log candidate + lý do thay vì sửa state. Đo false positive trước và sau thay đổi.",
+      "action": "Thêm nhánh no-op cho một automation có side effect: dưới confidence threshold thì chỉ log candidate, lý do và evidence, sau đó đo false positive trước và sau thay đổi.",
       "sources": [
         {
           "label": "GitHub Agentic Workflows — Agent of the Day: Issue Arborist",
@@ -117,18 +117,18 @@
     "title": "Có cần đổi workflow hôm nay không?",
     "direct_answer": "Chưa cần thay đổi workflow hiện tại.",
     "actions": [
-      "Rà một agent chạy theo schedule hoặc event và kiểm tra nó đã có chống trigger chồng nhau cùng stop condition hay chưa.",
-      "Nếu workflow dùng nhiều model, xác định model fallback hoặc ít nhất error path khi một provider tạm lỗi.",
+      "Rà một agent chạy theo schedule hoặc event và kiểm tra chống trigger chồng nhau cùng stop condition.",
+      "Nếu workflow dùng nhiều model, xác định fallback hoặc ít nhất error path khi provider tạm lỗi.",
       "Với agent có quyền sửa issue, PR hoặc file, thêm nhánh no-op có lý do thay vì ép agent luôn tạo action."
     ],
     "avoid": [
-      "Không tăng quyền tự động chỉ vì agent đã chạy ổn vài lần trong môi trường test.",
-      "Không retry vô hạn khi lỗi có thể đến từ model provider hoặc tool schema không tương thích.",
+      "Không tăng quyền tự động chỉ vì agent đã chạy ổn vài lần trong test.",
+      "Không retry vô hạn khi lỗi có thể đến từ provider hoặc tool schema không tương thích.",
       "Không coi mọi candidate mà agent phát hiện là đủ chắc để sửa state."
     ]
   },
   "radar": [],
-  "takeaway": "Nếu hôm nay chỉ nhớ một điều: agent production cần guardrail vận hành nhiều không kém model capability. Cooldown, stop condition, fallback và quyền no-op là những thứ giúp automation chạy lâu dài mà không biến một lỗi nhỏ thành chuỗi side effect.",
+  "takeaway": "Thêm cooldown, stop condition và no-op có lý do trước khi tăng autonomy cho agent chạy nền.",
   "content_contract": {
     "renderer_must_not_require_html_in_content": true,
     "allowed_rich_content": ["paragraph", "bullet", "pullquote", "source_link", "editorial_visual_hint"],
