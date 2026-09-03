@@ -2,8 +2,8 @@
   "schema_version": 3,
   "generated_from": {
     "first_edition": "2026-08-22",
-    "last_edition": "2026-09-02",
-    "edition_count": 11,
+    "last_edition": "2026-09-03",
+    "edition_count": 12,
     "source_registry_count": 39
   },
   "events": [
@@ -1777,6 +1777,212 @@
             "artifact": "critical-cybersecurity-threshold"
           },
           "signature_key": "openai|astra|research-publication|critical-cybersecurity-threshold",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "cursor-self-hosted-machines",
+      "event_signature": {
+        "organization": "cursor",
+        "product": "cloud-agents",
+        "action": "release",
+        "artifact": "self-hosted-machines"
+      },
+      "signature_key": "cursor|cloud-agents|release|self-hosted-machines",
+      "current_event_signature": {
+        "organization": "cursor",
+        "product": "cloud-agents",
+        "action": "release",
+        "artifact": "self-hosted-machines"
+      },
+      "current_signature_key": "cursor|cloud-agents|release|self-hosted-machines",
+      "first_published_at": "2026-09-02",
+      "first_edition": "2026-09-03",
+      "title": "Coding agent cloud bắt đầu tách control plane khỏi nơi tool thực sự chạy",
+      "fingerprint": "coding agent cloud bat dau tach control plane khoi noi tool thuc su chay",
+      "canonical_sources": [
+        "https://cursor.com/changelog"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-03",
+          "section": "trends",
+          "published_at": "2026-09-02",
+          "event_signature": {
+            "organization": "cursor",
+            "product": "cloud-agents",
+            "action": "release",
+            "artifact": "self-hosted-machines"
+          },
+          "signature_key": "cursor|cloud-agents|release|self-hosted-machines",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-copilot-content-exclusions-app-cli-ga",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot",
+        "action": "general-availability",
+        "artifact": "content-exclusions-app-cli"
+      },
+      "signature_key": "github|copilot|general-availability|content-exclusions-app-cli",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "copilot",
+        "action": "general-availability",
+        "artifact": "content-exclusions-app-cli"
+      },
+      "current_signature_key": "github|copilot|general-availability|content-exclusions-app-cli",
+      "first_published_at": "2026-09-02",
+      "first_edition": "2026-09-03",
+      "title": "GitHub Copilot — Content exclusion policies trong Copilot app và CLI",
+      "fingerprint": "github copilot content exclusion policies trong copilot app va cli",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-02-content-exclusions-generally-available-in-copilot-app-and-cli"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-03",
+          "section": "releases",
+          "published_at": "2026-09-02",
+          "event_signature": {
+            "organization": "github",
+            "product": "copilot",
+            "action": "general-availability",
+            "artifact": "content-exclusions-app-cli"
+          },
+          "signature_key": "github|copilot|general-availability|content-exclusions-app-cli",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-copilot-enterprise-default-model-settings",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot",
+        "action": "feature-update",
+        "artifact": "enterprise-default-model-settings"
+      },
+      "signature_key": "github|copilot|feature-update|enterprise-default-model-settings",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "copilot",
+        "action": "feature-update",
+        "artifact": "enterprise-default-model-settings"
+      },
+      "current_signature_key": "github|copilot|feature-update|enterprise-default-model-settings",
+      "first_published_at": "2026-09-02",
+      "first_edition": "2026-09-03",
+      "title": "GitHub cho enterprise đặt default model Copilot theo toàn công ty hoặc từng team",
+      "fingerprint": "github cho enterprise dat default model copilot theo toan cong ty hoac tung team",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-02-enterprise-managed-settings-support-any-default-model"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-03",
+          "section": "brief",
+          "published_at": "2026-09-02",
+          "event_signature": {
+            "organization": "github",
+            "product": "copilot",
+            "action": "feature-update",
+            "artifact": "enterprise-default-model-settings"
+          },
+          "signature_key": "github|copilot|feature-update|enterprise-default-model-settings",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "google-fairwind-program-launch",
+      "event_signature": {
+        "organization": "google",
+        "product": "fairwind-program",
+        "action": "launch",
+        "artifact": "trusted-cyber-defense-access"
+      },
+      "signature_key": "google|fairwind-program|launch|trusted-cyber-defense-access",
+      "current_event_signature": {
+        "organization": "google",
+        "product": "fairwind-program",
+        "action": "launch",
+        "artifact": "trusted-cyber-defense-access"
+      },
+      "current_signature_key": "google|fairwind-program|launch|trusted-cyber-defense-access",
+      "first_published_at": "2026-09-02",
+      "first_edition": "2026-09-03",
+      "title": "Google mở Fairwind Program ở limited access cho chính phủ và đối tác tin cậy dùng capability cyber defense nâng cao, bao gồm Gemini 3.8 Flash Cyber. Đây chưa phải API phổ thông, nhưng đáng theo dõi vì frontier cyber model đang đi theo mô hình access control theo đối tượng thay vì phát hành rộng ngay từ đầu.",
+      "fingerprint": "google mo fairwind program o limited access cho chinh phu va doi tac tin cay dung capability cyber defense nang cao bao gom gemini 3 8 flash cyber day chua phai api pho thong nhung dang theo doi vi frontier cyber model dang di theo mo hinh access control theo doi tuong thay vi phat hanh rong ngay tu dau",
+      "canonical_sources": [
+        "https://blog.google/innovation-and-ai/technology/safety-security/fairwind-program"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-03",
+          "section": "radar",
+          "published_at": "2026-09-02",
+          "event_signature": {
+            "organization": "google",
+            "product": "fairwind-program",
+            "action": "launch",
+            "artifact": "trusted-cyber-defense-access"
+          },
+          "signature_key": "google|fairwind-program|launch|trusted-cyber-defense-access",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "google-gemini-3-8-flash-ga",
+      "event_signature": {
+        "organization": "google",
+        "product": "gemini-3-8-flash",
+        "action": "general-availability",
+        "artifact": "2026-09-02-ga"
+      },
+      "signature_key": "google|gemini-3-8-flash|general-availability|2026-09-02-ga",
+      "current_event_signature": {
+        "organization": "google",
+        "product": "gemini-3-8-flash",
+        "action": "general-availability",
+        "artifact": "2026-09-02-ga"
+      },
+      "current_signature_key": "google|gemini-3-8-flash|general-availability|2026-09-02-ga",
+      "first_published_at": "2026-09-02",
+      "first_edition": "2026-09-03",
+      "title": "Gemini 3.8 Flash làm task dài tốt hơn, nhưng hiệu quả phải đo theo task hoàn thành chứ không chỉ giá token",
+      "fingerprint": "gemini 3 8 flash lam task dai tot hon nhung hieu qua phai do theo task hoan thanh chu khong chi gia token",
+      "canonical_sources": [
+        "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash",
+        "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-03",
+          "section": "trends",
+          "published_at": "2026-09-02",
+          "event_signature": {
+            "organization": "google",
+            "product": "gemini-3-8-flash",
+            "action": "general-availability",
+            "artifact": "2026-09-02-ga"
+          },
+          "signature_key": "google|gemini-3-8-flash|general-availability|2026-09-02-ga",
           "material_update": null,
           "update_kind": null,
           "dedupe_override_reason": null

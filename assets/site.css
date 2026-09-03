@@ -275,28 +275,6 @@ a:hover {
   transition: transform 80ms linear;
 }
 
-.page-grain {
-  position: fixed;
-  inset: 0;
-  z-index: 40;
-  pointer-events: none;
-  opacity: 0.035;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-}
-
-:root[data-theme="dark"] .page-grain {
-  opacity: 0.025;
-  mix-blend-mode: soft-light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .page-grain {
-    opacity: 0.025;
-    mix-blend-mode: soft-light;
-  }
-}
-
 .masthead {
   position: sticky;
   z-index: 10;
@@ -3357,6 +3335,13 @@ body {
   grid-column: 6 / -1;
   grid-row: 1 / span 3;
   max-width: none;
+}
+
+.secondary-grid > .story-shape:only-child > :is(.visual-explainer__composition, .numbers-story__composition) {
+  grid-column: 6 / -1;
+  grid-row: 1 / span 3;
+  min-width: 0;
+  margin-top: 0;
 }
 
 .secondary-grid > .story-shape:only-child > .action-note {

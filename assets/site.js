@@ -152,7 +152,6 @@
   };
 
   updateMasthead();
-  addEventListener('scroll', updateMasthead, { passive: true });
 
   themeButton?.addEventListener('click', () => {
     const next = choices[(choices.indexOf(theme) + 1) % choices.length];
@@ -217,22 +216,32 @@
     }
   });
 
+  let articleTop = 0;
+  let articleEnd = 0;
+  let lastProgressValue = -1;
+
+  const measureProgress = () => {
+    articleTop = article ? article.getBoundingClientRect().top + scrollY : 0;
+    const articleHeight = article?.offsetHeight ?? root.scrollHeight;
+    articleEnd = Math.max(articleTop, articleTop + articleHeight - root.clientHeight);
+  };
+
   const updateProgress = () => {
     if (!progress) return;
-    const articleTop = article ? article.getBoundingClientRect().top + scrollY : 0;
-    const articleHeight = article?.offsetHeight ?? root.scrollHeight;
-    const articleEnd = Math.max(articleTop, articleTop + articleHeight - root.clientHeight);
     const distance = articleEnd - articleTop;
     const percent = distance > 0
       ? Math.min(100, Math.max(0, ((scrollY - articleTop) / distance) * 100))
       : 100;
     progress.style.setProperty('--reading-progress', String(percent / 100));
-    progress.setAttribute('aria-valuenow', String(Math.round(percent)));
+    const rounded = Math.round(percent);
+    if (rounded !== lastProgressValue) {
+      progress.setAttribute('aria-valuenow', String(rounded));
+      lastProgressValue = rounded;
+    }
   };
 
+  measureProgress();
   updateProgress();
-  addEventListener('scroll', updateProgress, { passive: true });
-  addEventListener('resize', updateProgress, { passive: true });
 
   const bookmarkKey = 'ai-morning-bookmarks';
   const readBookmarks = () => {
@@ -298,13 +307,25 @@
   const observedSections = [...document.querySelectorAll('[data-scroll-section][id]')];
   const sectionLinks = [...document.querySelectorAll('a[href^="#"]')];
   if (observedSections.length && sectionLinks.length) {
+    let sectionPositions = [];
+    let activeSectionId = '';
+
+    const measureSections = () => {
+      sectionPositions = observedSections.map((section) => ({
+        id: section.id,
+        top: section.getBoundingClientRect().top + scrollY
+      }));
+    };
+
     const updateActiveLink = () => {
       const marker = Math.max(96, Math.min(innerHeight * 0.24, 240));
-      let current = observedSections[0];
-      observedSections.forEach((section) => {
-        if (section.getBoundingClientRect().top <= marker) current = section;
+      let current = sectionPositions[0];
+      sectionPositions.forEach((section) => {
+        if (section.top <= scrollY + marker) current = section;
       });
       const id = current?.id;
+      if (!id || id === activeSectionId) return;
+      activeSectionId = id;
       sectionLinks.forEach((link) => {
         const active = link.hash === `#${id}`;
         link.classList.toggle('is-active', active);
@@ -313,19 +334,48 @@
       });
     };
 
-    let activeLinkFrame = 0;
-    const scheduleActiveLinkUpdate = () => {
-      if (activeLinkFrame) return;
-      activeLinkFrame = requestAnimationFrame(() => {
-        activeLinkFrame = 0;
+    let scrollFrame = 0;
+    const scheduleScrollUpdate = () => {
+      if (scrollFrame) return;
+      scrollFrame = requestAnimationFrame(() => {
+        scrollFrame = 0;
+        updateMasthead();
+        updateProgress();
         updateActiveLink();
       });
     };
 
+    const measureLayout = () => {
+      measureProgress();
+      measureSections();
+      scheduleScrollUpdate();
+    };
+
+    measureSections();
     updateActiveLink();
-    addEventListener('scroll', scheduleActiveLinkUpdate, { passive: true });
-    addEventListener('resize', scheduleActiveLinkUpdate, { passive: true });
-    addEventListener('hashchange', scheduleActiveLinkUpdate);
+    addEventListener('scroll', scheduleScrollUpdate, { passive: true });
+    addEventListener('resize', measureLayout, { passive: true });
+    addEventListener('hashchange', scheduleScrollUpdate);
+    addEventListener('load', measureLayout, { once: true });
+    document.fonts?.ready.then(measureLayout);
+    if (article && 'ResizeObserver' in window) {
+      new ResizeObserver(measureLayout).observe(article);
+    }
+  } else {
+    let scrollFrame = 0;
+    const scheduleScrollUpdate = () => {
+      if (scrollFrame) return;
+      scrollFrame = requestAnimationFrame(() => {
+        scrollFrame = 0;
+        updateMasthead();
+        updateProgress();
+      });
+    };
+    addEventListener('scroll', scheduleScrollUpdate, { passive: true });
+    addEventListener('resize', () => {
+      measureProgress();
+      scheduleScrollUpdate();
+    }, { passive: true });
   }
 
   document.querySelectorAll('.editions, .toc-menu').forEach((menu) => {
