@@ -4,8 +4,8 @@
   "locale": "vi-VN",
   "edition_type": "daily_ai_catchup",
   "edition_mode": "QUIET",
-  "headline": "Sol giảm giá; review UI cục bộ có thêm ranh giới an toàn",
-  "dek": "Cửa sổ kết thúc lúc 07:00 không có model mới và chỉ có hai thay đổi đủ chắc để đưa vào bản tin. GPT-5.6 Sol rẻ hơn trong thời gian khuyến mại, còn Plannotator thêm một vòng annotation trực tiếp trên ứng dụng localhost với kiểm soát phiên và host.",
+  "headline": "GPT-5.6 Sol giảm giá, nhưng nên đo chi phí theo task",
+  "dek": "OpenAI giảm hơn 20% giá GPT-5.6 Sol trong một chương trình có thời hạn. Plannotator 0.27.6 cũng thêm cách ghi chú trực tiếp trên ứng dụng localhost, phù hợp để thử một vòng review UI ngắn và có kiểm soát.",
   "meta": {
     "primary_scan_hours": 24,
     "context_window_hours": 72,
@@ -17,7 +17,7 @@
   "hero_visual": {
     "kind": "editorial",
     "key": "cost-review-boundary",
-    "caption": "Chi phí model giảm và feedback loop nhanh hơn chỉ hữu ích khi team vẫn đo task hoàn chỉnh và giữ ranh giới review rõ ràng."
+    "caption": "Giá model thấp hơn và vòng review nhanh hơn chỉ có giá trị khi team vẫn đo được chi phí thật và giữ ranh giới truy cập rõ ràng."
   },
   "brief": [
     {
@@ -30,8 +30,8 @@
       },
       "published_at": "2026-08-21T17:43:15Z",
       "freshness": "NEW_TODAY",
-      "title": "Plannotator đưa phản hồi trực tiếp lên ứng dụng localhost",
-      "text": "Bản 0.27.6 thêm proxy loopback theo từng phiên để reviewer bấm vào phần tử trên ứng dụng đang chạy và gửi nhận xét cho coding agent, kể cả qua hot reload hoặc điều hướng SPA. Thiết kế dùng Host validation, token phiên và từ chối proxy từ xa, phù hợp để thử trên một luồng review UI cục bộ có kiểm soát.",
+      "title": "Plannotator 0.27.6 cho reviewer ghi chú trực tiếp trên localhost",
+      "text": "Plannotator 0.27.6 thêm proxy loopback theo từng phiên để reviewer bấm vào phần tử đang chạy và gửi nhận xét cho coding agent. Luồng này vẫn hoạt động qua hot reload hoặc điều hướng SPA. Release có Host validation, token phiên và chặn proxy từ xa, nên đáng thử trước trên một UI không chứa dữ liệu nhạy cảm.",
       "sources": [
         {
           "label": "Plannotator v0.27.6 release notes",
@@ -58,23 +58,23 @@
       "importance": "LEAD",
       "editorial_theme": "model-economics",
       "editorial_angle": "cost-per-completed-task",
-      "title": "Giá Sol giảm, model routing cần được tính lại bằng task hoàn chỉnh",
+      "title": "Giá Sol giảm, nhưng routing chỉ đáng đổi khi chi phí mỗi task giảm",
       "paragraphs": [
-        "OpenAI công bố chương trình giảm hơn 20% giá API và một số loại credit đủ điều kiện cho GPT-5.6 Sol trong ba tháng. AWS xác nhận mức giá Sol trên Bedrock là 4 USD cho mỗi triệu token đầu vào và 20 USD cho mỗi triệu token đầu ra, tương ứng giảm 20% và 33,3% so với mức trước đó trên nền tảng này; chương trình được duy trì ít nhất tới ngày 21/11/2026. Thông báo không thay đổi hạn mức sử dụng đi kèm các gói thuê bao ChatGPT Pro, Plus hoặc Business.",
-        "Tác động thực tế lớn nhất nằm ở agent workload dài. Một coding agent có thể gọi công cụ nhiều lần, sinh output dài, tự kiểm tra rồi chạy lại sau lỗi, nên giá niêm yết trên một triệu token chưa phản ánh toàn bộ chi phí. Khi output giảm mạnh hơn input, một số workflow tạo nhiều mã hoặc báo cáo dài có thể thay đổi đáng kể về economics, nhưng chỉ khi chất lượng và tỷ lệ hoàn thành vẫn được giữ ổn định.",
-        "Đội đang dùng Sol nên chạy lại cùng một tập task thật và ghi tổng input, output, số tool call, retry, latency cùng tỷ lệ hoàn thành. So sánh cost per completed task với model hiện tại trước khi đổi routing; đồng thời lưu ngày kết thúc promotion trong cấu hình ngân sách để tránh biến mức giá tạm thời thành giả định dài hạn."
+        "OpenAI công bố chương trình giảm hơn 20% giá API và một số loại credit đủ điều kiện cho GPT-5.6 Sol trong ba tháng. AWS niêm yết Sol trên Bedrock ở mức 4 USD cho một triệu token đầu vào và 20 USD cho một triệu token đầu ra, tương ứng giảm 20% và 33,3% so với mức trước đó trên nền tảng này. Chương trình được duy trì ít nhất tới ngày 21/11/2026 và không thay đổi hạn mức đi kèm các gói ChatGPT Pro, Plus hoặc Business.",
+        "Agent workload dài có thể hưởng lợi nhiều hơn một request đơn lẻ vì output giảm giá mạnh hơn input. Tuy nhiên, một coding agent còn gọi tool, retry và tự kiểm tra, nên đơn giá token chưa nói được workflow có rẻ hơn hay không. Chất lượng giảm hoặc số vòng lặp tăng có thể xóa hết phần tiết kiệm trên bảng giá.",
+        "Team đang dùng Sol nên chạy lại cùng một tập task thật và ghi tổng input, output, tool call, retry, latency cùng tỷ lệ hoàn thành. Chỉ đổi routing khi chi phí trên mỗi task hoàn thành giảm mà chất lượng vẫn giữ được. Đồng thời, đưa ngày kết thúc khuyến mại vào budget forecast để không dùng mức giá tạm thời làm giả định dài hạn."
       ],
       "pullquote": "Giá token thấp hơn chỉ có ý nghĩa khi tổng chi phí để hoàn thành một task cũng giảm.",
       "stat": {
         "value": "$4 / $20",
         "label": "mỗi triệu input / output token trên Bedrock",
-        "context": "Mức promotional pricing được AWS công bố cho GPT-5.6 Sol."
+        "context": "Mức giá khuyến mại được AWS công bố cho GPT-5.6 Sol."
       },
-      "action": "Rerun benchmark trên task production đại diện và đặt cảnh báo ngân sách trước khi promotion kết thúc ngày 21/11.",
+      "action": "Chạy lại benchmark trên một nhóm task production đại diện, rồi so chi phí mỗi task hoàn thành trước khi đổi routing.",
       "visual": {
         "kind": "chart",
         "key": "sol-pricing-channel-comparison",
-        "caption": "Mức giá mới cần được đánh giá cùng chất lượng, số vòng lặp và tổng chi phí hoàn thành task."
+        "caption": "So mức giá mới cùng chất lượng, số vòng lặp và tổng chi phí để hoàn thành task."
       },
       "sources": [
         {
@@ -95,18 +95,18 @@
   "releases": [],
   "developer_memo": {
     "title": "Có cần đổi workflow hôm nay không?",
-    "direct_answer": "Chỉ thay đổi có mục tiêu: tính lại economics nếu dùng Sol và thử vòng review cục bộ trên một UI không nhạy cảm.",
+    "direct_answer": "Có, nhưng chỉ ở phạm vi nhỏ nếu team đang dùng Sol hoặc cần review UI cục bộ.",
     "actions": [
-      "Đo lại cost per completed task của Sol bằng cùng tập task, prompt, toolchain và tiêu chí chất lượng đang dùng.",
-      "Gắn ngày kết thúc promotion vào budget forecast và cảnh báo chi phí để mức tạm thời không trở thành giả định dài hạn.",
-      "Thử vòng annotation cục bộ trên một UI không nhạy cảm và xác nhận proxy không thể truy cập từ interface bên ngoài."
+      "Đo lại chi phí mỗi task hoàn thành của Sol bằng cùng task, prompt, toolchain và tiêu chí chất lượng đang dùng.",
+      "Gắn ngày kết thúc khuyến mại vào budget forecast và cảnh báo chi phí.",
+      "Thử annotation trên một UI không nhạy cảm và xác nhận proxy không thể truy cập từ interface bên ngoài."
     ],
     "avoid": [
-      "Không dự toán dài hạn bằng promotional pricing mà bỏ qua ngày kết thúc chương trình.",
-      "Không đổi model routing chỉ từ token price nếu chưa so tỷ lệ task hoàn tất, retry và latency.",
-      "Không mở proxy review ra interface bên ngoài hoặc dùng nó với dữ liệu nhạy cảm trước khi kiểm tra ranh giới phiên."
+      "Không dự toán dài hạn bằng giá khuyến mại sau khi bỏ qua ngày kết thúc chương trình.",
+      "Không đổi model routing chỉ từ giá token nếu chưa so tỷ lệ task hoàn tất, retry và latency.",
+      "Không mở proxy review ra interface bên ngoài hoặc dùng với dữ liệu nhạy cảm trước khi kiểm tra ranh giới phiên."
     ]
   },
   "radar": [],
-  "takeaway": "Nếu hôm nay chỉ nhớ một điều: inference rẻ hơn và feedback nhanh hơn chỉ có giá trị khi team vẫn đo chi phí theo task hoàn chỉnh và giữ review trong ranh giới an toàn."
+  "takeaway": "Đo lại chi phí theo task hoàn thành trước khi đổi routing, và giữ vòng review localhost trong một ranh giới có thể kiểm tra được."
 }
