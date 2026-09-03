@@ -4,8 +4,8 @@
   "locale": "vi-VN",
   "edition_type": "daily_ai_catchup",
   "edition_mode": "NORMAL",
-  "headline": "AI doanh nghiệp đi sâu vào model riêng, danh tính agent và hạ tầng inference",
-  "dek": "Các thông báo mới trong cửa sổ sáng nay không xoay quanh một chatbot tổng quát mới. Thomson Reuters tự xây model chuyên ngành, Okta đưa danh tính agent vào hệ thống IAM, còn NVIDIA tách phần xử lý context và sinh token để phục vụ workload agent dài hơn.",
+  "headline": "AI doanh nghiệp đang tách model, identity và inference thành các lớp riêng",
+  "dek": "Thomson Reuters tự phát triển model chuyên ngành, Okta đưa agent identity vào IAM, còn NVIDIA tách context processing khỏi decode để tối ưu inference. Các thay đổi này cho thấy production AI đang được thiết kế như một hệ thống nhiều lớp thay vì chỉ xoay quanh model.",
   "meta": {
     "primary_scan_hours": 24,
     "context_window_hours": 72,
@@ -18,7 +18,7 @@
   "hero_visual": {
     "kind": "editorial",
     "key": "enterprise-ai-model-identity-inference",
-    "caption": "Năm sự kiện độc lập sáng nay cùng cho thấy AI production đang được chuyên môn hóa ở model, quyền truy cập, workflow và hạ tầng phục vụ."
+    "caption": "Production AI đang được tách rõ thành model, dữ liệu chuyên ngành, danh tính agent và hạ tầng inference để mỗi lớp có thể được kiểm soát riêng."
   },
   "brief": [
     {
@@ -32,7 +32,7 @@
       "published_at": "2026-08-24",
       "freshness": "NEW_TODAY",
       "title": "Okta đưa Agent SSO lên GA",
-      "text": "Agent SSO áp dụng Cross App Access để agent được quản lý như một danh tính hạng nhất, thay cho việc rải API key tĩnh. Team có thể đưa kết nối của agent vào cùng chính sách truy cập, consent và kiểm soát tập trung đang dùng cho con người.",
+      "text": "Okta đưa Agent SSO lên GA để agent có danh tính riêng thay vì dùng API key tĩnh rải rác. Cross App Access cho phép áp chính sách truy cập, consent và kiểm soát tập trung lên kết nối của agent. Team đang cấp credential dài hạn cho agent nên xem đây là một mẫu đáng so sánh với IAM hiện tại.",
       "sources": [
         {
           "label": "Okta — Agent SSO is generally available",
@@ -52,8 +52,8 @@
       },
       "published_at": "2026-08-24",
       "freshness": "NEW_TODAY",
-      "title": "FDB Script Agent chuyển hội thoại khám bệnh thành đơn thuốc để bác sĩ duyệt",
-      "text": "First Databank công bố triển khai thương mại đầu tiên cùng Tebra: agent chuyển lời thoại trong buổi khám thành đơn thuốc có cấu trúc, nhưng vẫn đặt bước clinician review ở cuối. Đây là ví dụ rõ về automation có domain validation và người chịu trách nhiệm phê duyệt.",
+      "title": "FDB Script Agent tạo đơn thuốc nháp để bác sĩ duyệt",
+      "text": "First Databank công bố triển khai thương mại đầu tiên của FDB Script Agent cùng Tebra. Agent chuyển lời thoại trong buổi khám thành đơn thuốc có cấu trúc, rồi dừng ở bước clinician review. Đây là một ví dụ rõ về automation trong domain rủi ro cao vẫn giữ người chịu trách nhiệm ở điểm phê duyệt cuối.",
       "sources": [
         {
           "label": "FDB — First commercial deployment of FDB Script Agent",
@@ -80,14 +80,14 @@
       "importance": "LEAD",
       "editorial_theme": "domain-models",
       "editorial_angle": "data-evaluation-control",
-      "title": "Thomson Reuters đặt cược 40 triệu USD vào model chuyên ngành mà họ tự kiểm soát",
+      "title": "Thomson Reuters đầu tư 40 triệu USD vào model chuyên ngành tự kiểm soát",
       "paragraphs": [
-        "Thomson Reuters công bố Thomson, model ngôn ngữ lớn đầu tiên do công ty tự phát triển. Công ty nói đã bắt đầu từ một foundation model mã nguồn mở rồi đầu tư 40 triệu USD cho nhân sự và compute để mid-train, post-train trên bài toán pháp lý, thuế và công việc chuyên môn. Cần đọc con số và nhãn ‘frontier’ như tuyên bố của nhà cung cấp: trang công bố chưa đưa ra benchmark độc lập đầy đủ để so sánh trực tiếp với các model tổng quát hàng đầu.",
-        "Điểm đáng chú ý hơn benchmark marketing là quyền kiểm soát toàn bộ vòng đời. Thomson Reuters sở hữu model, dữ liệu chuyên ngành, chuyên gia đánh giá và các công cụ như Westlaw, Practical Law; họ cũng nói dữ liệu khách hàng không được dùng để train nếu chưa có đồng ý rõ ràng. Model đầu tiên sẽ được dùng trong Tabular Analysis của CoCounsel Legal, trong khi CoCounsel vẫn giữ kiến trúc multi-model để chọn model phù hợp theo nhiệm vụ.",
-        "Với team xây sản phẩm AI, thông báo này củng cố một lựa chọn kiến trúc khác với việc chỉ ghép RAG vào API tổng quát. Khi domain có dữ liệu độc quyền, tiêu chuẩn kiểm chứng cao và volume đủ lớn, specialized training cộng evaluation bởi chuyên gia có thể tạo lợi thế về chi phí, chủ quyền dữ liệu và hành vi. Tuy vậy, hãy yêu cầu technical report, bộ test ngoài vendor và tổng chi phí vận hành trước khi dùng trường hợp này làm bằng chứng cho chiến lược tự train."
+        "Thomson Reuters công bố Thomson, model ngôn ngữ lớn đầu tiên do công ty tự phát triển. Công ty nói đã bắt đầu từ một foundation model mã nguồn mở rồi đầu tư 40 triệu USD cho nhân sự và compute để mid-train, post-train trên bài toán pháp lý, thuế và công việc chuyên môn. Con số và nhãn 'frontier' vẫn là claim của vendor; thông báo chưa có benchmark độc lập đầy đủ để so trực tiếp với các model tổng quát hàng đầu.",
+        "Lợi thế mà Thomson Reuters nhấn mạnh nằm ở quyền kiểm soát model, dữ liệu chuyên ngành và quy trình đánh giá. Công ty sở hữu các nguồn như Westlaw và Practical Law, đồng thời nói dữ liệu khách hàng không được dùng để train nếu chưa có đồng ý rõ ràng. Model đầu tiên sẽ vào Tabular Analysis của CoCounsel Legal, còn CoCounsel vẫn giữ kiến trúc multi-model để chọn model theo nhiệm vụ.",
+        "Team xây AI trong domain có dữ liệu độc quyền nên xem đây là một phương án kiến trúc, không phải công thức mặc định. Specialized training có thể hợp lý khi yêu cầu kiểm chứng cao và volume đủ lớn, nhưng cần so với RAG và fine-tuning bằng dữ liệu thật. Trước khi tự train, yêu cầu technical report, eval ngoài vendor và tổng chi phí vận hành."
       ],
       "pullquote": "Model chuyên ngành chỉ có giá trị khi dữ liệu, evaluation và quyền kiểm soát cùng nằm trong một hệ thống có thể kiểm chứng.",
-      "action": "Nếu đang cân nhắc model riêng, hãy lập bảng so sánh RAG, fine-tuning và mid/post-training theo chất lượng domain, quyền dữ liệu, chi phí inference và khả năng audit; đừng bắt đầu bằng kích thước model.",
+      "action": "Lập bảng so sánh RAG, fine-tuning và mid/post-training theo chất lượng domain, quyền dữ liệu, chi phí inference và khả năng audit trước khi chọn hướng model riêng.",
       "visual": {
         "kind": "editorial",
         "key": "domain-model-data-evaluation-control",
@@ -123,13 +123,13 @@
       "importance": "SECONDARY",
       "editorial_theme": "ai-infrastructure",
       "editorial_angle": "disaggregated-serving",
-      "title": "NVIDIA tách decode latency thành một lớp tăng tốc riêng cho agent",
+      "title": "NVIDIA tách decode thành một lớp tăng tốc riêng cho agent",
       "paragraphs": [
-        "Tại Hot Chips, NVIDIA cho biết Groq 3 LPX đã vào full production như phần mở rộng của hệ Vera Rubin NVL72. Kiến trúc phân công Rubin GPU xử lý context quy mô lớn còn LPX tăng tốc giai đoạn decode nhạy với độ trễ. Nebius là cloud đầu tiên công bố áp dụng. Đây là một event hạ tầng duy nhất; các thông số Spectrum-X, Scale-In và NVLink Fusion trong cùng bài công bố không được tách thành nhiều tin riêng.",
-        "NVIDIA báo cáo 3.400 output token mỗi giây với Gemma 4 31B trong bài test context 100.000 token và tuyên bố nhanh gấp bốn lần nền tảng gần nhất. Những số này do vendor cung cấp, trên cấu hình và workload cụ thể, nên chưa thể suy rộng thành hiệu năng cho mọi model hay agent. Giá trị kỹ thuật của thông báo nằm ở việc thừa nhận prefill, decode, networking và cache có bottleneck khác nhau và cần được đo riêng.",
-        "Đối với đội đang vận hành agent, bài học thực dụng là theo dõi time-to-first-token, inter-token latency, cache hit, context growth và cost per completed task thay vì chỉ nhìn token/giây cực đại. Disaggregated serving có thể cải thiện độ phản hồi nhưng cũng làm scheduling, routing và capacity planning phức tạp hơn. Chỉ cân nhắc phần cứng chuyên dụng sau khi trace production chỉ ra decode thực sự là giới hạn của workload."
+        "NVIDIA cho biết Groq 3 LPX đã vào full production như phần mở rộng của Vera Rubin NVL72. Rubin GPU xử lý context lớn, còn LPX tăng tốc giai đoạn decode nhạy với độ trễ. Nebius là cloud đầu tiên công bố áp dụng kiến trúc này.",
+        "NVIDIA báo cáo 3.400 output token mỗi giây với Gemma 4 31B trên context 100.000 token và tuyên bố nhanh gấp bốn lần nền tảng gần nhất. Đây là benchmark do vendor cung cấp trên cấu hình cụ thể. Giá trị kỹ thuật đáng chú ý hơn là cách họ tách prefill, decode, networking và cache thành những bottleneck khác nhau để tối ưu riêng.",
+        "Team đang vận hành agent nên đo time-to-first-token, inter-token latency, cache hit và chi phí mỗi task hoàn thành trước khi nghĩ tới phần cứng chuyên dụng. Disaggregated serving có thể giảm latency, nhưng cũng làm scheduling và capacity planning phức tạp hơn. Chỉ thay kiến trúc khi trace production cho thấy decode thật sự là giới hạn."
       ],
-      "action": "Tách dashboard inference thành prefill, decode, cache và tool-wait; dùng phân bố latency của task hoàn tất để quyết định có cần disaggregated serving hay không.",
+      "action": "Tách dashboard inference thành prefill, decode, cache và tool-wait, rồi dùng latency của task hoàn tất để xác định bottleneck thật.",
       "sources": [
         {
           "label": "NVIDIA — Groq 3 LPX in full production",
@@ -160,10 +160,10 @@
       "feature": "Agentic orchestration with carried context and review-ready outputs",
       "freshness": "NEW_TODAY",
       "status": "ANNOUNCED",
-      "summary": "LexisNexis mở rộng Protégé để tự chọn model, agent, skill và nguồn theo mục tiêu người dùng, giữ context qua các bước nghiên cứu, phân tích, soạn thảo và review. Hệ thống có thể tạo đầu ra Word, Excel hoặc PowerPoint, kết nối tài liệu tổ chức và kiểm tra thẩm quyền pháp lý bằng citation cùng Shepard’s.",
+      "summary": "LexisNexis mở rộng Protégé để tự chọn model, agent, skill và nguồn theo mục tiêu người dùng, đồng thời giữ context qua nghiên cứu, phân tích, soạn thảo và review.",
       "who_gets_it": "Lexis+ with Protégé customers; một số model do LexisNexis phát triển mới được preview vào cuối năm.",
       "verdict": "WATCH",
-      "verdict_note": "Đáng theo dõi như một mẫu orchestration cho domain có nguồn authoritative và output phải review. Thông báo chưa cung cấp benchmark độc lập về độ chính xác hoặc thời gian tiết kiệm, vì vậy chưa nên coi ‘tự chọn model’ là bằng chứng chất lượng nếu thiếu trace và evaluation theo từng loại việc.",
+      "verdict_note": "Đáng theo dõi như một mẫu orchestration cho domain có nguồn authoritative và output phải review. Chưa nên coi tự chọn model là bằng chứng chất lượng khi thông báo chưa có benchmark độc lập theo từng loại việc.",
       "sources": [
         {
           "label": "LexisNexis — Protégé agentic productivity update",
@@ -181,21 +181,21 @@
     }
   ],
   "developer_memo": {
-    "title": "Điều nên mang vào kiến trúc tuần này",
-    "direct_answer": "Tách rõ bốn lớp: model, domain data, agent identity và inference runtime.",
+    "title": "Có cần đổi workflow hôm nay không?",
+    "direct_answer": "Chưa cần thay đổi workflow hiện tại.",
     "actions": [
-      "Gắn mỗi agent với một identity riêng, scope ngắn hạn và audit log thay vì dùng chung API key của service.",
-      "Đo latency theo prefill, decode, tool wait và task completion trước khi thay đổi serving architecture.",
-      "Với domain có rủi ro cao, thiết kế expert evaluation và bước human approval như thành phần sản phẩm, không phải checklist sau cùng."
+      "Gắn mỗi agent với identity riêng, scope ngắn hạn và audit log thay vì dùng chung API key của service.",
+      "Đo latency theo prefill, decode, tool wait và task completion trước khi đổi serving architecture.",
+      "Với domain rủi ro cao, giữ expert evaluation và human approval như thành phần của sản phẩm."
     ],
     "avoid": [
-      "Không lấy benchmark hoặc nhãn ‘frontier’ do vendor tự công bố làm so sánh độc lập.",
+      "Không lấy benchmark hoặc nhãn 'frontier' do vendor tự công bố làm so sánh độc lập.",
       "Không để orchestration tự chọn model nếu team không lưu được model, nguồn và tool đã tạo ra từng artifact.",
-      "Không cấp danh tính dài hạn cho agent chỉ để giảm ma sát tích hợp."
+      "Không cấp identity dài hạn cho agent chỉ để giảm ma sát tích hợp."
     ]
   },
   "radar": [],
-  "takeaway": "Nếu hôm nay chỉ nhớ một điều: lợi thế AI production đang chuyển từ một model mạnh sang khả năng kết hợp model phù hợp, dữ liệu có quyền sử dụng, identity có kiểm soát và hạ tầng được đo theo workload thật.",
+  "takeaway": "Tách model, dữ liệu, identity và inference thành các lớp có thể đo và kiểm soát riêng trước khi tối ưu từng phần.",
   "translations": {
     "en": {
       "headline": "Enterprise AI moves deeper into proprietary models, agent identity, and inference infrastructure",
