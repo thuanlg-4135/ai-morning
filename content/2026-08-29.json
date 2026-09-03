@@ -4,8 +4,8 @@
   "locale": "vi-VN",
   "edition_type": "daily_ai_catchup",
   "edition_mode": "NORMAL",
-  "headline": "Claude Code siết an toàn khi chạy agent, còn agent trên chat ngày càng ít phải tự quản hạ tầng",
-  "dek": "Tin đáng chú ý nhất với developer sáng nay không phải model mới. Claude Code 2.1.251 sửa nhiều điểm có thể làm quyền truy cập bị vượt ranh giới, còn Vercel và Anthropic tiếp tục đẩy agent runtime sang mô hình managed. Ý chính: agent càng tự động thì permission, quan sát và ownership của state càng phải rõ.",
+  "headline": "Claude Code 2.1.251 siết boundary quanh file, plugin và settings",
+  "dek": "Claude Code 2.1.251 sửa nhiều trường hợp có thể làm quyền truy cập rộng hơn dự kiến và thêm telemetry cho model switch, subagent cùng chi phí. Vercel cũng nối Chat SDK với Claude Managed Agents, cho thấy agent runtime đang dần trở thành một dịch vụ managed riêng.",
   "meta": {
     "primary_scan_hours": 24,
     "context_window_hours": 72,
@@ -15,7 +15,7 @@
   "hero_visual": {
     "kind": "editorial",
     "key": "agent-safety-and-managed-runtime",
-    "caption": "Coding agent đang mạnh hơn, nhưng thay đổi đáng quan tâm nằm ở hai thứ rất thực tế: giới hạn quyền truy cập rõ hơn và bớt hạ tầng phải tự quản."
+    "caption": "Agent làm được nhiều việc hơn chỉ có giá trị khi permission boundary, state ownership và telemetry vẫn đủ rõ để vận hành."
   },
   "brief": [
     {
@@ -28,8 +28,8 @@
       },
       "published_at": "2026-08-28",
       "freshness": "NEW_TODAY",
-      "title": "Anthropic thử để Claude tự nghiên cứu cách giảm lỗi alignment của model",
-      "text": "Anthropic công bố thí nghiệm trong đó Claude tự huấn luyện và đánh giá model trên nhiều nhóm lỗi alignment như deception, sycophancy và jailbreak. Đây là research chứ chưa phải capability production, nhưng đáng chú ý vì một phần công việc đánh giá và cải thiện AI đang được chính AI tự động hóa.",
+      "title": "Anthropic thử dùng Claude để tự nghiên cứu lỗi alignment",
+      "text": "Anthropic công bố thí nghiệm trong đó Claude tự huấn luyện và đánh giá model trên các nhóm lỗi như deception, sycophancy và jailbreak. Đây là research chứ chưa phải capability production. Kết quả đáng theo dõi vì một phần công việc đánh giá và cải thiện AI đang được chính AI tự động hóa.",
       "sources": [
         {
           "label": "Anthropic — Automated researchers can reliably mitigate alignment failures",
@@ -56,18 +56,18 @@
       "importance": "LEAD",
       "editorial_theme": "coding-agents",
       "editorial_angle": "security-boundaries",
-      "title": "Coding agent càng tự động thì ranh giới quyền truy cập càng quan trọng",
+      "title": "Claude Code 2.1.251 làm permission boundary dễ kiểm tra hơn",
       "paragraphs": [
-        "Claude Code 2.1.251 sửa nhiều trường hợp liên quan symlink, plugin path và project settings. Nói đơn giản: khi agent có quyền đọc file, sửa file và chạy command, việc bảo đảm nó chỉ hoạt động trong vùng được phép không thể dựa vào prompt hay giả định rằng đường dẫn sẽ luôn giữ nguyên.",
-        "Bản mới cũng thêm hook trước và sau khi đổi model, hiển thị hoạt động của foreground subagent trong Remote Control, cùng thông tin spend limit và prompt cache. Những thay đổi này không làm model thông minh hơn, nhưng giúp team thấy agent đang làm gì, tiêu bao nhiêu và đổi trạng thái ở đâu.",
-        "Với team dùng coding agent hằng ngày, nên test cả boundary chứ không chỉ test task success. Repo tải từ ngoài, PR từ fork, plugin bên thứ ba và shell command là các điểm cần isolation rõ ràng."
+        "Claude Code 2.1.251 sửa nhiều trường hợp liên quan symlink, plugin path và project settings. Khi agent có quyền đọc file, sửa file và chạy command, boundary không thể chỉ dựa vào prompt hoặc giả định rằng đường dẫn luôn giữ nguyên. Repo tải từ ngoài, PR từ fork và plugin bên thứ ba là những điểm cần test riêng.",
+        "Release cũng thêm hook trước và sau khi đổi model, hiển thị hoạt động của foreground subagent trong Remote Control, cùng thông tin spend limit và prompt cache. Những thay đổi này không tăng capability trực tiếp, nhưng giúp team nhìn rõ agent đổi trạng thái ở đâu, đang làm gì và tiêu bao nhiêu.",
+        "Team dùng Claude Code hằng ngày nên test boundary như một phần của acceptance criteria. Chạy một repo mẫu có symlink, plugin và project settings rồi kiểm tra agent có chạm đúng file, command và config được phép hay không trước khi rollout rộng."
       ],
-      "pullquote": "Agent làm được nhiều việc hơn chỉ hữu ích khi team vẫn biết nó được phép làm tới đâu.",
-      "action": "Nếu đang dùng Claude Code với quyền shell/file rộng hoặc plugin, test 2.1.251 trên repo mẫu trước rồi chạy lại các flow có file access, shell command và project settings quan trọng.",
+      "pullquote": "Task pass chưa đủ; coding agent còn phải chứng minh nó chỉ chạm vào đúng vùng được phép.",
+      "action": "Test Claude Code 2.1.251 trên một repo mẫu có file access, shell command, symlink và plugin trước khi rollout cho team.",
       "visual": {
         "kind": "editorial",
         "key": "coding-agent-permission-boundary",
-        "caption": "Model nằm bên trong; file, shell, plugin và settings là các cổng cần giới hạn và quan sát."
+        "caption": "File, shell, plugin và settings là những boundary cần test cùng task success."
       },
       "sources": [
         {
@@ -99,12 +99,12 @@
       "importance": "SECONDARY",
       "editorial_theme": "agent-infrastructure",
       "editorial_angle": "managed-runtime",
-      "title": "Làm bot có agent đang bớt dần phần hạ tầng phải tự viết",
+      "title": "Chat SDK có thể giao session và agent loop cho Claude Managed Agents",
       "paragraphs": [
-        "Vercel Chat SDK có integration chính thức với Claude Managed Agents. Claude giữ model, tools, session state và agent loop ở server; Chat SDK lo đưa cuộc hội thoại ra Slack, Teams, Discord, WhatsApp hoặc web. Với bot mới, điều này có thể cắt đáng kể phần code phải tự viết cho transcript, session mapping và tool loop.",
-        "Đổi lại, managed session trở thành dependency quan trọng. Trước khi dùng cho dữ liệu production, team vẫn cần hiểu retention, quyền truy cập, networking, export và recovery. Ít code hơn không đồng nghĩa ít trách nhiệm vận hành hơn."
+        "Vercel Chat SDK có integration chính thức với Claude Managed Agents. Claude giữ model, tools, session state và agent loop ở server; Chat SDK đưa cuộc hội thoại ra Slack, Teams, Discord, WhatsApp hoặc web. Với bot mới, phần code tự quản transcript, session mapping và tool loop có thể mỏng đi đáng kể.",
+        "Managed session đổi chỗ trách nhiệm chứ không xóa trách nhiệm. Team vẫn cần hiểu retention, access control, networking, export và recovery trước khi đưa dữ liệu production vào dịch vụ. Nếu bot hiện tại đã quản state ổn, migration chỉ để giảm vài file infrastructure code có thể không đáng."
       ],
-      "action": "Nếu sắp làm internal bot mới, thử một spike nhỏ với Managed Agents + Chat SDK và đo lượng infrastructure code thực sự bỏ được. Không migrate bot đang chạy ổn nếu state management hiện chưa phải pain point.",
+      "action": "Spike Managed Agents + Chat SDK trên một internal bot nhỏ và đo lượng code state/tool-loop thực sự bỏ được trước khi cân nhắc migration.",
       "sources": [
         {
           "label": "Vercel — Run Claude Managed Agents with Chat SDK",
@@ -126,9 +126,9 @@
     "title": "Có cần đổi workflow hôm nay không?",
     "direct_answer": "Chưa cần thay đổi workflow hiện tại.",
     "actions": [
-      "Nếu dùng Claude Code với quyền shell/file rộng, test 2.1.251 trên một repo mẫu rồi mới rollout cho team.",
-      "Kiểm tra coding-agent job chạy trên code không tin cậy: repo clone từ ngoài, PR từ fork và plugin bên thứ ba nên có isolation rõ ràng.",
-      "Nếu sắp làm bot nội bộ mới, thử managed runtime trên một use case nhỏ trước khi cân nhắc migration."
+      "Test Claude Code 2.1.251 trên repo mẫu nếu agent đang có quyền shell/file rộng hoặc dùng plugin.",
+      "Kiểm tra job chạy trên code không tin cậy và xác nhận isolation quanh repo clone, PR từ fork cùng plugin bên thứ ba.",
+      "Nếu sắp làm bot nội bộ mới, thử managed runtime trên một use case nhỏ trước khi nghĩ tới migration."
     ],
     "avoid": [
       "Không migrate bot đang chạy ổn chỉ vì integration mới trông gọn hơn.",
@@ -136,7 +136,7 @@
     ]
   },
   "radar": [],
-  "takeaway": "Nếu hôm nay chỉ nhớ một điều: coding agent đang tiến từ 'làm được nhiều hơn' sang 'phải kiểm soát được nhiều hơn'. Với developer, security boundary và observability đáng ưu tiên hơn việc chạy theo abstraction mới chưa giải quyết pain point thật.",
+  "takeaway": "Đưa permission boundary và telemetry vào test của coding agent trước khi tăng thêm autonomy hoặc chuyển state sang managed runtime.",
   "content_contract": {
     "renderer_must_not_require_html_in_content": true,
     "allowed_rich_content": ["paragraph", "bullet", "pullquote", "source_link", "editorial_visual_hint"],
