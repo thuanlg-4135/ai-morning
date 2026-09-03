@@ -4,8 +4,8 @@
   "locale": "vi-VN",
   "edition_type": "daily_ai_catchup",
   "edition_mode": "QUIET",
-  "headline": "MCP đặt lại ưu tiên, còn tooling chuyển sang kiểm tra readiness",
-  "dek": "Trong cửa sổ kết thúc lúc 07:00 ngày 23/8, thay đổi đáng chú ý nhất không phải một model mới mà là cách hệ sinh thái MCP chuẩn bị cho production. Roadmap chính thức xác định năm hướng phát triển tiếp theo, MCPJam đưa readiness vào CLI và conformance workflow, còn llm 0.33 cải thiện quản lý key cùng khả năng quan sát tool-call.",
+  "headline": "MCP ưu tiên identity và tool discovery cho production",
+  "dek": "MCP công bố roadmap mới với trọng tâm vào messaging, identity và cách mở dần danh sách tool. MCPJam và llm cũng có các release nhỏ giúp kiểm tra readiness và quan sát tool call rõ hơn.",
   "meta": {
     "primary_scan_hours": 24,
     "context_window_hours": 72,
@@ -17,7 +17,7 @@
   "hero_visual": {
     "kind": "editorial",
     "key": "mcp-roadmap-readiness-observability",
-    "caption": "Roadmap định hướng protocol tương lai; readiness và conformance tooling giúp kiểm tra integration đang chạy hôm nay."
+    "caption": "Roadmap cho biết MCP đang ưu tiên gì; readiness và conformance tooling giúp kiểm tra integration đang chạy hôm nay."
   },
   "brief": [
     {
@@ -30,8 +30,8 @@
       },
       "published_at": "2026-08-22T17:01:16Z",
       "freshness": "NEW_TODAY",
-      "title": "llm 0.33 tách API key theo từng lệnh và làm log tool-call rõ hơn",
-      "text": "llm 0.33 nâng thư viện OpenAI Python lên 3.x, đổi dependency HTTP từ httpx sang httpx2 và cho phép truyền API key riêng cho từng lần embedding mà không thay đổi state dùng chung của model. Release còn đưa kết quả server-side tool call vào llm logs, hỗ trợ ghép nhiều template theo thứ tự và giữ metadata reasoning của provider. Trước khi nâng cấp, hãy kiểm tra plugin compatibility; sau đó dùng log mới để debug workflow có tool.",
+      "title": "llm 0.33 cho phép truyền API key theo từng lệnh",
+      "text": "llm 0.33 cho phép truyền API key riêng cho từng lần embedding mà không đổi state dùng chung của model. Release cũng ghi server-side tool call vào log, hỗ trợ ghép nhiều template và giữ reasoning metadata của provider. Trước khi nâng cấp, kiểm tra plugin compatibility vì dependency OpenAI Python và HTTP client đã thay đổi.",
       "sources": [
         {
           "label": "Simon Willison — llm 0.33 release notes",
@@ -58,14 +58,14 @@
       "importance": "LEAD",
       "editorial_theme": "agent-protocols",
       "editorial_angle": "production-readiness",
-      "title": "Roadmap mới của MCP ưu tiên messaging, identity và progressive discovery",
+      "title": "MCP muốn giải quyết identity và tool discovery trước khi hệ sinh thái lớn hơn",
       "paragraphs": [
-        "Nhóm duy trì Model Context Protocol công bố roadmap cập nhật cho bản đặc tả tiếp theo và các tháng sau đó, với năm vùng ưu tiên: primitive cho agentic messaging, hợp nhất và gia cố transport theo hướng HTTP-native, danh tính agent cùng bảo mật doanh nghiệp, cải thiện primitive, và trải nghiệm SDK. Đây là định hướng phát triển chứ chưa phải một bản specification mới. Cách phân biệt này quan trọng: server-initiated event, DPoP, workload identity hay progressive discovery đều là vùng công việc được ưu tiên, không phải API mà developer có thể mặc định đã ổn định và triển khai ngay.",
-        "Hai hướng có tác động kiến trúc rõ nhất là agent identity và progressive discovery. MCP hiện vẫn thường dựa vào một người phê duyệt quyền truy cập trong trình duyệt, trong khi agent chạy như cloud workload cần danh tính riêng, có thể hành động thay người dùng hoặc ủy quyền hẹp hơn cho sub-agent. Roadmap muốn xây đường chuẩn dựa trên DPoP, Workload Identity Federation, ID-JAG và token exchange. Ở mặt tool discovery, nhóm duy trì thừa nhận việc gửi danh sách hàng trăm tool ngay khi kết nối làm tốn context và khiến lựa chọn kém đi; hướng đề xuất là lộ một entry point nhỏ rồi mở dần catalog theo cuộc hội thoại.",
-        "Với team đang xây MCP server, giá trị thực dụng hôm nay là dùng roadmap để tránh khóa kiến trúc vào giả định sắp lỗi thời, không phải lập tức viết code theo từng mục. Hãy xác định phần nào của hệ thống phụ thuộc vào polling, danh sách tool lớn, token dài hạn hoặc result contract chưa rõ, rồi theo dõi SEP và Working Group tương ứng. Chỉ đưa thay đổi vào production khi nó xuất hiện trong specification hoặc extension có trạng thái phù hợp, kèm SDK và conformance test. Roadmap cho biết nơi maintainer sẽ tập trung review; nó không thay thế version pinning, compatibility matrix hay kiểm thử liên vận hành."
+        "Nhóm duy trì Model Context Protocol công bố roadmap mới cho bản đặc tả tiếp theo. Năm vùng ưu tiên gồm agentic messaging, transport theo hướng HTTP-native, danh tính agent và bảo mật doanh nghiệp, cải thiện primitive, cùng trải nghiệm SDK. Đây là roadmap, chưa phải specification mới; server-initiated event, DPoP hay workload identity chưa thể được xem như API ổn định để triển khai ngay.",
+        "Hai hướng đáng chú ý nhất với developer là agent identity và progressive discovery, tức chỉ lộ một phần nhỏ danh sách tool rồi mở dần khi cần. Agent chạy như cloud workload cần danh tính riêng và quyền hẹp hơn một user token dài hạn. Còn server có hàng trăm tool không nên nhét toàn bộ catalog vào context ngay lúc kết nối vì vừa tốn token vừa làm model chọn tool kém hơn.",
+        "Team đang xây MCP server nên dùng roadmap để rà các giả định kiến trúc dễ lỗi thời: polling, danh sách tool lớn, token dài hạn và result contract chưa rõ. Theo dõi SEP hoặc Working Group tương ứng, nhưng chỉ đưa thay đổi vào production khi specification, SDK và conformance test đã đủ rõ."
       ],
-      "pullquote": "Roadmap cho biết MCP đang đi đâu; specification và conformance test mới quyết định code nào có thể chạy ổn hôm nay.",
-      "action": "Lập danh sách các giả định về polling, agent identity, tool discovery và result shape trong MCP stack hiện tại; gắn từng giả định với SEP hoặc Working Group cần theo dõi.",
+      "pullquote": "Roadmap cho biết MCP đang đi đâu; specification và conformance test mới quyết định code nào nên chạy hôm nay.",
+      "action": "Liệt kê các giả định về polling, agent identity, tool discovery và result shape trong MCP stack hiện tại, rồi gắn từng điểm với SEP hoặc Working Group cần theo dõi.",
       "sources": [
         {
           "label": "Model Context Protocol — The New MCP Roadmap",
@@ -90,12 +90,12 @@
       "feature": "Directory readiness và local conformance workflow",
       "freshness": "NEW_TODAY",
       "status": "RELEASED",
-      "summary": "MCPJam Inspector 2.45.0 đưa việc đánh giá connector hoặc plugin gần hơn với workflow local và CI, đồng thời mở rộng registry cho nhiều app directory.",
-      "what_changed": "Bản 2.45.0 thêm lệnh mcpjam readiness check để chấm connector hoặc plugin ngay trên máy local, đưa directory readiness vào các bề mặt conformance, MCP tools, agent, chat và CLI. Release cũng bổ sung lịch sử conformance bền vững, upload từ CLI, GitHub dual-check worker, organization subregistries và ChatGPT app directory bên cạnh directory dành cho Claude.",
-      "who_gets_it": "Người dùng nâng Inspector, CLI hoặc SDK của MCPJam lên nhánh phát hành v2.45.0; một số phép kiểm tra vẫn cần tài khoản hoặc OAuth client đã đăng ký trước.",
-      "why_it_matters": "Readiness có thể trở thành một cổng kiểm tra lặp lại thay vì checklist thủ công trước khi đưa MCP integration vào directory hoặc CI. Việc lưu lịch sử và trả finding cùng verdict cũng giúp team theo dõi regression, nhưng kết quả của MCPJam không thay thế kiểm thử bảo mật, quyền truy cập và hành vi host thực tế.",
+      "summary": "MCPJam Inspector 2.45.0 thêm `mcpjam readiness check`, lưu lịch sử conformance và mở rộng registry cho nhiều app directory.",
+      "what_changed": "Bản 2.45.0 đưa directory readiness vào conformance, MCP tools, agent, chat và CLI. Release cũng thêm upload từ CLI, GitHub dual-check worker, organization subregistries và ChatGPT app directory bên cạnh directory dành cho Claude.",
+      "who_gets_it": "Người dùng nâng Inspector, CLI hoặc SDK của MCPJam lên v2.45.0; một số phép kiểm tra vẫn cần tài khoản hoặc OAuth client đã đăng ký.",
+      "why_it_matters": "Readiness có thể trở thành một bước kiểm tra lặp lại trong local workflow hoặc CI thay vì checklist thủ công. Kết quả của MCPJam vẫn không thay thế security review, quyền truy cập và kiểm thử trên host thật.",
       "verdict": "TRY_NOW",
-      "verdict_note": "Đáng chạy thử trên một connector không chứa secret, lưu baseline rồi cố ý tạo một lỗi cấu hình để xác nhận CLI, report và CI check phản ánh đúng failure mode.",
+      "verdict_note": "Chạy thử trên một connector không chứa secret, lưu baseline rồi cố ý tạo một lỗi cấu hình để xem CLI và CI check có phản ánh đúng failure mode hay không.",
       "sources": [
         {
           "label": "MCPJam Inspector v2.45.0 release notes",
@@ -107,19 +107,19 @@
     }
   ],
   "developer_memo": {
-    "title": "Có cần đổi MCP stack ngay hôm nay không?",
-    "direct_answer": "Chưa cần đổi protocol implementation; nên bổ sung readiness check và theo dõi các SEP liên quan tới rủi ro kiến trúc hiện tại.",
+    "title": "Có cần đổi workflow hôm nay không?",
+    "direct_answer": "Chưa cần thay đổi workflow hiện tại.",
     "actions": [
       "Chạy readiness check trên một connector mẫu và lưu kết quả làm baseline trước khi đưa bước này vào CI.",
-      "Đánh dấu nơi hệ thống đang phụ thuộc vào polling, danh sách tool lớn, token dài hạn hoặc result shape chưa rõ để theo dõi roadmap.",
-      "Kiểm tra plugin compatibility trước khi nâng llm vì dependency OpenAI Python và HTTP client đã thay đổi."
+      "Đánh dấu nơi hệ thống đang phụ thuộc vào polling, danh sách tool lớn, token dài hạn hoặc result shape chưa rõ.",
+      "Kiểm tra plugin compatibility trước khi nâng llm 0.33."
     ],
     "avoid": [
-      "Không trình bày các mục trong roadmap như capability đã phát hành hoặc API đã ổn định.",
+      "Không trình bày roadmap như capability đã phát hành hoặc API đã ổn định.",
       "Không xem một verdict readiness là bằng chứng thay thế cho security review và kiểm thử trên host thật.",
       "Không đưa credential production vào harness hoặc báo cáo conformance nếu chưa xác nhận cơ chế redaction."
     ]
   },
   "radar": [],
-  "takeaway": "Nếu hôm nay chỉ nhớ một điều: roadmap định hình chuẩn tương lai, còn readiness và conformance tooling mới là thứ giúp kỹ sư kiểm tra integration đang có."
+  "takeaway": "Dùng roadmap để tránh khóa kiến trúc vào giả định sắp lỗi thời, còn thay đổi production chỉ nên dựa trên specification, SDK và conformance test đã đủ rõ."
 }
