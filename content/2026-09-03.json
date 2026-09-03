@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "edition_date": "2026-09-03",
+  "locale": "vi-VN",
+  "edition_type": "daily_ai_catchup",
+  "edition_mode": "NORMAL",
+  "headline": "Gemini 3.8 Flash đẩy coding agent về bài toán hiệu quả theo task, còn runtime ngày càng kéo về hạ tầng của chính team",
+  "dek": "Signal mạnh nhất sáng nay là Gemini 3.8 Flash đã GA với trọng tâm long-horizon software engineering và autonomous agents, nhưng Google cũng nói rõ model có thể dùng nhiều reasoning step và tool call hơn trên task khó. Song song, Cursor đưa Cloud Agents lên Self-Hosted Machines để code, build artifact và secret ở lại trong network của doanh nghiệp. Với software engineer, hướng đi đáng chú ý không phải đổi model thật nhanh mà là đo chất lượng theo completed task và kiểm soát nơi agent thực thi.",
+  "meta": {
+    "primary_scan_hours": 24,
+    "context_window_hours": 72,
+    "window_started_at": "2026-09-02T07:00:00+07:00",
+    "cutoff_at": "2026-09-03T07:00:00+07:00",
+    "reading_minutes": 5,
+    "source_policy": "official-first"
+  },
+  "hero_visual": {
+    "kind": "editorial",
+    "key": "agent-quality-runtime-control",
+    "caption": "Coding agent đang tiến theo hai trục cùng lúc: model làm task dài tốt hơn, còn runtime được kéo gần hơn về hạ tầng và policy mà team kiểm soát."
+  },
+  "brief": [
+    {
+      "event_id": "github-copilot-enterprise-default-model-settings",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot",
+        "action": "feature-update",
+        "artifact": "enterprise-default-model-settings"
+      },
+      "published_at": "2026-09-02",
+      "freshness": "NEW_TODAY",
+      "title": "GitHub cho enterprise đặt default model Copilot theo toàn công ty hoặc từng team",
+      "text": "GitHub Copilot Business và Enterprise giờ cho phép admin đặt model mặc định cho conversation mới qua enterprise-managed settings, đồng thời có thể cho từng enterprise team dùng default khác. Thay đổi áp dụng trong Copilot app, Copilot CLI và Visual Studio Code. Với team nhiều workload, đây là cách đơn giản hơn để chuẩn hóa model theo nhu cầu mà không cần tự xây routing layer; vẫn nên để override ở nơi developer thực sự cần model khác.",
+      "sources": [
+        {
+          "label": "GitHub Changelog — Enterprise-managed settings support any default model",
+          "url": "https://github.blog/changelog/2026-09-02-enterprise-managed-settings-support-any-default-model/",
+          "type": "official",
+          "published_at": "2026-09-02"
+        }
+      ]
+    }
+  ],
+  "trends": [
+    {
+      "event_id": "google-gemini-3-8-flash-ga",
+      "event_signature": {
+        "organization": "google",
+        "product": "gemini-3-8-flash",
+        "action": "general-availability",
+        "artifact": "2026-09-02-ga"
+      },
+      "published_at": "2026-09-02",
+      "id": "coding-agent-quality-needs-task-level-cost",
+      "freshness": "NEW_TODAY",
+      "strength": "ACCELERATING",
+      "importance": "LEAD",
+      "editorial_theme": "coding-agent-models",
+      "editorial_angle": "task-level-efficiency",
+      "title": "Gemini 3.8 Flash làm task dài tốt hơn, nhưng hiệu quả phải đo theo task hoàn thành chứ không chỉ giá token",
+      "paragraphs": [
+        "Google đưa Gemini 3.8 Flash lên GA trong Gemini API và định vị đây là Flash model mạnh nhất cho long-horizon software engineering, autonomous agents và workflow doanh nghiệp phức tạp. Model có context input hơn một triệu token, hỗ trợ function calling, structured output, code execution, search grounding và computer use ở trạng thái preview. Giá giới thiệu giữ ở mức 0,75 USD cho một triệu input token và 3,75 USD cho một triệu output token đến hết năm 2026, bằng mức giới thiệu của 3.7 Flash.",
+        "Điểm quan trọng với engineer nằm ở cách model tiêu compute. Google nói 3.8 Flash chủ động thực hiện nhiều reasoning step hơn, gọi tool lặp lại và tự kiểm tra công việc trên task phức tạp; vì vậy một request khó có thể dùng nhiều token hơn dù đơn giá không tăng. API cho phép chọn thinking level low, medium hoặc high, còn Gemini 3.7 Flash vẫn được hỗ trợ cho workload ưu tiên efficiency. Điều này làm metric 'giá mỗi triệu token' kém hữu ích nếu đứng một mình: thứ nên so là cost, latency và tỷ lệ hoàn thành đúng của cùng một task thật.",
+        "Không cần đổi default model chỉ vì benchmark mới. Cách thử có giá trị hơn là lấy một tập nhỏ task mà coding agent hiện tại thường phải sửa nhiều vòng, chạy cùng acceptance criteria trên model đang dùng và 3.8 Flash, rồi so completed-task rate, số tool call, latency và tổng token. Nếu model mới hoàn thành nhiều task hơn với ít vòng người can thiệp thì chi phí cao hơn trên từng request vẫn có thể rẻ hơn ở cấp workflow."
+      ],
+      "pullquote": "Model rẻ theo token chưa chắc rẻ theo task; coding agent nên được đo ở điểm công việc thực sự hoàn thành.",
+      "action": "Benchmark Gemini 3.8 Flash trên 5–10 task coding có acceptance criteria rõ, ghi lại completed-task rate, latency, tổng token và số vòng người phải sửa trước khi cân nhắc đổi default model.",
+      "visual": {
+        "kind": "editorial",
+        "key": "token-price-vs-completed-task-cost",
+        "caption": "So model theo chi phí mỗi task hoàn thành, không chỉ theo đơn giá token hoặc điểm benchmark của vendor."
+      },
+      "sources": [
+        {
+          "label": "Google AI Developers — Gemini API release notes",
+          "url": "https://ai.google.dev/gemini-api/docs/changelog",
+          "type": "official",
+          "published_at": "2026-09-02"
+        },
+        {
+          "label": "Google — Introducing Gemini 3.8 Flash and 3.8 Flash Cyber",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/",
+          "type": "official",
+          "published_at": "2026-09-02"
+        }
+      ]
+    },
+    {
+      "event_id": "cursor-self-hosted-machines",
+      "event_signature": {
+        "organization": "cursor",
+        "product": "cloud-agents",
+        "action": "release",
+        "artifact": "self-hosted-machines"
+      },
+      "published_at": "2026-09-02",
+      "id": "coding-agent-runtime-moves-inside-network",
+      "freshness": "NEW_TODAY",
+      "strength": "EMERGING",
+      "importance": "SECONDARY",
+      "editorial_theme": "coding-agent-infrastructure",
+      "editorial_angle": "self-hosted-runtime",
+      "title": "Coding agent cloud bắt đầu tách control plane khỏi nơi tool thực sự chạy",
+      "paragraphs": [
+        "Cursor bổ sung Self-Hosted Machines cho Cloud Agents: agent vẫn được điều phối từ Cursor nhưng tool execution có thể chạy trên máy nằm trong hạ tầng của chính team. Cursor nói codebase, build artifact và secret có thể ở lại trên internal machine hoặc network thay vì được đưa sang runtime cloud mặc định. Team có thể dùng một máy cá nhân qua My Machines hoặc tạo pool worker dùng chung để nhận job động.",
+        "Điểm đáng chú ý về kiến trúc là runtime không còn buộc phải đồng nghĩa với vendor-hosted VM. Cursor cho biết self-hosted worker có thể chạy trên hạ tầng hiện có, kể cả các sandbox provider và cloud platform phổ biến, đồng thời hỗ trợ computer use trên Linux và Mac nếu máy có desktop package phù hợp. Với enterprise bị ràng buộc bởi network boundary, secret locality hoặc build dependency nội bộ, đây là hướng thực dụng hơn việc cố mở toàn bộ hạ tầng ra cho một cloud agent bên ngoài.",
+        "Tuy vậy, self-hosted không tự động đồng nghĩa với an toàn hơn. Team vẫn phải quản patching, isolation, credential scope, egress policy và cleanup của worker. Chỉ nên chuyển workload khi có constraint thật như private dependency, compliance hoặc secret không được rời network; nếu cloud runtime hiện tại đã đáp ứng policy và ship ổn, tự vận hành pool chỉ tạo thêm operational surface."
+      ],
+      "action": "Nếu có một coding-agent task đang bị chặn vì private dependency hoặc network policy, thử self-hosted trên đúng task đó trước. Không dựng pool lớn nếu chưa chứng minh workload thật sự cần runtime nội bộ.",
+      "visual": {
+        "kind": "editorial",
+        "key": "agent-control-plane-self-hosted-runtime",
+        "caption": "Control plane ở vendor, tool execution ở network của team: ranh giới mới giúp giữ code và secret gần hạ tầng nội bộ hơn."
+      },
+      "sources": [
+        {
+          "label": "Cursor Changelog — Self-Hosted Machines",
+          "url": "https://cursor.com/changelog",
+          "type": "official",
+          "published_at": "2026-09-02"
+        }
+      ]
+    }
+  ],
+  "releases": [
+    {
+      "event_id": "github-copilot-content-exclusions-app-cli-ga",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot",
+        "action": "general-availability",
+        "artifact": "content-exclusions-app-cli"
+      },
+      "published_at": "2026-09-02",
+      "product": "GitHub Copilot",
+      "feature": "Content exclusion policies trong Copilot app và CLI",
+      "freshness": "NEW_TODAY",
+      "status": "GA",
+      "summary": "GitHub Copilot app và Copilot CLI giờ tôn trọng content exclusion policy do enterprise, organization hoặc repository admin cấu hình. File bị exclude sẽ không được dùng làm context trong các workflow agentic, giúp cùng một policy áp dụng nhất quán hơn khi developer chuyển từ IDE sang app hoặc terminal.",
+      "who_gets_it": "GitHub Copilot Business và Copilot Enterprise.",
+      "why_it_matters": "Đây là guardrail hữu ích cho repo có generated secret, licensed code hoặc vùng source không nên đưa vào context model. Nó không thay thế permission trên filesystem hay secret management, nhưng giảm rủi ro policy chỉ có hiệu lực ở một client còn CLI hoặc agent app vẫn đọc được cùng file.",
+      "verdict": "TRY_NOW",
+      "verdict_note": "Nếu organization đã dùng content exclusion, kiểm tra một path bị exclude bằng cả Copilot app và CLI để xác nhận policy thực sự nhất quán trước khi coi đây là control đáng tin trong workflow của team.",
+      "sources": [
+        {
+          "label": "GitHub Changelog — Content exclusions generally available in Copilot app and CLI",
+          "url": "https://github.blog/changelog/2026-09-02-content-exclusions-generally-available-in-copilot-app-and-cli/",
+          "type": "official",
+          "published_at": "2026-09-02"
+        }
+      ]
+    }
+  ],
+  "developer_memo": {
+    "title": "Có cần đổi workflow hôm nay không?",
+    "direct_answer": "Chưa cần thay đổi workflow hiện tại.",
+    "actions": [
+      "Benchmark Gemini 3.8 Flash trên một nhóm task coding khó trước khi đổi model mặc định.",
+      "Nếu team dùng Copilot Business hoặc Enterprise, xác nhận content exclusion có hiệu lực giống nhau trên app và CLI.",
+      "Chỉ spike Cursor Self-Hosted Machines cho workload có private dependency, compliance hoặc network constraint thật."
+    ],
+    "avoid": [
+      "Không so model chỉ bằng giá token hoặc benchmark do vendor công bố.",
+      "Không tự vận hành agent worker pool nếu cloud runtime hiện tại chưa tạo ra pain point rõ ràng.",
+      "Không xem content exclusion là lớp thay thế cho filesystem permission, secret management hoặc sandboxing."
+    ]
+  },
+  "radar": [
+    {
+      "event_id": "google-fairwind-program-launch",
+      "event_signature": {
+        "organization": "google",
+        "product": "fairwind-program",
+        "action": "launch",
+        "artifact": "trusted-cyber-defense-access"
+      },
+      "published_at": "2026-09-02",
+      "freshness": "NEW_TODAY",
+      "status": "WATCH",
+      "text": "Google mở Fairwind Program ở limited access cho chính phủ và đối tác tin cậy dùng capability cyber defense nâng cao, bao gồm Gemini 3.8 Flash Cyber. Đây chưa phải API phổ thông, nhưng đáng theo dõi vì frontier cyber model đang đi theo mô hình access control theo đối tượng thay vì phát hành rộng ngay từ đầu.",
+      "sources": [
+        {
+          "label": "Google — Proactive cyber defense for governments and enterprises",
+          "url": "https://blog.google/innovation-and-ai/technology/safety-security/fairwind-program/",
+          "type": "official",
+          "published_at": "2026-09-02"
+        }
+      ]
+    }
+  ],
+  "takeaway": "Nếu hôm nay chỉ nhớ một điều: coding agent đang mạnh lên ở model nhưng cũng đang trưởng thành ở runtime và policy. Đừng đổi stack vì một release mới; hãy đo cost theo task hoàn thành và chỉ kéo runtime về self-hosted khi boundary nội bộ thực sự tạo giá trị.",
+  "content_contract": {
+    "renderer_must_not_require_html_in_content": true,
+    "allowed_rich_content": [
+      "paragraph",
+      "bullet",
+      "pullquote",
+      "source_link",
+      "editorial_visual_hint"
+    ],
+    "freshness_values": [
+      "NEW_TODAY",
+      "CONTEXT_72H"
+    ],
+    "verdict_values": [
+      "TRY_NOW",
+      "WATCH",
+      "SKIP_FOR_NOW"
+    ]
+  }
+}
