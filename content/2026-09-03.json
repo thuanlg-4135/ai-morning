@@ -73,8 +73,8 @@
       },
       "sources": [
         {
-          "label": "Google AI Developers — Gemini API release notes",
-          "url": "https://ai.google.dev/gemini-api/docs/changelog",
+          "label": "Google AI Developers — Gemini 3.8 Flash model page",
+          "url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash",
           "type": "official",
           "published_at": "2026-09-02"
         },
