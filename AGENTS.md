@@ -91,7 +91,71 @@ Full timestamps must fall inside the exact half-open window: the prior 24 hours 
 
 For developed trends, optionally record kebab-case `editorial_theme` and `editorial_angle`. Reusing a lead theme across the previous three editions produces a warning; reusing the same theme and angle produces a stronger warning. `editorial_repeat_reason` may document an intentional return, but never bypasses factual duplicate or material-update rules. Trend `strength` must be one of `EARLY_SIGNAL`, `EMERGING`, `ACCELERATING`, or `ESTABLISHED`.
 
-Write in clear Vietnamese. Lead with the verified change, distinguish fact from analysis, explain why a software engineer should care, and include a practical implication. Fewer strong stories are preferable to recycled context on a quiet day.
+## Vietnamese editorial style
+
+Write for a busy Vietnamese software engineer who wants to understand the news on the first read. The reader knows software development, but should not need to decode research-paper prose, vendor language, or a chain of untranslated English terms.
+
+Use an inverted-pyramid structure at both story and paragraph level:
+
+1. State the verified change in plain Vietnamese.
+2. Explain what it changes for a developer or team.
+3. Add only the technical detail needed to support that explanation.
+4. End with a concrete implication, limitation, or next step.
+
+Prefer natural Vietnamese sentence structure:
+
+- Put the actor and action early: `Cursor cho phép...`, `GitHub đã thêm...`, `Nhóm phát triển cần...`.
+- Keep one main idea per sentence. Aim for 12–24 words; split a sentence before it exceeds roughly 30 words.
+- Keep paragraphs to 2–3 sentences. Each paragraph must have one job: news, meaning, evidence, caveat, or action.
+- Use active voice and specific verbs. Replace abstract phrases such as `thực hiện việc`, `có khả năng giúp`, or `được xem là` with the direct action when evidence allows it.
+- Front-load the useful fact. Do not begin with throat-clearing phrases such as `Điểm đáng chú ý là`, `Trong bối cảnh hiện nay`, or `Có thể thấy rằng`.
+- Use concrete nouns, numbers, products, and actions instead of promotional adjectives or vague claims.
+- Address the reader as `bạn` only when giving a direct action. Otherwise use `developer`, `nhóm phát triển`, or `team` consistently.
+
+Handle technical language deliberately:
+
+- Keep product names and widely understood terms such as API, model, token, prompt, runtime, benchmark, latency, cache, CLI, and IDE.
+- Explain a less familiar term in plain Vietnamese at first use. Example: `control plane, tức lớp điều phối agent`.
+- Do not put more than two unexplained English technical terms in one sentence.
+- Prefer a clear Vietnamese phrase when it is equally precise: `mạng nội bộ` instead of `internal network`, `quyền tối thiểu` instead of `least privilege`, `chi phí cho mỗi task hoàn thành` instead of `cost per completed task`.
+- Do not translate mechanically when the Vietnamese term would be less recognizable to a software engineer.
+
+Avoid common AI-writing patterns:
+
+- Do not stack clauses with repeated `nhưng`, `đồng thời`, `trong khi`, `không chỉ... mà còn...`, or semicolons.
+- Do not repeat the same conclusion in the title, dek, body, memo, and takeaway.
+- Do not turn every release into a broad industry trend. Say `đây là một tín hiệu` unless multiple independent events support a trend.
+- Do not use hype, rhetorical questions, fake urgency, or claims such as `thay đổi cuộc chơi`, `đột phá`, `cách mạng`, and `đáng kinh ngạc` unless directly quoted and clearly attributed.
+- Do not imitate the syntax of an English source. Understand the fact first, then rewrite it as Vietnamese.
+
+Match copy depth to the section:
+
+- `headline`: one clear idea, preferably no more than 18 words. Name the main change, not every theme in the edition.
+- `dek`: no more than two sentences. Give the morning's main signal and its practical meaning.
+- `brief.text`: 2–3 short sentences: what changed, who is affected, what to check.
+- `trends.paragraphs`: paragraph 1 is the verified news; paragraph 2 explains impact and evidence; paragraph 3 gives a caveat or action. Do not combine these jobs into one dense paragraph.
+- `release.summary`: describe the feature without analysis. Put audience in `who_gets_it`, consequence in `why_it_matters`, and recommendation in `verdict_note`.
+- `radar.text`: identify what is still uncertain and what future evidence would change the assessment.
+- `action`, memo items, and `takeaway`: start with a verb and make the next step testable.
+
+Example of an overloaded sentence:
+
+> Cursor bổ sung Self-Hosted Machines cho Cloud Agents: agent vẫn được điều phối từ Cursor nhưng tool execution có thể chạy trên máy nằm trong hạ tầng của chính team.
+
+Rewrite it as:
+
+> Cursor vừa bổ sung Self-Hosted Machines cho Cloud Agents. Cursor vẫn điều phối agent, còn các công cụ chạy trên máy của team.
+
+Before finalizing Vietnamese copy, perform a separate editing pass:
+
+1. Read only the first sentence of each paragraph. Together they must explain the whole story.
+2. Split any sentence that carries more than one fact plus one conclusion.
+3. Replace or explain unfamiliar English terms.
+4. Remove repeated context and any sentence that does not change the reader's understanding or decision.
+5. Read the copy aloud. Rewrite any sentence that needs a second breath or whose subject becomes unclear.
+6. Confirm facts and analysis remain visibly distinct and every recommendation is supported by the cited evidence.
+
+Fewer strong stories are preferable to recycled context on a quiet day. Clarity is more important than sounding sophisticated.
 
 ## Quality workflow
 
