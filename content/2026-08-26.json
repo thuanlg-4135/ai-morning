@@ -4,8 +4,8 @@
   "locale": "vi-VN",
   "edition_type": "daily_ai_catchup",
   "edition_mode": "NORMAL",
-  "headline": "Local-first agent bước vào production: Perplexity đưa cả harness xuống máy",
-  "dek": "Trong 24 giờ qua, tín hiệu đáng chú ý nhất không phải một frontier model mới mà là cách agent được vận hành: Perplexity Portable Computer chạy cả agent runtime trên thiết bị và chỉ chuyển phần việc ra cloud khi cần. OpenAI cùng lúc công bố số đo đầu tiên của chip inference Jalapeño và một Admin plugin có quyền đọc/ghi theo permission hiện hữu; Claude hợp nhất memory giữa chat và Cowork.",
+  "headline": "Perplexity đưa cả agent runtime xuống máy local",
+  "dek": "Portable Computer chạy orchestrator, subagent và tool execution ngay trên thiết bị rồi chỉ gọi cloud khi cần. OpenAI cũng công bố số đo đầu tiên của chip Jalapeño, còn Claude hợp nhất memory giữa chat và Cowork.",
   "meta": {
     "primary_scan_hours": 24,
     "context_window_hours": 72,
@@ -18,7 +18,7 @@
   "hero_visual": {
     "kind": "editorial",
     "key": "local-first-hybrid-agent-runtime",
-    "caption": "Agent local đang chuyển từ chạy một model trên máy sang sở hữu cả harness: planner, tool router, scheduler, queue, search index và một ranh giới rõ khi nào được phép gọi cloud."
+    "caption": "Local-first agent không chỉ chạy model trên máy; planner, tool router, scheduler và data boundary cũng có thể nằm trong cùng runtime."
   },
   "brief": [
     {
@@ -32,7 +32,7 @@
       "published_at": "2026-08-25",
       "freshness": "NEW_TODAY",
       "title": "Claude dùng chung memory giữa chat và Cowork",
-      "text": "Anthropic hợp nhất memory giữa Claude chat và Cowork để cloud tasks có thể tiếp tục từ context đã biết. Người dùng có thể xem, sửa hoặc xóa memory; các chủ đề nhạy cảm không được lưu mặc định và chỉ được ghi nhớ khi người dùng chủ động bật lựa chọn tương ứng.",
+      "text": "Anthropic hợp nhất memory giữa Claude chat và Cowork để cloud task tiếp tục từ context đã biết. Người dùng có thể xem, sửa hoặc xóa memory. Các chủ đề nhạy cảm không được lưu mặc định và chỉ được ghi nhớ khi người dùng chủ động bật lựa chọn tương ứng.",
       "sources": [
         {
           "label": "Anthropic — Claude's memory works everywhere, and you decide what's in it",
@@ -52,8 +52,8 @@
       },
       "published_at": "2026-08-25",
       "freshness": "NEW_TODAY",
-      "title": "Salesforce biến business capability thành lớp có thể tái sử dụng bởi agent",
-      "text": "Headless 360 được mở rộng với MCP servers, Data 360, Slack integrations, developer tools và hơn 100 reusable Skills. Mục tiêu là để agent được ủy quyền có thể khám phá và gọi capability sẵn có mà vẫn kế thừa identity, permissions, metadata, workflow và governance của Salesforce.",
+      "title": "Salesforce mở business capability cho agent qua một lớp dùng lại được",
+      "text": "Salesforce mở rộng Headless 360 với MCP servers, Data 360, Slack integrations, developer tools và hơn 100 Skills dùng lại được. Agent được ủy quyền có thể khám phá và gọi capability sẵn có nhưng vẫn kế thừa identity, permissions, metadata và governance của Salesforce. Team dùng hệ sinh thái này nên kiểm tra xem quyền của agent có thực sự bám theo policy hiện tại hay không.",
       "sources": [
         {
           "label": "Salesforce — Turns Enterprise Applications into Enterprise Capabilities",
@@ -80,18 +80,18 @@
       "importance": "LEAD",
       "editorial_theme": "local-ai",
       "editorial_angle": "hybrid-agent-runtime",
-      "title": "Local AI đang tiến từ 'model chạy trên máy' thành một agent runtime hoàn chỉnh",
+      "title": "Local AI đang chuyển từ model trên máy thành một agent runtime đầy đủ",
       "paragraphs": [
-        "Portable Computer đáng chú ý vì phần local không chỉ là model inference. Perplexity nói toàn bộ runtime của Computer có thể chạy trên thiết bị: orchestrator, subagents, agent harness, tool execution và phần quản lý công việc. NVIDIA cho biết bản đầu được tối ưu cho DGX Spark và local NVIDIA hardware, với Qwen 3.8 27B/PPLX 27B cùng khả năng kết nối Google Drive, Gmail, Slack và GitHub.",
-        "Thiết kế hybrid khá thực dụng: dữ liệu riêng và phần lớn tác vụ có thể ở local; khi cần thông tin thời gian thực hoặc capability mạnh hơn, agent có thể chuyển riêng phần việc đó ra cloud. Perplexity nhấn mạnh local work không tiêu tốn cloud credits và việc gửi nội dung ra ngoài máy cần sự cho phép của người dùng, thay vì biến cloud fallback thành hành vi mặc định vô hình.",
-        "Đối với đội kỹ thuật, pattern này mở ra cách khác để tính economics và privacy. Local compute có chi phí vốn, điện và giới hạn model, nhưng workload lặp lại hoặc nhạy cảm không còn bị tính theo token từng request. Benchmark nên đo tỷ lệ task hoàn tất local, số lần phải escalate, latency tổng, chất lượng sau retry và chi phí phần cứng trên mỗi completed task thay vì chỉ nhìn tokens/second."
+        "Perplexity ra mắt Portable Computer với toàn bộ runtime của Computer chạy trên thiết bị. Orchestrator, subagent, agent harness, tool execution và quản lý công việc đều có thể ở local. NVIDIA cho biết bản đầu được tối ưu cho DGX Spark và local NVIDIA hardware, dùng Qwen 3.8 27B/PPLX 27B và có thể kết nối Google Drive, Gmail, Slack cùng GitHub.",
+        "Runtime chỉ chuyển phần việc ra cloud khi cần thông tin thời gian thực hoặc capability mạnh hơn. Perplexity nói local work không tiêu cloud credits và nội dung chỉ rời máy khi người dùng cho phép. Đây là khác biệt quan trọng với mô hình 'local model nhưng mọi tool và state vẫn ở cloud'.",
+        "Team cân nhắc local-first nên đo tỷ lệ task hoàn tất hoàn toàn trên máy, số lần phải gọi cloud, latency tổng và chi phí phần cứng trên mỗi task. Local compute giảm một số chi phí token và giữ dữ liệu gần hơn, nhưng đổi lại là phần cứng, điện, vận hành và giới hạn model. Chỉ đầu tư khi workload thật cho thấy lợi ích rõ."
       ],
-      "pullquote": "Local-first agent chỉ thật sự khác cloud agent khi ranh giới dữ liệu và quyết định escalate nằm trong runtime, không nằm trong checklist của con người.",
-      "action": "Chọn một repo hoặc bộ tài liệu nội bộ nhỏ, phân loại task thành local-only, hybrid và cloud-only; đo completion rate, latency, chất lượng và chính xác phần dữ liệu phải rời máy trước khi đầu tư thêm phần cứng.",
+      "pullquote": "Local-first chỉ có ý nghĩa khi runtime biết dữ liệu nào được ở lại máy và khi nào mới được phép gọi cloud.",
+      "action": "Chọn một repo hoặc bộ tài liệu nhỏ, phân loại task thành local-only, hybrid và cloud-only rồi đo completion rate, latency và dữ liệu phải rời máy.",
       "visual": {
         "kind": "editorial",
         "key": "local-runtime-cloud-escalation",
-        "caption": "Local runtime xử lý dữ liệu và agent work; cloud chỉ được gọi khi task thực sự cần thêm capability hoặc thông tin mới."
+        "caption": "Local runtime xử lý phần chính của task; cloud chỉ được gọi khi workload thật sự cần thêm capability hoặc dữ liệu mới."
       },
       "sources": [
         {
@@ -123,13 +123,13 @@
       "importance": "SECONDARY",
       "editorial_theme": "ai-infrastructure",
       "editorial_angle": "latency-per-watt",
-      "title": "Agent economics đang kéo tối ưu inference xuống tận silicon",
+      "title": "OpenAI tối ưu inference xuống tận chip Jalapeño",
       "paragraphs": [
-        "OpenAI công bố kết quả đầu tiên cho Jalapeño, chip inference tự thiết kế. Trên các benchmark dùng GPT-OSS 120B, DeepSeek R1 670B và Kimi K2.5 1T, OpenAI báo cáo 1,5–1,9 lần nhiều AI work hơn trên mỗi watt ở peak throughput và 1,7–3,6 lần thấp hơn về end-to-end latency so với các hệ so sánh trong bài đo.",
-        "Điểm kỹ thuật đáng chú ý là OpenAI tối ưu chip, memory, network và serving software như một hệ thống duy nhất, với mục tiêu giảm data movement và giữ dữ liệu phục vụ inference gần compute. Công ty nói thiết kế được nhắm tới language models và interactive agents, nơi latency ở nhiều bước nối tiếp cộng dồn trực tiếp vào thời gian hoàn thành task.",
-        "Các số liệu vẫn do vendor cung cấp và chỉ nên đọc trong phạm vi benchmark, model và operating point được công bố. Nhưng hướng đi có ý nghĩa: cạnh tranh inference không còn chỉ là mua accelerator nhanh hơn; model provider lớn đang tự tối ưu full stack để giảm cost per successful task và tăng responsiveness. OpenAI dự kiến bắt đầu triển khai Jalapeño vào hạ tầng của mình trước cuối năm 2026."
+        "OpenAI công bố kết quả đầu tiên cho Jalapeño, chip inference tự thiết kế. Trên các benchmark dùng GPT-OSS 120B, DeepSeek R1 670B và Kimi K2.5 1T, công ty báo cáo 1,5–1,9 lần nhiều AI work hơn trên mỗi watt ở peak throughput và 1,7–3,6 lần thấp hơn về end-to-end latency so với các hệ đối chiếu trong bài đo.",
+        "OpenAI tối ưu chip, memory, network và serving software như một hệ thống, với mục tiêu giảm data movement và giữ dữ liệu gần compute. Thiết kế nhắm tới language model và interactive agent, nơi latency ở nhiều bước nối tiếp cộng dồn trực tiếp vào thời gian hoàn thành task.",
+        "Các số liệu vẫn là benchmark do vendor công bố. Team nên dùng chúng như tín hiệu về hướng kiến trúc, không phải dự đoán cho production workload của mình. Trong eval agent, theo dõi time-to-first-token, decode latency, số bước tuần tự, retry và compute cost trong cùng một trace."
       ],
-      "action": "Trong benchmark agent, thêm time-to-first-token, decode latency, số bước tuần tự, retry và compute cost vào cùng một trace; đừng dùng một con số tokens/second để đại diện cho UX của toàn task.",
+      "action": "Thêm time-to-first-token, decode latency, số bước tuần tự, retry và compute cost vào benchmark agent thay vì chỉ theo tokens/second.",
       "sources": [
         {
           "label": "OpenAI — Jalapeño’s first results",
@@ -160,10 +160,10 @@
       "feature": "Admin plugin",
       "freshness": "NEW_TODAY",
       "status": "RELEASED",
-      "summary": "Workspace admins có thể phân tích adoption và credit usage, quản lý member/group, kiểm tra effective permissions, điều chỉnh usage limits và xử lý spending requests trực tiếp trong ChatGPT Work và Codex. Plugin ánh xạ yêu cầu sang các read/write actions được hỗ trợ và trả về kết quả có cấu trúc để admin xác nhận thay đổi.",
-      "who_gets_it": "Workspace admins trong ChatGPT Work; plugin được cài từ Plugins directory và chỉ hoạt động trong role, permissions, workspace policies và approval requirements hiện có.",
+      "summary": "Workspace admin có thể xem adoption và credit usage, quản lý member/group, kiểm tra effective permissions, chỉnh usage limits và xử lý spending requests trong ChatGPT Work và Codex.",
+      "who_gets_it": "Workspace admins trong ChatGPT Work; plugin chỉ hoạt động trong role, permissions, workspace policies và approval requirements hiện có.",
       "verdict": "TRY_NOW",
-      "verdict_note": "Đáng thử với workspace có Codex usage lớn vì gom việc dò credit, access và limit issues vào một luồng có thể hành động mà không cần build dashboard quản trị riêng. Điểm quan trọng là plugin không tự cấp thêm quyền cho người gọi.",
+      "verdict_note": "Đáng thử ở workspace có Codex usage lớn vì gom các việc dò credit, access và limit vào một luồng. Trước khi dùng cho thay đổi write, xác nhận plugin không tạo đường vòng vượt role hiện có.",
       "sources": [
         {
           "label": "OpenAI — Introducing the Admin plugin for ChatGPT Work and Codex",
@@ -175,33 +175,24 @@
     }
   ],
   "developer_memo": {
-    "title": "Điều nên thử trong workflow hôm nay",
-    "direct_answer": "Có: thử một bài toán local-first nhỏ và audit permission boundary của một agent đang có write access.",
+    "title": "Có cần đổi workflow hôm nay không?",
+    "direct_answer": "Chưa cần thay đổi workflow hiện tại.",
     "actions": [
-      "Chọn một repo hoặc bộ tài liệu không quá lớn, chạy task bằng local model trước rồi chỉ cho phép cloud khi local không đủ; ghi lại chính xác phần dữ liệu nào rời máy.",
-      "Đổi dashboard agent sang cost per completed task, gồm số step, latency, retry, token/credit và tỷ lệ escalation thay vì chỉ theo token price.",
-      "Với agent có quyền thay đổi tài nguyên, map từng tool action về role/permission hiện có và thêm explicit approval cho hành động có blast radius lớn."
+      "Thử một bài toán local-first nhỏ và ghi rõ phần dữ liệu nào phải rời máy.",
+      "Đổi dashboard agent sang chi phí mỗi task hoàn thành, gồm số step, latency, retry và tỷ lệ gọi cloud.",
+      "Với agent có quyền thay đổi tài nguyên, map từng tool action về role hiện có và thêm approval cho hành động có blast radius lớn."
     ],
     "avoid": [
-      "Không mua phần cứng local chỉ vì inference không bị tính credit; tổng chi phí còn gồm hardware, điện, vận hành và chất lượng thấp hơn nếu phải retry nhiều.",
+      "Không mua phần cứng local chỉ vì inference không bị tính cloud credit.",
       "Không coi benchmark chip do vendor công bố là hiệu năng trực tiếp của workload production.",
-      "Không để memory hoặc agent tool access trở thành đường vòng vượt qua permission model hiện hữu."
+      "Không để memory hoặc agent tool access trở thành đường vòng vượt permission model hiện hữu."
     ]
   },
   "radar": [],
-  "takeaway": "Nếu hôm nay chỉ nhớ một điều: local AI đang trưởng thành ở phần harness, không chỉ ở model. Khi planner, router, queue, memory và tool execution có thể nằm trên thiết bị, quyết định kiến trúc sẽ xoay quanh data boundary, escalation policy và cost per completed task nhiều hơn là chọn model nào đứng đầu benchmark.",
+  "takeaway": "Đánh giá local-first bằng data boundary, tỷ lệ phải gọi cloud và chi phí mỗi task hoàn thành, không chỉ bằng tốc độ model trên máy.",
   "content_contract": {
     "renderer_must_not_require_html_in_content": true,
-    "allowed_rich_content": [
-      "paragraph",
-      "bullet",
-      "pullquote",
-      "source_link",
-      "editorial_visual_hint"
-    ],
-    "freshness_values": [
-      "NEW_TODAY",
-      "CONTEXT_72H"
-    ]
+    "allowed_rich_content": ["paragraph", "bullet", "pullquote", "source_link", "editorial_visual_hint"],
+    "freshness_values": ["NEW_TODAY", "CONTEXT_72H"]
   }
 }
