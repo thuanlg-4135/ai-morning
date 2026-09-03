@@ -13,15 +13,19 @@ test('single visual explainer uses the wide content tracks', async () => {
   );
 });
 
-test('scroll UI avoids the fixed grain layer and caches article measurements', async () => {
-  const [articleTemplate, archiveTemplate, script] = await Promise.all([
+test('scroll UI avoids expensive layers and stabilizes deep links', async () => {
+  const [articleTemplate, archiveTemplate, script, css] = await Promise.all([
     readFile(new URL('templates/article.html', root), 'utf8'),
     readFile(new URL('templates/archive.html', root), 'utf8'),
-    readFile(new URL('assets/site.js', root), 'utf8')
+    readFile(new URL('assets/site.js', root), 'utf8'),
+    readFile(new URL('assets/site.css', root), 'utf8')
   ]);
 
   assert.doesNotMatch(articleTemplate, /page-grain/);
   assert.doesNotMatch(archiveTemplate, /page-grain/);
+  assert.doesNotMatch(css, /html\s*\{[^}]*scroll-behavior:\s*smooth/s);
+  assert.match(script, /const alignCurrentHash = \(\) =>/);
+  assert.match(script, /scrollIntoView\(\{ block: 'start', behavior: 'auto' \}\)/);
   assert.match(script, /const measureProgress = \(\) =>/);
   assert.match(script, /new ResizeObserver\(measureLayout\)\.observe\(article\)/);
   assert.match(script, /requestAnimationFrame\(\(\) => \{/);

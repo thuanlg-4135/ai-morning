@@ -45,6 +45,25 @@
   })();
   let language = storedLanguage;
 
+  const alignCurrentHash = () => {
+    if (!location.hash) return;
+    let id;
+    try {
+      id = decodeURIComponent(location.hash.slice(1));
+    } catch {
+      id = location.hash.slice(1);
+    }
+    document.getElementById(id)?.scrollIntoView({ block: 'start', behavior: 'auto' });
+  };
+
+  const pageLoaded = document.readyState === 'complete'
+    ? Promise.resolve()
+    : new Promise((resolve) => addEventListener('load', resolve, { once: true }));
+  const fontsReady = document.fonts?.ready ?? Promise.resolve();
+  Promise.all([pageLoaded, fontsReady]).then(() => {
+    requestAnimationFrame(() => requestAnimationFrame(alignCurrentHash));
+  });
+
   const applyLanguage = (value) => {
     language = value;
     root.lang = value;
