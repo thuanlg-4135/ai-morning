@@ -4,8 +4,8 @@
   "locale": "vi-VN",
   "edition_type": "daily_ai_catchup",
   "edition_mode": "NORMAL",
-  "headline": "Ray siết serving và sandbox; AI tooling thêm guardrail production",
-  "dek": "Cửa sổ kết thúc lúc 07:00 ngày 24/8 có bốn thay đổi kỹ thuật độc lập. Ray hoàn thiện routing nhận biết KV cache và thêm sandbox experimental, LiteLLM mở rộng kiểm soát chi phí cùng routing, Airflow Common AI thêm guardrail, còn llama.cpp hỗ trợ MTP cho GLM-4.5-Air.",
+  "headline": "Ray 2.58 đưa KV cache vào quyết định routing",
+  "dek": "Ray 2.58 làm routing LLM dựa thêm vào vị trí KV cache và số token, đồng thời thử nghiệm sandbox bằng gVisor. LiteLLM và Airflow cũng thêm các control thực dụng cho chi phí, approval và giới hạn dữ liệu tool.",
   "meta": {
     "primary_scan_hours": 24,
     "context_window_hours": 72,
@@ -17,7 +17,7 @@
   "hero_visual": {
     "kind": "editorial",
     "key": "serving-routing-sandbox-guardrails",
-    "caption": "Các release sáng nay tập trung vào phần khó của production AI: routing theo trạng thái cache, cô lập workload, kiểm soát chi phí và approval trước thao tác nhạy cảm."
+    "caption": "Các release hôm nay tập trung vào routing theo trạng thái cache, cô lập workload và kiểm soát chi phí trước khi tối ưu thêm model."
   },
   "brief": [
     {
@@ -31,7 +31,7 @@
       "published_at": "2026-08-24T01:45:59+07:00",
       "freshness": "NEW_TODAY",
       "title": "llama.cpp b10603 thêm MTP cho GLM-4.5-Air",
-      "text": "Daily build b10603 bổ sung hỗ trợ multi-token prediction cho GLM-4.5-Air. Thay đổi mở đường để developer thử luồng MTP của model trong local inference, nhưng release note không công bố benchmark nên chưa có cơ sở khẳng định tốc độ hay chất lượng tăng. Đây là prerelease; hãy pin build và chạy test đầu ra trước khi đưa vào workflow ổn định.",
+      "text": "Daily build b10603 thêm hỗ trợ multi-token prediction cho GLM-4.5-Air. Release note chưa có benchmark, nên chưa thể kết luận tốc độ hoặc chất lượng tăng. Đây vẫn là prerelease; pin build và chạy test đầu ra trước khi đưa vào workflow ổn định.",
       "sources": [
         {
           "label": "llama.cpp b10603 release notes",
@@ -58,18 +58,18 @@
       "importance": "LEAD",
       "editorial_theme": "ai-infrastructure",
       "editorial_angle": "cache-aware-routing",
-      "title": "Ray 2.58 đưa trạng thái KV cache vào quyết định routing LLM",
+      "title": "Ray 2.58 dùng trạng thái KV cache để chọn replica tốt hơn",
       "paragraphs": [
-        "Ray 2.58.0 hoàn thiện luồng routing nhận biết KV cache và số token cho Ray Serve LLM, bao gồm cả cache được offload xuống CPU. Thay vì chỉ phân phối request theo tải tổng quát, router có thêm tín hiệu về prefix đã nằm ở replica nào và lượng công việc ước tính. Với agent có context dài hoặc lặp lại prefix qua nhiều bước, đây là hướng tối ưu thực tế hơn việc chỉ tăng số worker, vì một quyết định routing sai có thể làm mất cache reuse và buộc prefill chạy lại.",
-        "Release cũng đưa Ray Sandbox dùng gVisor vào trạng thái experimental để cô lập task và actor, đồng thời mở rộng hỗ trợ TPU, Delta Lake và shuffle v2. Các phần này giải quyết những lớp khác nhau của production stack: scheduling accelerator, data movement và ranh giới thực thi. Sandbox mới vẫn là experimental, vì vậy không nên xem nó như sự thay thế cho threat model, image hardening, network policy hay credential ngắn hạn. Giá trị trước mắt là có thêm một primitive để thử nghiệm isolation trong môi trường canary.",
-        "Để biết KV-aware routing có giúp workload của mình hay không, hãy đo riêng time-to-first-token, cache-hit ratio, số token prefill bị lặp, queue time và cost per completed task. Chạy canary với cùng trace request trước và sau nâng cấp, rồi kiểm tra fairness giữa replica cùng hành vi khi cache bị evict. Với sandbox, dùng một task không tin cậy nhưng không chứa secret để xác nhận filesystem, network và process boundary thực tế; chỉ mở rộng rollout sau khi log và failure mode khớp với threat model của hệ thống."
+        "Ray 2.58.0 hoàn thiện routing nhận biết KV cache và số token cho Ray Serve LLM, kể cả cache được offload xuống CPU. Router có thêm tín hiệu về prefix đã nằm ở replica nào và lượng công việc ước tính. Với agent dùng context dài hoặc lặp prefix qua nhiều bước, chọn đúng replica có thể tránh prefill lại cùng một đoạn context.",
+        "Release còn đưa Ray Sandbox dùng gVisor vào trạng thái experimental. Đây là thêm một lớp cô lập cho task và actor, không phải lý do để bỏ image hardening, network policy hoặc credential ngắn hạn. Giá trị trước mắt là có một primitive rõ hơn để thử workload không tin cậy trong canary.",
+        "Để biết routing mới có ích hay không, đo time-to-first-token, cache-hit ratio, số token prefill bị lặp, queue time và chi phí mỗi task hoàn thành. Với sandbox, chạy một task không chứa secret rồi kiểm tra filesystem, network và process boundary thực tế trước khi tăng phạm vi sử dụng."
       ],
-      "pullquote": "Routing tốt không chỉ tìm worker rảnh; nó cần biết context nào đã được tính ở đâu.",
-      "action": "Canary Ray 2.58 với một trace agent có prefix lặp, theo dõi cache hit và prefill; thử gVisor sandbox riêng bằng workload không chứa secret.",
+      "pullquote": "Routing tốt không chỉ tìm worker rảnh; nó cần biết context đã được tính ở đâu.",
+      "action": "Canary Ray 2.58 bằng một trace có prefix lặp, rồi so cache hit, prefill và task completion trước và sau nâng cấp.",
       "visual": {
         "kind": "diagram",
         "key": "ray-kv-aware-request-routing",
-        "caption": "Router cân bằng tải cùng vị trí KV cache để hạn chế prefill lặp lại, trong khi sandbox tạo thêm ranh giới cho task không tin cậy."
+        "caption": "Router cân bằng tải cùng vị trí KV cache để hạn chế prefill lặp; sandbox tạo thêm ranh giới cho task không tin cậy."
       },
       "sources": [
         {
@@ -95,12 +95,12 @@
       "feature": "v1.98.0 — PTU accounting và routing controls",
       "freshness": "NEW_TODAY",
       "status": "RELEASED",
-      "summary": "LiteLLM 1.98.0 bổ sung cấu hình flat cost cho provisioned throughput và đưa phần phân bổ đó vào báo cáo sử dụng hằng ngày. Release còn thêm ngưỡng failure hoặc cooldown theo deployment, routing group có thể gọi như virtual model, SSE keepalive và nhiều sửa lỗi về provider, chi phí cùng security scoping.",
-      "who_gets_it": "Các đội dùng LiteLLM Proxy để định tuyến nhiều provider, theo dõi chi phí hoặc vận hành deployment có capacity mua trước.",
-      "why_it_matters": "PTU thường có economics khác pay-per-token, nên cách quy đổi sai có thể làm dashboard và quyết định router lệch nhau. Failure policy theo deployment cũng cho phép cô lập endpoint xấu mà không hạ cả model group, nhưng có thể đổi hành vi failover hiện tại.",
+      "summary": "LiteLLM 1.98.0 thêm flat cost cho provisioned throughput, báo cáo usage hằng ngày và ngưỡng failure hoặc cooldown theo từng deployment.",
+      "who_gets_it": "Các team dùng LiteLLM Proxy để route nhiều provider, theo dõi chi phí hoặc vận hành capacity mua trước.",
+      "why_it_matters": "PTU có cách tính khác pay-per-token, nên quy đổi sai sẽ làm dashboard và router đưa ra quyết định lệch. Failure policy theo deployment cũng có thể đổi hành vi failover hiện tại.",
       "verdict": "TRY_NOW",
-      "verdict_note": "Nâng thử trong staging, đối chiếu một ngày usage với hóa đơn hoặc capacity contract, rồi cố ý làm một deployment lỗi để xác nhận cooldown, fallback và alert hoạt động như mong đợi.",
-      "sources": [
+      "verdict_note": "Nâng thử trong staging, đối chiếu usage với billing thật rồi cố ý làm một deployment lỗi để xác nhận cooldown, fallback và alert."
+      ,"sources": [
         {
           "label": "LiteLLM v1.98.0 release notes",
           "url": "https://github.com/BerriAI/litellm/releases/tag/v1.98.0",
@@ -122,12 +122,12 @@
       "feature": "v0.8.0 — sandbox, approval và giới hạn dữ liệu tool",
       "freshness": "NEW_TODAY",
       "status": "RELEASED",
-      "summary": "Provider 0.8.0 thêm SandboxToolset cho thao tác shell và file được cô lập, require_approval cho LLMSchemaCompareOperator, giới hạn kết quả SQL theo byte cùng redaction và message cap tùy chỉnh trong retry policy. Query output của SQLToolset và DataFusionToolset đổi sang dạng columns, rows, row_count và có metadata truncation.",
-      "who_gets_it": "Developer dùng apache-airflow-providers-common-ai, đặc biệt DAG hoặc prompt gọi trực tiếp SQLToolset, DataFusionToolset và schema comparison.",
-      "why_it_matters": "Guardrail mới giúp thu hẹp blast radius và buộc người duyệt vào thao tác nhạy cảm. Tuy nhiên, thay đổi result shape trong package 0.x có thể làm hỏng code hoặc prompt đang mong danh sách row dictionary, nên đây không phải bản nâng cấp mù quáng.",
+      "summary": "Provider 0.8.0 thêm SandboxToolset cho shell và file, `require_approval` cho schema comparison, giới hạn kết quả SQL theo byte và redaction trong retry policy.",
+      "who_gets_it": "Developer dùng `apache-airflow-providers-common-ai`, đặc biệt DAG hoặc prompt gọi SQLToolset, DataFusionToolset và schema comparison.",
+      "why_it_matters": "Guardrail mới thu hẹp phạm vi tool và buộc người duyệt vào thao tác nhạy cảm. Query result cũng đổi shape, nên code đang đọc row dictionary có thể vỡ sau nâng cấp.",
       "verdict": "TRY_NOW",
-      "verdict_note": "Tìm mọi consumer của kết quả query, thêm test cho truncation và migrate sang shape mới trước khi nâng. Sau đó thử approval path với một thay đổi schema giả để chắc chắn task thực sự dừng chờ người duyệt.",
-      "sources": [
+      "verdict_note": "Tìm consumer của query result, thêm contract test cho shape mới và truncation trước khi nâng. Sau đó thử approval path bằng một schema change giả."
+      ,"sources": [
         {
           "label": "Apache Airflow Common AI provider changelog",
           "url": "https://airflow.apache.org/docs/apache-airflow-providers-common-ai/stable/changelog.html",
@@ -144,12 +144,12 @@
     }
   ],
   "developer_memo": {
-    "title": "Thứ tự nâng cấp hợp lý hôm nay",
-    "direct_answer": "Ưu tiên contract dữ liệu và guardrail trước, sau đó mới tối ưu routing hoặc cost dashboard.",
+    "title": "Có cần đổi workflow hôm nay không?",
+    "direct_answer": "Chỉ nên thay đổi có mục tiêu sau khi contract test và canary pass.",
     "actions": [
       "Canary Ray 2.58 bằng trace có prefix lặp và đo cache hit, prefill, queue time cùng task completion.",
       "Thêm contract test cho query shape của Airflow Common AI trước khi nâng provider lên 0.8.0.",
-      "Đối chiếu PTU accounting của LiteLLM với số liệu billing thật và diễn tập failure theo từng deployment."
+      "Đối chiếu PTU accounting của LiteLLM với billing thật và diễn tập failure theo từng deployment."
     ],
     "avoid": [
       "Không coi gVisor sandbox experimental là ranh giới bảo mật duy nhất cho code không tin cậy.",
@@ -158,5 +158,5 @@
     ]
   },
   "radar": [],
-  "takeaway": "Nếu hôm nay chỉ nhớ một điều: release AI production đáng chú ý nhất thường nằm ở contract, isolation và routing; hãy nâng theo test đo được thay vì theo danh sách feature."
+  "takeaway": "Ưu tiên contract, isolation và routing có thể đo được; đừng nâng production chỉ vì release note có nhiều feature."
 }
