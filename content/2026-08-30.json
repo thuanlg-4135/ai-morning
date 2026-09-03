@@ -4,8 +4,8 @@
   "locale": "vi-VN",
   "edition_type": "daily_ai_catchup",
   "edition_mode": "QUIET",
-  "headline": "Cursor sắp mất OpenAI models: phụ thuộc vào một model provider giờ là rủi ro sản phẩm thật",
-  "dek": "Sáng nay không có frontier model mới đủ mạnh để đáng nhồi vào bản tin. Signal đáng chú ý hơn trong 72 giờ qua là OpenAI dự kiến ngừng cung cấp model cho Cursor sau thương vụ SpaceX, trong khi Tencent mở weights Hy4 preview. Với software engineer, bài học thực tế là kiểm tra đường fallback thật sự của workflow, vì không phải mọi tính năng Cursor đều có thể chuyển sang BYOK hay gateway.",
+  "headline": "Cursor cho thấy model provider cũng là dependency của coding workflow",
+  "dek": "OpenAI dự kiến ngừng cung cấp model cho Cursor vào ngày 12/11/2026, nhưng local Chat và Agent vẫn có một số đường fallback qua BYOK, Codex extension hoặc gateway. Những feature như Tab, Cloud Agents và Automations vẫn phụ thuộc sâu hơn vào routing của Cursor.",
   "meta": {
     "primary_scan_hours": 24,
     "context_window_hours": 72,
@@ -16,7 +16,7 @@
     "kind": "image",
     "src": "editorial/2026-08-30/model-provider-portability.webp",
     "alt": "Bàn chuyển mạch cơ khí với nhiều đầu cáp có thể thay thế và một đầu cáp đang được rút ra.",
-    "caption": "Workflow nên là phần ổn định; provider phía sau cần có khả năng thay thế khi hợp đồng, chính sách hoặc chiến lược thay đổi.",
+    "caption": "Fallback chỉ có giá trị khi feature đang dùng thật sự hỗ trợ một đường provider khác.",
     "credit": "Minh hoạ tạo bằng AI · AI Morning"
   },
   "brief": [
@@ -30,8 +30,8 @@
       },
       "published_at": "2026-08-28",
       "freshness": "CONTEXT_72H",
-      "title": "Tencent mở weights Hy4 preview, nhưng đây không phải model nhẹ để kéo về laptop",
-      "text": "Tencent đã open-source Hy4 preview với 770B tham số tổng, 49B tham số active và context window trên 1M tokens. Model nhắm vào coding, công việc văn phòng và nghiên cứu. Điểm cần nhớ với developer: open weights không đồng nghĩa dễ self-host; quy mô này chỉ đáng eval khi team có hạ tầng GPU và use case đủ rõ để bù chi phí vận hành.",
+      "title": "Tencent mở weights Hy4 preview ở quy mô rất lớn",
+      "text": "Tencent open-source Hy4 preview với 770B tham số tổng, 49B tham số active và context window trên 1M token. Model nhắm vào coding, công việc văn phòng và research. Open weights không đồng nghĩa dễ self-host; chỉ nên eval khi team có GPU đủ lớn và một use case rõ để bù chi phí vận hành.",
       "sources": [
         {
           "label": "Tencent — Tencent Releases and Open-Sources Tencent Hy4 preview",
@@ -58,15 +58,14 @@
       "importance": "LEAD",
       "editorial_theme": "developer-tooling",
       "editorial_angle": "provider-portability",
-      "title": "Model portability đang chuyển từ nice-to-have thành rủi ro vận hành thật",
+      "title": "Cursor buộc team phải kiểm tra portability theo từng feature, không theo logo model",
       "paragraphs": [
-        "OpenAI cho biết đã thông báo với SpaceX rằng họ dự định chấm dứt hợp đồng cung cấp OpenAI models cho Cursor, với ngày ngừng dự kiến là 12/11/2026. OpenAI cũng nói sẽ không đưa các model tương lai của mình vào Cursor theo quan hệ hiện tại. Reuters ngày 29/8 cho biết phía Cursor vẫn đang trao đổi với OpenAI để tìm hướng xử lý, nên đây chưa phải tình huống người dùng bị cắt model ngay hôm nay.",
-        "OpenAI sau đó bổ sung hướng dẫn thực tế cho developer muốn tiếp tục dùng model của họ trong Cursor. Với local Chat và Agent, có thể dùng OpenAI API key riêng, chạy Codex IDE extension trong Cursor, hoặc đi qua một AI gateway tương thích. Nhưng các đường này không bao phủ mọi thứ: Cursor Tab, Auto routing, Cloud hoặc Background Agents, Automations, Cursor CLI và API/SDK vẫn phụ thuộc vào model do Cursor cung cấp hoặc route. Có nút BYOK không đồng nghĩa toàn bộ workflow đã portable.",
-        "Điểm đáng quan tâm với software engineer không nằm ở drama giữa các công ty. Một coding tool có thể cho bạn chọn nhiều model, nhưng workflow vẫn dễ bị khóa vào một provider qua model ID, prompt behavior, tool calling, caching, latency, pricing hoặc những feature không hỗ trợ credential riêng. Khi provider access thay đổi vì hợp đồng hoặc chiến lược kinh doanh, dependency đó lập tức trở thành vấn đề product continuity chứ không còn là chuyện chọn model nào benchmark cao hơn.",
-        "Điều này không có nghĩa team phải bỏ Cursor hoặc migrate ngay. Cách ít rủi ro hơn là chọn một workflow quan trọng rồi xác định nó thuộc loại nào: local Chat/Agent có thể chuyển provider tương đối dễ, hay Tab/Cloud Agent/Automation đang phụ thuộc sâu vào routing của Cursor. Sau đó mới chạy một fallback test thật. Nếu kết quả chấp nhận được, team đã chứng minh được portability; nếu không, bạn biết chính xác chỗ coupling nằm ở đâu trước khi deadline bên ngoài buộc phải xử lý."
+        "OpenAI cho biết đã thông báo với SpaceX rằng họ dự định chấm dứt hợp đồng cung cấp model cho Cursor vào ngày 12/11/2026 và không đưa model tương lai vào Cursor theo quan hệ hiện tại. Reuters ngày 29/8 cho biết phía Cursor vẫn đang trao đổi với OpenAI. Người dùng chưa bị cắt model ngay, nhưng đây đã là một dependency có deadline cụ thể.",
+        "OpenAI cũng công bố các đường thay thế cho local Chat và Agent trong Cursor: dùng OpenAI API key riêng, chạy Codex IDE extension hoặc đi qua một AI gateway tương thích. Những đường này không bao phủ Cursor Tab, Auto routing, Cloud/Background Agents, Automations, Cursor CLI hay API/SDK. BYOK vì vậy chỉ chứng minh portability cho một phần workflow.",
+        "Team đang dùng Cursor nên map dependency theo feature trước khi nghĩ tới migration. Chọn một task quan trọng, xác định nó chạy qua local Chat/Agent hay feature phụ thuộc routing của Cursor, rồi thử fallback thật trên phần có thể thay provider. Nếu task vẫn đạt chất lượng và latency chấp nhận được, team đã có bằng chứng; nếu không, ít nhất biết chính xác coupling nằm ở đâu."
       ],
-      "pullquote": "BYOK chỉ chứng minh được một phần portability; workflow chỉ thật sự có fallback khi feature bạn dùng cũng hỗ trợ đường thay thế đó.",
-      "action": "Chọn một coding workflow quan trọng và map rõ nó đang dùng local Chat/Agent, Tab, Cloud Agent hay Automation. Với phần hỗ trợ provider riêng, thử BYOK, Codex extension hoặc gateway trên cùng một task thật; với phần không hỗ trợ, ghi nhận đó là dependency cần theo dõi thay vì giả định đã có fallback.",
+      "pullquote": "Portability chỉ có thật khi feature quan trọng của workflow vẫn chạy được sau khi đổi provider.",
+      "action": "Chọn một workflow Cursor quan trọng, map feature đang dùng rồi chạy fallback test thật bằng BYOK, Codex extension hoặc gateway ở phần hỗ trợ provider riêng.",
       "sources": [
         {
           "label": "OpenAI — Our decision on Cursor following its acquisition by SpaceX",
@@ -94,18 +93,18 @@
     "title": "Có cần đổi workflow hôm nay không?",
     "direct_answer": "Chưa cần thay đổi workflow hiện tại.",
     "actions": [
-      "Phân loại workflow Cursor đang dùng local Chat/Agent hay các feature như Tab, Cloud Agent và Automation để biết chỗ nào thực sự có fallback.",
-      "Với local Chat/Agent, chạy một smoke test bằng OpenAI API key riêng, Codex IDE extension hoặc gateway trên task thật và so sánh output, latency cùng cost.",
-      "Nếu muốn thử Hy4 preview, chỉ eval khi có hạ tầng và bài toán đủ lớn để việc self-host hoặc routing model mới có giá trị."
+      "Phân loại workflow Cursor theo local Chat/Agent, Tab, Cloud Agent và Automation để thấy dependency thật.",
+      "Chạy một smoke test bằng OpenAI API key riêng, Codex IDE extension hoặc gateway trên task thật ở phần hỗ trợ fallback.",
+      "Chỉ eval Hy4 preview khi team có hạ tầng GPU và workload đủ lớn để việc self-host có ý nghĩa."
     ],
     "avoid": [
-      "Không chuyển cả team khỏi Cursor chỉ vì ngày ngừng model đang được đề xuất và hai bên vẫn còn trao đổi.",
-      "Không coi BYOK là fallback cho toàn bộ Cursor vì Tab, Cloud Agents, Automations, CLI và API/SDK không đi qua OpenAI API key riêng.",
-      "Không self-host Hy4 chỉ vì model đã open weights; quy mô hạ tầng phải phù hợp với giá trị mang lại."
+      "Không chuyển cả team khỏi Cursor chỉ vì deadline provider đã được công bố nhưng chưa tới.",
+      "Không coi BYOK là fallback cho toàn bộ Cursor.",
+      "Không self-host Hy4 chỉ vì model đã open weights."
     ]
   },
   "radar": [],
-  "takeaway": "Nếu hôm nay chỉ nhớ một điều: availability của model provider cũng là dependency của sản phẩm, và fallback chỉ có giá trị khi feature bạn đang dùng thật sự hỗ trợ nó. Hãy test một workflow thật trước khi nghĩ tới migration.",
+  "takeaway": "Map dependency theo từng feature và chứng minh fallback bằng một task thật trước khi nghĩ tới migration.",
   "content_contract": {
     "renderer_must_not_require_html_in_content": true,
     "allowed_rich_content": ["paragraph", "bullet", "pullquote", "source_link", "editorial_visual_hint"],
