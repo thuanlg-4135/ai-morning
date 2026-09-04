@@ -4,21 +4,21 @@
   "locale": "vi-VN",
   "edition_type": "daily_ai_catchup",
   "edition_mode": "NORMAL",
-  "headline": "NVIDIA thỏa thuận mua Hugging Face, tính trung lập của Hub thành điều cần theo dõi",
-  "dek": "NVIDIA đã đồng ý mua Hugging Face với giá 12,93 tỷ USD và cam kết giữ nền tảng mở cho nhiều model, cloud và loại phần cứng. Với developer, chưa có lý do chuyển nền tảng, nhưng một dependency quan trọng trong chuỗi phân phối model đã đổi chủ và nên được đưa vào đánh giá rủi ro.",
+  "headline": "GPT-6 Astra bắt đầu rollout, nhưng chưa phải lúc đổi default model",
+  "dek": "OpenAI đã bắt đầu rollout GPT-6 Astra cho một nhóm tổ chức và dự kiến mở rộng API cùng các gói ChatGPT trong những ngày tới. Với software engineer, điểm đáng thử là agent loop dài hơn và linh hoạt hơn; availability còn hạn chế nên benchmark trước khi đổi model mặc định.",
   "meta": {
     "primary_scan_hours": 24,
     "context_window_hours": 72,
-    "generated_at": "2026-09-04T10:56:00+07:00",
+    "generated_at": "2026-09-04T11:20:00+07:00",
     "window_started_at": "2026-09-03T07:00:00+07:00",
     "cutoff_at": "2026-09-04T07:00:00+07:00",
-    "reading_minutes": 6,
+    "reading_minutes": 7,
     "source_policy": "official-first"
   },
   "hero_visual": {
     "kind": "editorial",
-    "key": "open-model-platform-ownership",
-    "caption": "Hugging Face vẫn được cam kết là nền tảng mở; điều developer cần theo dõi là liệu giá, API và lựa chọn hạ tầng có giữ nguyên sau khi thương vụ tiến triển."
+    "key": "astra-agent-loop-rollout",
+    "caption": "Astra mở thêm cách chạy agent dài hơi, nhưng rollout còn giới hạn và chi phí cần được đo trên task hoàn thành."
   },
   "brief": [
     {
@@ -32,7 +32,7 @@
       "published_at": "2026-09-03",
       "freshness": "NEW_TODAY",
       "title": "GitHub Copilot sẽ bỏ bốn model vào ngày 2/10",
-      "text": "GitHub sẽ ngừng Gemini 3.5 Flash, Gemini 3.6 Flash, Kimi K2.7 Code và Claude Opus 4.7 trên toàn bộ trải nghiệm Copilot từ ngày 2/10/2026. GitHub đề xuất Gemini 3.8 Flash, Kimi K3 và Claude Opus 5; admin Business hoặc Enterprise có thể phải bật model thay thế trong policy. Kiểm tra model ID đang được pin trong workflow, CLI hoặc cấu hình team trước deadline thay vì chờ người dùng gặp lỗi.",
+      "text": "GitHub sẽ ngừng Gemini 3.5 Flash, Gemini 3.6 Flash, Kimi K2.7 Code và Claude Opus 4.7 trên mọi trải nghiệm Copilot từ ngày 2/10/2026. GitHub đề xuất Gemini 3.8 Flash, Kimi K3 và Claude Opus 5; admin Business hoặc Enterprise có thể phải bật model thay thế trong policy. Kiểm tra model ID đang pin trong workflow, CLI hoặc cấu hình team trước deadline.",
       "sources": [
         {
           "label": "GitHub Changelog — Upcoming deprecation of selected GitHub Copilot models",
@@ -41,9 +41,100 @@
           "published_at": "2026-09-03"
         }
       ]
+    },
+    {
+      "event_id": "nvidia-pair-local-inference-router",
+      "event_signature": {
+        "organization": "nvidia",
+        "product": "pair",
+        "action": "open-source",
+        "artifact": "local-network-inference-router"
+      },
+      "published_at": "2026-09-03",
+      "freshness": "NEW_TODAY",
+      "title": "NVIDIA PAIR chia request local AI qua nhiều máy mà không đổi agent harness",
+      "text": "NVIDIA mở mã PAIR, một router phân phối các request inference độc lập giữa nhiều máy trong cùng mạng nội bộ và giữ giao diện tương thích Ollama hoặc LM Studio. Project dùng mDNS để tìm node, mTLS cho kết nối và chọn máy theo trạng thái model cùng GPU. Nếu agent local đang nghẽn vì nhiều subagent chạy song song, đây là thứ đáng benchmark; con số nhanh hơn trong bài NVIDIA vẫn chỉ là demo của vendor.",
+      "sources": [
+        {
+          "label": "NVIDIA Technical Blog — PAIR Virtual Inference Router",
+          "url": "https://developer.nvidia.com/blog/nvidia-pair-virtual-inference-router-expands-available-compute-on-your-local-network/",
+          "type": "official",
+          "published_at": "2026-09-03"
+        }
+      ]
+    },
+    {
+      "event_id": "aws-codex-litellm-bedrock-enterprise-gateway-reference",
+      "event_signature": {
+        "organization": "aws",
+        "product": "codex-bedrock-gateway",
+        "action": "research-publication",
+        "artifact": "litellm-ecs-enterprise-reference"
+      },
+      "published_at": "2026-09-03",
+      "freshness": "NEW_TODAY",
+      "title": "AWS tách tool loop của Codex khỏi lớp kiểm soát model access",
+      "text": "AWS công bố reference architecture đặt LiteLLM trên ECS/Fargate giữa Codex và OpenAI models trên Bedrock. Codex vẫn đọc file và chạy tool trên máy developer; gateway tập trung authentication, routing, budget, rate limit và telemetry cho model request. Nếu IAM Identity Center đã đáp ứng policy, AWS cũng nêu đường direct đơn giản hơn, nên không cần thêm gateway chỉ để có thêm một lớp hạ tầng.",
+      "sources": [
+        {
+          "label": "AWS — Set up OpenAI ChatGPT Codex with LiteLLM on Amazon ECS and Amazon Bedrock",
+          "url": "https://aws.amazon.com/blogs/machine-learning/set-up-openai-chatgpt-codex-with-litellm-on-amazon-ecs-and-amazon-bedrock/",
+          "type": "official",
+          "published_at": "2026-09-03"
+        }
+      ]
     }
   ],
   "trends": [
+    {
+      "event_id": "openai-gpt-6-astra-limited-rollout",
+      "event_signature": {
+        "organization": "openai",
+        "product": "gpt-6-astra",
+        "action": "launch",
+        "artifact": "limited-enterprise-rollout"
+      },
+      "published_at": "2026-09-03",
+      "id": "astra-agent-loop-rollout",
+      "freshness": "NEW_TODAY",
+      "strength": "ACCELERATING",
+      "importance": "LEAD",
+      "editorial_theme": "agent-models",
+      "editorial_angle": "asynchronous-tool-loop",
+      "title": "Astra cho agent tiếp tục làm việc trong lúc tool còn đang chạy",
+      "paragraphs": [
+        "OpenAI bắt đầu rollout GPT-6 Astra ngày 3/9 cho một nhóm tổ chức, trước khi mở rộng API và các gói Plus, Pro, Business, Enterprise trong những ngày tới. OpenAI nói Astra chưa GA rộng. Model card hiện ghi context window 1,05 triệu token, tối đa 128.000 output token và giá API 10 USD cho một triệu input token, 50 USD cho một triệu output token.",
+        "Tài liệu model mới của OpenAI bổ sung async tool calling: Astra có thể tiếp tục reasoning, gọi tool khác hoặc xử lý phần việc độc lập trong lúc ứng dụng đang chờ một tool hoàn tất. Mid-turn steering cũng cho phép gửi yêu cầu mới khi model đang làm việc thay vì hủy toàn bộ lượt chạy. Với agent có browser, build hoặc API chậm, hai cơ chế này có thể giảm thời gian nằm chờ, nhưng application vẫn phải quản pending call, timeout, cancellation và kết quả trả về đúng call_id.",
+        "Astra chưa phải lựa chọn mặc định dễ thay thế cho mọi workflow. Availability còn giới hạn, giá mỗi token cao và lợi ích của chạy song song phụ thuộc vào task có đủ phần việc độc lập hay không. Nếu agent hiện tại chủ yếu chờ một tool tuần tự bắt buộc, async không tự biến task đó thành nhanh hơn. Benchmark nên đo wall-clock, số tool call, retry, tổng token và tỷ lệ task đạt acceptance criteria trên cùng workload trước khi đổi model mặc định."
+      ],
+      "pullquote": "Async tool calling chỉ có giá trị khi agent có việc hữu ích để làm trong lúc một tool khác đang chờ.",
+      "action": "Chọn 5–10 task agent có tool chậm, chạy cùng acceptance criteria trên model hiện tại và Astra nếu tài khoản đã có quyền; ghi wall-clock, tool wait, retry, tổng token và tỷ lệ task hoàn thành.",
+      "visual": {
+        "kind": "diagram",
+        "key": "astra-async-tool-calling",
+        "caption": "Thay vì chặn toàn bộ lượt chạy ở một tool call, agent có thể tiếp tục phần việc độc lập và ghép kết quả khi tool trả về."
+      },
+      "sources": [
+        {
+          "label": "OpenAI — Safety overview: GPT-6 Astra",
+          "url": "https://openai.com/index/safety-overview-gpt-6-astra/",
+          "type": "official",
+          "published_at": "2026-09-03"
+        },
+        {
+          "label": "OpenAI Developer Community — Introducing GPT-6 Astra",
+          "url": "https://community.openai.com/t/introducing-gpt-6-astra-the-most-intelligent-and-aligned-model-in-the-world/1394703",
+          "type": "official",
+          "published_at": "2026-09-03"
+        },
+        {
+          "label": "OpenAI API — GPT-6 Astra model guidance",
+          "url": "https://developers.openai.com/api/docs/guides/latest-model?model=gpt-6-astra",
+          "type": "official",
+          "published_at": "2026-09-03"
+        }
+      ]
+    },
     {
       "event_id": "nvidia-hugging-face-acquisition-agreement",
       "event_signature": {
@@ -56,21 +147,21 @@
       "id": "hugging-face-platform-neutrality-after-nvidia-deal",
       "freshness": "NEW_TODAY",
       "strength": "EARLY_SIGNAL",
-      "importance": "LEAD",
+      "importance": "SECONDARY",
       "editorial_theme": "open-model-ecosystem",
       "editorial_angle": "platform-neutrality",
-      "title": "Thương vụ NVIDIA–Hugging Face biến tính trung lập của Hub thành rủi ro cần theo dõi",
+      "title": "Hugging Face đổi chủ; dependency của model Hub đáng được kiểm kê lại",
       "paragraphs": [
-        "NVIDIA cho biết đã đạt thỏa thuận mua Hugging Face với giá 12,9303 tỷ USD. Reuters cũng xác nhận thương vụ và quy mô gần 13 tỷ USD. NVIDIA cam kết Hugging Face sẽ tiếp tục cho developer chọn model, framework, cloud, dịch vụ inference và nền tảng phần cứng; NVIDIA compute sẽ không phải điều kiện để dùng Hugging Face. Đây là cam kết tại thời điểm công bố thương vụ, chưa phải bằng chứng về cách nền tảng sẽ vận hành sau khi giao dịch hoàn tất.",
-        "Hugging Face đã trở thành một dependency hạ tầng với nhiều team, không chỉ là website để tải model. Build và deployment có thể phụ thuộc vào Hub artifact, revision, token, API, Inference Endpoints hoặc Spaces. Khi chủ sở hữu thay đổi, cách xử lý hợp lý giống một thay đổi nhà cung cấp: xác định phần nào có thể tái tạo, dữ liệu nào nằm ngoài repo và service nào không có đường thay thế rõ ràng.",
-        "Chưa có thay đổi API hay pricing nào buộc team phải migrate hôm nay. Một bước nhỏ có giá trị hơn là pin model hoặc dataset revision, lưu checksum khi phù hợp và xác nhận đường khôi phục nếu Hub hoặc hosted service tạm không dùng được. Sau đó theo dõi những tín hiệu cụ thể như thay đổi giá, ưu tiên accelerator, điều khoản truy cập hoặc API. Nếu các điểm đó vẫn ổn, việc chuyển nền tảng chỉ tạo thêm chi phí vận hành."
+        "NVIDIA đã đồng ý mua Hugging Face với giá 12,9303 tỷ USD; Reuters xác nhận quy mô thương vụ gần 13 tỷ USD. NVIDIA cam kết Hugging Face tiếp tục cho developer chọn model, framework, cloud, dịch vụ inference và phần cứng, đồng thời nói NVIDIA compute sẽ không phải điều kiện để dùng nền tảng. Đó là cam kết tại thời điểm công bố, chưa phải bằng chứng về cách sản phẩm sẽ thay đổi sau khi giao dịch hoàn tất.",
+        "Nhiều team dùng Hugging Face như một phần của chuỗi build và deploy chứ không chỉ để tải model bằng tay. Workflow có thể phụ thuộc vào Hub revision, token, dataset, Inference Endpoints hoặc Spaces. Ownership đổi không tạo incident ngay, nhưng đây là thời điểm hợp lý để biết dependency nào có thể tái tạo từ artifact đã pin và dependency nào chỉ tồn tại trong hosted service.",
+        "Chưa có thay đổi API hay pricing nào buộc team phải migrate. Pin revision hoặc checksum cho artifact quan trọng và thử đường khôi phục khi Hub không khả dụng sẽ cho nhiều thông tin hơn một kế hoạch chuyển nền tảng vội vàng. Chỉ nên đánh giá lại kiến trúc nếu các tín hiệu cụ thể xuất hiện: giá đổi, API thay đổi, lựa chọn accelerator bị thu hẹp hoặc điều khoản truy cập mới."
       ],
-      "pullquote": "Open weights không loại bỏ rủi ro nền tảng: nơi lưu, phân phối và chạy model vẫn là dependency vận hành.",
-      "action": "Chọn một workflow đang phụ thuộc Hugging Face, pin revision hoặc checksum và kiểm tra đường khôi phục khi Hub không khả dụng. Chưa migrate nếu chưa có thay đổi cụ thể về API, giá hoặc khả năng chọn hạ tầng.",
+      "pullquote": "Open weights không loại bỏ dependency của registry, hosted inference và credential.",
+      "action": "Chọn một workflow phụ thuộc Hugging Face, pin revision hoặc checksum và thử khôi phục khi Hub không khả dụng; chưa migrate nếu API, giá và lựa chọn hạ tầng chưa đổi.",
       "visual": {
         "kind": "editorial",
         "key": "model-hub-supplier-change",
-        "caption": "Model và dataset có thể mở, nhưng registry, hosted inference và credential vẫn là các điểm phụ thuộc cần có đường phục hồi."
+        "caption": "Ownership đổi là lý do để kiểm kê dependency và đường phục hồi, không phải tín hiệu phải migrate ngay."
       },
       "sources": [
         {
@@ -86,67 +177,58 @@
           "published_at": "2026-09-03"
         }
       ]
-    },
-    {
-      "event_id": "aws-codex-litellm-bedrock-enterprise-gateway-reference",
-      "event_signature": {
-        "organization": "aws",
-        "product": "codex-bedrock-gateway",
-        "action": "research-publication",
-        "artifact": "litellm-ecs-enterprise-reference"
-      },
-      "published_at": "2026-09-03",
-      "id": "codex-model-access-through-enterprise-gateway",
-      "freshness": "NEW_TODAY",
-      "strength": "EMERGING",
-      "importance": "SECONDARY",
-      "editorial_theme": "model-access-governance",
-      "editorial_angle": "centralized-inference-gateway",
-      "title": "Codex có thể giữ tool loop local nhưng đưa model access qua gateway doanh nghiệp",
-      "paragraphs": [
-        "AWS công bố một reference architecture chạy LiteLLM trên ECS/Fargate giữa Codex và OpenAI models trên Amazon Bedrock. Codex vẫn đọc file và chạy tool trên máy developer dưới sandbox cùng approval local; gateway chỉ nhận các model request qua Responses API. LiteLLM trở thành điểm chung để xác thực, route model, đặt budget, rate limit và ghi telemetry.",
-        "Cách tách này hữu ích khi một team muốn quản model access tập trung mà không đưa shell của coding agent lên cloud. Đổi lại, team phải vận hành gateway, database, networking, log, upgrade và capacity. AWS cũng mô tả đường đơn giản hơn qua IAM Identity Center khi identity, policy và CloudTrail của AWS đã đủ; trường hợp đó không cần thêm LiteLLM hay RDS.",
-        "Gateway chỉ đáng thêm khi có nhu cầu chung giữa nhiều developer hoặc nhiều model provider, chẳng hạn hard budget theo team, routing tập trung hay attribution usage. Nếu mục tiêu chỉ là cho Codex gọi Bedrock bằng danh tính AWS hiện có, đường direct giảm đáng kể bề mặt vận hành. Đây là lựa chọn kiến trúc theo yêu cầu governance, không phải một bước nâng cấp mặc định cho Codex."
-      ],
-      "action": "Nếu team cần budget hoặc routing tập trung cho Codex, spike gateway trên một nhóm nhỏ và đo latency, availability, audit trail cùng công vận hành. Nếu IAM Identity Center đã đáp ứng policy, giữ đường direct.",
-      "visual": {
-        "kind": "diagram",
-        "key": "codex-local-tools-enterprise-model-gateway",
-        "caption": "Codex giữ file và tool execution trên máy developer; gateway kiểm soát model request trước khi đi tới Bedrock."
-      },
-      "sources": [
-        {
-          "label": "AWS — Set up OpenAI ChatGPT Codex with LiteLLM on Amazon ECS and Amazon Bedrock",
-          "url": "https://aws.amazon.com/blogs/machine-learning/set-up-openai-chatgpt-codex-with-litellm-on-amazon-ecs-and-amazon-bedrock/",
-          "type": "official",
-          "published_at": "2026-09-03"
-        }
-      ]
     }
   ],
   "releases": [
     {
-      "event_id": "github-codeql-2-26-4-security-detections",
+      "event_id": "github-npm-multiple-trusted-publishing-configurations",
       "event_signature": {
         "organization": "github",
-        "product": "codeql",
-        "action": "release",
-        "artifact": "2-26-4-actions-csharp-detections"
+        "product": "npm",
+        "action": "general-availability",
+        "artifact": "multiple-trusted-publishing-configurations"
       },
       "published_at": "2026-09-03",
-      "product": "CodeQL 2.26.4",
-      "feature": "Cải thiện detection cho GitHub Actions, C#, Java/Kotlin, TypeScript, Python và Rust",
+      "product": "npm Trusted Publishing",
+      "feature": "Nhiều cấu hình OIDC cho cùng một package",
       "freshness": "NEW_TODAY",
       "status": "GA",
-      "summary": "CodeQL 2.26.4 thêm Go 1.27, cải thiện vị trí alert cho Rust, bổ sung SQL injection sink cho Spring R2DBC, mở rộng taint flow cho Python và hỗ trợ thêm JavaScript/TypeScript. Bản này cũng cập nhật các query cho C# và GitHub Actions.",
-      "who_gets_it": "GitHub code scanning trên github.com được tự động cập nhật. GitHub Enterprise Server sẽ nhận thay đổi trong một bản phát hành sau; instance cũ có thể nâng CodeQL thủ công.",
-      "why_it_matters": "GitHub Actions giờ phát hiện mutable reference tới reusable workflow trong `actions/unpinned-tag` và xử lý chính xác hơn các actor field không tồn tại trên một số event. Với C#, một số query hiểu antiforgery tốt hơn và giảm false positive trong database dùng `build-mode: none`.",
+      "summary": "npm cho phép một package có nhiều trusted publishing configuration độc lập theo repository, workflow và environment. Staged package chỉ có thể được approve sau khi malware scan hoàn tất, và maintainer có thể xem lịch sử staged theo từng version.",
+      "who_gets_it": "Maintainer package npm dùng trusted publishing bằng OIDC, đặc biệt repo có luồng stable, prerelease hoặc staging tách riêng.",
+      "why_it_matters": "Team không còn phải giữ token dài hạn chỉ vì một package cần nhiều workflow publish. Mỗi cấu hình là additive; publish được phép khi OIDC token khớp bất kỳ cấu hình nào, nên policy không được dựa vào thứ tự evaluation.",
       "verdict": "TRY_NOW",
-      "verdict_note": "Xem lại alert mới sau khi code scanning cập nhật, nhất là workflow gọi reusable action hoặc repo C#. Nếu dùng GHES và pin CodeQL version, kiểm tra version hiện tại trước khi kỳ vọng các detection mới xuất hiện.",
+      "verdict_note": "Nếu package đang giữ npm token chỉ để phục vụ workflow thứ hai, chuyển một luồng sang trusted publishing và giữ staged publishing mặc định trước khi bỏ credential dài hạn.",
       "sources": [
         {
-          "label": "GitHub Changelog — CodeQL 2.26.4 improves GitHub Actions security detections",
-          "url": "https://github.blog/changelog/2026-09-03-codeql-2-26-4-improves-github-actions-security-detections/",
+          "label": "GitHub Changelog — Multiple trusted publishing configurations for npm",
+          "url": "https://github.blog/changelog/2026-09-03-multiple-trusted-publishing-configurations-for-npm/",
+          "type": "official",
+          "published_at": "2026-09-03"
+        }
+      ]
+    },
+    {
+      "event_id": "vercel-cursor-cloud-agents-sandbox-integration",
+      "event_signature": {
+        "organization": "vercel",
+        "product": "cursor-cloud-agents-vercel-sandbox",
+        "action": "integration",
+        "artifact": "self-hosted-machines-execution"
+      },
+      "published_at": "2026-09-03",
+      "product": "Vercel Sandbox + Cursor Cloud Agents",
+      "feature": "Chạy Cursor Cloud Agent trong Firecracker microVM của Vercel",
+      "freshness": "NEW_TODAY",
+      "status": "GA",
+      "summary": "Cursor Cloud Agents có thể dùng Vercel Sandbox thay cho máy do Cursor host. Cursor giữ agent harness và inference loop; Vercel cấp một Firecracker microVM tách biệt cho mỗi request, cùng control plane để nhận job, tạo worker, theo dõi session và cleanup.",
+      "who_gets_it": "Team dùng Cursor Enterprise và muốn tự chọn execution environment cho Cloud Agents.",
+      "why_it_matters": "Mô hình này tránh worker VM sống lâu, hỗ trợ scale-to-zero, retry bền vững và credential ngắn hạn theo người dùng. Đổi lại, team thêm dependency vào Vercel Functions, Workflow và Sandbox thay vì tự vận hành pool máy.",
+      "verdict": "WATCH",
+      "verdict_note": "Chỉ spike nếu Cloud Agent cần isolation hoặc execution environment do team kiểm soát. Nếu runtime hiện tại đã đáp ứng network và compliance, integration mới chưa đủ lý do để chuyển.",
+      "sources": [
+        {
+          "label": "Vercel — Cursor Cloud Agents can now run in Vercel Sandbox",
+          "url": "https://vercel.com/changelog/run-cursor-cloud-agents-vercel-sandbox",
           "type": "official",
           "published_at": "2026-09-03"
         }
@@ -157,19 +239,19 @@
     "title": "Có cần đổi workflow hôm nay không?",
     "direct_answer": "Chưa cần thay đổi workflow hiện tại.",
     "actions": [
+      "Benchmark Astra trên một nhóm task agent có tool chậm nếu tài khoản đã được mở quyền, thay vì đổi model mặc định ngay.",
       "Kiểm tra model ID đang pin trong Copilot trước ngày 2/10 và xác nhận model thay thế đã được policy cho phép.",
-      "Pin revision hoặc checksum cho một dependency Hugging Face quan trọng và thử đường khôi phục nếu Hub không khả dụng.",
-      "Xem lại alert CodeQL mới cho GitHub Actions và C# sau khi code scanning cập nhật.",
-      "Chỉ thử LiteLLM gateway cho Codex khi team cần budget, routing hoặc usage attribution tập trung."
+      "Nếu package npm còn dùng token dài hạn vì có nhiều workflow publish, thử trusted publishing nhiều cấu hình trên một package ít rủi ro.",
+      "Pin revision hoặc checksum cho một dependency Hugging Face quan trọng và xác nhận đường khôi phục."
     ],
     "avoid": [
-      "Không migrate khỏi Hugging Face chỉ vì ownership thay đổi khi API, pricing và lựa chọn hạ tầng chưa có thay đổi cụ thể.",
-      "Không thêm gateway nếu IAM Identity Center và audit hiện tại đã đủ cho yêu cầu của team.",
-      "Không chờ tới ngày 2/10 mới xử lý model Copilot đã bị lên lịch deprecate."
+      "Không coi Astra là GA rộng khi rollout vẫn giới hạn.",
+      "Không migrate khỏi Hugging Face khi chưa có thay đổi cụ thể về API, giá hoặc lựa chọn hạ tầng.",
+      "Không thêm LiteLLM gateway hay Vercel Sandbox nếu lớp hạ tầng hiện tại đã đáp ứng governance và isolation."
     ]
   },
   "radar": [],
-  "takeaway": "Pin artifact để build có thể tái tạo, kiểm tra model ID trước deadline và chỉ thêm gateway khi team thực sự cần kiểm soát tập trung.",
+  "takeaway": "Đo Astra trên task hoàn thành trước khi đổi default model; xử lý model Copilot trước deadline và giữ đường khôi phục cho các dependency nền tảng.",
   "content_contract": {
     "renderer_must_not_require_html_in_content": true,
     "allowed_rich_content": [
