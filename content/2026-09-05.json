@@ -16,9 +16,11 @@
     "source_policy": "official-first"
   },
   "hero_visual": {
-    "kind": "editorial",
-    "key": "model-harness-environment-verification",
-    "caption": "Model mới chỉ đáng đổi nếu agent hoàn thành công việc của team tốt hơn, không chỉ trả lời hay hơn."
+    "kind": "image",
+    "src": "editorial/2026-09-05/github-copilot-gpt-6-astra-benchmark.webp",
+    "alt": "Bàn thử nghiệm đặt GPT-6 Astra cạnh model hiện tại, cùng acceptance criteria và các phép đo task thực tế.",
+    "caption": "Model mới chỉ đáng đổi nếu agent hoàn thành công việc của team tốt hơn, không chỉ trả lời hay hơn.",
+    "credit": "Minh hoạ tạo bằng AI · AI Morning"
   },
   "brief": [
     {
@@ -33,6 +35,13 @@
       "freshness": "NEW_TODAY",
       "title": "GitHub có API theo dõi lượng star mà không lộ người dùng",
       "text": "GitHub vừa thêm REST API trả về số lượng star theo thời gian mà không kèm danh tính từng người. API này phù hợp với dashboard hoặc công cụ chỉ cần theo dõi mức tăng trưởng của repository. Nếu đang đọc danh sách stargazer chỉ để vẽ biểu đồ, team có thể chuyển sang endpoint mới và bỏ phần dữ liệu cá nhân không cần dùng.",
+      "visual": {
+        "kind": "image",
+        "src": "editorial/2026-09-05/github-star-history-privacy-safe.webp",
+        "alt": "Biểu đồ star history tăng theo thời gian bên cạnh các hồ sơ người dùng được ẩn danh.",
+        "caption": "Theo dõi tăng trưởng repository mà không cần lấy danh tính từng stargazer.",
+        "credit": "Minh hoạ tạo bằng AI · AI Morning"
+      },
       "sources": [
         {
           "label": "GitHub Changelog — New API endpoint provides privacy-safe star history data",
@@ -54,6 +63,13 @@
       "freshness": "CONTEXT_72H",
       "title": "Fine-tune 100 bước giúp model 350M bám schema tốt hơn",
       "text": "Hugging Face fine-tune LFM2.5-350M với khoảng 500 mẫu và 100 bước GRPO. Điểm IFStruct tăng từ 22,6% lên 29,7%, chủ yếu nhờ model trả cấu trúc đúng yêu cầu hơn. Đây là kết quả trên một model nhỏ và một benchmark hẹp, nên phù hợp để tham khảo cho bài toán JSON hoặc schema cụ thể, chưa đủ để kết luận GRPO tốt cho mọi workload.",
+      "visual": {
+        "kind": "image",
+        "src": "editorial/2026-09-05/lfm2-5-350m-grpo-structured-output.webp",
+        "alt": "Một model nhỏ 350M nhận khoảng 500 mẫu và 100 bước GRPO rồi tạo structured output.",
+        "caption": "Structured output cải thiện trên một benchmark hẹp; chưa nên suy rộng sang mọi workload.",
+        "credit": "Minh hoạ tạo bằng AI · AI Morning"
+      },
       "sources": [
         {
           "label": "Hugging Face — Fine-tuning a 350M Model for Better Structured Outputs in 100 GRPO Steps",
@@ -85,6 +101,13 @@
         "Theo thử nghiệm nội bộ của GitHub, Astra có thể lập kế hoạch, kiểm tra trong lúc làm và xác nhận kết quả trước khi báo xong. GitHub cũng cho biết model cần ít bước hơn các model OpenAI trước đó ở những coding task kéo dài. Đây vẫn là số liệu do GitHub công bố, chưa phải lý do đủ mạnh để đổi model mặc định cho cả team.",
         "Hãy chạy Astra và model hiện tại trên cùng một nhóm task có test hoặc tiêu chí nghiệm thu rõ ràng. Đo thời gian hoàn thành, tổng chi phí, số tool call, số lần con người phải can thiệp và tỷ lệ đạt ngay lần đầu. Astra chỉ đáng đổi nếu kết quả cuối tốt hơn, không phải vì câu trả lời trông thuyết phục hơn."
       ],
+      "visual": {
+        "kind": "image",
+        "src": "editorial/2026-09-05/github-copilot-gpt-6-astra-benchmark.webp",
+        "alt": "Bàn benchmark so sánh GPT-6 Astra với model hiện tại trên cùng nhóm task và tiêu chí nghiệm thu.",
+        "caption": "So model bằng task thật, thời gian, chi phí, tool call và mức can thiệp trước khi đổi mặc định.",
+        "credit": "Minh hoạ tạo bằng AI · AI Morning"
+      },
       "action": "Chạy 5–10 coding task có tiêu chí nghiệm thu cố định trên Astra và model hiện tại; so tỷ lệ hoàn thành, tổng thời gian, chi phí và số lần phải can thiệp.",
       "sources": [
         {
@@ -115,6 +138,13 @@
         "Funes lưu bộ nhớ dưới dạng dataset do người dùng sở hữu. Dữ liệu được lập chỉ mục trên máy và có thể đồng bộ lên một Hugging Face dataset riêng tư. Trong benchmark nhỏ của dự án, cách tìm lại đoạn liên quan rẻ hơn bản bàn giao viết tay 8 lần ở một task và 4 lần ở task còn lại. Phương án nén hội thoại không hoàn thành một trong hai task. Vì benchmark do chính nhóm Funes thực hiện, kết quả này mới đủ để xem như một gợi ý thử nghiệm.",
         "Điều cần đo là Funes có tìm đúng quyết định vào đúng lúc hay chỉ đưa thêm nội dung nhiễu vào context. Hãy thử trước trên một workflow thường xuyên lặp lại và ghi nhận số lần agent phải khám phá lại thông tin cũ. Nếu con số đó không giảm, team sẽ nhận thêm việc lưu trữ, lập chỉ mục và quản lý dữ liệu mà chưa có lợi ích rõ ràng."
       ],
+      "visual": {
+        "kind": "image",
+        "src": "editorial/2026-09-05/hugging-face-funes-agent-memory.webp",
+        "alt": "Kho session trace được lập chỉ mục để coding agent tìm lại một quyết định cũ liên quan tới task hiện tại.",
+        "caption": "Giá trị của memory nằm ở việc tìm đúng quyết định cũ đúng lúc, thay vì mang toàn bộ lịch sử vào context.",
+        "credit": "Minh hoạ tạo bằng AI · AI Morning"
+      },
       "action": "Thử Funes trên một workflow lặp lại; đo lượng context, số lần agent phải tìm lại cùng thông tin và tỷ lệ kết quả truy xuất có ích trước khi mở rộng.",
       "sources": [
         {
@@ -143,6 +173,13 @@
       "summary": "GitHub tổng hợp các thay đổi trong tuần: app và CLI đã tuân theo content exclusions, Copilot harness đã GA trên JetBrains, còn VS Code 1.136 bổ sung Agent Merge và agent session cho workspace nhiều thư mục.",
       "who_gets_it": "Phạm vi phụ thuộc vào từng tính năng và gói Copilot. Một số đã GA, số khác vẫn ở public preview hoặc experimental.",
       "why_it_matters": "Copilot đang làm được nhiều việc hơn trên nhiều client, nhưng mức độ sẵn sàng của từng tính năng chưa giống nhau. Team cần kiểm tra riêng từng mục trước khi đưa vào quy trình chung.",
+      "visual": {
+        "kind": "image",
+        "src": "editorial/2026-09-05/github-copilot-weekly-release-status.webp",
+        "alt": "Các client Copilot như app, CLI, JetBrains và VS Code được đặt cạnh các nhóm trạng thái GA, Preview và Experimental.",
+        "caption": "Các thay đổi Copilot cùng tuần nhưng không có cùng mức độ sẵn sàng; cần đọc release note từng tính năng.",
+        "credit": "Minh hoạ tạo bằng AI · AI Morning"
+      },
       "verdict": "WATCH",
       "verdict_note": "Đọc release note của từng tính năng trước khi bật rộng. Bản tổng hợp tuần giúp tìm điểm mới, nhưng không thay thế việc kiểm tra trạng thái phát hành và policy áp dụng.",
       "sources": [
