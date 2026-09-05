@@ -2,8 +2,8 @@
   "schema_version": 3,
   "generated_from": {
     "first_edition": "2026-08-22",
-    "last_edition": "2026-09-03",
-    "edition_count": 12,
+    "last_edition": "2026-09-05",
+    "edition_count": 14,
     "source_registry_count": 39
   },
   "events": [
@@ -25,8 +25,8 @@
       "current_signature_key": "openai|gpt-5-6-sol|pricing|three-month-promotional-price-cut",
       "first_published_at": "2026-08-21T19:41:58.778Z",
       "first_edition": "2026-08-22",
-      "title": "Giá Sol giảm, model routing cần được tính lại bằng task hoàn chỉnh",
-      "fingerprint": "gia sol giam model routing can duoc tinh lai bang task hoan chinh",
+      "title": "Giá Sol giảm, nhưng routing chỉ đáng đổi khi chi phí mỗi task giảm",
+      "fingerprint": "gia sol giam nhung routing chi dang doi khi chi phi moi task giam",
       "canonical_sources": [
         "https://aws.amazon.com/about-aws/whats-new/2026/08/bedrock-openai-gpt-56-sol-reduced-pricing",
         "https://community.openai.com/t/20-price-reduction-for-gpt-5-6-sol-api-codex-credits-and-chatgpt-work/1391726"
@@ -67,8 +67,8 @@
       "current_signature_key": "backnotprop|plannotator|release|v0-27-6-live-app-annotation",
       "first_published_at": "2026-08-21T17:43:15Z",
       "first_edition": "2026-08-22",
-      "title": "Plannotator đưa phản hồi trực tiếp lên ứng dụng localhost",
-      "fingerprint": "plannotator dua phan hoi truc tiep len ung dung localhost",
+      "title": "Plannotator 0.27.6 cho reviewer ghi chú trực tiếp trên localhost",
+      "fingerprint": "plannotator 0 27 6 cho reviewer ghi chu truc tiep tren localhost",
       "canonical_sources": [
         "https://github.com/backnotprop/plannotator/releases/tag/v0.27.6"
       ],
@@ -149,8 +149,8 @@
       "current_signature_key": "model-context-protocol|mcp-specification|roadmap|august-2026-roadmap",
       "first_published_at": "2026-08-22T09:00:00Z",
       "first_edition": "2026-08-23",
-      "title": "Roadmap mới của MCP ưu tiên messaging, identity và progressive discovery",
-      "fingerprint": "roadmap moi cua mcp uu tien messaging identity va progressive discovery",
+      "title": "MCP muốn giải quyết identity và tool discovery trước khi hệ sinh thái lớn hơn",
+      "fingerprint": "mcp muon giai quyet identity va tool discovery truoc khi he sinh thai lon hon",
       "canonical_sources": [
         "https://blog.modelcontextprotocol.io/posts/mcp-roadmap"
       ],
@@ -190,8 +190,8 @@
       "current_signature_key": "simonw|llm|release|0-33",
       "first_published_at": "2026-08-22T17:01:16Z",
       "first_edition": "2026-08-23",
-      "title": "llm 0.33 tách API key theo từng lệnh và làm log tool-call rõ hơn",
-      "fingerprint": "llm 0 33 tach api key theo tung lenh va lam log tool call ro hon",
+      "title": "llm 0.33 cho phép truyền API key theo từng lệnh",
+      "fingerprint": "llm 0 33 cho phep truyen api key theo tung lenh",
       "canonical_sources": [
         "https://github.com/simonw/llm/releases/tag/0.33"
       ],
@@ -355,8 +355,8 @@
       "current_signature_key": "ray-project|ray|release|2-58-0",
       "first_published_at": "2026-08-23T12:42:08+07:00",
       "first_edition": "2026-08-24",
-      "title": "Ray 2.58 đưa trạng thái KV cache vào quyết định routing LLM",
-      "fingerprint": "ray 2 58 dua trang thai kv cache vao quyet dinh routing llm",
+      "title": "Ray 2.58 dùng trạng thái KV cache để chọn replica tốt hơn",
+      "fingerprint": "ray 2 58 dung trang thai kv cache de chon replica tot hon",
       "canonical_sources": [
         "https://github.com/ray-project/ray/releases/tag/ray-2.58.0"
       ],
@@ -396,8 +396,8 @@
       "current_signature_key": "fdb|script-agent|deployment|tebra-first-commercial",
       "first_published_at": "2026-08-24",
       "first_edition": "2026-08-25",
-      "title": "FDB Script Agent chuyển hội thoại khám bệnh thành đơn thuốc để bác sĩ duyệt",
-      "fingerprint": "fdb script agent chuyen hoi thoai kham benh thanh don thuoc de bac si duyet",
+      "title": "FDB Script Agent tạo đơn thuốc nháp để bác sĩ duyệt",
+      "fingerprint": "fdb script agent tao don thuoc nhap de bac si duyet",
       "canonical_sources": [
         "https://fdbhealth.com/about-us/press-releases/2026-08-24-fdb-moves-ambient-listening-beyond-notes-with-ai-powered-prescribing-agent"
       ],
@@ -479,8 +479,8 @@
       "current_signature_key": "nvidia|groq-3-lpx|production|vera-rubin-nvl72-decode-accelerator",
       "first_published_at": "2026-08-24T15:00:41Z",
       "first_edition": "2026-08-25",
-      "title": "NVIDIA tách decode latency thành một lớp tăng tốc riêng cho agent",
-      "fingerprint": "nvidia tach decode latency thanh mot lop tang toc rieng cho agent",
+      "title": "NVIDIA tách decode thành một lớp tăng tốc riêng cho agent",
+      "fingerprint": "nvidia tach decode thanh mot lop tang toc rieng cho agent",
       "canonical_sources": [
         "https://blogs.nvidia.com/blog/vera-rubin-lpx-spectrum-x-nvlink-fusion",
         "https://siliconangle.com/2026/08/24/nvidias-dedicated-inference-accelerator-groq-3-lpx-enters-full-production-to-supercharge-ai-agents"
@@ -562,8 +562,8 @@
       "current_signature_key": "thomson-reuters|thomson-model|launch|first-proprietary-domain-llm",
       "first_published_at": "2026-08-24T09:00:02-04:00",
       "first_edition": "2026-08-25",
-      "title": "Thomson Reuters đặt cược 40 triệu USD vào model chuyên ngành mà họ tự kiểm soát",
-      "fingerprint": "thomson reuters dat cuoc 40 trieu usd vao model chuyen nganh ma ho tu kiem soat",
+      "title": "Thomson Reuters đầu tư 40 triệu USD vào model chuyên ngành tự kiểm soát",
+      "fingerprint": "thomson reuters dau tu 40 trieu usd vao model chuyen nganh tu kiem soat",
       "canonical_sources": [
         "https://siliconangle.com/2026/08/24/thomson-reuters-launches-proprietary-ai-model-for-legal-work",
         "https://thomsonreuters.com/en/press-releases/2026/august/thomson-reuters-leverages-its-world-class-data-assets-to-launch-its-own-frontier-model"
@@ -686,8 +686,8 @@
       "current_signature_key": "openai|jalapeno|benchmark-result|custom-inference-chip",
       "first_published_at": "2026-08-25",
       "first_edition": "2026-08-26",
-      "title": "Agent economics đang kéo tối ưu inference xuống tận silicon",
-      "fingerprint": "agent economics dang keo toi uu inference xuong tan silicon",
+      "title": "OpenAI tối ưu inference xuống tận chip Jalapeño",
+      "fingerprint": "openai toi uu inference xuong tan chip jalapeno",
       "canonical_sources": [
         "https://openai.com/index/jalapeno-first-results",
         "https://openai.com/index/the-full-stack-behind-abundant-intelligence"
@@ -728,8 +728,8 @@
       "current_signature_key": "perplexity|portable-computer|launch|local-first-agent-runtime",
       "first_published_at": "2026-08-25",
       "first_edition": "2026-08-26",
-      "title": "Local AI đang tiến từ 'model chạy trên máy' thành một agent runtime hoàn chỉnh",
-      "fingerprint": "local ai dang tien tu model chay tren may thanh mot agent runtime hoan chinh",
+      "title": "Local AI đang chuyển từ model trên máy thành một agent runtime đầy đủ",
+      "fingerprint": "local ai dang chuyen tu model tren may thanh mot agent runtime day du",
       "canonical_sources": [
         "https://blogs.nvidia.com/blog/local-ai-open-source-models-agents-nemotron",
         "https://perplexity.ai/hub/blog/introducing-portable-computer-for-local-first-ai"
@@ -770,8 +770,8 @@
       "current_signature_key": "salesforce|headless-360|feature-update|agent-capability-layer",
       "first_published_at": "2026-08-25",
       "first_edition": "2026-08-26",
-      "title": "Salesforce biến business capability thành lớp có thể tái sử dụng bởi agent",
-      "fingerprint": "salesforce bien business capability thanh lop co the tai su dung boi agent",
+      "title": "Salesforce mở business capability cho agent qua một lớp dùng lại được",
+      "fingerprint": "salesforce mo business capability cho agent qua mot lop dung lai duoc",
       "canonical_sources": [
         "https://salesforce.com/ap/news/press-releases/2026/08/25/salesforce-turns-enterprise-applications-into-enterprise-capabilities"
       ],
@@ -811,8 +811,8 @@
       "current_signature_key": "aws|bedrock-agentcore-evaluations|feature-update|framework-agnostic-opentelemetry-evaluation",
       "first_published_at": "2026-08-26",
       "first_edition": "2026-08-27",
-      "title": "AgentCore Evaluations tách evaluation khỏi framework bằng OpenTelemetry",
-      "fingerprint": "agentcore evaluations tach evaluation khoi framework bang opentelemetry",
+      "title": "AgentCore Evaluations dùng OpenTelemetry làm contract chung",
+      "fingerprint": "agentcore evaluations dung opentelemetry lam contract chung",
       "canonical_sources": [
         "https://aws.amazon.com/blogs/machine-learning/evaluate-any-agent-framework-with-amazon-bedrock-agentcore-evaluations"
       ],
@@ -852,8 +852,8 @@
       "current_signature_key": "aws|bedrock-agentcore|research-publication|graduated-autonomy-pattern",
       "first_published_at": "2026-08-26",
       "first_edition": "2026-08-27",
-      "title": "AWS đề xuất graduated autonomy thay cho lựa chọn full-access hoặc read-only",
-      "fingerprint": "aws de xuat graduated autonomy thay cho lua chon full access hoac read only",
+      "title": "AWS đề xuất tăng quyền agent theo reliability thay vì cấp cố định",
+      "fingerprint": "aws de xuat tang quyen agent theo reliability thay vi cap co dinh",
       "canonical_sources": [
         "https://aws.amazon.com/blogs/architecture/closing-the-ai-agent-trust-gap-with-graduated-autonomy"
       ],
@@ -893,8 +893,8 @@
       "current_signature_key": "google|gemini-3-5-transcribe|launch|context-aware-real-time-speech-to-text",
       "first_published_at": "2026-08-26",
       "first_edition": "2026-08-27",
-      "title": "Speech-to-text đang hấp thụ thêm trách nhiệm ngữ nghĩa của voice pipeline",
-      "fingerprint": "speech to text dang hap thu them trach nhiem ngu nghia cua voice pipeline",
+      "title": "Gemini 3.5 Transcribe đưa thêm ngữ cảnh vào bước speech-to-text",
+      "fingerprint": "gemini 3 5 transcribe dua them ngu canh vao buoc speech to text",
       "canonical_sources": [
         "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5-transcribe"
       ],
@@ -975,8 +975,8 @@
       "current_signature_key": "openai|cybersecurity-evaluations|incident|hugging-face-containment-breach",
       "first_published_at": "2026-08-26",
       "first_edition": "2026-08-27",
-      "title": "Containment đã chuyển từ safety policy thành runtime requirement có blast radius thật",
-      "fingerprint": "containment da chuyen tu safety policy thanh runtime requirement co blast radius that",
+      "title": "OpenAI incident cho thấy containment phải được kiểm tra như runtime code",
+      "fingerprint": "openai incident cho thay containment phai duoc kiem tra nhu runtime code",
       "canonical_sources": [
         "https://openai.com/index/hugging-face-incident-and-the-road-ahead"
       ],
@@ -1016,8 +1016,8 @@
       "current_signature_key": "anthropic|model-hardware-standard|preview|shared-agent-device-interface",
       "first_published_at": "2026-08-27",
       "first_edition": "2026-08-28",
-      "title": "Anthropic đang thử cho AI agent điều khiển thiết bị thật",
-      "fingerprint": "anthropic dang thu cho ai agent dieu khien thiet bi that",
+      "title": "Anthropic thử một giao diện chung để agent điều khiển thiết bị thật",
+      "fingerprint": "anthropic thu mot giao dien chung de agent dieu khien thiet bi that",
       "canonical_sources": [
         "https://anthropic.com/news/model-hardware-standard-research-preview"
       ],
@@ -1057,8 +1057,8 @@
       "current_signature_key": "cursor|cloud-agents|feature-update|repo-independent-project-bootstrap",
       "first_published_at": "2026-08-27",
       "first_edition": "2026-08-28",
-      "title": "Cursor Agent giờ có thể tạo project dù chưa có Git repo",
-      "fingerprint": "cursor agent gio co the tao project du chua co git repo",
+      "title": "Cursor Cloud Agents có thể bắt đầu project trước khi có repo",
+      "fingerprint": "cursor cloud agents co the bat dau project truoc khi co repo",
       "canonical_sources": [
         "https://cursor.com/changelog/start-from-scratch"
       ],
@@ -1098,8 +1098,8 @@
       "current_signature_key": "github|copilot-code-review|feature-update|bot-authored-and-large-pr-review",
       "first_published_at": "2026-08-27",
       "first_edition": "2026-08-28",
-      "title": "GitHub Copilot giờ review được cả PR do AI agent tạo",
-      "fingerprint": "github copilot gio review duoc ca pr do ai agent tao",
+      "title": "Copilot review được PR do bot tạo và PR rất lớn",
+      "fingerprint": "copilot review duoc pr do bot tao va pr rat lon",
       "canonical_sources": [
         "https://docs.github.com/en/copilot/concepts/agents/code-review",
         "https://github.blog/changelog/2026-08-27-copilot-code-review-resolution-reasons-and-expanded-capabilities"
@@ -1223,8 +1223,8 @@
       "current_signature_key": "vercel|ai-sdk-harness|integration|cursor-harness-adapter",
       "first_published_at": "2026-08-27",
       "first_edition": "2026-08-28",
-      "title": "Vercel AI SDK Harness — Thêm adapter chính thức cho Cursor",
-      "fingerprint": "vercel ai sdk harness them adapter chinh thuc cho cursor",
+      "title": "Vercel AI SDK Harness — Adapter chính thức cho Cursor",
+      "fingerprint": "vercel ai sdk harness adapter chinh thuc cho cursor",
       "canonical_sources": [
         "https://vercel.com/changelog/cursor-ai-sdk-harness-adapter"
       ],
@@ -1264,8 +1264,8 @@
       "current_signature_key": "anthropic|alignment-research|research-publication|automated-researchers",
       "first_published_at": "2026-08-28",
       "first_edition": "2026-08-29",
-      "title": "Anthropic thử để Claude tự nghiên cứu cách giảm lỗi alignment của model",
-      "fingerprint": "anthropic thu de claude tu nghien cuu cach giam loi alignment cua model",
+      "title": "Anthropic thử dùng Claude để tự nghiên cứu lỗi alignment",
+      "fingerprint": "anthropic thu dung claude de tu nghien cuu loi alignment",
       "canonical_sources": [
         "https://anthropic.com/research/automated-researchers-mitigate-alignment-failures"
       ],
@@ -1305,8 +1305,8 @@
       "current_signature_key": "anthropic|claude-code|release|2-1-251",
       "first_published_at": "2026-08-28",
       "first_edition": "2026-08-29",
-      "title": "Coding agent càng tự động thì ranh giới quyền truy cập càng quan trọng",
-      "fingerprint": "coding agent cang tu dong thi ranh gioi quyen truy cap cang quan trong",
+      "title": "Claude Code 2.1.251 làm permission boundary dễ kiểm tra hơn",
+      "fingerprint": "claude code 2 1 251 lam permission boundary de kiem tra hon",
       "canonical_sources": [
         "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
         "https://npmjs.com/package/@anthropic-ai/claude-code"
@@ -1347,8 +1347,8 @@
       "current_signature_key": "vercel|chat-sdk|integration|claude-managed-agents",
       "first_published_at": "2026-08-28",
       "first_edition": "2026-08-29",
-      "title": "Làm bot có agent đang bớt dần phần hạ tầng phải tự viết",
-      "fingerprint": "lam bot co agent dang bot dan phan ha tang phai tu viet",
+      "title": "Chat SDK có thể giao session và agent loop cho Claude Managed Agents",
+      "fingerprint": "chat sdk co the giao session va agent loop cho claude managed agents",
       "canonical_sources": [
         "https://platform.claude.com/docs/en/managed-agents/quickstart",
         "https://vercel.com/changelog/claude-managed-agents-with-chat-sdk"
@@ -1389,8 +1389,8 @@
       "current_signature_key": "openai|cursor-model-access|policy-change|november-12-model-access-winddown",
       "first_published_at": "2026-08-28",
       "first_edition": "2026-08-30",
-      "title": "Model portability đang chuyển từ nice-to-have thành rủi ro vận hành thật",
-      "fingerprint": "model portability dang chuyen tu nice to have thanh rui ro van hanh that",
+      "title": "Cursor buộc team phải kiểm tra portability theo từng feature, không theo logo model",
+      "fingerprint": "cursor buoc team phai kiem tra portability theo tung feature khong theo logo model",
       "canonical_sources": [
         "https://help.openai.com/en/articles/20001506-using-openai-models-in-cursor",
         "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex",
@@ -1432,8 +1432,8 @@
       "current_signature_key": "tencent|hy4-preview|open-source|hy4-preview-open-weights",
       "first_published_at": "2026-08-28",
       "first_edition": "2026-08-30",
-      "title": "Tencent mở weights Hy4 preview, nhưng đây không phải model nhẹ để kéo về laptop",
-      "fingerprint": "tencent mo weights hy4 preview nhung day khong phai model nhe de keo ve laptop",
+      "title": "Tencent mở weights Hy4 preview ở quy mô rất lớn",
+      "fingerprint": "tencent mo weights hy4 preview o quy mo rat lon",
       "canonical_sources": [
         "https://tencent.com/tencent-releases-and-open-sources-tencent-hy4-preview"
       ],
@@ -1473,8 +1473,8 @@
       "current_signature_key": "github|agentic-workflows|release|0-87-9-prerelease",
       "first_published_at": "2026-08-31",
       "first_edition": "2026-09-01",
-      "title": "Agentic workflow bắt đầu có guardrail giống một job scheduler nghiêm túc",
-      "fingerprint": "agentic workflow bat dau co guardrail giong mot job scheduler nghiem tuc",
+      "title": "GitHub thêm cooldown và stop condition cho agent workflow",
+      "fingerprint": "github them cooldown va stop condition cho agent workflow",
       "canonical_sources": [
         "https://github.github.io/gh-aw/blog/2026-08-31-weekly-update"
       ],
@@ -1514,8 +1514,8 @@
       "current_signature_key": "github|agentic-workflows|research-publication|issue-arborist-case-study-2026-08-31",
       "first_published_at": "2026-08-31",
       "first_edition": "2026-09-01",
-      "title": "Agent hữu ích hơn khi có quyền nói 'không đủ chắc để làm'",
-      "fingerprint": "agent huu ich hon khi co quyen noi khong du chac de lam",
+      "title": "Issue Arborist coi no-op có lý do là một kết quả hợp lệ",
+      "fingerprint": "issue arborist coi no op co ly do la mot ket qua hop le",
       "canonical_sources": [
         "https://github.github.io/gh-aw/blog/2026-08-31-agent-of-the-day"
       ],
@@ -1555,8 +1555,8 @@
       "current_signature_key": "github|copilot-model-providers|incident-resolution|openai-model-errors-2026-08-31",
       "first_published_at": "2026-08-31T09:58:00Z",
       "first_edition": "2026-09-01",
-      "title": "Copilot mất ổn định với một nhóm OpenAI models trong khoảng 43 phút",
-      "fingerprint": "copilot mat on dinh voi mot nhom openai models trong khoang 43 phut",
+      "title": "Một nhóm OpenAI model trong Copilot lỗi khoảng 43 phút",
+      "fingerprint": "mot nhom openai model trong copilot loi khoang 43 phut",
       "canonical_sources": [
         "https://githubstatus.com/"
       ],
@@ -1596,8 +1596,8 @@
       "current_signature_key": "anthropic|claude-code|research-publication|cost-roi-google-cloud",
       "first_published_at": "2026-09-01",
       "first_edition": "2026-09-02",
-      "title": "Khi coding agent được dùng rộng hơn, cost governance bắt đầu thành việc của engineering",
-      "fingerprint": "khi coding agent duoc dung rong hon cost governance bat dau thanh viec cua engineering",
+      "title": "Claude Code usage ở quy mô lớn cần được đo như một workload có ngân sách",
+      "fingerprint": "claude code usage o quy mo lon can duoc do nhu mot workload co ngan sach",
       "canonical_sources": [
         "https://anthropic.com/webinars/how-to-control-costs-and-show-roi-for-claude-code-on-google-cloud"
       ],
@@ -1678,8 +1678,8 @@
       "current_signature_key": "cursor|composer-2-5|incident-resolution|degraded-performance-2026-09-01",
       "first_published_at": "2026-09-01T01:14:00Z",
       "first_edition": "2026-09-02",
-      "title": "Cursor ghi nhận Composer 2.5 gây lỗi ở Automations, Cloud Agents, CLI và IDE",
-      "fingerprint": "cursor ghi nhan composer 2 5 gay loi o automations cloud agents cli va ide",
+      "title": "Composer 2.5 gây lỗi ở nhiều bề mặt Cursor trong khoảng 13 phút",
+      "fingerprint": "composer 2 5 gay loi o nhieu be mat cursor trong khoang 13 phut",
       "canonical_sources": [
         "https://status.cursor.com/"
       ],
@@ -1719,8 +1719,8 @@
       "current_signature_key": "openai|enterprise-agents|research-publication|ai-native-company-workflows-2026-09-01",
       "first_published_at": "2026-09-01",
       "first_edition": "2026-09-02",
-      "title": "OpenAI công bố dữ liệu Enterprise Signals cho thấy nhóm doanh nghiệp dùng AI mạnh nhất đang tạo lượng output token trên mỗi active user cao hơn đáng kể và có xu hướng nối agent trực tiếp với context cùng tool nội bộ. Đây là dữ liệu do vendor công bố, nhưng đáng theo dõi vì nó củng cố hướng chuyển từ chat hỗ trợ sang workflow có execution và đo lường được.",
-      "fingerprint": "openai cong bo du lieu enterprise signals cho thay nhom doanh nghiep dung ai manh nhat dang tao luong output token tren moi active user cao hon dang ke va co xu huong noi agent truc tiep voi context cung tool noi bo day la du lieu do vendor cong bo nhung dang theo doi vi no cung co huong chuyen tu chat ho tro sang workflow co execution va do luong duoc",
+      "title": "OpenAI công bố Enterprise Signals cho thấy nhóm doanh nghiệp dùng AI mạnh đang tạo nhiều output token hơn trên mỗi active user và nối agent với context cùng tool nội bộ. Dữ liệu do vendor tự công bố, nên cần theo dõi thêm số liệu độc lập về productivity và failure rate trước khi xem đây là bằng chứng cho một mô hình vận hành mới.",
+      "fingerprint": "openai cong bo enterprise signals cho thay nhom doanh nghiep dung ai manh dang tao nhieu output token hon tren moi active user va noi agent voi context cung tool noi bo du lieu do vendor tu cong bo nen can theo doi them so lieu doc lap ve productivity va failure rate truoc khi xem day la bang chung cho mot mo hinh van hanh moi",
       "canonical_sources": [
         "https://openai.com/index/ai-native-company-workflows"
       ],
@@ -1760,8 +1760,8 @@
       "current_signature_key": "openai|astra|research-publication|critical-cybersecurity-threshold",
       "first_published_at": "2026-09-01",
       "first_edition": "2026-09-02",
-      "title": "Astra cho thấy frontier model đang vượt khỏi phạm vi 'coding assistant' thông thường",
-      "fingerprint": "astra cho thay frontier model dang vuot khoi pham vi coding assistant thong thuong",
+      "title": "Astra buộc cyber agent phải được thiết kế với permission và stop condition rõ",
+      "fingerprint": "astra buoc cyber agent phai duoc thiet ke voi permission va stop condition ro",
       "canonical_sources": [
         "https://openai.com/index/path-to-astra"
       ],
@@ -1801,10 +1801,11 @@
       "current_signature_key": "cursor|cloud-agents|release|self-hosted-machines",
       "first_published_at": "2026-09-02",
       "first_edition": "2026-09-03",
-      "title": "Coding agent cloud bắt đầu tách control plane khỏi nơi tool thực sự chạy",
-      "fingerprint": "coding agent cloud bat dau tach control plane khoi noi tool thuc su chay",
+      "title": "Cursor cho Cloud Agents chạy công cụ trên máy của chính bạn",
+      "fingerprint": "cursor cho cloud agents chay cong cu tren may cua chinh ban",
       "canonical_sources": [
-        "https://cursor.com/changelog"
+        "https://cursor.com/blog/self-hosted-machines",
+        "https://cursor.com/changelog/self-hosted-machines"
       ],
       "occurrences": [
         {
@@ -1842,8 +1843,8 @@
       "current_signature_key": "github|copilot|general-availability|content-exclusions-app-cli",
       "first_published_at": "2026-09-02",
       "first_edition": "2026-09-03",
-      "title": "GitHub Copilot — Content exclusion policies trong Copilot app và CLI",
-      "fingerprint": "github copilot content exclusion policies trong copilot app va cli",
+      "title": "GitHub Copilot — Content exclusion trong Copilot app và CLI",
+      "fingerprint": "github copilot content exclusion trong copilot app va cli",
       "canonical_sources": [
         "https://github.blog/changelog/2026-09-02-content-exclusions-generally-available-in-copilot-app-and-cli"
       ],
@@ -1883,8 +1884,8 @@
       "current_signature_key": "github|copilot|feature-update|enterprise-default-model-settings",
       "first_published_at": "2026-09-02",
       "first_edition": "2026-09-03",
-      "title": "GitHub cho enterprise đặt default model Copilot theo toàn công ty hoặc từng team",
-      "fingerprint": "github cho enterprise dat default model copilot theo toan cong ty hoac tung team",
+      "title": "GitHub cho enterprise đặt model Copilot mặc định theo từng team",
+      "fingerprint": "github cho enterprise dat model copilot mac dinh theo tung team",
       "canonical_sources": [
         "https://github.blog/changelog/2026-09-02-enterprise-managed-settings-support-any-default-model"
       ],
@@ -1924,15 +1925,15 @@
       "current_signature_key": "google|fairwind-program|launch|trusted-cyber-defense-access",
       "first_published_at": "2026-09-02",
       "first_edition": "2026-09-03",
-      "title": "Google mở Fairwind Program ở limited access cho chính phủ và đối tác tin cậy dùng capability cyber defense nâng cao, bao gồm Gemini 3.8 Flash Cyber. Đây chưa phải API phổ thông, nhưng đáng theo dõi vì frontier cyber model đang đi theo mô hình access control theo đối tượng thay vì phát hành rộng ngay từ đầu.",
-      "fingerprint": "google mo fairwind program o limited access cho chinh phu va doi tac tin cay dung capability cyber defense nang cao bao gom gemini 3 8 flash cyber day chua phai api pho thong nhung dang theo doi vi frontier cyber model dang di theo mo hinh access control theo doi tuong thay vi phat hanh rong ngay tu dau",
+      "title": "Google giới hạn Gemini 3.8 Flash Cyber cho nhóm phòng thủ được chọn",
+      "fingerprint": "google gioi han gemini 3 8 flash cyber cho nhom phong thu duoc chon",
       "canonical_sources": [
         "https://blog.google/innovation-and-ai/technology/safety-security/fairwind-program"
       ],
       "occurrences": [
         {
           "edition_date": "2026-09-03",
-          "section": "radar",
+          "section": "brief",
           "published_at": "2026-09-02",
           "event_signature": {
             "organization": "google",
@@ -1965,8 +1966,8 @@
       "current_signature_key": "google|gemini-3-8-flash|general-availability|2026-09-02-ga",
       "first_published_at": "2026-09-02",
       "first_edition": "2026-09-03",
-      "title": "Gemini 3.8 Flash làm task dài tốt hơn, nhưng hiệu quả phải đo theo task hoàn thành chứ không chỉ giá token",
-      "fingerprint": "gemini 3 8 flash lam task dai tot hon nhung hieu qua phai do theo task hoan thanh chu khong chi gia token",
+      "title": "Gemini 3.8 Flash mạnh hơn ở task dài, nhưng có thể dùng nhiều token hơn",
+      "fingerprint": "gemini 3 8 flash manh hon o task dai nhung co the dung nhieu token hon",
       "canonical_sources": [
         "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash",
         "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber"
@@ -1983,6 +1984,501 @@
             "artifact": "2026-09-02-ga"
           },
           "signature_key": "google|gemini-3-8-flash|general-availability|2026-09-02-ga",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "aws-codex-litellm-bedrock-enterprise-gateway-reference",
+      "event_signature": {
+        "organization": "aws",
+        "product": "codex-bedrock-gateway",
+        "action": "research-publication",
+        "artifact": "litellm-ecs-enterprise-reference"
+      },
+      "signature_key": "aws|codex-bedrock-gateway|research-publication|litellm-ecs-enterprise-reference",
+      "current_event_signature": {
+        "organization": "aws",
+        "product": "codex-bedrock-gateway",
+        "action": "research-publication",
+        "artifact": "litellm-ecs-enterprise-reference"
+      },
+      "current_signature_key": "aws|codex-bedrock-gateway|research-publication|litellm-ecs-enterprise-reference",
+      "first_published_at": "2026-09-03",
+      "first_edition": "2026-09-04",
+      "title": "AWS tách tool loop của Codex khỏi lớp kiểm soát model access",
+      "fingerprint": "aws tach tool loop cua codex khoi lop kiem soat model access",
+      "canonical_sources": [
+        "https://aws.amazon.com/blogs/machine-learning/set-up-openai-chatgpt-codex-with-litellm-on-amazon-ecs-and-amazon-bedrock"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-04",
+          "section": "brief",
+          "published_at": "2026-09-03",
+          "event_signature": {
+            "organization": "aws",
+            "product": "codex-bedrock-gateway",
+            "action": "research-publication",
+            "artifact": "litellm-ecs-enterprise-reference"
+          },
+          "signature_key": "aws|codex-bedrock-gateway|research-publication|litellm-ecs-enterprise-reference",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-copilot-selected-models-october-2-deprecation",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot",
+        "action": "deprecation",
+        "artifact": "selected-models-october-2-2026"
+      },
+      "signature_key": "github|copilot|deprecation|selected-models-october-2-2026",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "copilot",
+        "action": "deprecation",
+        "artifact": "selected-models-october-2-2026"
+      },
+      "current_signature_key": "github|copilot|deprecation|selected-models-october-2-2026",
+      "first_published_at": "2026-09-03",
+      "first_edition": "2026-09-04",
+      "title": "GitHub Copilot sẽ bỏ bốn model vào ngày 2/10",
+      "fingerprint": "github copilot se bo bon model vao ngay 2 10",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-03-upcoming-deprecation-of-selected-github-copilot-models"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-04",
+          "section": "brief",
+          "published_at": "2026-09-03",
+          "event_signature": {
+            "organization": "github",
+            "product": "copilot",
+            "action": "deprecation",
+            "artifact": "selected-models-october-2-2026"
+          },
+          "signature_key": "github|copilot|deprecation|selected-models-october-2-2026",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-npm-multiple-trusted-publishing-configurations",
+      "event_signature": {
+        "organization": "github",
+        "product": "npm",
+        "action": "general-availability",
+        "artifact": "multiple-trusted-publishing-configurations"
+      },
+      "signature_key": "github|npm|general-availability|multiple-trusted-publishing-configurations",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "npm",
+        "action": "general-availability",
+        "artifact": "multiple-trusted-publishing-configurations"
+      },
+      "current_signature_key": "github|npm|general-availability|multiple-trusted-publishing-configurations",
+      "first_published_at": "2026-09-03",
+      "first_edition": "2026-09-04",
+      "title": "npm Trusted Publishing — Nhiều cấu hình OIDC cho cùng một package",
+      "fingerprint": "npm trusted publishing nhieu cau hinh oidc cho cung mot package",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-03-multiple-trusted-publishing-configurations-for-npm"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-04",
+          "section": "releases",
+          "published_at": "2026-09-03",
+          "event_signature": {
+            "organization": "github",
+            "product": "npm",
+            "action": "general-availability",
+            "artifact": "multiple-trusted-publishing-configurations"
+          },
+          "signature_key": "github|npm|general-availability|multiple-trusted-publishing-configurations",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "nvidia-hugging-face-acquisition-agreement",
+      "event_signature": {
+        "organization": "nvidia",
+        "product": "hugging-face",
+        "action": "acquisition",
+        "artifact": "12-93-billion-acquisition-agreement"
+      },
+      "signature_key": "nvidia|hugging-face|acquisition|12-93-billion-acquisition-agreement",
+      "current_event_signature": {
+        "organization": "nvidia",
+        "product": "hugging-face",
+        "action": "acquisition",
+        "artifact": "12-93-billion-acquisition-agreement"
+      },
+      "current_signature_key": "nvidia|hugging-face|acquisition|12-93-billion-acquisition-agreement",
+      "first_published_at": "2026-09-03",
+      "first_edition": "2026-09-04",
+      "title": "Hugging Face đổi chủ; dependency của model Hub đáng được kiểm kê lại",
+      "fingerprint": "hugging face doi chu dependency cua model hub dang duoc kiem ke lai",
+      "canonical_sources": [
+        "https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face",
+        "https://reuters.com/business/nvidia-buy-hugging-face-nearly-13-billion-big-bet-open-ai-models-2026-09-03"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-04",
+          "section": "trends",
+          "published_at": "2026-09-03",
+          "event_signature": {
+            "organization": "nvidia",
+            "product": "hugging-face",
+            "action": "acquisition",
+            "artifact": "12-93-billion-acquisition-agreement"
+          },
+          "signature_key": "nvidia|hugging-face|acquisition|12-93-billion-acquisition-agreement",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "nvidia-pair-local-inference-router",
+      "event_signature": {
+        "organization": "nvidia",
+        "product": "pair",
+        "action": "open-source",
+        "artifact": "local-network-inference-router"
+      },
+      "signature_key": "nvidia|pair|open-source|local-network-inference-router",
+      "current_event_signature": {
+        "organization": "nvidia",
+        "product": "pair",
+        "action": "open-source",
+        "artifact": "local-network-inference-router"
+      },
+      "current_signature_key": "nvidia|pair|open-source|local-network-inference-router",
+      "first_published_at": "2026-09-03",
+      "first_edition": "2026-09-04",
+      "title": "NVIDIA PAIR chia request local AI qua nhiều máy mà không đổi agent harness",
+      "fingerprint": "nvidia pair chia request local ai qua nhieu may ma khong doi agent harness",
+      "canonical_sources": [
+        "https://developer.nvidia.com/blog/nvidia-pair-virtual-inference-router-expands-available-compute-on-your-local-network"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-04",
+          "section": "brief",
+          "published_at": "2026-09-03",
+          "event_signature": {
+            "organization": "nvidia",
+            "product": "pair",
+            "action": "open-source",
+            "artifact": "local-network-inference-router"
+          },
+          "signature_key": "nvidia|pair|open-source|local-network-inference-router",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "openai-gpt-6-astra-limited-rollout",
+      "event_signature": {
+        "organization": "openai",
+        "product": "gpt-6-astra",
+        "action": "launch",
+        "artifact": "limited-enterprise-rollout"
+      },
+      "signature_key": "openai|gpt-6-astra|launch|limited-enterprise-rollout",
+      "current_event_signature": {
+        "organization": "openai",
+        "product": "gpt-6-astra",
+        "action": "launch",
+        "artifact": "limited-enterprise-rollout"
+      },
+      "current_signature_key": "openai|gpt-6-astra|launch|limited-enterprise-rollout",
+      "first_published_at": "2026-09-03",
+      "first_edition": "2026-09-04",
+      "title": "Astra cho agent tiếp tục làm việc trong lúc tool còn đang chạy",
+      "fingerprint": "astra cho agent tiep tuc lam viec trong luc tool con dang chay",
+      "canonical_sources": [
+        "https://community.openai.com/t/introducing-gpt-6-astra-the-most-intelligent-and-aligned-model-in-the-world/1394703",
+        "https://developers.openai.com/api/docs/guides/latest-model?model=gpt-6-astra",
+        "https://openai.com/index/safety-overview-gpt-6-astra"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-04",
+          "section": "trends",
+          "published_at": "2026-09-03",
+          "event_signature": {
+            "organization": "openai",
+            "product": "gpt-6-astra",
+            "action": "launch",
+            "artifact": "limited-enterprise-rollout"
+          },
+          "signature_key": "openai|gpt-6-astra|launch|limited-enterprise-rollout",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "vercel-cursor-cloud-agents-sandbox-integration",
+      "event_signature": {
+        "organization": "vercel",
+        "product": "cursor-cloud-agents-vercel-sandbox",
+        "action": "integration",
+        "artifact": "self-hosted-machines-execution"
+      },
+      "signature_key": "vercel|cursor-cloud-agents-vercel-sandbox|integration|self-hosted-machines-execution",
+      "current_event_signature": {
+        "organization": "vercel",
+        "product": "cursor-cloud-agents-vercel-sandbox",
+        "action": "integration",
+        "artifact": "self-hosted-machines-execution"
+      },
+      "current_signature_key": "vercel|cursor-cloud-agents-vercel-sandbox|integration|self-hosted-machines-execution",
+      "first_published_at": "2026-09-03",
+      "first_edition": "2026-09-04",
+      "title": "Vercel Sandbox + Cursor Cloud Agents — Chạy Cursor Cloud Agent trong Firecracker microVM của Vercel",
+      "fingerprint": "vercel sandbox cursor cloud agents chay cursor cloud agent trong firecracker microvm cua vercel",
+      "canonical_sources": [
+        "https://vercel.com/changelog/run-cursor-cloud-agents-vercel-sandbox"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-04",
+          "section": "releases",
+          "published_at": "2026-09-03",
+          "event_signature": {
+            "organization": "vercel",
+            "product": "cursor-cloud-agents-vercel-sandbox",
+            "action": "integration",
+            "artifact": "self-hosted-machines-execution"
+          },
+          "signature_key": "vercel|cursor-cloud-agents-vercel-sandbox|integration|self-hosted-machines-execution",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-copilot-gpt-6-astra-ga",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot",
+        "action": "general-availability",
+        "artifact": "gpt-6-astra"
+      },
+      "signature_key": "github|copilot|general-availability|gpt-6-astra",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "copilot",
+        "action": "general-availability",
+        "artifact": "gpt-6-astra"
+      },
+      "current_signature_key": "github|copilot|general-availability|gpt-6-astra",
+      "first_published_at": "2026-09-04",
+      "first_edition": "2026-09-05",
+      "title": "GPT-6 Astra đã có trong Copilot. Khoan đổi model mặc định",
+      "fingerprint": "gpt 6 astra da co trong copilot khoan doi model mac dinh",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-04-gpt-6-astra-is-generally-available-in-github-copilot"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-05",
+          "section": "trends",
+          "published_at": "2026-09-04",
+          "event_signature": {
+            "organization": "github",
+            "product": "copilot",
+            "action": "general-availability",
+            "artifact": "gpt-6-astra"
+          },
+          "signature_key": "github|copilot|general-availability|gpt-6-astra",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-copilot-weekly-august-31",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot",
+        "action": "feature-update",
+        "artifact": "weekly-releases-august-31"
+      },
+      "signature_key": "github|copilot|feature-update|weekly-releases-august-31",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "copilot",
+        "action": "feature-update",
+        "artifact": "weekly-releases-august-31"
+      },
+      "current_signature_key": "github|copilot|feature-update|weekly-releases-august-31",
+      "first_published_at": "2026-09-04",
+      "first_edition": "2026-09-05",
+      "title": "GitHub Copilot — Bản tổng hợp tuần cho app, CLI, JetBrains và VS Code",
+      "fingerprint": "github copilot ban tong hop tuan cho app cli jetbrains va vs code",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-04-github-copilot-weekly-releases-august-31"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-05",
+          "section": "releases",
+          "published_at": "2026-09-04",
+          "event_signature": {
+            "organization": "github",
+            "product": "copilot",
+            "action": "feature-update",
+            "artifact": "weekly-releases-august-31"
+          },
+          "signature_key": "github|copilot|feature-update|weekly-releases-august-31",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-star-history-api",
+      "event_signature": {
+        "organization": "github",
+        "product": "rest-api",
+        "action": "release",
+        "artifact": "privacy-safe-star-history"
+      },
+      "signature_key": "github|rest-api|release|privacy-safe-star-history",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "rest-api",
+        "action": "release",
+        "artifact": "privacy-safe-star-history"
+      },
+      "current_signature_key": "github|rest-api|release|privacy-safe-star-history",
+      "first_published_at": "2026-09-04",
+      "first_edition": "2026-09-05",
+      "title": "GitHub có API theo dõi lượng star mà không lộ người dùng",
+      "fingerprint": "github co api theo doi luong star ma khong lo nguoi dung",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-04-new-api-endpoint-provides-privacy-safe-star-history-data"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-05",
+          "section": "brief",
+          "published_at": "2026-09-04",
+          "event_signature": {
+            "organization": "github",
+            "product": "rest-api",
+            "action": "release",
+            "artifact": "privacy-safe-star-history"
+          },
+          "signature_key": "github|rest-api|release|privacy-safe-star-history",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "hugging-face-funes-agent-memory",
+      "event_signature": {
+        "organization": "hugging-face",
+        "product": "funes",
+        "action": "open-source",
+        "artifact": "coding-agent-trace-memory"
+      },
+      "signature_key": "hugging-face|funes|open-source|coding-agent-trace-memory",
+      "current_event_signature": {
+        "organization": "hugging-face",
+        "product": "funes",
+        "action": "open-source",
+        "artifact": "coding-agent-trace-memory"
+      },
+      "current_signature_key": "hugging-face|funes|open-source|coding-agent-trace-memory",
+      "first_published_at": "2026-09-03",
+      "first_edition": "2026-09-05",
+      "title": "Funes giúp coding agent tìm lại quyết định từ các phiên trước",
+      "fingerprint": "funes giup coding agent tim lai quyet dinh tu cac phien truoc",
+      "canonical_sources": [
+        "https://huggingface.co/blog/funes"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-05",
+          "section": "trends",
+          "published_at": "2026-09-03",
+          "event_signature": {
+            "organization": "hugging-face",
+            "product": "funes",
+            "action": "open-source",
+            "artifact": "coding-agent-trace-memory"
+          },
+          "signature_key": "hugging-face|funes|open-source|coding-agent-trace-memory",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "hugging-face-lfm2-5-350m-grpo-structured-output",
+      "event_signature": {
+        "organization": "hugging-face",
+        "product": "trl",
+        "action": "research-publication",
+        "artifact": "lfm2-5-350m-grpo-structured-output"
+      },
+      "signature_key": "hugging-face|trl|research-publication|lfm2-5-350m-grpo-structured-output",
+      "current_event_signature": {
+        "organization": "hugging-face",
+        "product": "trl",
+        "action": "research-publication",
+        "artifact": "lfm2-5-350m-grpo-structured-output"
+      },
+      "current_signature_key": "hugging-face|trl|research-publication|lfm2-5-350m-grpo-structured-output",
+      "first_published_at": "2026-09-03",
+      "first_edition": "2026-09-05",
+      "title": "Fine-tune 100 bước giúp model 350M bám schema tốt hơn",
+      "fingerprint": "fine tune 100 buoc giup model 350m bam schema tot hon",
+      "canonical_sources": [
+        "https://huggingface.co/blog/grpo-with-trl-ifstruct"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-05",
+          "section": "brief",
+          "published_at": "2026-09-03",
+          "event_signature": {
+            "organization": "hugging-face",
+            "product": "trl",
+            "action": "research-publication",
+            "artifact": "lfm2-5-350m-grpo-structured-output"
+          },
+          "signature_key": "hugging-face|trl|research-publication|lfm2-5-350m-grpo-structured-output",
           "material_update": null,
           "update_kind": null,
           "dedupe_override_reason": null
