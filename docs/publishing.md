@@ -1,65 +1,70 @@
 # Publishing AI Morning
 
-AI Morning follows one deterministic flow:
+AI Morning uses Next.js App Router with a static export:
 
     content/YYYY-MM-DD.json
             ↓
-    scripts/build.mjs + templates/
+    news-quality gates + lib/editions.mjs
             ↓
-    dist/
+    Next.js app/ + components/
+            ↓
+    out/ → dist/ (with .nojekyll)
             ↓
     GitHub Pages
 
-## Daily workflow
+## Setup and daily workflow
 
-1. Research and add content/YYYY-MM-DD.json according to `AGENTS.md`.
+Use Node 20.9 or newer; CI uses Node 24. Run `npm ci` after cloning or updating dependencies.
+
+1. Research and add `content/YYYY-MM-DD.json` according to `AGENTS.md`.
 2. Run `npm run test:news`.
 3. Run `npm run news:index` to validate events and explicitly regenerate the cross-edition news ledger.
 4. Run `npm run news:check`, then `npm run build`.
-5. Serve and verify the generated site:
-
-       cd dist
-       python -m http.server 8080
-
-6. Check /, /YYYY-MM-DD/, older date routes, and /archive/.
-7. Commit the JSON file together with `data/news-index.json`. Templates, CSS, JavaScript, validators, schema docs, and generated HTML do not need daily edits.
-8. Push to main. GitHub Actions validates, builds the site and uploads only dist/.
+5. Run `npm run preview` and open `http://localhost:8080/ai-morning/`.
+6. Check the root, changed date routes, older dates, and archive. English routes exist only for reviewed translations.
+7. Commit the JSON file together with `data/news-index.json`. Daily content does not require layout, runtime, validator, or schema edits.
+8. Push to main. GitHub Actions installs locked dependencies, validates and builds the site, and uploads only `dist/`.
 
 ## Build behavior
 
-npm run build:
+`npm run build`:
 
-- runs the news-quality regression suite;
-- uses the same canonical schema validator as the renderer;
-- checks that every item has event identity, source evidence, structural depth and valid freshness;
-- rejects duplicate or likely duplicate events and a stale `data/news-index.json`;
-- prints editorial-theme and unusual-length warnings without failing solely on those warnings;
-- scans every content/*.json file;
-- validates the content contract;
-- sorts editions newest first;
-- rebuilds every dated snapshot from its own JSON;
-- renders the newest edition at dist/index.html;
-- derives the archive and Editions menu automatically;
-- copies shared assets to dist/assets/.
+- runs news-quality regression tests;
+- checks evidence, depth, timestamps, event identity, duplicates, and ledger freshness;
+- preserves editorial warnings without treating them as hard failures;
+- copies editorial assets and licensed fonts into the generated `public/assets/` directory;
+- validates each edition with the shared schema validator;
+- builds every dated page and the latest root page using Next.js static generation;
+- builds Vietnamese and reviewed English archives;
+- exports HTML and assets, then copies the complete export to `dist/`;
+- writes `.nojekyll` so Pages serves `_next/` assets;
+- tests every exported edition's text, language, sources, archive order, local links, fragment targets, and assets.
 
-The build never regenerates `data/news-index.json`; stale generated state must be fixed explicitly with `npm run news:index`. `dist/` is intentionally ignored by Git. It is a reproducible build artifact, not an editorial source.
+The build never regenerates the ledger silently. Fix stale derived state explicitly with `npm run news:index`. `dist/`, `out/`, `.next/`, and `public/assets/` are ignored build artifacts.
 
-## Verification checklist
+## GitHub Pages settings
 
-- Root shows the newest edition_date.
-- Each date route shows the matching edition, without redirecting to root.
-- Archive is newest-first and includes every JSON file.
-- AUTO, LIGHT, and DARK themes work.
-- Vietnamese text is intact.
-- No horizontal overflow at 360, 412, 768, 1440, or 1920 CSS pixels.
-- Source links open in a new tab with noopener noreferrer.
-- Unknown visual keys use the neutral fallback.
+Keep Pages configured to **GitHub Actions**. The workflow uploads `dist/` with `actions/upload-pages-artifact` and deploys with `actions/deploy-pages`.
+
+`next.config.mjs` uses `output: 'export'`, `trailingSlash: true`, and `/ai-morning` as the default base path. The app needs no server functions or image optimization service. Local fonts and images ship with the export.
+
+To host at the domain root, set `NEXT_PUBLIC_BASE_PATH=''` consistently for build and preview. A path change requires a rebuild because Next.js embeds the base path in its client bundles.
+
+## UI verification
+
+After presentation or routing changes:
+
+```bash
+npm run build
+npx playwright install chromium
+npm run test:browser
+npm run format:check
+```
+
+Browser tests serve the actual export. They check all published routes at 360, 412, 768, 1440, and 1920px, missing images and assets, runtime errors, archive search, saved stories, reading preferences, checklist controls, VI/EN navigation, reduced motion, and no-JavaScript reading. Screenshots of every route at mobile and desktop sizes go into `.verification/pages/`; visually inspect these before handoff.
+
+Also inspect source labels and body copy, deep links into articles, the root's latest date, and older editions with SVG diagrams. Unknown visual keys retain the neutral fallback. Source links use a new tab with `noopener noreferrer`.
 
 ## Build failures
 
-Validation errors include the source filename and field path, for example:
-
-    ERROR [MISSING_REQUIRED_FIELD] content/2026-08-24.json headline
-    Missing required field.
-
-Fix the JSON and run the build again. The renderer ignores unknown optional fields but rejects missing required content and unsupported enum values.
+Validation errors identify the filename, field path, and event. Fix the source JSON and rerun the build; never bypass validation. Static-export test failures identify the missing text, route, fragment, or asset.

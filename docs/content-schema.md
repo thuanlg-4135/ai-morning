@@ -1,6 +1,6 @@
 # AI Morning content schema
 
-Daily editions live in content/YYYY-MM-DD.json. JSON files contain editorial content only; the renderer in scripts/build.mjs owns HTML, classes, layout, navigation, and accessibility markup.
+Daily editions live in content/YYYY-MM-DD.json. JSON files contain editorial content only; the Next.js components in `components/` own HTML, classes, layout, navigation, and accessibility markup. `lib/editions.mjs` loads and validates the unchanged version 1 content contract.
 
 The renderer schema remains version 1. The news-quality contract below additionally requires event identity, publication dates, and evidence metadata for every factual item.
 

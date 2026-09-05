@@ -27,10 +27,17 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version: 24
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
       - name: Refresh derived news index
         run: npm run news:index
       - name: Build static site
         run: npm run build
+      - name: Install browser for UI checks
+        run: npx playwright install --with-deps chromium
+      - name: Verify exported website
+        run: npm run test:browser
       - name: Setup Pages
         uses: actions/configure-pages@v6
       - name: Upload static site

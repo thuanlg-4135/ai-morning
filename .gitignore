@@ -1,2 +1,7 @@
 /dist/
 /.verification/
+/node_modules/
+/.next/
+/out/
+/public/assets/
+*.tsbuildinfo

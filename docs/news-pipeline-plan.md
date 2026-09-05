@@ -4,7 +4,7 @@
 
 Publish a useful Vietnamese AI briefing every morning without repeating the same event across sections or editions. Each published claim should be traceable to a timely source, and every story should give the reader enough context to understand what changed, why it matters, and what to do next.
 
-The static GitHub Pages renderer can remain. The missing layer is a repeatable pipeline before `content/YYYY-MM-DD.json` is built.
+The Next.js static export continues to publish on GitHub Pages. The missing layer is a repeatable pipeline before `content/YYYY-MM-DD.json` is built.
 
 ## Implemented foundation
 
@@ -82,7 +82,7 @@ compose one placement per event
       ↓
 quality gate
       ↓
-content/YYYY-MM-DD.json → existing static build → GitHub Pages
+content/YYYY-MM-DD.json → Next.js static export → GitHub Pages
 ```
 
 The current foundation uses only the source registry, generated ledger, daily content JSON, and validator/renderer paths below. If ingestion is justified later, keep raw inputs and editorial output separate:

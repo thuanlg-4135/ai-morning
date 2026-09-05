@@ -1,70 +1,81 @@
 # AI Morning
 
-AI Morning là bản tin AI hằng ngày bằng tiếng Việt, được build thành static site để xuất bản trên GitHub Pages. Nội dung từng edition nằm trong JSON; renderer chịu trách nhiệm kiểm tra dữ liệu, tạo trang bài viết, trang archive và sao chép assets sang bản xuất bản.
+Bản tin AI bằng tiếng Việt cho người làm phần mềm. Next.js App Router dựng sẵn các số báo từ JSON và xuất HTML tĩnh để chạy trên GitHub Pages.
 
-Trang đang xuất bản: [thuanlg-4135.github.io/ai-morning](https://thuanlg-4135.github.io/ai-morning/)
+Trang xuất bản: [thuanlg-4135.github.io/ai-morning](https://thuanlg-4135.github.io/ai-morning/)
 
-## Yêu cầu
+## Phát triển
 
-- Node.js 20 trở lên
+Cần Node.js 20.9 trở lên (CI dùng Node 24).
 
-Project hiện không cần cài dependency để build.
+```bash
+npm ci
+npm run dev
+```
 
-## Chạy build
+Mở **http://localhost:3000/ai-morning/**. Chỉnh giao diện trong `app/globals.css` và `components/`; nội dung giữ trong `content/YYYY-MM-DD.json`.
+
+## Build và xem bản xuất
 
 ```bash
 npm run build
+npm run preview
 ```
 
-Lệnh sẽ kiểm tra toàn bộ `content/*.json` rồi tạo static site trong `dist/`:
+Mở **http://localhost:8080/ai-morning/**. Lệnh preview phục vụ chính bản tĩnh trong `dist/`, bao gồm đường dẫn con của GitHub Pages.
 
-- `dist/index.html` — edition mới nhất
-- `dist/YYYY-MM-DD/index.html` — mỗi edition theo ngày
-- `dist/archive/index.html` — archive các edition
-- `dist/assets/` — CSS, JavaScript, SVG và font self-hosted
+Build chạy regression tests, kiểm tra chất lượng và ledger, tạo static export bằng Next.js, rồi kiểm tra nội dung, liên kết và assets của mọi trang. Build không tự sửa ledger.
 
-`dist/` là output sinh ra tự động và không được commit.
+- `/` — số mới nhất
+- `/YYYY-MM-DD/` — số báo theo ngày
+- `/archive/` — tìm số báo và xem bài đã lưu
+- `/en/`, `/en/YYYY-MM-DD/`, `/en/archive/` — chỉ các số có bản dịch đã duyệt
 
-## Thêm một edition
+Các đường dẫn trên nằm dưới `/ai-morning` theo mặc định. Nếu đổi sang domain gốc, đặt `NEXT_PUBLIC_BASE_PATH=''` khi chạy dev, build và preview. Không cần server Next.js ở môi trường xuất bản.
 
-1. Đọc quy trình nghiên cứu và chống trùng trong [AGENTS.md](AGENTS.md).
-2. Kiểm tra `data/news-index.json`, rồi nghiên cứu từ một candidate list trống; không sao chép edition cũ.
-3. Tạo `content/YYYY-MM-DD.json` với `edition_date` trùng tên file, event ID ổn định và nguồn trực tiếp.
-4. Chạy `npm run test:news`.
-5. Chạy `npm run news:index` để validate và cập nhật event ledger một cách tường minh.
-6. Chạy `npm run news:check` rồi `npm run build`.
-7. Kiểm tra `dist/index.html`, `dist/YYYY-MM-DD/index.html` và `dist/archive/index.html`.
+## Trải nghiệm đọc
 
-## News quality commands
+- Bố cục báo buổi sáng, font tiếng Việt tự host, giao diện sáng/tối/tự động.
+- Chế độ đọc tập trung, tăng cỡ chữ, thanh tiến độ đọc và chuyển động nhẹ với Motion.
+- Tôn trọng `prefers-reduced-motion`; nội dung và liên kết vẫn dùng được khi tắt JavaScript.
+- Lưu bài trên trình duyệt và tìm lại trong archive; không cần tài khoản.
+- Checklist developer theo phiên đọc; tải lại trang sẽ đặt lại checklist.
+- Mỗi sự kiện giữ nguồn, thời gian, bối cảnh và khuyến nghị riêng.
+
+## Thêm một số báo
+
+1. Đọc [AGENTS.md](AGENTS.md), kiểm tra `data/news-index.json`, nghiên cứu từ danh sách ứng viên trống.
+2. Tạo `content/YYYY-MM-DD.json` theo [schema](docs/content-schema.md).
+3. Chạy `npm run test:news`, `npm run news:index`, `npm run news:check`, rồi `npm run build`.
+4. Chạy `npm run preview`, kiểm tra trang mới nhất, trang theo ngày và archive.
+5. Commit JSON cùng ledger. Các lần cập nhật nội dung bình thường không cần sửa giao diện.
+
+## Kiểm tra giao diện
 
 ```bash
-npm run news:index  # validate content and regenerate data/news-index.json
-npm run news:check  # validate content and confirm the index is current
-npm run test:news   # node:test regression suite cho schema, freshness, dedupe và ledger
-npm run build       # test:news + news:check, then build the static site
+npx playwright install chromium
+npm run test:browser
+npm run format:check
 ```
 
-Build bị chặn nếu một sự kiện xuất hiện ở nhiều section, một URL canonical được dùng cho các event khác nhau, nội dung cũ quay lại mà không có material update, nguồn hoặc ngày xuất bản bị thiếu, hay copy chỉ là fragment. Độ dài bất thường và lặp theme biên tập là warning, không tự làm build fail.
+Chạy `npm run build` trước browser tests. Playwright kiểm tra mọi route ở 360, 412, 768, 1440 và 1920px; kiểm tra ảnh, lỗi trình duyệt, tìm kiếm, lưu bài, tùy chọn đọc, ngôn ngữ và chế độ không JavaScript. Ảnh kiểm tra được lưu trong `.verification/pages/`.
 
-Schema, enum và ví dụ nested fields được mô tả tại [docs/content-schema.md](docs/content-schema.md).
-
-## Cấu trúc repo
+## Cấu trúc
 
 ```text
-assets/       CSS, JavaScript, SVG và font local
-content/      Dữ liệu editorial cho từng ngày
-data/         Event ledger sinh tự động để chống trùng qua nhiều ngày
-docs/         Tài liệu schema nội dung
-scripts/      Static-site renderer, SVG visual renderer và các module news-quality tập trung
-templates/    HTML shell cho article và archive
+app/          Routes Next.js, layout theo ngôn ngữ và CSS
+components/   Giao diện báo; client components cho tương tác
+lib/          Đọc JSON, bản dịch và cấu hình đường dẫn
+assets/       Ảnh minh họa, SVG, font và giấy phép
+content/      Nội dung biên tập theo ngày
+data/         Event ledger chống trùng qua các số
+scripts/news/ Các kiểm tra schema, freshness, evidence và dedupe
+scripts/      CLI chất lượng, SVG renderer, chuẩn bị assets và preview
+tests/       Regression, static export và browser tests
 ```
 
-`scripts/build.mjs` xác thực schema trước khi ghi output. Nếu một trường bắt buộc, enum hoặc URL nguồn không hợp lệ, build sẽ dừng với lỗi chỉ rõ file/trường cần sửa.
+`public/assets/`, `.next/`, `out/` và `dist/` được tạo tự động, không commit. Font Be Vietnam Pro và Source Serif 4 cùng giấy phép nằm trong [assets/fonts](assets/fonts/README.md).
 
-## Typography và font
+## Xuất bản
 
-Site tự host các subset Latin và Vietnamese của Be Vietnam Pro (UI/headline) và Source Serif 4 (long-form reading). Không có request font CDN ở runtime. Chi tiết phiên bản, nguồn và giấy phép có trong [assets/fonts/README.md](assets/fonts/README.md).
-
-## Deploy
-
-Push lên nhánh `main` sẽ kích hoạt workflow [`.github/workflows/pages.yml`](.github/workflows/pages.yml): build bằng Node 24, upload `dist/` và deploy lên GitHub Pages.
+Push lên `main` kích hoạt [GitHub Actions](.github/workflows/pages.yml): `npm ci`, kiểm tra dữ liệu, build và upload `dist/` lên Pages. Chi tiết ở [docs/publishing.md](docs/publishing.md).
