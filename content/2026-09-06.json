@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "edition_date": "2026-09-06",
+  "locale": "vi-VN",
+  "edition_type": "daily_ai_catchup",
+  "edition_mode": "QUIET",
+  "headline": "Coding agent bắt đầu chọn cả workflow, không chỉ chọn model",
+  "dek": "GitHub đưa HydraFusion vào research preview để tự chọn cách phối hợp nhiều model theo từng coding task. SGLang 0.5.19 và Bun 1.4.2 cũng cho thấy phần runtime đang được tối ưu ở nơi dễ đo hơn: throughput, latency và lỗi hồi quy.",
+  "meta": {
+    "primary_scan_hours": 24,
+    "context_window_hours": 72,
+    "generated_at": "2026-09-06T09:53:00+07:00",
+    "window_started_at": "2026-09-05T07:00:00+07:00",
+    "cutoff_at": "2026-09-06T07:00:00+07:00",
+    "reading_minutes": 5,
+    "source_policy": "official-first"
+  },
+  "hero_visual": {
+    "kind": "editorial",
+    "key": "model-harness-environment-verification",
+    "caption": "Routing tốt hơn chỉ có giá trị khi toàn bộ coding task đạt chất lượng với chi phí và latency hợp lý."
+  },
+  "brief": [
+    {
+      "event_id": "oven-sh-bun-v1-4-2",
+      "event_signature": {
+        "organization": "oven-sh",
+        "product": "bun",
+        "action": "release",
+        "artifact": "v1-4-2"
+      },
+      "published_at": "2026-09-05T05:55:48Z",
+      "freshness": "NEW_TODAY",
+      "title": "Bun 1.4.2 sửa hai regression từ 1.4.1",
+      "text": "Bun 1.4.2 sửa lỗi `bun build` có thể đổi tên biến thành code không hợp lệ trong ứng dụng dùng Elysia, đồng thời vá memory leak liên quan `AsyncLocalStorage`. Bản này cũng sửa thứ tự sự kiện `worker_threads`, một số crash JIT/GC và lỗi lockfile của `bun install`. Nếu production vừa lên 1.4.1, ưu tiên chạy lại build và workload dùng async context trước khi coi đây là một patch bình thường.",
+      "sources": [
+        {
+          "label": "Bun — Bun v1.4.2",
+          "url": "https://github.com/oven-sh/bun/releases/tag/bun-v1.4.2",
+          "type": "official",
+          "published_at": "2026-09-05T05:55:48Z"
+        }
+      ]
+    }
+  ],
+  "trends": [
+    {
+      "event_id": "github-copilot-hydrafusion-research-preview",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot-hydrafusion",
+        "action": "preview",
+        "artifact": "multi-model-runtime-orchestration"
+      },
+      "published_at": "2026-09-04",
+      "freshness": "CONTEXT_72H",
+      "strength": "EARLY_SIGNAL",
+      "importance": "LEAD",
+      "editorial_theme": "multi-model-orchestration",
+      "editorial_angle": "workflow-routing-vs-model-routing",
+      "title": "HydraFusion chọn cả cách giải task, không chỉ chọn model",
+      "paragraphs": [
+        "GitHub mở Project HydraFusion dưới dạng research preview trong Copilot CLI. Thay vì chỉ chọn một model, runtime có thể dùng ba pattern: chạy một model, cho model rẻ hơn làm trước rồi cascade lên model mạnh hơn, hoặc để một model khác review bản nháp trước khi model đầu sửa lại. Người dùng bật `/experimental`, chọn HydraFusion trong `/model`, còn chi phí vẫn tính theo token của các model thực tế được gọi.",
+        "Điểm đáng thử nằm ở việc routing chuyển từ câu hỏi “model nào?” sang “workflow nào cho task này?”. GitHub công bố TerminalBench 2.1 tăng 4,9 điểm phần trăm chất lượng so với Opus 5 với chi phí ước tính thấp hơn 67%; DeepSWE thấp hơn 1,5 điểm nhưng giảm 36% chi phí. Đây là benchmark offline do GitHub tự chạy, nên chưa chứng minh cùng lợi ích trên repository, test suite và latency của team bạn.",
+        "Multi-model orchestration cũng thêm failure mode mới: model router chọn sai nhánh, critic tạo thêm latency, cascade làm chi phí khó dự đoán hoặc một leg timeout giữa chừng. Nếu thử HydraFusion, đo toàn bộ task thay vì từng response: pass rate theo acceptance criteria, wall-clock, tổng token, số lần escalation và số lần người phải sửa tiếp. Chỉ giữ routing phức tạp nếu nó cải thiện kết quả cuối đủ rõ để bù phần khó quan sát hơn."
+      ],
+      "pullquote": "Router model chỉ đáng giữ khi chi phí của toàn workflow giảm mà chất lượng task không tụt.",
+      "action": "Chọn 10 coding task một lượt có test rõ, chạy HydraFusion và model mặc định với cùng acceptance criteria; ghi pass rate, wall-clock, tổng token và số lần escalation.",
+      "sources": [
+        {
+          "label": "GitHub — Project HydraFusion: Frontier quality via multi-model orchestration",
+          "url": "https://github.blog/ai-and-ml/github-copilot/project-hydrafusion-frontier-quality-via-multi-model-orchestration/",
+          "type": "official",
+          "published_at": "2026-09-04"
+        }
+      ]
+    },
+    {
+      "event_id": "sgl-project-sglang-v0-5-19",
+      "event_signature": {
+        "organization": "sgl-project",
+        "product": "sglang",
+        "action": "release",
+        "artifact": "v0-5-19"
+      },
+      "published_at": "2026-09-05T02:27:42Z",
+      "freshness": "NEW_TODAY",
+      "strength": "ACCELERATING",
+      "importance": "SECONDARY",
+      "editorial_theme": "inference-runtime",
+      "editorial_angle": "throughput-by-workload-shape",
+      "title": "SGLang 0.5.19 tối ưu inference theo đúng hình dạng workload",
+      "paragraphs": [
+        "SGLang 0.5.19 thêm beam search, DeepEP v2, LayerNorm sequence parallelism và hỗ trợ nhiều model mới như Qwen3.8, Granite 4.2 và Ling 3.0. Release cũng thay unified radix tree thành cache mặc định cho mọi model và mở thêm đường tối ưu cho NVIDIA Blackwell lẫn AMD MI300/MI355.",
+        "Các con số đáng chú ý đều gắn với workload cụ thể. SGLang báo LayerNorm sequence parallelism giảm thời gian prefill 3,5% trên Qwen3-8B/H100 và 5,6% trên B200; W4A8 MoE cho DeepSeek-V4-Flash tăng khoảng 12% output throughput trên Hopper. Với AMD MI355X, Lean attention được báo cáo tăng throughput tối đa 1,52 lần và giảm inter-token latency tối đa 3,62 lần. Những số này không nên được ghép thành một tuyên bố “0.5.19 nhanh hơn” cho mọi deployment.",
+        "Nếu đang vận hành inference server, release này đáng chú ý vì nhiều optimization chỉ có lợi khi model, GPU, context length và concurrency khớp đúng điều kiện. Benchmark nên giữ nguyên model, quantization, batch/concurrency và traffic shape của production rồi thay riêng runtime. Một uplift lớn trên B200 hoặc MI355X không nói nhiều về cluster H100 đang chạy workload ngắn."
+      ],
+      "action": "Benchmark 0.5.19 trên một traffic profile production đã ghi lại; giữ nguyên model, quantization và concurrency, rồi so throughput, TTFT, TPOT, GPU memory và error rate.",
+      "sources": [
+        {
+          "label": "SGLang — v0.5.19 release notes",
+          "url": "https://github.com/sgl-project/sglang/releases/tag/v0.5.19",
+          "type": "official",
+          "published_at": "2026-09-05T02:27:42Z"
+        }
+      ]
+    }
+  ],
+  "releases": [
+    {
+      "event_id": "microsoft-playwright-v1-63-0",
+      "event_signature": {
+        "organization": "microsoft",
+        "product": "playwright",
+        "action": "release",
+        "artifact": "v1-63-0"
+      },
+      "published_at": "2026-09-04T22:40:31Z",
+      "product": "Playwright",
+      "feature": "Test locks, visible locators và trace giàu dữ liệu hơn",
+      "freshness": "CONTEXT_72H",
+      "status": "GA",
+      "summary": "Playwright 1.63 thêm named test locks để serialize test dùng chung resource, locator chỉ khớp phần tử visible, tìm locator xuyên frame subtree và thêm subtitle/params cho test steps. Trace có thể lưu DOM, ARIA và screen snapshot trên từng action.",
+      "who_gets_it": "Team dùng Playwright Test hoặc Playwright API; một số thay đổi liên quan trực tiếp tới test runner, trace và locator APIs.",
+      "why_it_matters": "Test lock giải quyết một nhóm flaky test thường bị xử lý bằng serial suite hoặc worker=1, trong khi phần còn lại vẫn có thể chạy song song. Bản này cũng ngừng hỗ trợ Ubuntu 20.04 và dừng cập nhật các package component-testing experimental cũ.",
+      "verdict": "TRY_NOW",
+      "verdict_note": "Thử named lock trên một resource đang gây flaky test và kiểm tra CI image còn dùng Ubuntu 20.04 hay package component-testing experimental trước khi nâng version toàn bộ suite.",
+      "sources": [
+        {
+          "label": "Microsoft Playwright — v1.63.0",
+          "url": "https://github.com/microsoft/playwright/releases/tag/v1.63.0",
+          "type": "official",
+          "published_at": "2026-09-04T22:40:31Z"
+        }
+      ]
+    }
+  ],
+  "developer_memo": {
+    "title": "Có cần đổi workflow hôm nay không?",
+    "direct_answer": "Chưa cần thay đổi workflow hiện tại.",
+    "actions": [
+      "Benchmark HydraFusion ở cấp task hoàn chỉnh nếu Copilot CLI đang nằm trong workflow của team.",
+      "Chạy SGLang 0.5.19 với traffic profile production trước khi bật optimization mới.",
+      "Nâng Bun sớm nếu vừa lên 1.4.1 và ứng dụng dùng Elysia hoặc AsyncLocalStorage.",
+      "Thử Playwright test locks trên một shared resource đang gây flaky test."
+    ],
+    "avoid": [
+      "Đừng cộng các benchmark từ GPU và workload khác nhau rồi kết luận runtime mới nhanh hơn theo một tỷ lệ chung.",
+      "Đừng thêm multi-model routing nếu chưa đo escalation, latency và tổng chi phí của toàn task.",
+      "Đừng nâng Playwright mà bỏ qua Ubuntu 20.04 hoặc component-testing experimental đang còn trong CI."
+    ]
+  },
+  "radar": [],
+  "takeaway": "Đo routing và runtime bằng workload của chính team. Hôm nay có nhiều tối ưu đáng thử, nhưng chưa có lý do để đổi workflow chỉ từ benchmark của vendor."
+}
