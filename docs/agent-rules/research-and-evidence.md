@@ -12,6 +12,10 @@ Use these rules whenever a task researches, drafts, verifies, or materially chan
 
 Published edition files are durable input to the generated event ledger. Do not prune or rename old editions as routine cleanup. If archival is required, preserve their event signatures in an explicit migration.
 
+## Reader relevance
+
+Read `practical-learning.md` on every pass. Relate developed stories to concrete developer work where supported, and scan 3D animation, video and game-development sources. Older learning resources belong in the evergreen collection, not the news freshness window.
+
 ## Research broadly
 
 Use live web research for every edition. Do not rely on model memory, search-result snippets, another newsletter, or a single vendor feed.

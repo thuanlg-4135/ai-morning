@@ -1,0 +1,333 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-09-06",
+  "note": "Bài thực hành do AI Morning biên soạn, dựa trên tài liệu tham khảo. Thời gian là ước tính; chưa phải báo cáo chạy thử toàn bộ bài trên từng phiên bản công cụ.",
+  "articles": [
+    {
+      "slug": "playwright-tu-ticket-den-test",
+      "track": "work",
+      "title": "Từ một ticket đến bài test Playwright đáng tin",
+      "summary": "Một luồng lưu biểu mẫu là đủ để luyện cách đọc yêu cầu, viết test và đưa bằng chứng vào pull request.",
+      "practice_time": "45–60 phút",
+      "tools": "TypeScript · Playwright",
+      "setup": "Dùng một ứng dụng mẫu hoặc môi trường test của team. Bài tập giả định có biểu mẫu tạo lịch gồm người nhận, thời gian và nút Lưu.",
+      "work_connection": "Ví dụ trong công ty: một ticket yêu cầu người dùng tạo lịch gửi thông báo. Developer và QA cần thống nhất thế nào là lưu thành công, thay vì chỉ kiểm tra rằng nút Lưu bấm được.",
+      "steps": [
+        {
+          "title": "Chốt hành vi trước khi mở editor",
+          "text": "Viết ba tình huống: dữ liệu hợp lệ tạo được lịch; thiếu người nhận bị báo lỗi; thời gian đã qua bị từ chối. Với từng tình huống, ghi kết quả người dùng nhìn thấy. Đây là tiêu chí bài tập đề xuất; hãy đổi theo yêu cầu đã thống nhất của sản phẩm."
+        },
+        {
+          "title": "Chuẩn bị dữ liệu độc lập",
+          "text": "Tạo người nhận và lịch thử riêng cho từng test. Không dùng kết quả test trước làm đầu vào test sau. Nếu ứng dụng gọi dịch vụ gửi thông báo bên ngoài, dùng phản hồi giả lập cho dịch vụ đó; giữ phần tạo lịch do ứng dụng của bạn xử lý."
+        },
+        {
+          "title": "Bắt phần tử theo cách người dùng nhận biết",
+          "text": "Dùng getByLabel cho ô nhập và getByRole cho nút. Sau thao tác lưu, chờ thông báo hoặc dòng lịch xuất hiện bằng assertion có cơ chế chờ. Tránh gắn test vào một chuỗi class CSS và tránh thêm khoảng ngủ cố định chỉ để test xanh."
+        },
+        {
+          "title": "Kiểm tra kết quả cuối",
+          "text": "Đối với tình huống thành công, tải lại trang rồi kiểm tra lịch vừa tạo vẫn xuất hiện. Đối với lỗi, kiểm tra nội dung báo lỗi và bảo đảm không có lịch mới. Nếu ứng dụng lưu bất đồng bộ, thống nhất dấu hiệu hoàn tất trước khi viết assertion."
+        },
+        {
+          "title": "Đọc trace khi test lỗi",
+          "text": "Chạy một lần với tùy chọn --trace on và mở báo cáo. Xem thao tác cuối, ảnh DOM và request liên quan. Phân biệt selector sai, dữ liệu thiếu và lỗi ứng dụng trước khi tăng timeout. Trace có thể chứa dữ liệu phiên test; chỉ đính kèm bản dùng dữ liệu mẫu."
+        },
+        {
+          "title": "Bàn giao một PR nhỏ",
+          "text": "Kèm ba tình huống đã kiểm tra, cách chạy và một bằng chứng khi lỗi. Nhờ QA rà xem còn thiếu điều kiện nghiệp vụ nào. Chạy lại sau khi đổi tên class CSS để kiểm tra test có đang phụ thuộc vào chi tiết trình bày không."
+        }
+      ],
+      "done": [
+        "Ba tình huống chạy độc lập, không cần thứ tự cố định.",
+        "Tải lại trang vẫn thấy lịch đã lưu.",
+        "PR giải thích được test bảo vệ hành vi nào."
+      ],
+      "pitfall": "Đừng dùng retry để che lỗi dữ liệu hoặc tình huống chưa rõ. Một bài test luôn xanh nhưng không kiểm tra kết quả lưu sẽ tạo cảm giác an tâm sai.",
+      "ai_prompt": "Đây là AC của ticket và test hiện tại. Hãy chỉ ra hành vi còn thiếu, đề xuất tối đa ba tình huống và giải thích vì sao chúng bảo vệ người dùng. Không đổi implementation hoặc thêm framework.",
+      "sources": [
+        {
+          "label": "Playwright: kiểm tra hành vi và cô lập test",
+          "url": "https://playwright.dev/docs/best-practices"
+        },
+        {
+          "label": "Playwright: đọc trace",
+          "url": "https://playwright.dev/docs/trace-viewer-intro"
+        }
+      ]
+    },
+    {
+      "slug": "dotnet-kiem-tra-api",
+      "track": "work",
+      "title": "Kiểm tra API .NET trước khi giao cho frontend",
+      "summary": "Dùng một endpoint nhỏ để luyện kiểm tra request, phản hồi và lỗi nghiệp vụ qua pipeline HTTP.",
+      "practice_time": "60–90 phút",
+      "tools": "C# · ASP.NET Core · xUnit",
+      "setup": "Có project ASP.NET Core và SDK phù hợp với project. Dùng database test riêng nếu kiểm tra có ghi dữ liệu. Ví dụ bên dưới giả định API tạo lịch, không mô tả hệ thống cụ thể của công ty bạn.",
+      "work_connection": "Khi backend giao API cho frontend, một status 200 chưa đủ. Frontend còn cần cấu trúc phản hồi ổn định, thông báo lỗi đọc được và hành vi rõ ràng khi gửi dữ liệu sai.",
+      "steps": [
+        {
+          "title": "Ghi hợp đồng của endpoint",
+          "text": "Chốt method, đường dẫn, trường bắt buộc và phản hồi thành công. Ví dụ: POST /schedules nhận recipientId và scheduledAt, trả về id mới. Thống nhất cách báo lỗi trước khi viết test; không tự áp đặt 201 hay 400 nếu hợp đồng hiện tại dùng quy ước khác."
+        },
+        {
+          "title": "Tạo test host",
+          "text": "Thêm project test, tham chiếu ứng dụng và package Microsoft.AspNetCore.Mvc.Testing tương thích. WebApplicationFactory tạo host phục vụ kiểm thử; CreateClient tạo client gửi request vào ứng dụng. Làm theo phần thiết lập của tài liệu Microsoft bên dưới, gồm cách để test truy cập entry point khi dùng top-level statements."
+        },
+        {
+          "title": "Tách cấu hình test",
+          "text": "Thay dịch vụ gửi thông báo bằng một bản giả lập để không gửi ra ngoài. Nếu cần kiểm tra truy vấn hay ràng buộc dữ liệu, dùng cùng loại database với môi trường triển khai nhưng một instance hoặc database dành riêng cho test. Lưu cấu hình test riêng, không lấy chuỗi kết nối production."
+        },
+        {
+          "title": "Viết ba tình huống có ý nghĩa",
+          "text": "Gửi dữ liệu hợp lệ và đọc id phản hồi; gửi thiếu trường bắt buộc và đọc lỗi; đọc lại bản ghi vừa tạo để xác nhận lưu thành công. Nếu endpoint có phân quyền, bổ sung trường hợp không đăng nhập hoặc sai quyền theo hợp đồng của team."
+        },
+        {
+          "title": "Đặt lại trạng thái giữa các test",
+          "text": "Mỗi test tự chuẩn bị dữ liệu và tự dọn dữ liệu nó sở hữu. Tránh dùng chung một id cố định giữa nhiều worker. Chạy test riêng và chạy cùng bộ để phát hiện phụ thuộc thứ tự."
+        },
+        {
+          "title": "Đưa kết quả vào cuộc trao đổi với frontend",
+          "text": "Gửi request và response mẫu đã bỏ dữ liệu nhạy cảm, cùng các lỗi đã thống nhất. Nêu rõ test chạy trên host kiểm thử, chưa chứng minh cấu hình reverse proxy, mạng hay quyền trên môi trường triển khai."
+        }
+      ],
+      "done": [
+        "Một request đi qua pipeline HTTP của ứng dụng trong test.",
+        "Trường hợp hợp lệ và dữ liệu thiếu được kiểm tra theo hợp đồng.",
+        "Frontend có ví dụ phản hồi thành công và lỗi để triển khai."
+      ],
+      "pitfall": "Thay database bằng bộ nhớ có thể bỏ sót khác biệt về SQL, transaction hoặc constraint. Chỉ dùng cách thay thế đó khi mục tiêu test không phụ thuộc hành vi database.",
+      "ai_prompt": "Với hợp đồng API này, hãy tìm những điểm frontend có thể hiểu khác backend. Đề xuất test tích hợp cho các điểm đó và phân biệt việc nào cần database cùng loại với production.",
+      "sources": [
+        {
+          "label": "Microsoft: integration tests trong ASP.NET Core",
+          "url": "https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-10.0"
+        },
+        {
+          "label": "Microsoft: kiểm thử Minimal API",
+          "url": "https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis/test-min-api?view=aspnetcore-10.0"
+        }
+      ]
+    },
+    {
+      "slug": "blender-hoat-hinh-dau-tien",
+      "track": "animation",
+      "title": "Làm đoạn hoạt hình 3D đầu tiên: quả bóng nảy",
+      "summary": "Bắt đầu bằng một cảnh ngắn để hiểu thời gian, chuyển động và cách xuất thành phẩm trước khi dựng nhân vật.",
+      "practice_time": "60–90 phút, chưa tính thời gian render",
+      "tools": "Blender · keyframe",
+      "setup": "Cài Blender từ trang chính thức. Dùng một quả cầu, mặt phẳng và camera có sẵn; chưa cần mua model, plugin hay khóa học. Các mốc frame dưới đây là bài tập do AI Morning đề xuất.",
+      "work_connection": "Ví dụ ứng dụng: làm hình động giải thích trạng thái chờ trong một bản demo. Tư duy chia chuyển động thành trạng thái và kiểm tra từng mốc cũng hữu ích khi làm animation cho UI hoặc game.",
+      "steps": [
+        {
+          "title": "Giới hạn cảnh",
+          "text": "Tạo một file mới rồi lưu ngay. Dùng mặt phẳng làm sàn, thêm một UV Sphere và đặt camera nhìn thấy cả sàn lẫn khoảng rơi. Chọn màu đơn giản, ánh sáng đủ thấy bóng. Mục tiêu buổi này là chuyển động đọc được, chưa phải chất liệu đẹp."
+        },
+        {
+          "title": "Đặt ba mốc chuyển động",
+          "text": "Trong Timeline, đặt khoảng frame 1–48, tốc độ 24 fps. Ở frame 1 đặt bóng cao; frame 12 đặt bóng sát sàn; frame 24 đưa bóng trở lại độ cao ban đầu. Tại mỗi mốc, chèn keyframe cho Location bằng menu chuột phải trên thuộc tính vị trí. Nếu bán kính bóng là 1 và sàn ở Z=0, tâm bóng ở Z=1 là điểm chạm sàn."
+        },
+        {
+          "title": "Làm thêm một nhịp nảy",
+          "text": "Tạo điểm chạm tiếp ở frame 36 và điểm cao ở frame 48. Phát thử rồi quan sát thời gian đi xuống và bật lên. Keyframe lưu giá trị ở từng mốc; Blender nội suy các frame giữa chúng. Đây là lý do chỉ vài mốc cũng tạo được chuyển động liên tục."
+        },
+        {
+          "title": "Chỉnh cảm giác nặng nhẹ",
+          "text": "Mở Graph Editor, xem đường cong Location Z. Thử thay đổi tay nắm hoặc kiểu nội suy quanh điểm chạm để cú bật rõ hơn. So hai bản: một bản chuyển động đều và một bản có gia tốc. Lưu file riêng trước khi thử để dễ quay lại."
+        },
+        {
+          "title": "Thêm độ đàn hồi vừa đủ",
+          "text": "Chèn keyframe Scale ở điểm chạm để bóng hơi bẹt theo trục Z và rộng ra theo X/Y, rồi trở về tỉ lệ ban đầu ở mốc kế tiếp. Kiểm tra lại Location Z để bóng không xuyên sàn. Không cần mô phỏng vật lý cho bài này; điều khiển bằng keyframe giúp thấy rõ quan hệ giữa thay đổi và kết quả."
+        },
+        {
+          "title": "Xuất thử một đoạn nhỏ",
+          "text": "Render một frame để kiểm tra camera trước, sau đó xuất chuỗi PNG của toàn đoạn ở độ phân giải thấp. Xem hướng dẫn ghép video ở bài tiếp theo. Thử tăng chất lượng chỉ sau khi quỹ đạo, điểm chạm và bố cục đã ổn."
+        }
+      ],
+      "done": [
+        "Có file .blend chứa chuyển động từ frame 1 đến 48.",
+        "Bóng chạm sàn mà không chìm xuống dưới.",
+        "Có chuỗi ảnh xem được để ghép thành đoạn video."
+      ],
+      "pitfall": "Đừng bắt đầu bằng tóc, quần áo và một nhân vật hoàn chỉnh. Một quả bóng nảy giúp luyện timing nhanh hơn, và dễ biết lỗi đến từ đâu.",
+      "ai_prompt": "Tôi đang làm bài quả bóng nảy trong Blender. Đây là các mốc frame, vị trí và ảnh Graph Editor. Hãy chỉ ra nguyên nhân chuyển động bị trôi hoặc chạm sàn thiếu lực; đề xuất một thay đổi mỗi lần để tôi tự quan sát.",
+      "sources": [
+        {
+          "label": "Blender: keyframe và đường cong chuyển động",
+          "url": "https://docs.blender.org/manual/en/latest/animation/keyframes/introduction.html"
+        },
+        {
+          "label": "Blender: xuất animation",
+          "url": "https://docs.blender.org/manual/en/latest/render/output/animation.html"
+        }
+      ]
+    },
+    {
+      "slug": "blender-dung-video-demo",
+      "track": "animation",
+      "title": "Ghép cảnh 3D thành video demo 15 giây",
+      "summary": "Từ chuỗi ảnh render đến một clip có mở đầu, chuyển động chính và khung kết thúc.",
+      "practice_time": "45–75 phút, chưa tính thời gian render",
+      "tools": "Blender · Video Sequencer",
+      "setup": "Chuẩn bị chuỗi PNG từ bài quả bóng nảy hoặc cảnh 3D của bạn. Bài tập không cần nhạc; chỉ thêm âm thanh khi đã có file được phép sử dụng.",
+      "work_connection": "Ví dụ trong công ty: một video demo ngắn có thể giúp PM, QA và developer cùng hiểu một chuyển động hoặc luồng thao tác. Kỹ năng chia shot, đặt tên file và xuất phiên bản cũng dùng được cho video giới thiệu sản phẩm.",
+      "steps": [
+        {
+          "title": "Viết một ý cho clip",
+          "text": "Chọn thông điệp cụ thể, chẳng hạn “trạng thái hoàn tất được thể hiện bằng một cú nảy”. Phác ba đoạn: mở đầu 3 giây, chuyển động 9 giây, kết thúc 3 giây. Đây là kịch bản tập luyện; thay bằng nhu cầu người xem khi làm video cho sản phẩm."
+        },
+        {
+          "title": "Render ra chuỗi ảnh",
+          "text": "Trong Output Properties, chọn thư mục riêng và PNG. Xuất một đoạn ngắn trước để ước lượng thời gian. Chuỗi ảnh cho phép giữ các frame đã render khi quá trình bị gián đoạn; sau đó có thể ghép lại thành video. Không xóa file .blend hoặc chuỗi nguồn sau khi xuất clip."
+        },
+        {
+          "title": "Tạo project dựng video",
+          "text": "Mở một file Blender khác và chuyển sang workspace Video Editing. Trong Sequencer, thêm Image/Sequence rồi chọn dãy ảnh đúng thứ tự. Đặt fps của project dựng khớp với cảnh render để tránh chuyển động nhanh hoặc chậm ngoài ý muốn."
+        },
+        {
+          "title": "Sắp xếp các đoạn",
+          "text": "Đặt các strip liên tiếp trên timeline. Nếu chỉ có cảnh bóng nảy 2 giây từ bài trước, lặp có chủ đích bốn lần rồi giữ một frame thêm 1 giây để đủ phần chuyển động 9 giây. Dùng ảnh tĩnh cho phần mở đầu và kết thúc, mỗi phần 3 giây. Kiểm tra khung đầu và cuối của mỗi đoạn. Video Sequencer cho phép ghép ảnh, video và âm thanh; với bài đầu tiên chỉ cần cắt thẳng và một tiêu đề ngắn."
+        },
+        {
+          "title": "Kiểm tra thời lượng",
+          "text": "Ở 24 fps, 15 giây tương ứng 360 frame. Đặt khoảng xuất vừa với nội dung. Phát lại toàn bộ, kiểm tra khoảng đen, đoạn bị lặp và chữ có đủ thời gian đọc. Nếu dùng âm thanh, nghe lại đoạn chuyển cảnh bằng tai nghe."
+        },
+        {
+          "title": "Xuất và xem như người nhận",
+          "text": "Chọn FFmpeg Video và cấu hình MPEG-4/H.264 khi có trong bản Blender đang dùng, rồi xuất một file .mp4. Mở file ngoài Blender và thử trên điện thoại. Lưu bản nguồn, bản preview nhẹ và bản giao cuối bằng tên phân biệt được."
+        }
+      ],
+      "done": [
+        "Một file MP4 dài khoảng 15 giây, mở được ngoài Blender.",
+        "Không có frame đen ngoài ý muốn hoặc đoạn im hình thừa.",
+        "Bản nguồn và thành phẩm được lưu riêng."
+      ],
+      "pitfall": "Đừng tăng độ phân giải ngay khi clip chưa rõ ý. Render thử chất lượng thấp giúp sửa nhịp và camera mà không mất cả buổi chờ.",
+      "ai_prompt": "Đây là mục đích clip và mô tả ba shot. Hãy đề xuất chỗ cắt để người xem hiểu trong 15 giây. Giữ một thông điệp, không thêm hiệu ứng không phục vụ việc giải thích.",
+      "sources": [
+        {
+          "label": "Blender: render thành chuỗi ảnh",
+          "url": "https://docs.blender.org/manual/en/latest/render/output/animation.html"
+        },
+        {
+          "label": "Blender: Video Sequencer",
+          "url": "https://docs.blender.org/manual/en/latest/editors/video_sequencer/introduction.html"
+        }
+      ]
+    },
+    {
+      "slug": "godot-game-2d-dau-tien",
+      "track": "games",
+      "title": "Làm game 2D đầu tiên với Godot: chơi, thua, chơi lại",
+      "summary": "Một game né vật cản giúp developer học vòng lặp game mà không phải bắt đầu từ đồ họa phức tạp.",
+      "practice_time": "2–3 buổi, mỗi buổi 60–90 phút",
+      "tools": "Godot · GDScript hoặc C#",
+      "setup": "Cài Godot và đọc mục Step by step nếu chưa biết scene, node và signal. Chọn một ngôn ngữ cho cả bài. Nếu dùng C#, đọc yêu cầu bản .NET và SDK trong tài liệu Godot.",
+      "work_connection": "Kỹ năng liên quan công việc gồm quản lý trạng thái, tách thành phần và xử lý sự kiện. Trong game, nút Chơi lại cũng giống một luồng reset form: nếu sót trạng thái cũ, lần chạy tiếp theo sẽ lỗi.",
+      "steps": [
+        {
+          "title": "Chọn thành phẩm nhỏ",
+          "text": "Theo tutorial Dodge the Creeps chính thức ở cuối bài. Game chỉ cần di chuyển, né kẻ địch, đếm điểm và chơi lại. Dùng asset đi kèm tutorial để tập trung vào code. Đây là dự án học cá nhân, chưa cần đăng nhập, cửa hàng hay bảng xếp hạng online."
+        },
+        {
+          "title": "Hoàn thành player trước",
+          "text": "Làm theo phần Creating the player scene và Coding the player. Chạy riêng scene của player để kiểm tra hướng di chuyển và giới hạn màn hình. Scene là một cây node có thể lưu và dùng lại; hãy liên hệ nó với một component có cấu trúc bên trong."
+        },
+        {
+          "title": "Thêm kẻ địch và vòng chơi",
+          "text": "Làm tiếp phần enemy và main game scene. Tạo kẻ địch theo thời gian, cho va chạm kết thúc lượt chơi. Signal giúp đối tượng báo một sự kiện mà không phải tự điều khiển toàn bộ màn hình. Đừng để player vừa xử lý input vừa ôm cả điểm số và màn hình menu."
+        },
+        {
+          "title": "Dùng điểm số để kiểm tra trạng thái",
+          "text": "Hoàn thành HUD, tức lớp giao diện hiển thị trên game. Theo dõi trạng thái chưa bắt đầu, đang chơi và đã thua. Kiểm tra điểm chỉ tăng lúc chơi, không tiếp tục tăng sau khi thua."
+        },
+        {
+          "title": "Thử chơi lại năm lần",
+          "text": "Sau mỗi lần thua, bắt đầu lượt mới mà không đóng ứng dụng. Kiểm tra kẻ địch cũ đã hết, điểm về đầu và timer không bị chạy nhân đôi. Đây là bài kiểm tra đề xuất để phát hiện trạng thái còn sót, không phải benchmark của Godot."
+        },
+        {
+          "title": "Cho một người khác chơi",
+          "text": "Xuất một bản desktop trước hoặc làm theo hướng dẫn web export nếu dùng GDScript. Tài liệu Godot 4 hiện nêu C# chưa xuất được lên web; chọn đích phát hành trước để không phải đổi ngôn ngữ muộn. Ghi một vấn đề người chơi gặp và sửa đúng vấn đề đó."
+        }
+      ],
+      "done": [
+        "Có lượt chơi hoàn chỉnh, điều kiện thua và nút chơi lại.",
+        "Reset năm lần không nhân đôi timer hoặc kẻ địch.",
+        "Người khác chạy được bản xuất và hiểu cách chơi."
+      ],
+      "pitfall": "Đừng chuyển sang 3D vì giao diện đầu tiên chưa đẹp. Hoàn thành vòng chơi trước giúp xác định phần nào vui và phần nào khó hiểu.",
+      "ai_prompt": "Đây là cây scene và code reset game của tôi. Hãy rà trạng thái còn sót khi chơi lại. Giữ cấu trúc hiện tại; giải thích từng lỗi bằng một cách tái hiện cụ thể.",
+      "sources": [
+        {
+          "label": "Godot: Your first 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Godot: kiến thức nền",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "Godot: dùng C#",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/scripting/c_sharp/c_sharp_basics.html"
+        },
+        {
+          "label": "Godot: giới hạn web export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_web.html"
+        }
+      ]
+    },
+    {
+      "slug": "godot-game-3d-dau-tien",
+      "track": "games",
+      "title": "Từ game 2D sang 3D: thêm không gian, giữ scope nhỏ",
+      "summary": "Luyện camera, va chạm và nhân vật nhảy bằng một màn chơi đơn giản trước khi dựng thế giới lớn.",
+      "practice_time": "3–4 buổi, mỗi buổi 60–90 phút",
+      "tools": "Godot · 3D · animation",
+      "setup": "Nên hoàn thành bài game 2D trước. Dùng bộ asset của tutorial Squash the Creeps chính thức; không cần tự tạo nhân vật để bắt đầu học code 3D.",
+      "work_connection": "Tư duy kiểm tra tương tác giữa các thành phần giống khi tích hợp frontend và backend: từng phần chạy riêng chưa bảo đảm toàn luồng chạy đúng. Trong 3D, camera, chuyển động và va chạm phải được kiểm tra cùng nhau.",
+      "steps": [
+        {
+          "title": "Dựng vùng chơi có thể quan sát",
+          "text": "Theo phần Setting up the game area. Dùng sàn đơn giản và camera thấy rõ vùng chơi. Chạy thử ngay sau khi có nhân vật, trước khi thêm kẻ địch. Kiểm tra người chơi có nhận ra hướng di chuyển từ góc camera đã chọn không."
+        },
+        {
+          "title": "Làm input và chuyển động",
+          "text": "Theo hai phần Player scene and input actions và Moving the player with code. Phân biệt vị trí trong thế giới với hướng nhìn trên màn hình. Di chuyển chậm và quan sát từng trục để biết input đang tác động theo hệ tọa độ nào."
+        },
+        {
+          "title": "Thêm nhảy và va chạm",
+          "text": "Làm phần Jumping and squashing monsters sau khi đã tạo mob. Kiểm tra tiếp đất, va ngang và nhảy lên kẻ địch là ba tình huống khác nhau. Tutorial dùng lớp va chạm và nhóm đối tượng để phân biệt các tương tác; đọc cấu hình này cùng với code xử lý."
+        },
+        {
+          "title": "Ghép animation vào trạng thái",
+          "text": "Hoàn thành phần Character animation. Chuyển động nhìn thấy cần phù hợp với trạng thái đứng, di chuyển hoặc nhảy. Khi nhân vật trượt chân, kiểm tra tốc độ animation và tốc độ di chuyển trước khi thay model."
+        },
+        {
+          "title": "Hoàn thiện điểm và chơi lại",
+          "text": "Làm Score and replay rồi kiểm tra lượt mới có xóa trạng thái của lượt cũ. Thử chạy tới rìa sân, đổi hướng khi đang nhảy và thua ngay sau khi bắt đầu. Ghi lại kết quả mong đợi để sửa hành vi nhất quán."
+        },
+        {
+          "title": "Chỉ thay một asset sau khi game chạy được",
+          "text": "Thay một vật thể nhỏ bằng asset tự làm trong Blender. Kiểm tra tỉ lệ, hướng, vật liệu và hình va chạm. Xuất một bản desktop để xem ngoài editor. Chưa cần multiplayer hoặc một hệ thống inventory cho bản học đầu tiên."
+        }
+      ],
+      "done": [
+        "Có nhân vật di chuyển, nhảy, va chạm và chơi lại.",
+        "Camera giúp nhận biết vị trí và hướng di chuyển.",
+        "Một bản xuất chạy được ngoài editor; ghi lại ba tình huống đã kiểm tra."
+      ],
+      "pitfall": "Đừng bắt đầu bằng một thế giới mở. Hoàn thành một màn nhỏ sẽ cho thấy bạn cần học thêm camera, vật lý hay animation trước khi tăng nội dung.",
+      "ai_prompt": "Đây là mô tả lỗi camera hoặc va chạm trong game 3D của tôi. Hãy giúp tôi tách thành các giả thuyết có thể kiểm tra từng cái. Không thêm hệ thống hoặc viết lại toàn bộ controller.",
+      "sources": [
+        {
+          "label": "Godot: Your first 3D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_3d_game/index.html"
+        },
+        {
+          "label": "Godot: thiết lập vùng chơi",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_3d_game/01.game_setup.html"
+        }
+      ]
+    }
+  ]
+}

@@ -3017,3 +3017,37 @@ body {
 .brief-card .image-frame {
   border-radius: 10px;
 }
+
+.learning-invitation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px 24px;
+  padding: 18px 0;
+  margin-bottom: 24px;
+  border-block: 1px solid var(--line);
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.learning-invitation strong {
+  display: block;
+  color: var(--ink);
+  font-size: 15px;
+}
+.learning-invitation a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--accent);
+  font-weight: 600;
+}
+:root[data-reading="true"] .learning-invitation {
+  display: none;
+}
+@media print {
+  .learning-invitation {
+    display: none;
+  }
+}

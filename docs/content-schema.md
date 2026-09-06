@@ -292,3 +292,7 @@ An unknown key renders a neutral editorial fallback and does not fail the build.
 6. Review dist/index.html, dist/YYYY-MM-DD/index.html, and dist/archive/index.html.
 
 `npm run news:index` is the only normal command that rewrites the generated ledger. The build checks that it is current and fails before writing dist when a required field, enum, factual quality rule, or ledger check is invalid. Daily publication otherwise requires JSON edits only.
+
+## Evergreen learning articles
+
+`content/learning/index.json` has its own schema_version 1, `updated_at`, and `articles` array. It is not a dated edition. `lib/learning.mjs` validates unique slugs, track membership, required prose, practical steps and HTTPS references before static generation. See `agent-rules/practical-learning.md` for the editorial contract. Changing a learning article does not create or modify a news event.
