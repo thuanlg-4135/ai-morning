@@ -3,6 +3,69 @@
  * Keep each change independently reviewable and avoid redefining the core design language.
  */
 
+/* Phase 4: keep dark mode editorial and warm, but remove the heavy olive cast.
+   Large reading surfaces stay near-neutral; green remains a supporting accent. */
+:root[data-theme="dark"] {
+  --paper: #191d1b;
+  --surface: #222725;
+  --ink: #f3f0e7;
+  --muted: #b9bcb3;
+  --line: #3b423d;
+  --accent: #ef8d68;
+  --lime: #3d4a31;
+  --sage: #27322b;
+  --purple: #332f3a;
+  --yellow: #413b29;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #191d1b;
+    --surface: #222725;
+    --ink: #f3f0e7;
+    --muted: #b9bcb3;
+    --line: #3b423d;
+    --accent: #ef8d68;
+    --lime: #3d4a31;
+    --sage: #27322b;
+    --purple: #332f3a;
+    --yellow: #413b29;
+  }
+}
+
+/* In dark mode the edition strip should remain an orientation bar, not become a bright slab. */
+:root[data-theme="dark"] .edition-strip {
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+:root[data-theme="dark"] .strip-links b {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+:root[data-theme="dark"] .strip-links > a:hover {
+  color: var(--accent);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .edition-strip {
+    background: var(--surface);
+    color: var(--ink);
+    border: 1px solid var(--line);
+  }
+
+  :root:not([data-theme="light"]) .strip-links b {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  :root:not([data-theme="light"]) .strip-links > a:hover {
+    color: var(--accent);
+  }
+}
+
 /* Phase 1: informative microcopy must stay readable without competing with story content. */
 .freshness,
 .source-label,
@@ -85,5 +148,13 @@
 @media (max-width: 760px) {
   .quick-edition li p {
     -webkit-line-clamp: 2;
+  }
+}
+
+/* On phone-width screens section notes were wrapping into narrow decorative columns.
+   The heading itself already carries the section meaning, so remove only this secondary cue. */
+@media (max-width: 480px) {
+  .section-note {
+    display: none;
   }
 }
