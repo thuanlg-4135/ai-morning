@@ -34,6 +34,24 @@ Before handoff, inspect:
 - repeated facts across sections;
 - mobile and desktop layout when templates, CSS, or JavaScript changed.
 
+## Presentation and visual-regression workflow
+
+Functional QA and visual QA are separate gates. A green build, zero overflow, and passing Playwright interactions do not prove that composition, hierarchy, spacing, color, or editorial character improved.
+
+For any change to templates, CSS, layout, typography, theme colors, or visual treatment:
+
+1. Start from the current production baseline. Do not redesign unrelated areas as part of a polish task.
+2. Keep the PR narrow: one visual concern or one tightly related group of selectors. Avoid blanket override stylesheets that restyle unrelated sections.
+3. Preserve established identity unless the task explicitly asks to change it. In particular, do not casually alter the masthead, hero proportions, edition strip, or main editorial section structure.
+4. Run the normal build and browser suite before merge.
+5. Inspect actual screenshots, not only computed styles. At minimum review 360px, 768px, and 1440px; review light and dark mode whenever theme-sensitive styles changed.
+6. Ensure lazy editorial images are fully loaded before judging screenshots. Placeholder blocks are a capture failure, not evidence of acceptable visual output.
+7. Compare hierarchy, whitespace, line length, image weight, section transitions, and first-viewport composition against the production baseline.
+8. If the result is visually worse or ambiguous, revise or revert the PR. Do not layer additional speculative CSS on top of a regression.
+9. Merge only after both functional checks and visual review pass. After merge, confirm the production Pages workflow succeeds.
+
+Prefer small independently revertible changes. A presentation pass should be easy to roll back without touching content, schema, or unrelated UI.
+
 ## Daily-edition boundary
 
 A normal daily edition is data-only:
