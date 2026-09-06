@@ -114,6 +114,78 @@ function QuickEdition({ edition, language }) {
   );
 }
 
+function StorySpotlight({ edition, language }) {
+  const t = words(language);
+  const items = [
+    ...edition.trends.map((item) => ({ ...item, section: t.deep })),
+    ...edition.releases.map((item) => ({
+      ...item,
+      title: `${item.product}: ${item.feature}`,
+      section: t.releases,
+    })),
+  ].slice(0, 3);
+  if (!items.length) return null;
+
+  return (
+    <nav className="story-spotlight" aria-labelledby="spotlight-title">
+      <div className="spotlight-heading">
+        <div>
+          <span className="eyebrow">THE READING ROOM</span>
+          <h2 id="spotlight-title">
+            {language === "vi"
+              ? "Đáng đọc trong số này"
+              : "Worth your attention"}
+          </h2>
+        </div>
+        <span className="spotlight-hint">
+          {language === "vi"
+            ? "Chọn một góc nhìn. Bắt đầu từ đây."
+            : "Pick a perspective. Start here."}
+        </span>
+      </div>
+      <div className="spotlight-grid">
+        {items.map((item, index) => (
+          <a
+            className="spotlight-link"
+            href={`#${item.id || item.event_id}`}
+            key={item.event_id}
+          >
+            <span className="spotlight-art" aria-hidden="true">
+              {(item.visual?.kind === "image" ||
+                item.visual?.kind === "screenshot") &&
+              item.visual.src ? (
+                <Image
+                  src={asset(item.visual.src)}
+                  alt=""
+                  width={1536}
+                  height={1024}
+                  sizes="(max-width: 600px) 96px, 33vw"
+                  loading="lazy"
+                />
+              ) : (
+                <span className="spotlight-abstract">
+                  <Sun size={64} strokeWidth={1} />
+                </span>
+              )}
+              <span className="spotlight-number">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+            </span>
+            <span className="spotlight-copy">
+              <small>{item.section}</small>
+              <strong>{item.title}</strong>
+              <span className="spotlight-cta">
+                {language === "vi" ? "Đọc bài" : "Read story"}
+                <ArrowUpRight size={17} aria-hidden="true" />
+              </span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </nav>
+  );
+}
+
 function Header({ language, languageHref, edition, archive = false }) {
   const t = words(language);
   const home = homePath(language);
@@ -457,41 +529,7 @@ export function EditionPage({ edition, editions, language, languageHref }) {
             {sourceCount} {t.sources.toLowerCase()}
           </span>
         </div>
-        {(edition.trends.length > 0 || edition.releases.length > 0) && (
-          <nav
-            className="spotlight-grid"
-            aria-label={
-              language === "vi"
-                ? "Bài đáng đọc trong số này"
-                : "In this edition"
-            }
-          >
-            {[
-              ...edition.trends.map((item) => ({ ...item, section: t.deep })),
-              ...edition.releases.map((item) => ({
-                ...item,
-                section: t.releases,
-              })),
-            ]
-              .slice(0, 3)
-              .map((item, index) => (
-                <a
-                  className="spotlight-link"
-                  href={`#${item.id || item.event_id}`}
-                  key={item.event_id}
-                >
-                  <span className="spotlight-number">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span>
-                    <small>{item.section}</small>
-                    <strong>{item.title || item.product}</strong>
-                  </span>
-                  <ArrowUpRight size={17} />
-                </a>
-              ))}
-          </nav>
-        )}
+        <StorySpotlight edition={edition} language={language} />
         {edition.brief.length > 0 && (
           <section id="brief" className="news-section">
             <span id="briefing" className="anchor-alias" />

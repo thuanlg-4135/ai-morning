@@ -180,8 +180,7 @@
     display: block;
   }
 
-  .edition-aside,
-  .spotlight-grid {
+  .edition-aside {
     display: none;
   }
 
