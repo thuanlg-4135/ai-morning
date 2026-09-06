@@ -1,4 +1,4 @@
-import { cp, mkdir, readdir, rm } from "node:fs/promises";
+import { cp, mkdir, readdir, rm, stat } from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
 
@@ -29,9 +29,7 @@ async function copyEditorialDirectory(sourceDir, outputDir) {
 
     if (/-hd\.png$/i.test(entry.name)) {
       const targetPath = outputPath.replace(/\.png$/i, ".webp");
-      const { size } = await import("node:fs/promises").then(({ stat }) =>
-        stat(sourcePath),
-      );
+      const { size } = await stat(sourcePath);
       originalHdBytes += size;
 
       const info = await sharp(sourcePath)
