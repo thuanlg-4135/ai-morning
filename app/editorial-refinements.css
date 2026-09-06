@@ -115,6 +115,52 @@
   border-top: 3px solid var(--ink);
 }
 
+/* Phase 5: when Quick News has one story, use the wide desktop canvas instead of
+   stacking a centered illustration inside a very tall card. Multi-story editions are untouched. */
+@media (min-width: 1100px) {
+  .brief-grid:has(> .brief-card:only-child) .brief-card {
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(440px, 1.18fr);
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+      "top visual"
+      "title visual"
+      "copy visual"
+      "sources visual";
+    column-gap: 36px;
+    align-items: start;
+  }
+
+  .brief-grid:has(> .brief-card:only-child) .brief-top {
+    grid-area: top;
+    margin-bottom: 16px;
+  }
+
+  .brief-grid:has(> .brief-card:only-child) .brief-card h3 {
+    grid-area: title;
+    font-size: clamp(28px, 2.2vw, 34px);
+    line-height: 1.2;
+    margin-bottom: 18px;
+  }
+
+  .brief-grid:has(> .brief-card:only-child) .brief-card > p {
+    grid-area: copy;
+    max-width: 58ch;
+  }
+
+  .brief-grid:has(> .brief-card:only-child) .brief-card > .sources {
+    grid-area: sources;
+  }
+
+  .brief-grid:has(> .brief-card:only-child) .brief-card > .editorial-visual {
+    grid-area: visual;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    align-self: center;
+  }
+}
+
 /* Phase 3: archive metadata is useful information, not decorative microcopy. */
 .filter-tabs button span,
 .archive-card-top .eyebrow,
