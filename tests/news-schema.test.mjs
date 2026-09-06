@@ -70,6 +70,15 @@ test('image visuals require a source and meaningful alt text', () => {
   assert(found.has('MISSING_VISUAL_SOURCE'));
 });
 
+test('brief images require a source and accessible description', () => {
+  const edition = makeEdition({ brief: [makeBrief({ visual: { kind: 'image' } })] });
+  const errors = validateEditionSchema(edition, { filename: '2026-08-25.json' });
+  assert(errors.some((error) => error.code === 'MISSING_VISUAL_SOURCE'));
+  assert(errors.some((error) => error.code === 'MISSING_VISUAL_ALT'));
+  edition.brief[0].visual = { kind: 'image', src: 'editorial/example.png', alt: 'A runtime repair illustration.' };
+  assert.deepEqual(validateEditionSchema(edition, { filename: '2026-08-25.json' }), []);
+});
+
 test('optional generation and editorial metadata are zoned and kebab-case', () => {
   const valid = makeEdition({
     trends: [makeTrend({

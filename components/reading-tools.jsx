@@ -203,11 +203,18 @@ export function StoryActions({ id, title, href, language }) {
   );
 }
 
-export function ArchiveBrowser({ editions, language }) {
+export function ArchiveBrowser({ editions, stories = [], language }) {
   const t = words(language);
   const [query, setQuery] = useState("");
   const [tab, setTab] = useState("all");
   const [saved, setSaved] = useState([]);
+  const [section, setSection] = useState("all");
+  const sectionLabels = {
+    brief: t.quick,
+    trends: t.deep,
+    releases: t.releases,
+    radar: t.radar,
+  };
   useEffect(() => {
     const sync = () => setSaved(readSaved());
     sync();
@@ -220,21 +227,40 @@ export function ArchiveBrowser({ editions, language }) {
   }, []);
   const normalize = (value) =>
     value
+      .toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
       .replace(/đ/g, "d")
       .toLowerCase();
-  const matches = (value) => normalize(value).includes(normalize(query));
+  const matches = (value) => normalize(value).includes(normalize(query.trim()));
   const filtered = editions.filter((e) =>
     matches(`${e.date} ${e.title} ${e.dek} ${e.topics.join(" ")}`),
   );
   const filteredSaved = saved.filter((s) => matches(s.title));
+  const filteredStories = stories.filter(
+    (story) =>
+      (section === "all" || story.section === section) &&
+      matches(`${story.date} ${story.title} ${story.searchText}`),
+  );
+  const searchLabel =
+    tab === "stories"
+      ? language === "vi"
+        ? "Tìm trong nội dung bài…"
+        : "Search story content…"
+      : t.search;
   return (
     <div className="archive-browser">
       <div className="archive-controls">
         <div className="filter-tabs">
           <button aria-pressed={tab === "all"} onClick={() => setTab("all")}>
             {t.all} <span>{editions.length}</span>
+          </button>
+          <button
+            aria-pressed={tab === "stories"}
+            onClick={() => setTab("stories")}
+          >
+            {language === "vi" ? "Từng bài" : "Stories"}{" "}
+            <span>{stories.length}</span>
           </button>
           <button
             aria-pressed={tab === "saved"}
@@ -246,19 +272,39 @@ export function ArchiveBrowser({ editions, language }) {
         </div>
         <label className="search-field">
           <Search size={18} />
-          <span className="sr-only">{t.search}</span>
+          <span className="sr-only">{searchLabel}</span>
           <input
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder={t.search}
+            placeholder={searchLabel}
           />
         </label>
       </div>
+      {tab === "stories" && (
+        <label className="story-section-filter">
+          {language === "vi" ? "Chuyên mục" : "Section"}
+          <select
+            value={section}
+            onChange={(event) => setSection(event.target.value)}
+          >
+            <option value="all">
+              {language === "vi" ? "Mọi chuyên mục" : "All sections"}
+            </option>
+            {Object.entries(sectionLabels).map(([key, label]) => (
+              <option key={key} value={key}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </label>
+      )}
       <p className="result-count" role="status">
         {tab === "all"
           ? `${filtered.length} ${t.results}`
-          : `${filteredSaved.length} ${t.saved.toLowerCase()}`}
+          : tab === "stories"
+            ? `${filteredStories.length} ${language === "vi" ? "bài viết" : "stories"}`
+            : `${filteredSaved.length} ${t.saved.toLowerCase()}`}
       </p>
       {tab === "all" ? (
         <div className="archive-grid">
@@ -283,6 +329,28 @@ export function ArchiveBrowser({ editions, language }) {
             </Link>
           ))}
         </div>
+      ) : tab === "stories" ? (
+        <div className="story-results">
+          {filteredStories.map((story) => (
+            <Link
+              className="story-result"
+              href={`${datePath(story.date, language)}#${story.id}`}
+              key={`${story.date}:${story.id}`}
+            >
+              <div className="story-result-meta">
+                <span>{sectionLabels[story.section]}</span>
+                <time dateTime={story.date}>
+                  {formatDate(story.date, language)}
+                </time>
+              </div>
+              <h2>
+                {story.title}
+                <ArrowUpRight size={19} aria-hidden="true" />
+              </h2>
+              <p>{story.excerpt}</p>
+            </Link>
+          ))}
+        </div>
       ) : (
         <div className="saved-list">
           {filteredSaved.map((story) => (
@@ -294,7 +362,11 @@ export function ArchiveBrowser({ editions, language }) {
           ))}
         </div>
       )}
-      {(tab === "all" ? !filtered.length : !filteredSaved.length) && (
+      {(tab === "all"
+        ? !filtered.length
+        : tab === "stories"
+          ? !filteredStories.length
+          : !filteredSaved.length) && (
         <div className="empty-state">
           <BookOpen size={36} />
           <p>

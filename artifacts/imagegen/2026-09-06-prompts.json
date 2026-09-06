@@ -1,0 +1,45 @@
+{
+  "tool": "built-in image_gen",
+  "images": [
+    {
+      "name": "hero",
+      "prompt": "Use case: stylized-concept. Create a high-resolution HD editorial illustration for the Vietnamese technology newspaper AI Morning, September 6 2026 cover about coding agents choosing entire workflows, not only models. Landscape 3:2 composition, native 1536x1024 or higher, maximum fine detail and edge clarity. Sophisticated physically rendered miniature engineering workbench: an input task represented by a small ivory code card travels through a central brushed-metal orchestration hub, splits into three visibly distinct circuit-board paths with modular computing blocks, then converges at a precise verification gate with a restrained checkmark. Beautiful graphite ceramic, brushed aluminum, translucent sage glass, copper-orange signal paths, ivory background with soft studio daylight. Clean meaningful arrangement, sharp micro-details on connectors and traces, balanced negative space, deep focus across the entire subject, premium magazine art direction matching a clean charcoal/ivory/orange news website. Conceptual illustration, not a real product screenshot. No letters, words, numbers, logos, watermark, blurry areas, fog, depth-of-field blur, neon cyberpunk, humanoid robots. All essential elements inside central 80% for responsive crops.",
+      "path": "/home/thuanlg/.codex/generated_images/01a07492-ac48-7063-9a8b-19dc8859b7ea/exec-6106530a-9810-4430-9811-cbe2bbad2a2a.png",
+      "saved_path": "assets/editorial/2026-09-06/hero-hd.png",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "name": "hydra",
+      "prompt": "Use case: stylized-concept. Asset: HD editorial magazine illustration of Project HydraFusion choosing one of three workflows for a coding task. Native 1536x1024 or higher landscape 3:2, very sharp fine details, deep focus. An exquisitely constructed isometric engineering model on an ivory studio table: one input connector feeds a copper selector with THREE separated parallel lanes. First lane one charcoal processor block. Second lane a small processor followed by a larger processor linked sequentially. Third lane two processors with a clearly visible return-loop copper track representing review and revision. All three paths converge into one output connector. This is conceptual art, not a product UI and not a performance chart. Materials graphite ceramic, brushed aluminum, frosted sage glass and copper-orange traces; soft daylight, realistic contact shadows, intricate machining marks and clear geometric separation. Premium sober technology magazine style. No labels, no text, no numbers, no logos, no watermark, no haze, no blur, no bokeh, no robots. Keep all objects comfortably inside frame.",
+      "path": "/home/thuanlg/.codex/generated_images/01a07492-ac48-7063-9a8b-19dc8859b7ea/exec-129af4a2-e937-4008-b7c1-906d4c97e0ca.png",
+      "saved_path": "assets/editorial/2026-09-06/hydra-hd.png",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "name": "sglang",
+      "prompt": "Use case: stylized-concept. HD editorial illustration for AI Morning about SGLang inference runtime optimization being dependent on GPU, cache and workload. Landscape 3:2 native 1536x1024 or higher with maximum detailed clarity. A premium isometric miniature compute laboratory on ivory background: two differentiated graphite accelerator modules with precisely machined silver cooling fins, a branching tree-shaped copper cache interconnect in the center, small translucent sage rectangular token tiles of varied sequence lengths entering organized channels and being batched into aligned stacks. Clear visual story of workloads flowing through memory/cache into compute, not a benchmark comparison. Physically realistic brushed metal, etched circuit traces, glass thickness, intricate connectors, clean studio daylight, deep focus on every component. Restrained charcoal, warm ivory, sage and copper-orange palette consistent with an elegant tech magazine. No words, text, logos, numerical metrics, fake product screens, humanoid robots, fog, bokeh or blurry details. Leave generous margins and avoid cropping components.",
+      "path": "/home/thuanlg/.codex/generated_images/01a07492-ac48-7063-9a8b-19dc8859b7ea/exec-14b0b9db-d1b9-4c2e-a8ec-12c817d2be3d.png",
+      "saved_path": "assets/editorial/2026-09-06/sglang-hd.png",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "name": "bun",
+      "prompt": "Use case: stylized-concept. Create a razor-sharp high-definition editorial image about Bun runtime patch fixing invalid build output and an async-context memory leak. Native 1536x1024 or higher, landscape 3:2. Physical metaphor on an ivory engineering bench: a graphite modular runtime circuit with two visible service zones. One zone has neatly realigned copper connector pieces bridging a formerly interrupted code-processing track; the other is a closed sealed loop around translucent sage memory blocks, with all small token tiles retained inside the loop. A precise small metal diagnostic probe rests nearby, and an output tray holds aligned finished ivory tiles. Premium realistic miniature industrial design, finely machined screws, brushed aluminum edges, graphite ceramic, sage glass, copper-orange routing. Soft clean daylight, deep focus, extreme crisp detail without sharpening halos. A calm reliable software maintenance story, conceptual illustration rather than a product screenshot. No words, letters, numbers, logos, watermark, fake graphs, blur, bokeh, fog or cartoon bugs. Generous composition margins.",
+      "path": "/home/thuanlg/.codex/generated_images/01a07492-ac48-7063-9a8b-19dc8859b7ea/exec-9a2ccc7f-2483-4105-aa36-7ce170ee4662.png",
+      "saved_path": "assets/editorial/2026-09-06/bun-hd.png",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "name": "playwright",
+      "prompt": "Use case: stylized-concept. HD detailed editorial illustration for AI Morning about Playwright parallel testing, named locks for shared resources, and action traces. Native 1536x1024 or higher landscape 3:2, maximum crisp fine detail, deep focus. On an ivory studio workbench, three standing translucent sage browser-window panels represented only by simple geometric interface blocks connect by copper tracks to a shared graphite resource cylinder. At the shared junction a beautifully machined brass locking gate permits one token tile through while other tracks remain visibly separate; next to it a precise chronological row of tiny glass screenshot-like panels represents trace snapshots. Premium realistic miniature instrumentation sculpture, brushed silver frames, charcoal ceramic bases, copper-orange connections, subtle sage glass, clean daylight, crisp soft contact shadows, refined architectural composition with ample margins. Conceptual software testing metaphor, not an actual Playwright screenshot. No text, words, letters, numbers, logos, fake metrics, watermark, robots, blur, bokeh or fog.",
+      "path": "/home/thuanlg/.codex/generated_images/01a07492-ac48-7063-9a8b-19dc8859b7ea/exec-c5e2a795-0774-4ddf-8f7e-0646ff5470d7.png",
+      "saved_path": "assets/editorial/2026-09-06/playwright-hd.png",
+      "width": 1536,
+      "height": 1024
+    }
+  ]
+}

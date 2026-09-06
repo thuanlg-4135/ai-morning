@@ -2,8 +2,8 @@
   "schema_version": 3,
   "generated_from": {
     "first_edition": "2026-08-22",
-    "last_edition": "2026-09-05",
-    "edition_count": 14,
+    "last_edition": "2026-09-06",
+    "edition_count": 15,
     "source_registry_count": 39
   },
   "events": [
@@ -2479,6 +2479,170 @@
             "artifact": "lfm2-5-350m-grpo-structured-output"
           },
           "signature_key": "hugging-face|trl|research-publication|lfm2-5-350m-grpo-structured-output",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-copilot-hydrafusion-research-preview",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot-hydrafusion",
+        "action": "preview",
+        "artifact": "multi-model-runtime-orchestration"
+      },
+      "signature_key": "github|copilot-hydrafusion|preview|multi-model-runtime-orchestration",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "copilot-hydrafusion",
+        "action": "preview",
+        "artifact": "multi-model-runtime-orchestration"
+      },
+      "current_signature_key": "github|copilot-hydrafusion|preview|multi-model-runtime-orchestration",
+      "first_published_at": "2026-09-04",
+      "first_edition": "2026-09-06",
+      "title": "HydraFusion chọn cả cách giải task, không chỉ chọn model",
+      "fingerprint": "hydrafusion chon ca cach giai task khong chi chon model",
+      "canonical_sources": [
+        "https://github.blog/ai-and-ml/github-copilot/project-hydrafusion-frontier-quality-via-multi-model-orchestration"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-06",
+          "section": "trends",
+          "published_at": "2026-09-04",
+          "event_signature": {
+            "organization": "github",
+            "product": "copilot-hydrafusion",
+            "action": "preview",
+            "artifact": "multi-model-runtime-orchestration"
+          },
+          "signature_key": "github|copilot-hydrafusion|preview|multi-model-runtime-orchestration",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "microsoft-playwright-v1-63-0",
+      "event_signature": {
+        "organization": "microsoft",
+        "product": "playwright",
+        "action": "release",
+        "artifact": "v1-63-0"
+      },
+      "signature_key": "microsoft|playwright|release|v1-63-0",
+      "current_event_signature": {
+        "organization": "microsoft",
+        "product": "playwright",
+        "action": "release",
+        "artifact": "v1-63-0"
+      },
+      "current_signature_key": "microsoft|playwright|release|v1-63-0",
+      "first_published_at": "2026-09-04T22:40:31Z",
+      "first_edition": "2026-09-06",
+      "title": "Playwright — Test locks, visible locators và trace giàu dữ liệu hơn",
+      "fingerprint": "playwright test locks visible locators va trace giau du lieu hon",
+      "canonical_sources": [
+        "https://github.com/microsoft/playwright/releases/tag/v1.63.0"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-06",
+          "section": "releases",
+          "published_at": "2026-09-04T22:40:31Z",
+          "event_signature": {
+            "organization": "microsoft",
+            "product": "playwright",
+            "action": "release",
+            "artifact": "v1-63-0"
+          },
+          "signature_key": "microsoft|playwright|release|v1-63-0",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "oven-sh-bun-v1-4-2",
+      "event_signature": {
+        "organization": "oven-sh",
+        "product": "bun",
+        "action": "release",
+        "artifact": "v1-4-2"
+      },
+      "signature_key": "oven-sh|bun|release|v1-4-2",
+      "current_event_signature": {
+        "organization": "oven-sh",
+        "product": "bun",
+        "action": "release",
+        "artifact": "v1-4-2"
+      },
+      "current_signature_key": "oven-sh|bun|release|v1-4-2",
+      "first_published_at": "2026-09-05T05:55:48Z",
+      "first_edition": "2026-09-06",
+      "title": "Bun 1.4.2 sửa hai regression từ 1.4.1",
+      "fingerprint": "bun 1 4 2 sua hai regression tu 1 4 1",
+      "canonical_sources": [
+        "https://github.com/oven-sh/bun/releases/tag/bun-v1.4.2"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-06",
+          "section": "brief",
+          "published_at": "2026-09-05T05:55:48Z",
+          "event_signature": {
+            "organization": "oven-sh",
+            "product": "bun",
+            "action": "release",
+            "artifact": "v1-4-2"
+          },
+          "signature_key": "oven-sh|bun|release|v1-4-2",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "sgl-project-sglang-v0-5-19",
+      "event_signature": {
+        "organization": "sgl-project",
+        "product": "sglang",
+        "action": "release",
+        "artifact": "v0-5-19"
+      },
+      "signature_key": "sgl-project|sglang|release|v0-5-19",
+      "current_event_signature": {
+        "organization": "sgl-project",
+        "product": "sglang",
+        "action": "release",
+        "artifact": "v0-5-19"
+      },
+      "current_signature_key": "sgl-project|sglang|release|v0-5-19",
+      "first_published_at": "2026-09-05T02:27:42Z",
+      "first_edition": "2026-09-06",
+      "title": "SGLang 0.5.19 tối ưu inference theo đúng hình dạng workload",
+      "fingerprint": "sglang 0 5 19 toi uu inference theo dung hinh dang workload",
+      "canonical_sources": [
+        "https://github.com/sgl-project/sglang/releases/tag/v0.5.19"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-06",
+          "section": "trends",
+          "published_at": "2026-09-05T02:27:42Z",
+          "event_signature": {
+            "organization": "sgl-project",
+            "product": "sglang",
+            "action": "release",
+            "artifact": "v0-5-19"
+          },
+          "signature_key": "sgl-project|sglang|release|v0-5-19",
           "material_update": null,
           "update_kind": null,
           "dedupe_override_reason": null

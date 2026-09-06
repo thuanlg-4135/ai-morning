@@ -11,6 +11,7 @@ import {
   CircleCheck,
   Clock3,
   Sun,
+  ChevronDown,
 } from "lucide-react";
 import { renderVisual } from "../scripts/visuals.mjs";
 import { MorningDesk, CornerGarden } from "./morning-art";
@@ -30,6 +31,88 @@ import {
   Reveal,
   StoryActions,
 } from "./reading-tools";
+
+function QuickEdition({ edition, language }) {
+  const t = words(language);
+  const items = [
+    ...edition.brief.map((item) => ({
+      ...item,
+      excerpt: item.text,
+      section: t.quick,
+    })),
+    ...edition.trends.map((item) => ({
+      ...item,
+      excerpt: item.paragraphs[0],
+      section: t.deep,
+    })),
+    ...edition.releases.map((item) => ({
+      ...item,
+      title: item.feature,
+      excerpt: item.summary,
+      section: t.releases,
+    })),
+  ];
+  if (!items.length) return null;
+  const minutes = Math.max(
+    1,
+    Math.ceil(
+      items
+        .map((item) => `${item.title} ${item.excerpt}`)
+        .join(" ")
+        .split(/\s+/).length / 220,
+    ),
+  );
+  return (
+    <details className="quick-edition">
+      <summary>
+        <Clock3 size={22} aria-hidden="true" />
+        <span className="quick-edition-label">
+          <strong>
+            {language === "vi"
+              ? "Ít thời gian? Đọc lướt số này."
+              : "Short on time? Skim this edition."}
+          </strong>
+          <span>
+            {language === "vi"
+              ? `${items.length} tin · khoảng ${minutes} phút đọc`
+              : `${items.length} stories · about ${minutes} min read`}
+          </span>
+        </span>
+        <ChevronDown className="quick-chevron" size={20} aria-hidden="true" />
+      </summary>
+      <div className="quick-edition-body">
+        <p className="quick-intro">
+          {language === "vi"
+            ? "Các đoạn mở đầu từ bản tin. Mở bài đầy đủ để đọc bối cảnh, giới hạn và khuyến nghị."
+            : "Opening passages from the edition. Open each story for context, limitations, and recommendations."}
+        </p>
+        <ol>
+          {items.map((item) => (
+            <li key={item.event_id}>
+              <span className="eyebrow">{item.section}</span>
+              <h2>
+                <a href={`#${item.id || item.event_id}`}>
+                  {item.title}
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                </a>
+              </h2>
+              <p>{item.excerpt}</p>
+              <a
+                className="quick-full-link"
+                href={`#${item.id || item.event_id}`}
+              >
+                {language === "vi"
+                  ? "Đọc bài và nguồn"
+                  : "Read story and sources"}
+                <ArrowDown size={14} aria-hidden="true" />
+              </a>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </details>
+  );
+}
 
 function Header({ language, languageHref, edition, archive = false }) {
   const t = words(language);
@@ -354,6 +437,7 @@ export function EditionPage({ edition, editions, language, languageHref }) {
             <MorningStamp language={language} />
           </div>
         </section>
+        <QuickEdition edition={edition} language={language} />
         <div className="edition-strip">
           <span className="strip-label">
             <Zap size={17} fill="currentColor" />
@@ -373,6 +457,41 @@ export function EditionPage({ edition, editions, language, languageHref }) {
             {sourceCount} {t.sources.toLowerCase()}
           </span>
         </div>
+        {(edition.trends.length > 0 || edition.releases.length > 0) && (
+          <nav
+            className="spotlight-grid"
+            aria-label={
+              language === "vi"
+                ? "Bài đáng đọc trong số này"
+                : "In this edition"
+            }
+          >
+            {[
+              ...edition.trends.map((item) => ({ ...item, section: t.deep })),
+              ...edition.releases.map((item) => ({
+                ...item,
+                section: t.releases,
+              })),
+            ]
+              .slice(0, 3)
+              .map((item, index) => (
+                <a
+                  className="spotlight-link"
+                  href={`#${item.id || item.event_id}`}
+                  key={item.event_id}
+                >
+                  <span className="spotlight-number">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span>
+                    <small>{item.section}</small>
+                    <strong>{item.title || item.product}</strong>
+                  </span>
+                  <ArrowUpRight size={17} />
+                </a>
+              ))}
+          </nav>
+        )}
         {edition.brief.length > 0 && (
           <section id="brief" className="news-section">
             <span id="briefing" className="anchor-alias" />
@@ -400,6 +519,7 @@ export function EditionPage({ edition, editions, language, languageHref }) {
                     </span>
                   </div>
                   <h3>{item.title}</h3>
+                  {item.visual && <Visual visual={item.visual} />}
                   <p>{item.text}</p>
                   <Sources sources={item.sources} language={language} />
                 </article>
@@ -719,7 +839,13 @@ export function EditionPage({ edition, editions, language, languageHref }) {
   );
 }
 
-export function ArchivePage({ edition, summaries, language, languageHref }) {
+export function ArchivePage({
+  edition,
+  summaries,
+  stories,
+  language,
+  languageHref,
+}) {
   const t = words(language);
   return (
     <>
@@ -742,7 +868,11 @@ export function ArchivePage({ edition, summaries, language, languageHref }) {
           </div>
         </div>
         <MorningDesk className="archive-desk" />
-        <ArchiveBrowser editions={summaries} language={language} />
+        <ArchiveBrowser
+          editions={summaries}
+          stories={stories}
+          language={language}
+        />
       </main>
       <Footer language={language} />
     </>

@@ -164,3 +164,92 @@ test("content and navigation work without JavaScript; reduced motion stops decor
       .evaluate((element) => getComputedStyle(element).animationName),
   ).toBe("none");
 });
+
+test("quick edition opens with the keyboard without JavaScript and links to full stories", async ({
+  browser,
+}) => {
+  const context = await browser.newContext({
+    javaScriptEnabled: false,
+    viewport: { width: 360, height: 900 },
+  });
+  const page = await context.newPage();
+  for (const route of ["", "2026-08-22/", "en/"]) {
+    await page.goto(`http://localhost:8080${basePath}/${route}`);
+    const digest = page.locator(".quick-edition");
+    await expect(digest.locator("ol")).toBeHidden();
+    await digest.locator("summary").focus();
+    await page.keyboard.press("Enter");
+    await expect(digest.locator("ol")).toBeVisible();
+    const links = digest.locator(".quick-full-link");
+    expect(await links.count()).toBeGreaterThan(0);
+    for (const link of await links.all()) {
+      const target = await link.getAttribute("href");
+      await link.click();
+      await expect(page.locator(target)).toBeInViewport();
+      await expect(page.locator(target)).toBeVisible();
+    }
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
+    await digest.locator("summary").click();
+    await expect(digest.locator("ol")).toBeHidden();
+  }
+  await context.close();
+});
+
+test("archive searches individual stories without accents and filters by section", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 360, height: 900 });
+  await page.goto(`${basePath}/archive/`);
+  await page.getByRole("button", { name: /^Từng bài/ }).click();
+  await expect(page.locator(".story-result")).toHaveCount(
+    editions.reduce(
+      (total, edition) =>
+        total +
+        edition.brief.length +
+        edition.trends.length +
+        edition.releases.length +
+        edition.radar.length,
+      0,
+    ),
+  );
+  await page.getByRole("searchbox").fill("  ĐỔI  ");
+  const accented = await page.locator(".story-result h2").allTextContents();
+  expect(accented.length).toBeGreaterThan(0);
+  await page.getByRole("searchbox").fill("doi");
+  expect(await page.locator(".story-result h2").allTextContents()).toEqual(
+    accented,
+  );
+  await page.getByRole("searchbox").fill("Copilot");
+  await page
+    .getByRole("combobox", { name: "Chuyên mục" })
+    .selectOption("releases");
+  expect(await page.locator(".story-result").count()).toBeGreaterThan(0);
+  for (const label of await page
+    .locator(".story-result-meta > span")
+    .allTextContents())
+    expect(label).toBe("Bản phát hành");
+  const first = page.locator(".story-result").first();
+  const href = await first.getAttribute("href");
+  await first.click();
+  await expect(page).toHaveURL(new URL(href, "http://localhost:8080").href);
+  await expect(page.locator(new URL(page.url()).hash)).toBeInViewport();
+  await page.goto(`${basePath}/en/archive/`);
+  await page.getByRole("button", { name: /^Stories/ }).click();
+  await expect(page.locator(".story-result").first()).toHaveAttribute(
+    "href",
+    new RegExp(`${basePath}/en/`),
+  );
+  await page.getByRole("searchbox").fill("nothing-matches-this-query");
+  await expect(page.locator(".empty-state")).toBeVisible();
+  await page.getByRole("button", { name: "Clear search" }).click();
+  expect(await page.locator(".story-result").count()).toBeGreaterThan(0);
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBe(true);
+});

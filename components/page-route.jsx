@@ -1,5 +1,10 @@
 import { notFound } from "next/navigation";
-import { getEditions, inLanguage, editionSummary } from "../lib/editions.mjs";
+import {
+  getEditions,
+  inLanguage,
+  editionSummary,
+  editionStories,
+} from "../lib/editions.mjs";
 import { basePath, siteUrl, datePath, homePath } from "../lib/site.mjs";
 import { EditionPage, ArchivePage } from "./newspaper";
 
@@ -72,7 +77,11 @@ export default async function Page({ params }) {
   const page = await getPage(params);
   const summaries = page.editions.map(editionSummary);
   return page.archive ? (
-    <ArchivePage {...page} summaries={summaries} />
+    <ArchivePage
+      {...page}
+      summaries={summaries}
+      stories={page.editions.flatMap(editionStories)}
+    />
   ) : (
     <EditionPage {...page} summaries={summaries} />
   );

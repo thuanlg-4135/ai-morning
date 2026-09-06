@@ -128,6 +128,8 @@ Trend strength:
       ]
     }
 
+Brief items may also include an optional `visual` using the same visual contract as trends and releases. Image visuals require `src` and meaningful `alt` text and render between the brief title and body.
+
 ### Trend
 
     {

@@ -294,6 +294,7 @@ export function validateEditionSchema(edition, { filename } = {}) {
         return;
       }
       validateCommonNewsFields(item, field, resolvedFilename, errors);
+      validateVisual(item.visual, field + '.visual', resolvedFilename, errors);
       if (!hasText(item.title)) errors.push(schemaIssue(resolvedFilename, field + '.title', 'MISSING_BRIEF_TITLE', 'A meaningful title is required.'));
       if (!hasText(item.text)) errors.push(schemaIssue(resolvedFilename, field + '.text', 'MISSING_BRIEF_BODY', 'An explanatory body is required.'));
     });

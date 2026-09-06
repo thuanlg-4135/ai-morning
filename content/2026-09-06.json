@@ -16,9 +16,11 @@
     "source_policy": "official-first"
   },
   "hero_visual": {
-    "kind": "editorial",
-    "key": "model-harness-environment-verification",
-    "caption": "Routing tốt hơn chỉ có giá trị khi toàn bộ coding task đạt chất lượng với chi phí và latency hợp lý."
+    "kind": "image",
+    "src": "editorial/2026-09-06/hero-hd.png",
+    "alt": "Mô hình bàn điều phối chia một tác vụ thành nhiều đường xử lý rồi hội tụ tại bước kiểm tra kết quả.",
+    "caption": "Một coding task có thể đi qua nhiều nhánh xử lý; kết quả cuối vẫn cần được kiểm tra.",
+    "credit": "Minh hoạ ý niệm tạo bằng AI · AI Morning"
   },
   "brief": [
     {
@@ -40,7 +42,14 @@
           "type": "official",
           "published_at": "2026-09-05T05:55:48Z"
         }
-      ]
+      ],
+      "visual": {
+        "kind": "image",
+        "src": "editorial/2026-09-06/bun-hd.png",
+        "alt": "Minh hoạ mạch runtime với đường xử lý được nối lại và các khối bộ nhớ nằm trong vòng khép kín.",
+        "caption": "Bun 1.4.2 tập trung sửa lỗi build và rò rỉ bộ nhớ; cần chạy lại workload bị ảnh hưởng.",
+        "credit": "Minh hoạ ý niệm tạo bằng AI · AI Morning"
+      }
     }
   ],
   "trends": [
@@ -73,7 +82,14 @@
           "type": "official",
           "published_at": "2026-09-04"
         }
-      ]
+      ],
+      "visual": {
+        "kind": "image",
+        "src": "editorial/2026-09-06/hydra-hd.png",
+        "alt": "Ba nhánh mạch minh hoạ chạy một model, chuyển tiếp giữa hai model và vòng review–sửa lại.",
+        "caption": "HydraFusion thử chọn giữa chạy đơn, chuyển tiếp model và review–sửa lại tuỳ tác vụ.",
+        "credit": "Minh hoạ ý niệm tạo bằng AI · AI Morning"
+      }
     },
     {
       "event_id": "sgl-project-sglang-v0-5-19",
@@ -103,7 +119,14 @@
           "type": "official",
           "published_at": "2026-09-05T02:27:42Z"
         }
-      ]
+      ],
+      "visual": {
+        "kind": "image",
+        "src": "editorial/2026-09-06/sglang-hd.png",
+        "alt": "Hai khối xử lý GPU kết nối với cache và các dãy khối dữ liệu có độ dài khác nhau.",
+        "caption": "Hiệu quả tối ưu inference phụ thuộc vào GPU, cache và đặc điểm của workload.",
+        "credit": "Minh hoạ ý niệm tạo bằng AI · AI Morning"
+      }
     }
   ],
   "releases": [
@@ -132,7 +155,14 @@
           "type": "official",
           "published_at": "2026-09-04T22:40:31Z"
         }
-      ]
+      ],
+      "visual": {
+        "kind": "image",
+        "src": "editorial/2026-09-06/playwright-hd.png",
+        "alt": "Ba cửa sổ trình duyệt kết nối qua chốt khoá tới tài nguyên chung, bên cạnh là chuỗi ảnh trace.",
+        "caption": "Test lock điều phối truy cập tài nguyên chung; trace giúp xem lại các bước kiểm thử.",
+        "credit": "Minh hoạ ý niệm tạo bằng AI · AI Morning"
+      }
     }
   ],
   "developer_memo": {
