@@ -37,6 +37,8 @@ test("informative microcopy never drops below the refinement floor", async ({ pa
     [".source-label", 10],
     [".source-type", 10],
     [".section-number", 10],
+    [".release-status", 10],
+    [".verdict-label", 10],
     [".editorial-visual figcaption", 11],
     [".editorial-visual figcaption > span", 10],
   ];
