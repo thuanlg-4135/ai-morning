@@ -140,3 +140,32 @@ test("all exported HTML has valid local asset, route, and fragment targets under
   }
   await assert.doesNotReject(stat("dist/.nojekyll"));
 });
+
+test("learning collection exports complete guides and official references", async () => {
+  const { articles } = JSON.parse(
+    await readFile("content/learning/index.json", "utf8"),
+  );
+  const index = await readFile("dist/learn/index.html", "utf8");
+  for (const a of articles) {
+    assert.ok(index.includes(escape(a.title)));
+    const html = await readFile(`dist/learn/${a.slug}/index.html`, "utf8");
+    for (const text of [
+      a.title,
+      a.summary,
+      a.setup,
+      a.work_connection,
+      a.pitfall,
+      a.ai_prompt,
+      ...a.steps.flatMap((s) => [s.title, s.text]),
+      ...a.done,
+    ])
+      assert.ok(html.includes(escape(text)), `${a.slug}: missing content`);
+    for (const s of a.sources)
+      assert.ok(
+        html.includes(
+          `href="${escape(s.url)}" target="_blank" rel="noopener noreferrer"`,
+        ),
+        `${a.slug}: missing source`,
+      );
+  }
+});

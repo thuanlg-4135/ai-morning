@@ -6,7 +6,7 @@ This directory contains the detailed operating rules for AI Morning. `AGENTS.md`
 
 | When the task involves | Read before acting |
 |---|---|
-| Researching or drafting a daily edition | `research-and-evidence.md`, `event-identity-and-content.md`, `vietnamese-editorial-style.md`, `quality-workflow.md`, `../content-schema.md`, `../news-pipeline-plan.md`, `../../config/news-sources.json`, and `../../data/news-index.json` |
+| Researching or drafting a daily edition | `practical-learning.md`, `research-and-evidence.md`, `event-identity-and-content.md`, `vietnamese-editorial-style.md`, `quality-workflow.md`, `../content-schema.md`, `../news-pipeline-plan.md`, `../../config/news-sources.json`, and `../../data/news-index.json` |
 | Rewriting, polishing, or reviewing Vietnamese copy | `vietnamese-editorial-style.md`; also read `event-identity-and-content.md` when facts, section placement, or content fields may change |
 | Adding, removing, or moving a news item | `event-identity-and-content.md`, `research-and-evidence.md`, and `../content-schema.md` |
 | Changing freshness, cutoff, sources, evidence, or research behavior | `research-and-evidence.md`, `../news-pipeline-plan.md`, and `../content-schema.md` |
@@ -15,6 +15,8 @@ This directory contains the detailed operating rules for AI Morning. `AGENTS.md`
 | Publishing or GitHub Pages operations | `../publishing.md` and `quality-workflow.md` |
 | Editing templates, CSS, JavaScript, or layout | `quality-workflow.md`; inspect the affected template and generated root and dated pages |
 | Updating agent rules | This index and every rule file affected by the change; keep `AGENTS.md` as a compact router |
+
+| Writing or updating practical developer, 3D/video, or game learning articles | `practical-learning.md`, `vietnamese-editorial-style.md`, `quality-workflow.md` |
 
 ## Loading rules
 
@@ -25,6 +27,8 @@ This directory contains the detailed operating rules for AI Morning. `AGENTS.md`
 5. Do not copy detailed rules back into `AGENTS.md`. Update the appropriate rule file and this index when routing changes.
 
 ## Rule ownership
+
+- `practical-learning.md`: workplace relevance, creative coverage and evergreen learning collection.
 
 - `research-and-evidence.md`: time windows, source discovery, verification, and evidence.
 - `event-identity-and-content.md`: event IDs, signatures, deduplication, section ownership, required fields, and material updates.

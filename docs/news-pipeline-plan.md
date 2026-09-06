@@ -63,6 +63,10 @@ When an event returns, the copy must state the delta first and link to the earli
 
 The target is 4–7 distinct events per normal edition, with 1–3 developed stories. Source diversity is a quality signal, not a quota: a weak story should not be published merely to hit the target.
 
+## Practical and creative coverage
+
+Follow `agent-rules/practical-learning.md` for workplace examples and coverage of 3D animation, video and games. The static `content/learning/index.json` collection serves evergreen practice guides at `/learn/`, independently of the dated news ledger. News candidates retain all freshness and deduplication gates.
+
 ## Pipeline design
 
 ```text

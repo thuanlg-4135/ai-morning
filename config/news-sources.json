@@ -313,6 +313,54 @@
       "kind": "discovery",
       "topics": ["products", "startups"],
       "url": "https://www.producthunt.com/topics/artificial-intelligence"
+    },
+    {
+      "id": "blender-manual",
+      "name": "Blender Manual",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["3d", "animation", "video-editing"],
+      "url": "https://docs.blender.org/manual/en/latest/index.html"
+    },
+    {
+      "id": "godot-news",
+      "name": "Godot News",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["game-development", "3d", "open-source"],
+      "url": "https://godotengine.org/news/"
+    },
+    {
+      "id": "godot-learning",
+      "name": "Godot Documentation",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["game-development", "csharp", "learning"],
+      "url": "https://docs.godotengine.org/en/stable/getting_started/introduction/index.html"
+    },
+    {
+      "id": "unity-blog",
+      "name": "Unity Blog",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["game-development", "3d", "animation"],
+      "url": "https://unity.com/blog"
+    },
+    {
+      "id": "unreal-news",
+      "name": "Unreal Engine News",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["game-development", "3d", "virtual-production"],
+      "url": "https://www.unrealengine.com/en-US/news"
+    },
+    {
+      "id": "dotnet-blog",
+      "name": "Microsoft .NET Blog",
+      "tier": 1,
+      "kind": "official",
+      "topics": ["dotnet", "csharp", "software-engineering"],
+      "url": "https://devblogs.microsoft.com/dotnet/"
     }
   ]
 }

@@ -186,7 +186,13 @@ function StorySpotlight({ edition, language }) {
   );
 }
 
-function Header({ language, languageHref, edition, archive = false }) {
+export function Header({
+  language,
+  languageHref,
+  edition,
+  archive = false,
+  activeSection = "",
+}) {
   const t = words(language);
   const home = homePath(language);
   const sectionPath = archive ? home : "";
@@ -258,8 +264,18 @@ function Header({ language, languageHref, edition, archive = false }) {
               <Link href={`${sectionPath}#releases`}>{t.releases}</Link>
             )}
             <Link href={`${sectionPath}#memo`}>{t.memo}</Link>
+            {language === "vi" && (
+              <Link
+                href="/learn/"
+                className={activeSection === "learn" ? "nav-active" : ""}
+              >
+                Học & làm
+              </Link>
+            )}
             <Link
-              className={archive ? "nav-active" : ""}
+              className={
+                archive && activeSection !== "learn" ? "nav-active" : ""
+              }
               href={`${home}archive/`}
             >
               {t.archive}
@@ -276,7 +292,7 @@ function Header({ language, languageHref, edition, archive = false }) {
   );
 }
 
-function Footer({ language }) {
+export function Footer({ language }) {
   const t = words(language);
   return (
     <footer className="footer shell">
@@ -509,6 +525,17 @@ export function EditionPage({ edition, editions, language, languageHref }) {
             <MorningStamp language={language} />
           </div>
         </section>
+        {language === "vi" && current === 0 && (
+          <div className="learning-invitation">
+            <span>
+              <strong>Học một điều. Làm một thứ.</strong> Công việc developer ·
+              Hoạt hình 3D · Làm game
+            </span>
+            <Link href="/learn/">
+              Khám phá Học & làm <ArrowUpRight size={16} aria-hidden="true" />
+            </Link>
+          </div>
+        )}
         <QuickEdition edition={edition} language={language} />
         <div className="edition-strip">
           <span className="strip-label">

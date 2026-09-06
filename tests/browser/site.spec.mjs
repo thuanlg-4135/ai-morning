@@ -11,7 +11,12 @@ const editions = await Promise.all(
     JSON.parse(await readFile(`content/${name}`, "utf8")),
   ),
 );
+const learning = JSON.parse(
+  await readFile("content/learning/index.json", "utf8"),
+);
 const routes = [
+  "learn/",
+  ...learning.articles.map((a) => `learn/${a.slug}/`),
   "",
   "archive/",
   ...editions.map((e) => `${e.edition_date}/`),
