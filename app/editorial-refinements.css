@@ -29,6 +29,12 @@
   font-size: 12px;
 }
 
+/* Phase 2: constrain the complete long-form composition, never the prose in isolation. */
+.reading-layout {
+  max-width: 1180px;
+  margin-inline: auto;
+}
+
 /* Phase 1: 768px was falling into a compressed desktop layout.
    Portrait tablets should use the same single-column reading flow as mobile. */
 @media (max-width: 900px) {
@@ -40,7 +46,8 @@
     display: block;
   }
 
-  .edition-aside {
+  .edition-aside,
+  .spotlight-grid {
     display: none;
   }
 
