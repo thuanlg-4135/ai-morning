@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import { basePath } from "../lib/site.mjs";
 import { PageBackdrop } from "./morning-art";
 import "../app/globals.css";
+import "../app/presentation-polish.css";
 
 const sans = localFont({
   src: [
