@@ -1,0 +1,51 @@
+/*
+ * Surgical editorial refinements only.
+ * Keep each change independently reviewable and avoid redefining the core design language.
+ */
+
+/* Phase 1: informative microcopy must stay readable without competing with story content. */
+.freshness,
+.source-label,
+.source-type,
+.sources time,
+.section-number,
+.release-status,
+.verdict-label {
+  font-size: 10px;
+}
+
+.editorial-visual figcaption,
+.hero-visual figcaption {
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.editorial-visual figcaption > span {
+  font-size: 10px;
+  margin-top: 2px;
+}
+
+.sources a {
+  font-size: 12px;
+}
+
+/* Phase 1: 768px was falling into a compressed desktop layout.
+   Portrait tablets should use the same single-column reading flow as mobile. */
+@media (max-width: 900px) {
+  .edition-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .reading-layout {
+    display: block;
+  }
+
+  .edition-aside {
+    display: none;
+  }
+
+  .section-note,
+  .hero-kicker > .eyebrow {
+    font-size: 10px;
+  }
+}
