@@ -35,6 +35,31 @@
   margin-inline: auto;
 }
 
+/* Phase 3: Quick Edition remains a skim surface instead of duplicating full stories. */
+.quick-edition li p {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* Phase 3: distinguish fast news from release/change-log cards without adding new colors. */
+.brief-card {
+  border-top: 3px solid var(--accent);
+}
+
+.release-card {
+  border-top: 3px solid var(--ink);
+}
+
+/* Phase 3: archive metadata is useful information, not decorative microcopy. */
+.filter-tabs button span,
+.archive-card-top .eyebrow,
+.archive-count > .eyebrow,
+.card-bottom {
+  font-size: 10px;
+}
+
 /* Phase 1: 768px was falling into a compressed desktop layout.
    Portrait tablets should use the same single-column reading flow as mobile. */
 @media (max-width: 900px) {
@@ -54,5 +79,11 @@
   .section-note,
   .hero-kicker > .eyebrow {
     font-size: 10px;
+  }
+}
+
+@media (max-width: 760px) {
+  .quick-edition li p {
+    -webkit-line-clamp: 2;
   }
 }
