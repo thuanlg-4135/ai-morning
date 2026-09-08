@@ -10,7 +10,8 @@ async function computed(page, selector, property) {
 
 test("single quick-news story uses a split layout on wide desktop", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
-  await page.goto(`${basePath}/`);
+  // Keep this layout fixture independent of the latest edition.
+  await page.goto(`${basePath}/2026-09-06/`);
 
   const card = page.locator(".brief-grid > .brief-card");
   await expect(card).toHaveCount(1);
@@ -23,7 +24,8 @@ test("single quick-news story uses a split layout on wide desktop", async ({ pag
 
 test("single quick-news story keeps the stacked card below the desktop breakpoint", async ({ page }) => {
   await page.setViewportSize({ width: 1024, height: 1000 });
-  await page.goto(`${basePath}/`);
+  // Keep this layout fixture independent of the latest edition.
+  await page.goto(`${basePath}/2026-09-06/`);
 
   const card = page.locator(".brief-grid > .brief-card");
   await expect(card).toHaveCount(1);

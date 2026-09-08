@@ -30,7 +30,8 @@ test("desktop keeps the established two-column identity", async ({ page }) => {
 
 test("informative microcopy never drops below the refinement floor", async ({ page }) => {
   await page.setViewportSize({ width: 360, height: 900 });
-  await page.goto(`${basePath}/`);
+  // This edition includes captions and credits; daily visuals are optional.
+  await page.goto(`${basePath}/2026-09-06/`);
 
   const checks = [
     [".freshness", 10],
