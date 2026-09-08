@@ -2,8 +2,8 @@
   "schema_version": 3,
   "generated_from": {
     "first_edition": "2026-08-22",
-    "last_edition": "2026-09-06",
-    "edition_count": 15,
+    "last_edition": "2026-09-08",
+    "edition_count": 16,
     "source_registry_count": 45
   },
   "events": [
@@ -2643,6 +2643,170 @@
             "artifact": "v0-5-19"
           },
           "signature_key": "sgl-project|sglang|release|v0-5-19",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "litellm-v1-100-0",
+      "event_signature": {
+        "organization": "berriai",
+        "product": "litellm",
+        "action": "release",
+        "artifact": "v1-100-0"
+      },
+      "signature_key": "berriai|litellm|release|v1-100-0",
+      "current_event_signature": {
+        "organization": "berriai",
+        "product": "litellm",
+        "action": "release",
+        "artifact": "v1-100-0"
+      },
+      "current_signature_key": "berriai|litellm|release|v1-100-0",
+      "first_published_at": "2026-09-06T05:33:17Z",
+      "first_edition": "2026-09-08",
+      "title": "LiteLLM 1.100.0 — Sửa tiếp nối hội thoại và ghi nhận chi phí",
+      "fingerprint": "litellm 1 100 0 sua tiep noi hoi thoai va ghi nhan chi phi",
+      "canonical_sources": [
+        "https://github.com/BerriAI/litellm/releases/tag/v1.100.0"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-08",
+          "section": "releases",
+          "published_at": "2026-09-06T05:33:17Z",
+          "event_signature": {
+            "organization": "berriai",
+            "product": "litellm",
+            "action": "release",
+            "artifact": "v1-100-0"
+          },
+          "signature_key": "berriai|litellm|release|v1-100-0",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "llama-cpp-b10839-vulkan-get-rows-alignment",
+      "event_signature": {
+        "organization": "ggml-org",
+        "product": "llama-cpp",
+        "action": "release",
+        "artifact": "b10839-vulkan-get-rows-alignment"
+      },
+      "signature_key": "ggml-org|llama-cpp|release|b10839-vulkan-get-rows-alignment",
+      "current_event_signature": {
+        "organization": "ggml-org",
+        "product": "llama-cpp",
+        "action": "release",
+        "artifact": "b10839-vulkan-get-rows-alignment"
+      },
+      "current_signature_key": "ggml-org|llama-cpp|release|b10839-vulkan-get-rows-alignment",
+      "first_published_at": "2026-09-07T11:14:21Z",
+      "first_edition": "2026-09-08",
+      "title": "llama.cpp sửa lỗi Vulkan làm Qwen tạo giọng nói bị văng",
+      "fingerprint": "llama cpp sua loi vulkan lam qwen tao giong noi bi vang",
+      "canonical_sources": [
+        "https://github.com/ggml-org/llama.cpp/releases/tag/b10839"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-08",
+          "section": "trends",
+          "published_at": "2026-09-07T11:14:21Z",
+          "event_signature": {
+            "organization": "ggml-org",
+            "product": "llama-cpp",
+            "action": "release",
+            "artifact": "b10839-vulkan-get-rows-alignment"
+          },
+          "signature_key": "ggml-org|llama-cpp|release|b10839-vulkan-get-rows-alignment",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "openai-research-acceleration-internal-usage-study-2026-09",
+      "event_signature": {
+        "organization": "openai",
+        "product": "coding-agents",
+        "action": "research-publication",
+        "artifact": "internal-research-usage-study-2026-09"
+      },
+      "signature_key": "openai|coding-agents|research-publication|internal-research-usage-study-2026-09",
+      "current_event_signature": {
+        "organization": "openai",
+        "product": "coding-agents",
+        "action": "research-publication",
+        "artifact": "internal-research-usage-study-2026-09"
+      },
+      "current_signature_key": "openai|coding-agents|research-publication|internal-research-usage-study-2026-09",
+      "first_published_at": "2026-09-06",
+      "first_edition": "2026-09-08",
+      "title": "Agent làm nhiều hơn, nhưng vẫn cần người dẫn đường",
+      "fingerprint": "agent lam nhieu hon nhung van can nguoi dan duong",
+      "canonical_sources": [
+        "https://openai.com/index/research-acceleration-view-inside-openai"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-08",
+          "section": "trends",
+          "published_at": "2026-09-06",
+          "event_signature": {
+            "organization": "openai",
+            "product": "coding-agents",
+            "action": "research-publication",
+            "artifact": "internal-research-usage-study-2026-09"
+          },
+          "signature_key": "openai|coding-agents|research-publication|internal-research-usage-study-2026-09",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "openai-wan-ifra-airppu-ukraine-newsroom-program",
+      "event_signature": {
+        "organization": "openai",
+        "product": "newsroom-ai-catalyst",
+        "action": "partnership",
+        "artifact": "ukraine-airppu-wan-ifra-program"
+      },
+      "signature_key": "openai|newsroom-ai-catalyst|partnership|ukraine-airppu-wan-ifra-program",
+      "current_event_signature": {
+        "organization": "openai",
+        "product": "newsroom-ai-catalyst",
+        "action": "partnership",
+        "artifact": "ukraine-airppu-wan-ifra-program"
+      },
+      "current_signature_key": "openai|newsroom-ai-catalyst|partnership|ukraine-airppu-wan-ifra-program",
+      "first_published_at": "2026-09-07",
+      "first_edition": "2026-09-08",
+      "title": "OpenAI hỗ trợ tòa soạn Ukraine thử nghiệm AI",
+      "fingerprint": "openai ho tro toa soan ukraine thu nghiem ai",
+      "canonical_sources": [
+        "https://openai.com/index/supporting-independent-journalism-in-ukraine"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-08",
+          "section": "brief",
+          "published_at": "2026-09-07",
+          "event_signature": {
+            "organization": "openai",
+            "product": "newsroom-ai-catalyst",
+            "action": "partnership",
+            "artifact": "ukraine-airppu-wan-ifra-program"
+          },
+          "signature_key": "openai|newsroom-ai-catalyst|partnership|ukraine-airppu-wan-ifra-program",
           "material_update": null,
           "update_kind": null,
           "dedupe_override_reason": null
