@@ -1,0 +1,42 @@
+name: Generate daily news index
+
+on:
+  push:
+    branches: [ai-morning-2026-09-10]
+
+permissions:
+  contents: write
+
+jobs:
+  generate-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v6
+        with:
+          ref: ai-morning-2026-09-10
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Run news tests
+        run: npm run test:news
+      - name: Generate news index
+        run: npm run news:index
+      - name: Check generated news index
+        run: npm run news:check
+      - name: Commit generated ledger
+        shell: bash
+        run: |
+          if git diff --quiet -- data/news-index.json; then
+            echo "news index already current"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/news-index.json
+          git commit -m "Generate news index for 2026-09-10"
+          git push origin HEAD:ai-morning-2026-09-10
