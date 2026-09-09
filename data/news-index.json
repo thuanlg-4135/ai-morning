@@ -2,8 +2,8 @@
   "schema_version": 3,
   "generated_from": {
     "first_edition": "2026-08-22",
-    "last_edition": "2026-09-08",
-    "edition_count": 16,
+    "last_edition": "2026-09-10",
+    "edition_count": 17,
     "source_registry_count": 45
   },
   "events": [
@@ -2807,6 +2807,170 @@
             "artifact": "ukraine-airppu-wan-ifra-program"
           },
           "signature_key": "openai|newsroom-ai-catalyst|partnership|ukraine-airppu-wan-ifra-program",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "cloudflare-miniflare-v5-cf-cli-alignment",
+      "event_signature": {
+        "organization": "cloudflare",
+        "product": "miniflare",
+        "action": "version-update",
+        "artifact": "v5-cloudflare-config-cf-cli-alignment"
+      },
+      "signature_key": "cloudflare|miniflare|version-update|v5-cloudflare-config-cf-cli-alignment",
+      "current_event_signature": {
+        "organization": "cloudflare",
+        "product": "miniflare",
+        "action": "version-update",
+        "artifact": "v5-cloudflare-config-cf-cli-alignment"
+      },
+      "current_signature_key": "cloudflare|miniflare|version-update|v5-cloudflare-config-cf-cli-alignment",
+      "first_published_at": "2026-09-08",
+      "first_edition": "2026-09-10",
+      "title": "Cloudflare Miniflare v5 — Cấu hình mới theo cloudflare.config.ts",
+      "fingerprint": "cloudflare miniflare v5 cau hinh moi theo cloudflare config ts",
+      "canonical_sources": [
+        "https://developers.cloudflare.com/changelog/post/2026-09-08-miniflare-v5"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-10",
+          "section": "releases",
+          "published_at": "2026-09-08",
+          "event_signature": {
+            "organization": "cloudflare",
+            "product": "miniflare",
+            "action": "version-update",
+            "artifact": "v5-cloudflare-config-cf-cli-alignment"
+          },
+          "signature_key": "cloudflare|miniflare|version-update|v5-cloudflare-config-cf-cli-alignment",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-code-quality-bulk-agentic-autofix",
+      "event_signature": {
+        "organization": "github",
+        "product": "code-quality",
+        "action": "feature-update",
+        "artifact": "bulk-agentic-autofix-up-to-25-findings"
+      },
+      "signature_key": "github|code-quality|feature-update|bulk-agentic-autofix-up-to-25-findings",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "code-quality",
+        "action": "feature-update",
+        "artifact": "bulk-agentic-autofix-up-to-25-findings"
+      },
+      "current_signature_key": "github|code-quality|feature-update|bulk-agentic-autofix-up-to-25-findings",
+      "first_published_at": "2026-09-09",
+      "first_edition": "2026-09-10",
+      "title": "GitHub gom tối đa 25 finding để Copilot sửa thành một pull request",
+      "fingerprint": "github gom toi da 25 finding de copilot sua thanh mot pull request",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-09-remediate-code-quality-findings-with-agentic-autofix"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-10",
+          "section": "trends",
+          "published_at": "2026-09-09",
+          "event_signature": {
+            "organization": "github",
+            "product": "code-quality",
+            "action": "feature-update",
+            "artifact": "bulk-agentic-autofix-up-to-25-findings"
+          },
+          "signature_key": "github|code-quality|feature-update|bulk-agentic-autofix-up-to-25-findings",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-copilot-jetbrains-enterprise-managed-sandbox",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot-for-jetbrains",
+        "action": "feature-update",
+        "artifact": "enterprise-managed-sandbox-policies"
+      },
+      "signature_key": "github|copilot-for-jetbrains|feature-update|enterprise-managed-sandbox-policies",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "copilot-for-jetbrains",
+        "action": "feature-update",
+        "artifact": "enterprise-managed-sandbox-policies"
+      },
+      "current_signature_key": "github|copilot-for-jetbrains|feature-update|enterprise-managed-sandbox-policies",
+      "first_published_at": "2026-09-08",
+      "first_edition": "2026-09-10",
+      "title": "GitHub Copilot for JetBrains — Enterprise-managed sandbox policies",
+      "fingerprint": "github copilot for jetbrains enterprise managed sandbox policies",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-08-enterprise-managed-sandbox-in-copilot-for-jetbrains"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-10",
+          "section": "releases",
+          "published_at": "2026-09-08",
+          "event_signature": {
+            "organization": "github",
+            "product": "copilot-for-jetbrains",
+            "action": "feature-update",
+            "artifact": "enterprise-managed-sandbox-policies"
+          },
+          "signature_key": "github|copilot-for-jetbrains|feature-update|enterprise-managed-sandbox-policies",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-dependabot-github-packages-fallback-auth",
+      "event_signature": {
+        "organization": "github",
+        "product": "dependabot",
+        "action": "feature-update",
+        "artifact": "github-packages-fallback-authentication"
+      },
+      "signature_key": "github|dependabot|feature-update|github-packages-fallback-authentication",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "dependabot",
+        "action": "feature-update",
+        "artifact": "github-packages-fallback-authentication"
+      },
+      "current_signature_key": "github|dependabot|feature-update|github-packages-fallback-authentication",
+      "first_published_at": "2026-09-08",
+      "first_edition": "2026-09-10",
+      "title": "Dependabot đọc GitHub Packages riêng tư mà không cần PAT riêng",
+      "fingerprint": "dependabot doc github packages rieng tu ma khong can pat rieng",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-08-automatic-dependabot-access-to-github-hosted-registries"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-10",
+          "section": "brief",
+          "published_at": "2026-09-08",
+          "event_signature": {
+            "organization": "github",
+            "product": "dependabot",
+            "action": "feature-update",
+            "artifact": "github-packages-fallback-authentication"
+          },
+          "signature_key": "github|dependabot|feature-update|github-packages-fallback-authentication",
           "material_update": null,
           "update_kind": null,
           "dedupe_override_reason": null
