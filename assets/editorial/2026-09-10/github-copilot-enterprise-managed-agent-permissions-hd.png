@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="864" viewBox="0 0 1536 864">
+<rect width="1536" height="864" fill="#f6f6f3"/><rect x="54" y="48" width="1428" height="768" fill="none" stroke="#191919" stroke-width="3"/>
+<text x="88" y="102" font-family="Arial,sans-serif" font-size="24" fill="#555">AI MORNING / GITHUB COPILOT</text><text x="88" y="180" font-family="Arial,sans-serif" font-size="60" font-weight="700">Quyền agent được quản lý ở cấp enterprise</text><line x1="88" y1="211" x2="1448" y2="211" stroke="#191919" stroke-width="3"/>
+<text x="105" y="318" font-family="Arial,sans-serif" font-size="34" font-weight="700">AGENT OPERATION</text>
+<g font-family="Arial,sans-serif"><rect x="110" y="362" width="380" height="93" rx="20" fill="#fafaf8" stroke="#191919" stroke-width="3"/><text x="138" y="407" font-size="28" font-weight="700">SHELL</text><text x="138" y="442" font-size="24" fill="#555">$ npm test</text>
+<rect x="110" y="487" width="380" height="93" rx="20" fill="#fafaf8" stroke="#191919" stroke-width="3"/><text x="138" y="532" font-size="28" font-weight="700">FILES</text><text x="138" y="567" font-size="24" fill="#555">read / edit</text>
+<rect x="110" y="612" width="380" height="93" rx="20" fill="#fafaf8" stroke="#191919" stroke-width="3"/><text x="138" y="657" font-size="28" font-weight="700">NETWORK</text><text x="138" y="692" font-size="24" fill="#555">api.example.com</text></g>
+<line x1="490" y1="555" x2="610" y2="555" stroke="#191919" stroke-width="7"/>
+<rect x="610" y="335" width="340" height="375" rx="22" fill="#e1e1dd" stroke="#191919" stroke-width="3"/><text x="670" y="395" font-family="Arial,sans-serif" font-size="38" font-weight="700">ENTERPRISE</text><text x="700" y="440" font-family="Arial,sans-serif" font-size="38" font-weight="700">POLICY</text>
+<path d="M780 515 L860 550 L848 645 L780 705 L712 645 L700 550 Z" fill="#f6f6f3" stroke="#191919" stroke-width="2"/><text x="742" y="612" font-family="Arial,sans-serif" font-size="28">LOCK</text>
+<line x1="950" y1="555" x2="1050" y2="555" stroke="#191919" stroke-width="7"/>
+<g font-family="Arial,sans-serif"><rect x="1050" y="335" width="320" height="110" rx="20" fill="#fafaf8" stroke="#191919" stroke-width="3"/><text x="1078" y="383" font-size="27" font-weight="700">ALLOW</text><text x="1078" y="423" font-size="24" fill="#555">không hỏi</text>
+<rect x="1050" y="475" width="320" height="110" rx="20" fill="#fafaf8" stroke="#191919" stroke-width="3"/><text x="1078" y="523" font-size="27" font-weight="700">APPROVAL</text><text x="1078" y="563" font-size="24" fill="#555">cần người duyệt</text>
+<rect x="1050" y="615" width="320" height="110" rx="20" fill="#fafaf8" stroke="#191919" stroke-width="3"/><text x="1078" y="663" font-size="27" font-weight="700">BLOCK</text><text x="1078" y="703" font-size="24" fill="#555">không chạy</text></g>
+</svg>
