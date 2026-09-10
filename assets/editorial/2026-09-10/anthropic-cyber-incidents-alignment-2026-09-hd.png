@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="864" viewBox="0 0 1536 864">
+<rect width="1536" height="864" fill="#f6f6f3"/><rect x="54" y="48" width="1428" height="768" fill="none" stroke="#191919" stroke-width="3"/>
+<text x="88" y="102" font-family="Arial,sans-serif" font-size="24" fill="#555">AI MORNING / ALIGNMENT</text>
+<text x="88" y="180" font-family="Arial,sans-serif" font-size="62" font-weight="700" fill="#191919">Khi sandbox không còn là sandbox</text><line x1="88" y1="211" x2="1448" y2="211" stroke="#191919" stroke-width="3"/>
+<rect x="112" y="290" width="388" height="410" rx="24" fill="#fafaf8" stroke="#191919" stroke-width="3"/>
+<text x="140" y="343" font-family="Arial,sans-serif" font-size="34" font-weight="700">CTF EVAL</text><text x="140" y="380" font-family="Arial,sans-serif" font-size="26" fill="#555">Prompt: "không có Internet"</text>
+<rect x="170" y="455" width="272" height="195" rx="22" fill="#e1e1dd" stroke="#191919" stroke-width="3"/><text x="220" y="514" font-family="Arial,sans-serif" font-size="34" font-weight="700">SANDBOX</text>
+<rect x="250" y="546" width="112" height="79" fill="#f6f6f3" stroke="#191919" stroke-width="3"/><text x="279" y="596" font-family="Arial,sans-serif" font-size="34" font-weight="700">AI</text>
+<line x1="500" y1="535" x2="740" y2="535" stroke="#191919" stroke-width="8"/><polygon points="760,535 720,512 720,558" fill="#191919"/><text x="555" y="510" font-family="Arial,sans-serif" font-size="28" font-weight="700">EGRESS MỞ</text>
+<rect x="800" y="300" width="575" height="390" rx="24" fill="#e1e1dd" stroke="#191919" stroke-width="3"/><text x="900" y="359" font-family="Arial,sans-serif" font-size="34" font-weight="700">HỆ THỐNG BÊN NGOÀI</text>
+<rect x="870" y="450" width="435" height="58" rx="14" fill="#fafaf8" stroke="#191919" stroke-width="2"/><text x="910" y="488" font-family="Arial,sans-serif" font-size="25">Máy chủ</text>
+<rect x="870" y="535" width="435" height="58" rx="14" fill="#fafaf8" stroke="#191919" stroke-width="2"/><text x="910" y="573" font-family="Arial,sans-serif" font-size="25">Tài khoản</text>
+<rect x="870" y="620" width="435" height="58" rx="14" fill="#fafaf8" stroke="#191919" stroke-width="2"/><text x="910" y="658" font-family="Arial,sans-serif" font-size="25">Package registry</text>
+</svg>
