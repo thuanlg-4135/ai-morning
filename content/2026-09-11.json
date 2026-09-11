@@ -22,7 +22,36 @@
       "Không tìm thấy thay đổi Blender, Godot, Unity hoặc Unreal đủ mới và đủ mạnh trước cutoff để đưa vào bản hôm nay."
     ]
   },
-  "brief": [],
+  "brief": [
+    {
+      "event_id": "cognition-swe-2-launch-2026-09",
+      "event_signature": {
+        "organization": "cognition",
+        "product": "swe-2",
+        "action": "launch",
+        "artifact": "reasoning-effort-pareto-cost-performance"
+      },
+      "published_at": "2026-09-10",
+      "freshness": "NEW_TODAY",
+      "title": "SWE-2 cho chỉnh effort theo độ khó của ticket",
+      "text": "Cognition giới thiệu SWE-2, model coding post-train từ Kimi K3 với nhiều mức reasoning effort trong cùng model. Công ty báo cáo mức medium dùng ít hơn 58% số turn và giảm 81% chi phí trung bình so với SWE-1.7 trên bài đánh giá của họ; đây vẫn là benchmark do nhà cung cấp công bố, không phải mức tiết kiệm đã được kiểm chứng cho mọi team. Cách thử nhỏ nhất là route ticket đơn giản sang effort thấp hoặc vừa, rồi đo tỷ lệ pass acceptance criteria và chi phí trước khi tăng effort cho việc khó hơn.",
+      "sources": [
+        {
+          "label": "Cognition: Introducing SWE-2 — Pushing the Pareto Frontier",
+          "url": "https://cognition.com/blog/swe-2",
+          "type": "official",
+          "published_at": "2026-09-10"
+        }
+      ],
+      "visual": {
+        "kind": "image",
+        "src": "editorial/2026-09-11/cognition-swe-2-launch-2026-09-hd.png",
+        "alt": "Biểu đồ Pareto minh hoạ các mức effort của SWE-2 đổi chi phí lấy khả năng hoàn thành task.",
+        "caption": "Effort level hữu ích khi team gắn mức suy luận với độ khó của ticket thay vì bật tối đa cho mọi việc.",
+        "credit": "Minh hoạ kỹ thuật · AI Morning"
+      }
+    }
+  ],
   "trends": [
     {
       "event_id": "deepseek-v4-1-flash-launch-2026-09",
@@ -60,44 +89,6 @@
         "src": "editorial/2026-09-11/deepseek-v4-1-flash-launch-2026-09-hd.png",
         "alt": "Sơ đồ kiến trúc bất đối xứng của DeepSeek V4.1 Flash với encoder 8B active, KV cache nhỏ hơn và decoder 16B active.",
         "caption": "Điểm tiết kiệm đáng chú ý nằm ở KV cache và số tham số active khác nhau giữa input và output.",
-        "credit": "Minh hoạ kỹ thuật · AI Morning"
-      }
-    },
-    {
-      "event_id": "cognition-swe-2-launch-2026-09",
-      "event_signature": {
-        "organization": "cognition",
-        "product": "swe-2",
-        "action": "launch",
-        "artifact": "reasoning-effort-pareto-cost-performance"
-      },
-      "published_at": "2026-09-10",
-      "freshness": "NEW_TODAY",
-      "id": "swe-2-pareto-chi-phi",
-      "strength": "EARLY_SIGNAL",
-      "importance": "SECONDARY",
-      "editorial_theme": "coding-agent-economics",
-      "editorial_angle": "effort-levels-and-cost-per-task",
-      "title": "SWE-2 cho chỉnh effort để đổi chi phí lấy độ khó",
-      "paragraphs": [
-        "Cognition giới thiệu SWE-2, model coding mới được post-train từ Kimi K3. Điểm mới hữu ích cho vận hành là nhiều mức reasoning effort được huấn luyện trong cùng một quá trình, để người dùng chọn mức thấp, vừa hoặc cao theo độ khó thay vì dùng một cấu hình cho mọi task.",
-        "Cognition báo cáo SWE-2 đạt 50,0% trên FrontierCode 1.1 Main và nói mức medium dùng ít hơn 58% số turn, đồng thời giảm 81% chi phí trung bình so với SWE-1.7 trên bài đánh giá của họ. Đây chưa phải bằng chứng rằng một team sản phẩm sẽ giảm 81% hóa đơn: benchmark, harness, độ dài task và cách tính completion đều ảnh hưởng mạnh đến kết quả.",
-        "Cách dùng hợp lý là route theo rủi ro. Một thay đổi copy hoặc test nhỏ có thể thử effort thấp; migration API hay bug xuyên nhiều module mới đáng tăng effort. Nếu agent bị đẩy lên mức cao cho mọi ticket, team lại quay về bài toán cũ: model mạnh nhưng chi phí khó kiểm soát."
-      ],
-      "action": "Phân ba nhóm ticket theo độ khó rồi thử effort thấp, vừa và cao; đo tỷ lệ pass acceptance criteria cùng chi phí thay vì mặc định mức cao.",
-      "sources": [
-        {
-          "label": "Cognition: Introducing SWE-2 — Pushing the Pareto Frontier",
-          "url": "https://cognition.com/blog/swe-2",
-          "type": "official",
-          "published_at": "2026-09-10"
-        }
-      ],
-      "visual": {
-        "kind": "image",
-        "src": "editorial/2026-09-11/cognition-swe-2-launch-2026-09-hd.png",
-        "alt": "Biểu đồ Pareto minh hoạ các mức effort của SWE-2 đổi chi phí lấy khả năng hoàn thành task.",
-        "caption": "Effort level hữu ích khi team gắn mức suy luận với độ khó của ticket thay vì bật tối đa cho mọi việc.",
         "credit": "Minh hoạ kỹ thuật · AI Morning"
       }
     }
