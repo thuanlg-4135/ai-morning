@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "edition_date": "2026-09-11",
+  "locale": "vi-VN",
+  "edition_type": "daily_ai_catchup",
+  "edition_mode": "QUIET",
+  "headline": "Model rẻ hơn chỉ có ý nghĩa khi task vẫn hoàn thành",
+  "dek": "DeepSeek và Cognition cùng đẩy mạnh bài toán giảm chi phí cho model làm việc dài hơi, nhưng số benchmark của cả hai vẫn chủ yếu do nhà cung cấp công bố. Bản hôm nay giữ gọn ba sự kiện và kéo chúng về câu hỏi thực tế: chi phí cho một task đạt tiêu chí nghiệm thu có giảm hay không.",
+  "meta": {
+    "primary_scan_hours": 24,
+    "context_window_hours": 72,
+    "reading_minutes": 6,
+    "generated_at": "2026-09-11T07:19:46+07:00",
+    "cutoff_at": "2026-09-11T07:00:00+07:00",
+    "window_started_at": "2026-09-10T07:00:00+07:00",
+    "source_policy": "Ưu tiên nguồn gốc, dùng cutoff 07:00 Asia/Ho_Chi_Minh, phân biệt benchmark nội bộ với kiểm chứng độc lập và không thêm tin yếu chỉ để đủ số lượng.",
+    "research_notes": [
+      "Bắt đầu từ danh sách ứng viên rỗng và tìm lại các tên sự kiện trong repository để tránh lặp bản cũ.",
+      "Đã rà nguồn model/platform và developer tooling chính trong cửa sổ. Chọn DeepSeek V4.1 Flash và Cognition SWE-2 vì có nguồn chính thức ngày 10/09 và thay đổi kỹ thuật đủ cụ thể.",
+      "agent-device v0.21 được giữ dưới nhãn CONTEXT_72H vì release chính thức xuất bản 08/09 20:09 UTC, vẫn nằm trong cửa sổ 72 giờ và chưa xuất hiện trong repo.",
+      "Không dùng Copilot PR approvals vì changelog gốc là ngày 01/09; việc được nhắc lại ngày 10/09 không tạo material update mới.",
+      "Không tìm thấy thay đổi Blender, Godot, Unity hoặc Unreal đủ mới và đủ mạnh trước cutoff để đưa vào bản hôm nay."
+    ]
+  },
+  "brief": [],
+  "trends": [
+    {
+      "event_id": "deepseek-v4-1-flash-launch-2026-09",
+      "event_signature": {
+        "organization": "deepseek",
+        "product": "deepseek-v4-1-flash",
+        "action": "launch",
+        "artifact": "causal-encoder-decoder-kv-cache-api"
+      },
+      "published_at": "2026-09-10",
+      "freshness": "NEW_TODAY",
+      "id": "deepseek-cache-nho-hon",
+      "strength": "EMERGING",
+      "importance": "LEAD",
+      "editorial_theme": "inference-cost-efficiency",
+      "editorial_angle": "kv-cache-and-completed-task-cost",
+      "title": "DeepSeek V4.1 Flash giảm mạnh phần cache của inference",
+      "paragraphs": [
+        "DeepSeek phát hành V4.1 Flash với kiến trúc Causal Encoder–Decoder mới. Model có 552B tham số dạng MoE nhưng chỉ kích hoạt 8B tham số khi đọc input và 16B khi tạo output. DeepSeek nói KV cache của thế hệ này cần khoảng một phần tư HBM và một phần tám dung lượng SSD so với thế hệ trước; API dùng tên `deepseek-flash` và đã hỗ trợ input hình ảnh.",
+        "Phần đáng chú ý với agent không nằm ở con số 552B mà ở chi phí giữ ngữ cảnh dài. Cache hit thường xuất hiện nhiều khi agent đọc lại repo, lịch sử tool call hoặc context qua nhiều bước. Nếu cache nhỏ hơn nhưng chất lượng vẫn giữ được, cùng một budget có thể chạy được nhiều vòng hơn. DeepSeek cũng giảm giá API và sẽ chuyển traffic `deepseek-v4-pro` sang V4.1 Flash từ 14/09 cho đến khi V4.1 Pro ra mắt.",
+        "Các benchmark trên trang phát hành vẫn là số do DeepSeek tổng hợp hoặc dẫn lại. Team TypeScript hay .NET không nên đổi model chỉ vì bảng điểm đẹp. Ví dụ, lấy 10 ticket nhỏ đã có acceptance criteria, chạy cùng harness với model hiện tại và V4.1 Flash, rồi so chi phí, số lần phải sửa hướng và tỷ lệ task được QA chấp nhận."
+      ],
+      "pullquote": "Cache rẻ hơn chỉ đáng giá nếu agent vẫn đưa ticket tới trạng thái được chấp nhận.",
+      "action": "Chạy một tập ticket cố định với model hiện tại và V4.1 Flash; so chi phí trên mỗi task hoàn thành thay vì chỉ so giá token.",
+      "sources": [
+        {
+          "label": "DeepSeek: Introducing DeepSeek-V4.1-Flash",
+          "url": "https://www.deepseek.com/en/news/deepseek-v4-1-flash/",
+          "type": "official",
+          "published_at": "2026-09-10"
+        }
+      ],
+      "visual": {
+        "kind": "image",
+        "src": "editorial/2026-09-11/deepseek-v4-1-flash-launch-2026-09-hd.png",
+        "alt": "Sơ đồ kiến trúc bất đối xứng của DeepSeek V4.1 Flash với encoder 8B active, KV cache nhỏ hơn và decoder 16B active.",
+        "caption": "Điểm tiết kiệm đáng chú ý nằm ở KV cache và số tham số active khác nhau giữa input và output.",
+        "credit": "Minh hoạ kỹ thuật · AI Morning"
+      }
+    },
+    {
+      "event_id": "cognition-swe-2-launch-2026-09",
+      "event_signature": {
+        "organization": "cognition",
+        "product": "swe-2",
+        "action": "launch",
+        "artifact": "reasoning-effort-pareto-cost-performance"
+      },
+      "published_at": "2026-09-10",
+      "freshness": "NEW_TODAY",
+      "id": "swe-2-pareto-chi-phi",
+      "strength": "EARLY_SIGNAL",
+      "importance": "SECONDARY",
+      "editorial_theme": "coding-agent-economics",
+      "editorial_angle": "effort-levels-and-cost-per-task",
+      "title": "SWE-2 cho chỉnh effort để đổi chi phí lấy độ khó",
+      "paragraphs": [
+        "Cognition giới thiệu SWE-2, model coding mới được post-train từ Kimi K3. Điểm mới hữu ích cho vận hành là nhiều mức reasoning effort được huấn luyện trong cùng một quá trình, để người dùng chọn mức thấp, vừa hoặc cao theo độ khó thay vì dùng một cấu hình cho mọi task.",
+        "Cognition báo cáo SWE-2 đạt 50,0% trên FrontierCode 1.1 Main và nói mức medium dùng ít hơn 58% số turn, đồng thời giảm 81% chi phí trung bình so với SWE-1.7 trên bài đánh giá của họ. Đây chưa phải bằng chứng rằng một team sản phẩm sẽ giảm 81% hóa đơn: benchmark, harness, độ dài task và cách tính completion đều ảnh hưởng mạnh đến kết quả.",
+        "Cách dùng hợp lý là route theo rủi ro. Một thay đổi copy hoặc test nhỏ có thể thử effort thấp; migration API hay bug xuyên nhiều module mới đáng tăng effort. Nếu agent bị đẩy lên mức cao cho mọi ticket, team lại quay về bài toán cũ: model mạnh nhưng chi phí khó kiểm soát."
+      ],
+      "action": "Phân ba nhóm ticket theo độ khó rồi thử effort thấp, vừa và cao; đo tỷ lệ pass acceptance criteria cùng chi phí thay vì mặc định mức cao.",
+      "sources": [
+        {
+          "label": "Cognition: Introducing SWE-2 — Pushing the Pareto Frontier",
+          "url": "https://cognition.com/blog/swe-2",
+          "type": "official",
+          "published_at": "2026-09-10"
+        }
+      ],
+      "visual": {
+        "kind": "image",
+        "src": "editorial/2026-09-11/cognition-swe-2-launch-2026-09-hd.png",
+        "alt": "Biểu đồ Pareto minh hoạ các mức effort của SWE-2 đổi chi phí lấy khả năng hoàn thành task.",
+        "caption": "Effort level hữu ích khi team gắn mức suy luận với độ khó của ticket thay vì bật tối đa cho mọi việc.",
+        "credit": "Minh hoạ kỹ thuật · AI Morning"
+      }
+    }
+  ],
+  "releases": [
+    {
+      "event_id": "callstack-agent-device-v0-21-0",
+      "event_signature": {
+        "organization": "callstack",
+        "product": "agent-device",
+        "action": "release",
+        "artifact": "v0-21-0-mobile-agent-feedback-loop"
+      },
+      "published_at": "2026-09-08T20:09:21Z",
+      "freshness": "CONTEXT_72H",
+      "product": "agent-device 0.21.0",
+      "feature": "Mobile app feedback loop nhanh và dễ kiểm soát hơn",
+      "status": "GA",
+      "summary": "agent-device 0.21 cải thiện tốc độ mở app trên iOS Simulator, làm rõ kết quả khi element không tồn tại, thêm khả năng tạm dừng để người dùng takeover remote device và giảm kích thước cài đặt.",
+      "who_gets_it": "Team dùng coding agent để kiểm tra app iOS, Android, React Native, Expo hoặc Flutter trên simulator, emulator hay device.",
+      "why_it_matters": "Agent sửa mobile UI thường thiếu vòng phản hồi sau khi code xong. Snapshot có semantic ref, thao tác trực tiếp và evidence như screenshot/log giúp agent kiểm tra hành vi của app thay vì dừng ở việc đọc source hoặc chạy unit test.",
+      "verdict": "TRY_NOW",
+      "verdict_note": "Nếu đang có một flow mobile dễ tái hiện, thử đúng một case như đăng nhập hoặc mở Settings. Giữ output nhỏ: snapshot trước, thao tác, snapshot sau và một screenshot làm bằng chứng. v0.21 có breaking changes ở batch input và perf command nên đọc release note trước khi nâng.",
+      "sources": [
+        {
+          "label": "Callstack agent-device v0.21.0 release",
+          "url": "https://github.com/callstack/agent-device/releases/tag/v0.21.0",
+          "type": "official",
+          "published_at": "2026-09-08T20:09:21Z"
+        }
+      ],
+      "visual": {
+        "kind": "image",
+        "src": "editorial/2026-09-11/callstack-agent-device-v0-21-0-hd.png",
+        "alt": "Sơ đồ coding agent nhận accessibility snapshot từ app mobile, thực hiện thao tác rồi thu screenshot và log làm bằng chứng.",
+        "caption": "Vòng phản hồi của agent-device nối code change với trạng thái app và evidence có thể review.",
+        "credit": "Minh hoạ kỹ thuật · AI Morning"
+      }
+    }
+  ],
+  "developer_memo": {
+    "title": "Hôm nay nên thử gì?",
+    "direct_answer": "Đo chi phí trên task hoàn thành trước khi đổi model hoặc mở rộng agent workflow.",
+    "actions": [
+      "Lấy 10 ticket nhỏ có acceptance criteria và so model theo tỷ lệ hoàn thành, số lần can thiệp và tổng chi phí.",
+      "Chỉ tăng reasoning effort cho nhóm task thực sự cần nhiều bước hoặc nhiều module.",
+      "Nếu làm mobile, thêm một vòng snapshot → thao tác → evidence vào một flow QA trước khi tự động hóa rộng hơn."
+    ],
+    "avoid": [
+      "Không dùng giá token hoặc benchmark của vendor làm bằng chứng duy nhất cho ROI.",
+      "Không mặc định effort cao cho mọi ticket chỉ vì model cho phép.",
+      "Không dựng thêm framework orchestration nếu một vòng test nhỏ chưa chứng minh agent giúp ship nhanh hơn."
+    ]
+  },
+  "radar": [],
+  "takeaway": "Model và tooling hôm nay đều đi theo hướng giảm chi phí cho mỗi vòng làm việc. Việc cần chứng minh vẫn là vòng đó có kết thúc bằng một thay đổi được chấp nhận hay không."
+}
