@@ -272,6 +272,7 @@ export function Header({
                 Học & làm
               </Link>
             )}
+            {language === "vi" && <Link href="/arcade/">Arcade</Link>}
             <Link
               className={
                 archive && activeSection !== "learn" ? "nav-active" : ""

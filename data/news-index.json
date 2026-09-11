@@ -2,8 +2,8 @@
   "schema_version": 3,
   "generated_from": {
     "first_edition": "2026-08-22",
-    "last_edition": "2026-09-08",
-    "edition_count": 16,
+    "last_edition": "2026-09-10",
+    "edition_count": 17,
     "source_registry_count": 45
   },
   "events": [
@@ -2807,6 +2807,170 @@
             "artifact": "ukraine-airppu-wan-ifra-program"
           },
           "signature_key": "openai|newsroom-ai-catalyst|partnership|ukraine-airppu-wan-ifra-program",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "anthropic-cyber-incidents-alignment-2026-09",
+      "event_signature": {
+        "organization": "anthropic",
+        "product": "claude",
+        "action": "research-publication",
+        "artifact": "cybersecurity-incidents-alignment-assessment"
+      },
+      "signature_key": "anthropic|claude|research-publication|cybersecurity-incidents-alignment-assessment",
+      "current_event_signature": {
+        "organization": "anthropic",
+        "product": "claude",
+        "action": "research-publication",
+        "artifact": "cybersecurity-incidents-alignment-assessment"
+      },
+      "current_signature_key": "anthropic|claude|research-publication|cybersecurity-incidents-alignment-assessment",
+      "first_published_at": "2026-09-09",
+      "first_edition": "2026-09-10",
+      "title": "Anthropic: prompt không thể thay thế boundary của môi trường chạy",
+      "fingerprint": "anthropic prompt khong the thay the boundary cua moi truong chay",
+      "canonical_sources": [
+        "https://anthropic.com/research/alignment-assessment-cybersecurity-incidents"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-10",
+          "section": "trends",
+          "published_at": "2026-09-09",
+          "event_signature": {
+            "organization": "anthropic",
+            "product": "claude",
+            "action": "research-publication",
+            "artifact": "cybersecurity-incidents-alignment-assessment"
+          },
+          "signature_key": "anthropic|claude|research-publication|cybersecurity-incidents-alignment-assessment",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "f5-workforce-ai-security-2026-09",
+      "event_signature": {
+        "organization": "f5",
+        "product": "workforce-ai-security",
+        "action": "launch",
+        "artifact": "network-policy-agent-tool-calls"
+      },
+      "signature_key": "f5|workforce-ai-security|launch|network-policy-agent-tool-calls",
+      "current_event_signature": {
+        "organization": "f5",
+        "product": "workforce-ai-security",
+        "action": "launch",
+        "artifact": "network-policy-agent-tool-calls"
+      },
+      "current_signature_key": "f5|workforce-ai-security|launch|network-policy-agent-tool-calls",
+      "first_published_at": "2026-09-09",
+      "first_edition": "2026-09-10",
+      "title": "F5 đưa policy cho agent vào đường tương tác",
+      "fingerprint": "f5 dua policy cho agent vao duong tuong tac",
+      "canonical_sources": [
+        "https://f5.com/fr_fr/company/news/press-releases/f5-workforce-ai-security"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-10",
+          "section": "brief",
+          "published_at": "2026-09-09",
+          "event_signature": {
+            "organization": "f5",
+            "product": "workforce-ai-security",
+            "action": "launch",
+            "artifact": "network-policy-agent-tool-calls"
+          },
+          "signature_key": "f5|workforce-ai-security|launch|network-policy-agent-tool-calls",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-copilot-enterprise-managed-agent-permissions",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot",
+        "action": "feature-update",
+        "artifact": "enterprise-managed-agent-operation-permissions"
+      },
+      "signature_key": "github|copilot|feature-update|enterprise-managed-agent-operation-permissions",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "copilot",
+        "action": "feature-update",
+        "artifact": "enterprise-managed-agent-operation-permissions"
+      },
+      "current_signature_key": "github|copilot|feature-update|enterprise-managed-agent-operation-permissions",
+      "first_published_at": "2026-09-09",
+      "first_edition": "2026-09-10",
+      "title": "GitHub đưa quyền shell, file và network của Copilot lên cấp enterprise",
+      "fingerprint": "github dua quyen shell file va network cua copilot len cap enterprise",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-09-enterprise-managed-permissions-for-github-copilot-agent-operations"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-10",
+          "section": "trends",
+          "published_at": "2026-09-09",
+          "event_signature": {
+            "organization": "github",
+            "product": "copilot",
+            "action": "feature-update",
+            "artifact": "enterprise-managed-agent-operation-permissions"
+          },
+          "signature_key": "github|copilot|feature-update|enterprise-managed-agent-operation-permissions",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "notion-agent-model-controls-2026-09",
+      "event_signature": {
+        "organization": "notion",
+        "product": "notion-ai",
+        "action": "feature-update",
+        "artifact": "agent-model-controls"
+      },
+      "signature_key": "notion|notion-ai|feature-update|agent-model-controls",
+      "current_event_signature": {
+        "organization": "notion",
+        "product": "notion-ai",
+        "action": "feature-update",
+        "artifact": "agent-model-controls"
+      },
+      "current_signature_key": "notion|notion-ai|feature-update|agent-model-controls",
+      "first_published_at": "2026-09-09",
+      "first_edition": "2026-09-10",
+      "title": "Notion AI — Model controls cho Notion Agent và Custom Agents",
+      "fingerprint": "notion ai model controls cho notion agent va custom agents",
+      "canonical_sources": [
+        "https://notion.com/releases/2026-09-09"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-10",
+          "section": "releases",
+          "published_at": "2026-09-09",
+          "event_signature": {
+            "organization": "notion",
+            "product": "notion-ai",
+            "action": "feature-update",
+            "artifact": "agent-model-controls"
+          },
+          "signature_key": "notion|notion-ai|feature-update|agent-model-controls",
           "material_update": null,
           "update_kind": null,
           "dedupe_override_reason": null
