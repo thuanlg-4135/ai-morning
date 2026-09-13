@@ -310,7 +310,12 @@ export function Footer({ language }) {
       <span className="footer-note">
         {language === "vi"
           ? "Kiểm tra nguồn gốc trước khi áp dụng vào công việc."
-          : "Check the original sources before applying a claim to your work."}
+          : "Check the original sources before applying a claim to your work."}{" "}
+        <Link href="/about/">
+          {language === "vi"
+            ? "Về trang · Dữ liệu · Góp ý"
+            : "About · Privacy · Contact (VI)"}
+        </Link>
       </span>
     </footer>
   );

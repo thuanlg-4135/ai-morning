@@ -5,7 +5,8 @@ import {
   editionSummary,
   editionStories,
 } from "../lib/editions.mjs";
-import { basePath, siteUrl, datePath, homePath } from "../lib/site.mjs";
+import { datePath, homePath } from "../lib/site.mjs";
+import { pageMetadata } from "../lib/metadata.mjs";
 import { EditionPage, ArchivePage } from "./newspaper";
 
 export async function allStaticParams() {
@@ -57,20 +58,20 @@ export async function generateMetadata({ params }) {
   const title = archive
     ? `${language === "en" ? "Archive" : "Bài cũ"} · AI Morning`
     : `${edition.headline} · AI Morning`;
-  const canonical = `${siteUrl}${basePath}${archive ? `${homePath(language)}archive/` : datePath(edition.edition_date, language)}`;
-  return {
+  const description = archive
+    ? language === "en"
+      ? "Browse past AI Morning editions. Search AI news, developer tools, and saved stories."
+      : "Tìm lại các số AI Morning theo ngày, chủ đề và công cụ. Đọc tiếp những bài bạn đã lưu."
+    : edition.dek;
+  return pageMetadata({
     title,
-    description: edition.dek,
-    alternates: { canonical },
-    openGraph: {
-      title,
-      description: edition.dek,
-      url: canonical,
-      siteName: "AI Morning",
-      locale: language === "en" ? "en_US" : "vi_VN",
-      type: "website",
-    },
-  };
+    description,
+    language,
+    path: archive
+      ? `${homePath(language)}archive/`
+      : datePath(edition.edition_date, language),
+    date: archive ? undefined : edition.edition_date,
+  });
 }
 
 export default async function Page({ params }) {
