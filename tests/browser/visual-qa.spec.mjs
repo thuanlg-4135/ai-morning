@@ -33,6 +33,8 @@ test("capture tablet visual QA", async ({ page }) => {
   await page.setViewportSize({ width: 768, height: 1000 });
   await page.goto(`${basePath}/`);
   await capture(page, ".verification/pages/768-home.png");
+  await page.goto(`${basePath}/about/`);
+  await capture(page, ".verification/pages/768-about.png");
 });
 
 for (const [width, height, name] of [

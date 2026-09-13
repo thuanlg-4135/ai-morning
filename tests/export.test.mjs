@@ -169,3 +169,43 @@ test("learning collection exports complete guides and official references", asyn
       );
   }
 });
+
+test("sitemap URLs have matching canonicals and complete share metadata", async () => {
+  const xml = await readFile("dist/sitemap.xml", "utf8");
+  const locations = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+  assert.ok(locations.length > editions.length);
+  assert.equal(new Set(locations).size, locations.length);
+  for (const location of locations) {
+    const url = new URL(location);
+    assert.equal(url.origin, "https://thuanlg-4135.github.io");
+    assert.ok(url.pathname.startsWith(`${basePath}/`));
+    const html = await readFile(
+      `dist${url.pathname.slice(basePath.length)}index.html`,
+      "utf8",
+    );
+    assert.ok(html.includes(`rel="canonical" href="${location}"`), location);
+    assert.match(html, /<meta name="description" content="[^"]+"/);
+    assert.match(
+      html,
+      /<meta name="twitter:card" content="summary_large_image"/,
+    );
+    const image = html.match(/<meta property="og:image" content="([^"]+)"/);
+    assert.ok(image, location);
+    const imageUrl = new URL(image[1]);
+    assert.equal(imageUrl.origin, url.origin);
+    const file = `dist${imageUrl.pathname.slice(basePath.length)}`;
+    const sharp = (await import("sharp")).default;
+    const dimensions = await sharp(file).metadata();
+    assert.equal(dimensions.width, 1200);
+    assert.equal(dimensions.height, 630);
+  }
+  for (const prefix of ["", "en/"]) {
+    const html = await readFile(`dist/${prefix}index.html`, "utf8");
+    assert.match(html, /<meta property="og:image" content="https:\/\//);
+  }
+  const notFound = await readFile("dist/404.html", "utf8");
+  assert.match(notFound, /<meta name="robots" content="noindex/);
+  for (const name of ["favicon-32.png", "apple-touch-icon.png"]) {
+    assert.ok((await stat(`dist/assets/${name}`)).size > 0);
+  }
+});

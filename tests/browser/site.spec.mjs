@@ -15,6 +15,7 @@ const learning = JSON.parse(
   await readFile("content/learning/index.json", "utf8"),
 );
 const routes = [
+  "about/",
   "learn/",
   ...learning.articles.map((a) => `learn/${a.slug}/`),
   "",

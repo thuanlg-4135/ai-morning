@@ -51,7 +51,18 @@ const serif = localFont({
 
 export const metadata = {
   title: "AI Morning",
-  icons: { icon: `${basePath}/assets/mark.svg` },
+  description: "Tin AI chọn lọc, qua góc nhìn của người làm phần mềm.",
+  icons: {
+    icon: [
+      { url: `${basePath}/assets/mark.svg`, type: "image/svg+xml" },
+      {
+        url: `${basePath}/assets/favicon-32.png`,
+        type: "image/png",
+        sizes: "32x32",
+      },
+    ],
+    apple: { url: `${basePath}/assets/apple-touch-icon.png`, sizes: "180x180" },
+  },
 };
 const themeScript = `try{let s=localStorage;let t=s.getItem('ai-morning-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t;if(s.getItem('ai-morning-reading')==='true')document.documentElement.dataset.reading='true';if(s.getItem('ai-morning-large')==='true'||(!s.getItem('ai-morning-large')&&s.getItem('ai-morning-large-type')==='true'))document.documentElement.dataset.large='true'}catch{}`;
 

@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { getLearning, learningTracks } from "../../../lib/learning.mjs";
-import { basePath, siteUrl } from "../../../lib/site.mjs";
-export const metadata = {
+import { pageMetadata } from "../../../lib/metadata.mjs";
+export const metadata = pageMetadata({
   title: "Học & làm · AI Morning",
   description:
     "Bài thực hành cho developer: công việc trong team, hoạt hình 3D, dựng video và làm game.",
-  alternates: { canonical: `${siteUrl}${basePath}/learn/` },
-};
+  path: "/learn/",
+});
 
 export default async function LearningIndex() {
   const { articles } = await getLearning();

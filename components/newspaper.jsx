@@ -273,9 +273,7 @@ export function Header({
               </Link>
             )}
             <Link
-              className={
-                archive && activeSection !== "learn" ? "nav-active" : ""
-              }
+              className={archive && !activeSection ? "nav-active" : ""}
               href={`${home}archive/`}
             >
               {t.archive}
@@ -310,7 +308,19 @@ export function Footer({ language }) {
       <span className="footer-note">
         {language === "vi"
           ? "Kiểm tra nguồn gốc trước khi áp dụng vào công việc."
-          : "Check the original sources before applying a claim to your work."}
+          : "Check the original sources before applying a claim to your work."}{" "}
+        <Link
+          href="/about/"
+          style={{
+            textDecoration: "underline",
+            textUnderlineOffset: "0.2em",
+            fontSize: "12px",
+          }}
+        >
+          {language === "vi"
+            ? "Về trang · Dữ liệu · Góp ý"
+            : "About · Privacy · Contact (VI)"}
+        </Link>
       </span>
     </footer>
   );

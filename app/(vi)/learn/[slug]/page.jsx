@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getLearning, learningTracks } from "../../../../lib/learning.mjs";
-import { basePath, siteUrl } from "../../../../lib/site.mjs";
+import { pageMetadata } from "../../../../lib/metadata.mjs";
 export const dynamicParams = false;
 export async function generateStaticParams() {
   return (await getLearning()).articles.map((a) => ({ slug: a.slug }));
@@ -15,11 +15,11 @@ async function articleFor(params) {
 }
 export async function generateMetadata({ params }) {
   const { article } = await articleFor(params);
-  return {
+  return pageMetadata({
     title: `${article.title} · AI Morning`,
     description: article.summary,
-    alternates: { canonical: `${siteUrl}${basePath}/learn/${article.slug}/` },
-  };
+    path: `/learn/${article.slug}/`,
+  });
 }
 export default async function LearningArticle({ params }) {
   const { article: a, articles, updated_at } = await articleFor(params);
