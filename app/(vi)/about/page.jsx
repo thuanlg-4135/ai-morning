@@ -57,6 +57,10 @@ export default async function AboutPage() {
                 href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
                 target="_blank"
                 rel="noopener noreferrer"
+                style={{
+                  textDecoration: "underline",
+                  textUnderlineOffset: "0.2em",
+                }}
               >
                 chính sách quyền riêng tư của GitHub
               </a>
@@ -79,6 +83,10 @@ export default async function AboutPage() {
                 href="https://github.com/thuanlg-4135/ai-morning/issues"
                 target="_blank"
                 rel="noopener noreferrer"
+                style={{
+                  textDecoration: "underline",
+                  textUnderlineOffset: "0.2em",
+                }}
               >
                 GitHub Issues của AI Morning
               </a>
