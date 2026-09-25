@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "edition_date": "2026-09-26",
+  "locale": "vi-VN",
+  "edition_type": "daily_ai_catchup",
+  "edition_mode": "NORMAL",
+  "headline": "Agent có thêm memory, nhưng fix vẫn cần người xác nhận",
+  "dek": "GitHub nối Copilot Memory với agentic autofix, cho phép tái dùng mẫu sửa cảnh báo bảo mật. Một preview khác yêu cầu xác thực lại trước thao tác enterprise nhạy cảm; cả hai thay đổi đều cần team thử trong phạm vi nhỏ.",
+  "meta": {
+    "primary_scan_hours": 24,
+    "context_window_hours": 72,
+    "reading_minutes": 6,
+    "generated_at": "2026-09-25T19:08:21Z",
+    "cutoff_at": "2026-09-25T19:08:21Z",
+    "window_started_at": "2026-09-24T19:08:21Z",
+    "source_policy": "Ưu tiên changelog, release note và tài liệu gốc có ngày xuất bản; dùng cửa sổ chính 24 giờ và tối đa 72 giờ cho cập nhật phù hợp.",
+    "research_notes": [
+      "Bắt đầu từ candidate list rỗng và đối chiếu ledger cùng các edition hiện có trước khi chọn từng sự kiện.",
+      "Cutoff là thời điểm thực tế 2026-09-25T19:08:21Z; việc so freshness tuân thủ cửa sổ chính 24 giờ và tối đa 72 giờ, tính ngược từ thời điểm validation này.",
+      "Chọn hai cập nhật GitHub mới: agentic autofix tích hợp Copilot Memory ngày 25/09 và proof of presence cho thao tác nhạy cảm ngày 24/09; cả hai khác với các event trong ledger.",
+      "Đã rà GitHub Changelog, Anthropic newsroom, Cloudflare Agents, CodeQL và Godot. Không thêm tin model/creative tooling vì chưa thấy candidate đủ mới, đủ nguồn và có ích trong cửa sổ freshness."
+    ]
+  },
+  "brief": [
+    {
+      "event_id": "github-copilot-memory-agentic-autofix-2026-09",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot-agentic-autofix",
+        "action": "integration",
+        "artifact": "repository-memory-context-for-security-fixes"
+      },
+      "published_at": "2026-09-25",
+      "freshness": "NEW_TODAY",
+      "title": "Copilot Memory truyền mẫu sửa lỗi sang agentic autofix",
+      "text": "GitHub cho biết agentic autofix nay đọc memory của repo khi người dùng bật Copilot Memory, rồi lưu mẫu sửa sau khi tạo fix. Memory đang ở public preview; với repo có nhiều cảnh báo tương tự, team có thể kiểm tra xem quy ước đã lưu có giảm số lần phải hướng dẫn agent hay không. Xem memory được ghi, đọc diff và chạy lại công cụ quét trước khi merge.",
+      "sources": [
+        {
+          "label": "GitHub Changelog: Agentic autofix now uses Copilot Memory",
+          "url": "https://github.blog/changelog/2026-09-25-agentic-autofix-now-uses-copilot-memory/",
+          "type": "official",
+          "published_at": "2026-09-25"
+        }
+      ],
+      "visual": {
+        "kind": "image",
+        "src": "editorial/2026-09-26/copilot-agent-sandbox-observability-hd.png",
+        "alt": "Agent xử lý cảnh báo bảo mật với memory lưu mẫu sửa để tham khảo qua các phiên.",
+        "caption": "Memory giúp agent mang theo mẫu sửa; diff và kết quả quét vẫn cần được xác nhận.",
+        "credit": "Minh hoạ kỹ thuật · AI Morning"
+      }
+    }
+  ],
+  "trends": [
+    {
+      "event_id": "github-enterprise-proof-of-presence-preview-2026-09",
+      "event_signature": {
+        "organization": "github",
+        "product": "github-enterprise-cloud",
+        "action": "preview",
+        "artifact": "proof-of-presence-high-impact-actions"
+      },
+      "published_at": "2026-09-24",
+      "id": "enterprise-proof-of-presence",
+      "freshness": "CONTEXT_72H",
+      "strength": "EMERGING",
+      "importance": "LEAD",
+      "editorial_theme": "identity-boundary-for-sensitive-actions",
+      "editorial_angle": "fresh-authentication-for-enterprise-operations",
+      "title": "GitHub yêu cầu xác thực mới trước thao tác nhạy cảm",
+      "paragraphs": [
+        "GitHub Enterprise Cloud đang thử “proof of presence”: trước khi tạo token, sửa webhook hoặc đổi cài đặt bảo mật, thành viên có thể phải xác thực lại hoặc làm MFA qua Microsoft Entra ID. Preview hiện chỉ dành cho enterprise dùng managed users trên github.com hoặc GHEC-DR, kết nối Entra ID qua SAML hoặc OIDC.",
+        "Cơ chế này xử lý điểm yếu của phiên dài hạn: cookie hoặc token hợp lệ vẫn có thể bị đánh cắp. Khi policy bật, GitHub chuyển người dùng về IdP để kiểm tra danh tính tại thời điểm thao tác. Sau challenge thành công, phiên browser được phép thực hiện các thao tác nhạy cảm trong hai giờ.",
+        "Đây là lớp xác thực cho thao tác quản trị; nó chưa chặn merge pull request, dù GitHub nói hỗ trợ đó sẽ đến sau. Nếu team thuộc phạm vi preview, thử trước với một nhóm quản trị viên và xác nhận luồng xác thực cũng như khôi phục không làm gián đoạn công việc."
+      ],
+      "action": "Nếu enterprise dùng Entra ID và managed users, bật thử cho một nhóm nhỏ; kiểm tra thao tác tạo token cần xác thực lại và quyền truy cập hoạt động đúng sau đó.",
+      "sources": [
+        {
+          "label": "GitHub Changelog: Require proof of presence for high-impact actions",
+          "url": "https://github.blog/changelog/2026-09-24-require-proof-of-presence-for-high-impact-actions/",
+          "type": "official",
+          "published_at": "2026-09-24"
+        }
+      ],
+      "visual": {
+        "kind": "image",
+        "src": "editorial/2026-09-26/github-proof-of-presence-hd.png",
+        "alt": "Phiên đăng nhập phải qua bước xác thực lại với nhà cung cấp danh tính trước khi thực hiện thao tác nhạy cảm.",
+        "caption": "Proof of presence xác nhận người được ủy quyền tại thời điểm thao tác nhạy cảm.",
+        "credit": "Minh hoạ kỹ thuật · AI Morning"
+      }
+    }
+  ],
+  "releases": [],
+  "developer_memo": {
+    "title": "Nên kiểm tra gì trước khi bật thêm quyền cho agent?",
+    "direct_answer": "Thử memory trên cảnh báo dễ xác minh và giữ bước review trước khi chấp nhận bản sửa.",
+    "actions": [
+      "Chọn cảnh báo bảo mật dễ tái hiện, bật Copilot Memory nếu chính sách cho phép và xem memory nào được lưu sau khi agent tạo fix.",
+      "Đọc diff, chạy test liên quan và xác nhận công cụ quét ban đầu không còn báo vấn đề trước khi merge.",
+      "Nếu enterprise đủ điều kiện proof of presence, thử một thao tác quản trị với nhóm nhỏ và xác minh yêu cầu xác thực mới."
+    ],
+    "avoid": [
+      "Đừng tự động chấp nhận autofix chỉ vì memory từng lưu mẫu tương tự.",
+      "Đừng mở rộng Memory trên repo nhạy cảm trước khi làm rõ quyền xem và xóa memory.",
+      "Đừng giả định proof of presence đã hỗ trợ mọi enterprise hoặc thao tác merge."
+    ]
+  },
+  "radar": [],
+  "takeaway": "Memory giúp agent mang kinh nghiệm sửa lỗi qua các phiên; test và review vẫn xác nhận lần sửa hiện tại có đúng hay không."
+}
