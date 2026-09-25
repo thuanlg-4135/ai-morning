@@ -10,15 +10,16 @@
     "primary_scan_hours": 24,
     "context_window_hours": 72,
     "reading_minutes": 6,
-    "generated_at": "2026-09-25T19:08:21Z",
-    "cutoff_at": "2026-09-25T19:08:21Z",
-    "window_started_at": "2026-09-24T19:08:21Z",
+    "generated_at": "2026-09-25T19:13:06Z",
+    "cutoff_at": "2026-09-25T19:13:06Z",
+    "window_started_at": "2026-09-24T19:13:06Z",
     "source_policy": "Ưu tiên changelog, release note và tài liệu gốc có ngày xuất bản; dùng cửa sổ chính 24 giờ và tối đa 72 giờ cho cập nhật phù hợp.",
     "research_notes": [
       "Bắt đầu từ candidate list rỗng và đối chiếu ledger cùng các edition hiện có trước khi chọn từng sự kiện.",
       "Cutoff là thời điểm thực tế 2026-09-25T19:08:21Z; việc so freshness tuân thủ cửa sổ chính 24 giờ và tối đa 72 giờ, tính ngược từ thời điểm validation này.",
       "Chọn hai cập nhật GitHub mới: agentic autofix tích hợp Copilot Memory ngày 25/09 và proof of presence cho thao tác nhạy cảm ngày 24/09; cả hai khác với các event trong ledger.",
-      "Đã rà GitHub Changelog, Anthropic newsroom, Cloudflare Agents, CodeQL và Godot. Không thêm tin model/creative tooling vì chưa thấy candidate đủ mới, đủ nguồn và có ích trong cửa sổ freshness."
+      "Đã rà GitHub Changelog, Anthropic newsroom, Cloudflare Agents, CodeQL và Godot. Không thêm tin model/creative tooling vì chưa thấy candidate đủ mới, đủ nguồn và có ích trong cửa sổ freshness.",
+      "VS Code 1.139 (23/09) được giữ trong CONTEXT_72H do mở hỗ trợ agent chạy trong Dev Containers trên host SSH, Tunnel và WSL; release này khác event tổng hợp Copilot trong các edition trước."
     ]
   },
   "brief": [
@@ -91,7 +92,42 @@
       }
     }
   ],
-  "releases": [],
+  "releases": [
+    {
+      "event_id": "microsoft-vscode-1-139-remote-dev-container-agents",
+      "event_signature": {
+        "organization": "microsoft",
+        "product": "visual-studio-code",
+        "action": "release",
+        "artifact": "1-139-agents-in-remote-dev-containers"
+      },
+      "published_at": "2026-09-23",
+      "freshness": "CONTEXT_72H",
+      "product": "Visual Studio Code 1.139",
+      "feature": "Chạy agent trong Dev Container trên host từ xa",
+      "status": "GA",
+      "summary": "VS Code 1.139 đưa agent vào Dev Containers chạy trên máy SSH, Tunnel hoặc WSL từ xa. Agent dùng công cụ và dependency của project trong môi trường container đó; rollout đang diễn ra dần.",
+      "who_gets_it": "Developer làm việc trong Dev Container gắn với host SSH, Tunnel hoặc WSL và muốn agent dùng cùng dependency/runtime với project.",
+      "why_it_matters": "Chạy agent trong container từ xa giảm khoảng cách giữa môi trường tác vụ của agent và môi trường developer build/test ứng dụng, đặc biệt khi project phụ thuộc toolchain không có trên máy local.",
+      "verdict": "TRY_NOW",
+      "verdict_note": "Thử trên repo có Dev Container ổn định và một ticket nhỏ; xác nhận agent nhìn thấy đúng dependency, chạy được test và chỉ sửa trong workspace dự kiến. Tính năng rollout dần nên có thể chưa xuất hiện ở mọi cài đặt.",
+      "sources": [
+        {
+          "label": "Visual Studio Code 1.139 release notes",
+          "url": "https://code.visualstudio.com/updates/v1_139",
+          "type": "official",
+          "published_at": "2026-09-23"
+        }
+      ],
+      "visual": {
+        "kind": "image",
+        "src": "editorial/2026-09-26/vscode-1-139-remote-dev-containers-hd.png",
+        "alt": "Agent coding làm việc trong Dev Container trên host từ xa, được kết nối với laptop qua SSH, Tunnel hoặc WSL.",
+        "caption": "Agent dùng runtime và dependency của container thay vì chạy ngoài môi trường phát triển của project.",
+        "credit": "Minh hoạ kỹ thuật · AI Morning"
+      }
+    }
+  ],
   "developer_memo": {
     "title": "Nên kiểm tra gì trước khi bật thêm quyền cho agent?",
     "direct_answer": "Thử memory trên cảnh báo dễ xác minh và giữ bước review trước khi chấp nhận bản sửa.",

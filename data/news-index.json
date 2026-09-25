@@ -3181,6 +3181,47 @@
           "dedupe_override_reason": null
         }
       ]
+    },
+    {
+      "event_id": "microsoft-vscode-1-139-remote-dev-container-agents",
+      "event_signature": {
+        "organization": "microsoft",
+        "product": "visual-studio-code",
+        "action": "release",
+        "artifact": "1-139-agents-in-remote-dev-containers"
+      },
+      "signature_key": "microsoft|visual-studio-code|release|1-139-agents-in-remote-dev-containers",
+      "current_event_signature": {
+        "organization": "microsoft",
+        "product": "visual-studio-code",
+        "action": "release",
+        "artifact": "1-139-agents-in-remote-dev-containers"
+      },
+      "current_signature_key": "microsoft|visual-studio-code|release|1-139-agents-in-remote-dev-containers",
+      "first_published_at": "2026-09-23",
+      "first_edition": "2026-09-26",
+      "title": "Visual Studio Code 1.139 — Chạy agent trong Dev Container trên host từ xa",
+      "fingerprint": "visual studio code 1 139 chay agent trong dev container tren host tu xa",
+      "canonical_sources": [
+        "https://code.visualstudio.com/updates/v1_139"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-26",
+          "section": "releases",
+          "published_at": "2026-09-23",
+          "event_signature": {
+            "organization": "microsoft",
+            "product": "visual-studio-code",
+            "action": "release",
+            "artifact": "1-139-agents-in-remote-dev-containers"
+          },
+          "signature_key": "microsoft|visual-studio-code|release|1-139-agents-in-remote-dev-containers",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
     }
   ]
 }
