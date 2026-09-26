@@ -34,7 +34,7 @@ Use Node 20.9 or newer; CI uses Node 24. Run `npm ci` after cloning or updating 
 - preserves editorial warnings without treating them as hard failures;
 - copies editorial assets and licensed fonts into the generated `public/assets/` directory;
 - validates each edition with the shared schema validator;
-- builds every dated page and the latest root page using Next.js static generation;
+- builds the newspaper homepage, every complete dated edition and individual story pages using Next.js static generation;
 - builds Vietnamese and reviewed English archives;
 - exports HTML and assets, then copies the complete export to `dist/`;
 - writes `.nojekyll` so Pages serves `_next/` assets;

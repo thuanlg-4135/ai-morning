@@ -1,8 +1,6 @@
 import localFont from "next/font/local";
 import { basePath } from "../lib/site.mjs";
-import { PageBackdrop } from "./morning-art";
 import "../app/globals.css";
-import "../app/editorial-refinements.css";
 
 const sans = localFont({
   src: [
@@ -76,10 +74,7 @@ export default function Document({ children, language }) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body>
-        <PageBackdrop />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

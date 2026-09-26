@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "edition_date": "2026-09-13",
+  "locale": "vi-VN",
+  "edition_type": "daily_ai_catchup",
+  "edition_mode": "QUIET",
+  "headline": "FastAPI trên Vercel đưa file tĩnh ra CDN",
+  "dek": "Bản tin cuối tuần tập trung vào cách phân phối tài nguyên tĩnh và plugin chính thức cho coding agent dùng Google Cloud. Số bổ sung, chốt nguồn trước 07:00 ngày 13/09/2026 (giờ Việt Nam).",
+  "meta": {
+    "generated_at": "2026-09-26T05:24:27Z",
+    "cutoff_at": "2026-09-13T00:00:00Z",
+    "window_started_at": "2026-09-12T00:00:00Z",
+    "primary_scan_hours": 24,
+    "context_window_hours": 72,
+    "backfilled": true,
+    "research_notes": [
+      "Biên soạn bổ sung ngày 26/09/2026 từ danh sách ứng viên rỗng; đối chiếu sự kiện và URL với toàn bộ sổ tin trước khi chọn.",
+      "Ngày nguồn là ngày công bố trên trang gốc; không suy ra từ thời điểm công cụ tìm kiếm thu thập trang. Tin ngoài 24 giờ chỉ giữ trong cửa sổ 72 giờ và gắn CONTEXT_72H.",
+      "Nhật ký rà nguồn, mục loại và phạm vi kiểm tra: docs/research/backfill-2026-09-26.md."
+    ],
+    "reading_minutes": 2
+  },
+  "brief": [
+    {
+      "event_id": "google-cloud-developer-plugin-agent-skills-mcp-bundle",
+      "event_signature": {
+        "organization": "google",
+        "product": "cloud-developer-plugin",
+        "action": "release",
+        "artifact": "agent-skills-mcp-bundle"
+      },
+      "published_at": "2026-09-10",
+      "freshness": "CONTEXT_72H",
+      "title": "Google Cloud gom skills và tài liệu vào plugin cho agent",
+      "sources": [
+        {
+          "label": "Google Cloud: Developer Plugin for AI Coding Agents",
+          "url": "https://cloud.google.com/blog/topics/developers-practitioners/introducing-the-google-cloud-developer-plugin-for-ai-coding-agents",
+          "type": "official",
+          "published_at": "2026-09-10"
+        }
+      ],
+      "text": "Google phát hành google-cloud-developer, gói hướng dẫn thao tác nền tảng cùng cấu hình Developer Knowledge MCP để tra tài liệu chính thức. Nhóm dùng coding agent có thể thử trong project riêng, kiểm tra danh tính và quyền mà lệnh gcloud đang dùng trước khi chấp nhận thay đổi tài nguyên."
+    }
+  ],
+  "trends": [
+    {
+      "event_id": "vercel-fastapi-static-assets-cdn-build-promotion",
+      "event_signature": {
+        "organization": "vercel",
+        "product": "fastapi",
+        "action": "feature-update",
+        "artifact": "static-assets-cdn-build-promotion"
+      },
+      "published_at": "2026-09-10",
+      "freshness": "CONTEXT_72H",
+      "title": "Vercel phục vụ frontend và StaticFiles của FastAPI qua CDN",
+      "sources": [
+        {
+          "label": "Vercel: FastAPI frontends and static files served from the CDN",
+          "url": "https://vercel.com/changelog/fastapi-frontends-and-static-files-served-from-the-cdn",
+          "type": "official",
+          "published_at": "2026-09-10"
+        }
+      ],
+      "id": "vercel-fastapi-static-assets-cdn-build-promotion",
+      "strength": "EMERGING",
+      "importance": "LEAD",
+      "paragraphs": [
+        "Vercel đưa frontend và tài nguyên StaticFiles của FastAPI lên CDN khi build, để request file tĩnh không cần gọi Function. Thứ tự khai báo route được giữ: route động khai báo trước điểm mount vẫn được ưu tiên nếu cùng đường dẫn.",
+        "Thư mục nguồn mặc định còn trong gói Function để ứng dụng đọc lúc chạy. Nếu chỉ cần phục vụ qua CDN, có thể dùng tùy chọn tool.vercel.fastapi.static.exclude trong pyproject.toml. Đây là quyết định cần dựa vào cách ứng dụng sử dụng file, nhất là khi code còn đọc manifest hoặc mẫu dữ liệu từ thư mục đó.",
+        "Khi kiểm tra một deployment, nên chọn cả file tĩnh thông thường và đường dẫn có route động trùng tên. So sánh nội dung trả về cùng log Function giúp xác nhận cấu hình đúng. Với ứng dụng đang đọc file tại runtime, hãy giữ bản trong gói triển khai cho tới khi đã loại bỏ phụ thuộc đó."
+      ],
+      "action": "Kiểm tra asset, route động trùng tiền tố và thao tác đọc file ở runtime trên deployment thử."
+    }
+  ],
+  "releases": [],
+  "developer_memo": {
+    "title": "Việc nên làm sau khi đọc",
+    "direct_answer": "Kiểm tra đường dẫn trùng giữa route động và file tĩnh trước khi triển khai.",
+    "actions": [
+      "Mở một asset và một route động cùng tiền tố để kiểm tra đúng nơi xử lý.",
+      "Thử plugin Google Cloud trong project có phạm vi quyền rõ ràng."
+    ],
+    "avoid": [
+      "Đừng bỏ thư mục khỏi function nếu code vẫn cần đọc file ở runtime."
+    ]
+  },
+  "radar": [],
+  "takeaway": "Đối chiếu thứ tự route với kết quả phục vụ sau build."
+}

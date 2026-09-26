@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "edition_date": "2026-09-12",
+  "locale": "vi-VN",
+  "edition_type": "daily_ai_catchup",
+  "edition_mode": "QUIET",
+  "headline": "Copilot tự đóng nhận xét đã sửa, Godot thử tải texture theo mức chi tiết",
+  "dek": "Hai cập nhật nhắm vào công việc cụ thể: bớt luồng review cũ và thử quản lý texture cho game. Số bổ sung, chốt nguồn trước 07:00 ngày 12/09/2026 (giờ Việt Nam).",
+  "meta": {
+    "generated_at": "2026-09-26T05:24:27Z",
+    "cutoff_at": "2026-09-12T00:00:00Z",
+    "window_started_at": "2026-09-11T00:00:00Z",
+    "primary_scan_hours": 24,
+    "context_window_hours": 72,
+    "backfilled": true,
+    "research_notes": [
+      "Biên soạn bổ sung ngày 26/09/2026 từ danh sách ứng viên rỗng; đối chiếu sự kiện và URL với toàn bộ sổ tin trước khi chọn.",
+      "Ngày nguồn là ngày công bố trên trang gốc; không suy ra từ thời điểm công cụ tìm kiếm thu thập trang. Tin ngoài 24 giờ chỉ giữ trong cửa sổ 72 giờ và gắn CONTEXT_72H.",
+      "Nhật ký rà nguồn, mục loại và phạm vi kiểm tra: docs/research/backfill-2026-09-26.md."
+    ],
+    "reading_minutes": 2
+  },
+  "brief": [
+    {
+      "event_id": "godot-godot-4-8-dev5-mip-texture-streaming",
+      "event_signature": {
+        "organization": "godot",
+        "product": "godot",
+        "action": "release",
+        "artifact": "4-8-dev5-mip-texture-streaming"
+      },
+      "published_at": "2026-09-10",
+      "freshness": "CONTEXT_72H",
+      "title": "Godot 4.8 dev5 thử texture streaming theo mức mip",
+      "sources": [
+        {
+          "label": "Godot: Dev snapshot 4.8 dev 5",
+          "url": "https://godotengine.org/article/dev-snapshot-godot-4-8-dev-5/",
+          "type": "official",
+          "published_at": "2026-09-10"
+        }
+      ],
+      "text": "Godot 4.8 dev5 bổ sung tải texture theo mức chi tiết, cần bật trong project và khởi động lại editor trước khi nhập kiểu Texture2D Streamed. Đây là bản thử nghiệm; nên đo bộ nhớ và quan sát texture khi di chuyển camera trên bản sao project, chưa dùng làm mốc ổn định cho phát hành game."
+    }
+  ],
+  "trends": [
+    {
+      "event_id": "github-copilot-code-review-auto-resolution-shell-analysis-lite-ensemble",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot-code-review",
+        "action": "feature-update",
+        "artifact": "auto-resolution-shell-analysis-lite-ensemble"
+      },
+      "published_at": "2026-09-11",
+      "freshness": "NEW_TODAY",
+      "title": "Copilot đóng nhận xét khi commit mới giải quyết vấn đề",
+      "sources": [
+        {
+          "label": "GitHub: Auto-resolution and analysis updates in Copilot code review",
+          "url": "https://github.blog/changelog/2026-09-11-auto-resolution-and-analysis-updates-in-copilot-code-review/",
+          "type": "official",
+          "published_at": "2026-09-11"
+        }
+      ],
+      "id": "github-copilot-code-review-auto-resolution-shell-analysis-lite-ensemble",
+      "strength": "EMERGING",
+      "importance": "LEAD",
+      "paragraphs": [
+        "Copilot code review có thể tự đánh dấu đã giải quyết đối với nhận xét mà commit mới đã xử lý. Việc này diễn ra trong lần review lại; nhận xét còn vấn đề tiếp tục mở. Khi người dùng áp dụng một gợi ý sửa code, Copilot cũng đề xuất thông điệp commit theo nội dung thay đổi.",
+        "GitHub mở rộng công cụ shell dùng trong phân tích và dùng nhiều agent phối hợp ở mức Lite. Nhà cung cấp công bố cải thiện trong thử nghiệm nội bộ, nhưng kết quả trên repository của từng nhóm cần được đo riêng. Số luồng nhận xét đóng không tự chứng minh chất lượng code tốt hơn.",
+        "Nên thử bằng một pull request có lỗi tái hiện được: ghi lại nhận xét ban đầu, sửa code, yêu cầu review lại rồi kiểm tra luồng nào được đóng. Nếu agent cho rằng vấn đề đã hết trong khi bài kiểm thử vẫn thất bại, đó là trường hợp cần giữ lại để đánh giá và báo lỗi."
+      ],
+      "action": "Dùng một pull request có test tái hiện lỗi để kiểm tra việc tự đóng nhận xét sau commit sửa."
+    }
+  ],
+  "releases": [],
+  "developer_memo": {
+    "title": "Việc nên làm sau khi đọc",
+    "direct_answer": "Thử review lại một pull request đã sửa đúng lỗi được nêu.",
+    "actions": [
+      "Kiểm tra nhận xét nào được đóng sau commit mới.",
+      "Đo bộ nhớ và chất lượng hình ảnh trên bản sao project Godot."
+    ],
+    "avoid": [
+      "Đừng chuyển project sắp phát hành sang bản Godot dev chỉ để thử tính năng."
+    ]
+  },
+  "radar": [],
+  "takeaway": "So kết quả tự động với hành vi có thể quan sát và đo được."
+}

@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "edition_date": "2026-09-21",
+  "locale": "vi-VN",
+  "edition_type": "daily_ai_catchup",
+  "edition_mode": "QUIET",
+  "headline": "GitHub mở API quản lý ngưỡng code coverage",
+  "dek": "Nhóm quản lý nhiều repository có thể khai báo điều kiện coverage bằng REST API thay vì sửa từng nơi trên giao diện. Số bổ sung, chốt nguồn trước 07:00 ngày 21/09/2026 (giờ Việt Nam).",
+  "meta": {
+    "generated_at": "2026-09-26T05:24:27Z",
+    "cutoff_at": "2026-09-21T00:00:00Z",
+    "window_started_at": "2026-09-20T00:00:00Z",
+    "primary_scan_hours": 24,
+    "context_window_hours": 72,
+    "backfilled": true,
+    "research_notes": [
+      "Biên soạn bổ sung ngày 26/09/2026 từ danh sách ứng viên rỗng; đối chiếu sự kiện và URL với toàn bộ sổ tin trước khi chọn.",
+      "Ngày nguồn là ngày công bố trên trang gốc; không suy ra từ thời điểm công cụ tìm kiếm thu thập trang. Tin ngoài 24 giờ chỉ giữ trong cửa sổ 72 giờ và gắn CONTEXT_72H.",
+      "Nhật ký rà nguồn, mục loại và phạm vi kiểm tra: docs/research/backfill-2026-09-26.md."
+    ],
+    "reading_minutes": 2
+  },
+  "brief": [
+    {
+      "event_id": "aws-sagemaker-huggingface-agent-skills-deployment-guide",
+      "event_signature": {
+        "organization": "aws",
+        "product": "sagemaker-ai",
+        "action": "release",
+        "artifact": "six-agent-skills-for-model-deployments"
+      },
+      "published_at": "2026-09-18",
+      "freshness": "CONTEXT_72H",
+      "title": "AWS và Hugging Face đóng gói skills cho deployment model",
+      "text": "AWS mô tả sáu skill mở để coding agent triển khai model Hugging Face lên SageMaker: chọn container đúng, cấu hình autoscaling và cảnh báo, rồi xác nhận xóa tài nguyên. Thử nghiệm của bài viết ghi nhận agent không có hướng dẫn đã chọn container không tương thích và phát sinh endpoint tính phí; nên duyệt plan và kiểm tra teardown trước khi tạo endpoint thật.",
+      "sources": [
+        {
+          "label": "AWS Machine Learning Blog: Deploy Hugging Face models on SageMaker AI with coding agents",
+          "url": "https://aws.amazon.com/blogs/machine-learning/deploy-hugging-face-models-on-amazon-sagemaker-ai-with-coding-agents/",
+          "type": "official",
+          "published_at": "2026-09-18"
+        }
+      ]
+    }
+  ],
+  "trends": [
+    {
+      "event_id": "github-code-quality-rulesets-rest-api-coverage-condition",
+      "event_signature": {
+        "organization": "github",
+        "product": "code-quality-rulesets",
+        "action": "feature-update",
+        "artifact": "rest-api-coverage-condition"
+      },
+      "published_at": "2026-09-18",
+      "freshness": "CONTEXT_72H",
+      "title": "Điều kiện coverage trong ruleset có thể quản lý bằng API",
+      "sources": [
+        {
+          "label": "GitHub: Manage code coverage ruleset condition with REST API",
+          "url": "https://github.blog/changelog/2026-09-18-manage-the-code-coverage-ruleset-condition-with-the-rest-api/",
+          "type": "official",
+          "published_at": "2026-09-18"
+        }
+      ],
+      "id": "github-code-quality-rulesets-rest-api-coverage-condition",
+      "strength": "EMERGING",
+      "importance": "LEAD",
+      "paragraphs": [
+        "GitHub mở REST API GA để tạo, sửa và đọc tùy chọn Restrict code coverage trong repository ruleset. Điều kiện có thể đặt tỷ lệ bao phủ dòng tối thiểu hoặc mức giảm coverage tối đa chấp nhận cho một pull request.",
+        "Repository cần bật GitHub Code Quality và cấu hình tải báo cáo coverage. Tính năng áp dụng cho GitHub Team và Enterprise Cloud, gồm lựa chọn data residency; GitHub Enterprise Server chưa được hỗ trợ. Nhóm quản lý nhiều repo có thể đưa quy tắc này vào cấu hình được lưu phiên bản.",
+        "Nên bắt đầu bằng một repository có pipeline coverage ổn định. Tạo điều kiện qua API, đọc lại để so với cấu hình mong muốn và mở PR có mức giảm đã biết. Nếu dữ liệu thiếu hoặc thay đổi do bộ test chạy không đủ, việc tăng ngưỡng chỉ tạo thêm chặn nhầm. Coverage là một chỉ dấu để review, không thay thế đánh giá chất lượng kiểm thử."
+      ],
+      "action": "Thử ruleset với một PR giữ nguyên coverage và một PR giảm coverage có chủ đích, rồi đối chiếu kết quả."
+    }
+  ],
+  "releases": [],
+  "developer_memo": {
+    "title": "Việc nên làm sau khi đọc",
+    "direct_answer": "Thử một ruleset trên repo đã gửi báo cáo coverage đầy đủ.",
+    "actions": [
+      "Đọc lại ruleset qua API và kiểm tra một pull request giảm coverage."
+    ],
+    "avoid": [
+      "Đừng nâng ngưỡng hàng loạt nếu báo cáo coverage chưa đáng tin cậy."
+    ]
+  },
+  "radar": [],
+  "takeaway": "Kiểm tra dữ liệu coverage trước khi biến ngưỡng thành điều kiện bắt buộc."
+}

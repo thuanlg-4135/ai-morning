@@ -13,14 +13,13 @@
     "test:export": "node --test tests/export.test.mjs",
     "preview": "node scripts/preview.mjs",
     "test:browser": "playwright test",
-    "format:check": "prettier --check app components lib next.config.mjs playwright.config.mjs scripts/prepare-assets.mjs scripts/finalize-export.mjs scripts/preview.mjs tests/export.test.mjs tests/browser"
+    "format:check": "prettier --check app components lib styles next.config.mjs playwright.config.mjs scripts/prepare-assets.mjs scripts/finalize-export.mjs scripts/preview.mjs tests/export.test.mjs tests/browser"
   },
   "engines": {
     "node": ">=20.9"
   },
   "dependencies": {
     "lucide-react": "^1.41.0",
-    "motion": "^13.2.0",
     "next": "^16.3.4",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"

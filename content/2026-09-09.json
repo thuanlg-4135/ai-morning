@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "edition_date": "2026-09-09",
+  "locale": "vi-VN",
+  "edition_type": "daily_ai_catchup",
+  "edition_mode": "QUIET",
+  "headline": "Copilot JetBrains thêm sandbox do doanh nghiệp quản lý",
+  "dek": "GitHub đưa giới hạn môi trường agent vào chính sách tập trung; Vercel mở lựa chọn CDN tính phí cố định cho nhóm Pro. Số bổ sung, chốt nguồn trước 07:00 ngày 09/09/2026 (giờ Việt Nam).",
+  "meta": {
+    "generated_at": "2026-09-26T05:24:27Z",
+    "cutoff_at": "2026-09-09T00:00:00Z",
+    "window_started_at": "2026-09-08T00:00:00Z",
+    "primary_scan_hours": 24,
+    "context_window_hours": 72,
+    "backfilled": true,
+    "research_notes": [
+      "Biên soạn bổ sung ngày 26/09/2026 từ danh sách ứng viên rỗng; đối chiếu sự kiện và URL với toàn bộ sổ tin trước khi chọn.",
+      "Ngày nguồn là ngày công bố trên trang gốc; không suy ra từ thời điểm công cụ tìm kiếm thu thập trang. Tin ngoài 24 giờ chỉ giữ trong cửa sổ 72 giờ và gắn CONTEXT_72H.",
+      "Nhật ký rà nguồn, mục loại và phạm vi kiểm tra: docs/research/backfill-2026-09-26.md."
+    ],
+    "reading_minutes": 2
+  },
+  "brief": [
+    {
+      "event_id": "vercel-flat-rate-cdn-pro-team-fixed-monthly-billing",
+      "event_signature": {
+        "organization": "vercel",
+        "product": "flat-rate-cdn",
+        "action": "general-availability",
+        "artifact": "pro-team-fixed-monthly-billing"
+      },
+      "published_at": "2026-09-08",
+      "freshness": "NEW_TODAY",
+      "title": "Vercel Pro có lựa chọn CDN tính phí cố định",
+      "sources": [
+        {
+          "label": "Vercel: Flat Rate CDN is now GA for Pro teams",
+          "url": "https://vercel.com/changelog/flat-rate-cdn-is-now-ga-for-pro-teams",
+          "type": "official",
+          "published_at": "2026-09-08"
+        }
+      ],
+      "text": "Vercel đưa Flat Rate CDN lên GA cho nhóm Pro, với dung lượng tính chung ở cấp nhóm và cơ chế bảo vệ khi lưu lượng tăng đột biến theo điều kiện fair use. Nhóm đang dùng có thể chuyển trong Billing; trước khi đổi, nên cộng lượng sử dụng của mọi project để chọn mức phù hợp."
+    }
+  ],
+  "trends": [
+    {
+      "event_id": "github-copilot-jetbrains-enterprise-managed-sandbox-policies",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot-jetbrains",
+        "action": "preview",
+        "artifact": "enterprise-managed-sandbox-policies"
+      },
+      "published_at": "2026-09-08",
+      "freshness": "NEW_TODAY",
+      "title": "Quản trị viên đặt giới hạn file và mạng cho Copilot trong JetBrains",
+      "sources": [
+        {
+          "label": "GitHub: Enterprise-managed sandbox in Copilot for JetBrains",
+          "url": "https://github.blog/changelog/2026-09-08-enterprise-managed-sandbox-in-copilot-for-jetbrains/",
+          "type": "official",
+          "published_at": "2026-09-08"
+        }
+      ],
+      "id": "github-copilot-jetbrains-enterprise-managed-sandbox-policies",
+      "strength": "EMERGING",
+      "importance": "LEAD",
+      "paragraphs": [
+        "Copilot cho JetBrains bổ sung public preview cho chính sách sandbox do doanh nghiệp quản lý. Quản trị viên có thể đặt giới hạn hệ thống file, mạng và một số quyền công cụ; hạn chế do tổ chức áp dụng được ưu tiên hơn cài đặt cá nhân.",
+        "IDE đánh dấu và khóa các tùy chọn thuộc quyền quản lý của tổ chức. Phần sandbox chỉ hiện khi tổ chức bật Editor Preview hoặc cấu hình managed setting liên quan. Bản cập nhật cũng có chẩn đoán policy để kiểm tra thiết bị đã nhận đúng cấu hình hay chưa.",
+        "Với nhóm có nhiều máy phát triển, việc phân phối cấu hình chưa đủ để kết luận giới hạn đang được thực thi. Nên chọn một máy thử nghiệm, kiểm tra thao tác được phép và bị từ chối, rồi xem chẩn đoán trong IDE. Kết quả này giúp phát hiện cấu hình chưa tới máy hoặc quyền truy cập rộng hơn dự kiến."
+      ],
+      "action": "Thử policy với một file ngoài phạm vi và một địa chỉ mạng không được phép, rồi kiểm tra chẩn đoán trong IDE."
+    }
+  ],
+  "releases": [],
+  "developer_memo": {
+    "title": "Việc nên làm sau khi đọc",
+    "direct_answer": "Ưu tiên xác minh chính sách sandbox trên máy phát triển thử nghiệm.",
+    "actions": [
+      "Kiểm tra một thao tác đọc file và một kết nối mạng bị policy cấm.",
+      "Đối chiếu lượng CDN dùng chung của nhóm trước khi đổi cách tính phí."
+    ],
+    "avoid": [
+      "Đừng giả định tùy chọn sandbox đã xuất hiện nếu tổ chức chưa bật điều kiện preview."
+    ]
+  },
+  "radar": [],
+  "takeaway": "Xác nhận chính sách có hiệu lực trên thiết bị trước khi áp dụng rộng."
+}

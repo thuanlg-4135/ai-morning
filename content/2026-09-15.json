@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "edition_date": "2026-09-15",
+  "locale": "vi-VN",
+  "edition_type": "daily_ai_catchup",
+  "edition_mode": "QUIET",
+  "headline": "Copilot cho chọn ưu tiên khi tự định tuyến model",
+  "dek": "Ba mức lựa chọn tự động làm rõ ưu tiên chi phí, độ trễ và chất lượng; AI SDK bổ sung xác thực bằng thuê bao gốc. Số bổ sung, chốt nguồn trước 07:00 ngày 15/09/2026 (giờ Việt Nam).",
+  "meta": {
+    "generated_at": "2026-09-26T05:24:27Z",
+    "cutoff_at": "2026-09-15T00:00:00Z",
+    "window_started_at": "2026-09-14T00:00:00Z",
+    "primary_scan_hours": 24,
+    "context_window_hours": 72,
+    "backfilled": true,
+    "research_notes": [
+      "Biên soạn bổ sung ngày 26/09/2026 từ danh sách ứng viên rỗng; đối chiếu sự kiện và URL với toàn bộ sổ tin trước khi chọn.",
+      "Ngày nguồn là ngày công bố trên trang gốc; không suy ra từ thời điểm công cụ tìm kiếm thu thập trang. Tin ngoài 24 giờ chỉ giữ trong cửa sổ 72 giờ và gắn CONTEXT_72H.",
+      "Nhật ký rà nguồn, mục loại và phạm vi kiểm tra: docs/research/backfill-2026-09-26.md."
+    ],
+    "reading_minutes": 2
+  },
+  "brief": [
+    {
+      "event_id": "vercel-ai-sdk-harness-native-subscription-authentication",
+      "event_signature": {
+        "organization": "vercel",
+        "product": "ai-sdk-harness",
+        "action": "feature-update",
+        "artifact": "native-subscription-authentication"
+      },
+      "published_at": "2026-09-14",
+      "freshness": "NEW_TODAY",
+      "title": "AI SDK harness dùng được đăng nhập thuê bao trên host",
+      "sources": [
+        {
+          "label": "Vercel: AI SDK harness native subscription authentication",
+          "url": "https://vercel.com/changelog/ai-sdk-harness-native-subscription-authentication",
+          "type": "official",
+          "published_at": "2026-09-14"
+        }
+      ],
+      "text": "AI SDK harness hỗ trợ thuê bao gốc khi harness bên dưới cho phép; credential được xử lý tại host. Chế độ direct ưu tiên credential môi trường, còn ai-gateway không đọc thuê bao gốc, nên nhóm cần kiểm tra nguồn xác thực thực tế trước khi so chi phí các lần chạy."
+    }
+  ],
+  "trends": [
+    {
+      "event_id": "github-copilot-auto-efficiency-balance-intelligence-tiers",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot-auto",
+        "action": "feature-update",
+        "artifact": "efficiency-balance-intelligence-tiers"
+      },
+      "published_at": "2026-09-14",
+      "freshness": "NEW_TODAY",
+      "title": "Copilot auto thêm ba mức ưu tiên cho việc chọn model",
+      "sources": [
+        {
+          "label": "GitHub: Configure cost and quality in Copilot auto model selection",
+          "url": "https://github.blog/changelog/2026-09-14-configure-cost-and-quality-in-copilot-auto-model-selection/",
+          "type": "official",
+          "published_at": "2026-09-14"
+        }
+      ],
+      "id": "github-copilot-auto-efficiency-balance-intelligence-tiers",
+      "strength": "EMERGING",
+      "importance": "LEAD",
+      "paragraphs": [
+        "GitHub Copilot auto bổ sung efficiency, balance và intelligence để người dùng chọn cách cân nhắc chi phí, thời gian phản hồi và chất lượng. Tính năng đang được triển khai dần trong VS Code, Copilot CLI và ứng dụng Copilot.",
+        "Cả ba mức dùng cùng tập model; bộ chọn đánh giá từng prompt để định tuyến. Vì vậy, yêu cầu đơn giản vẫn có thể dùng model nhỏ khi chọn intelligence. Phí sử dụng phụ thuộc model được chọn, không phải một mức giá cố định cho từng tier.",
+        "Nhóm phát triển có thể thử bằng hai loại việc: sửa tài liệu đơn giản và xử lý lỗi cần đọc nhiều file. Ghi lại kết quả được chấp nhận, số lần phải làm lại và thời gian hoàn thành. Cách đo này phù hợp hơn việc chỉ so giá token, vì một lựa chọn rẻ có thể cần nhiều lượt sửa hơn để đạt cùng yêu cầu."
+      ],
+      "action": "Dùng cùng tập tác vụ để so ba mức auto, tính cả lượt sửa lại vào chi phí hoàn thành."
+    }
+  ],
+  "releases": [],
+  "developer_memo": {
+    "title": "Việc nên làm sau khi đọc",
+    "direct_answer": "Đo chi phí cho một tác vụ hoàn thành ở từng mức trước khi đặt mặc định.",
+    "actions": [
+      "Chạy cùng tập tác vụ ngắn và dài ở các mức auto.",
+      "Kiểm tra nguồn credential được chọn trên host dùng AI SDK harness."
+    ],
+    "avoid": [
+      "Đừng coi mức intelligence là cam kết luôn dùng model lớn nhất."
+    ]
+  },
+  "radar": [],
+  "takeaway": "So sánh kết quả, thời gian và tổng chi phí trên cùng đầu việc."
+}

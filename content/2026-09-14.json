@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "edition_date": "2026-09-14",
+  "locale": "vi-VN",
+  "edition_type": "daily_ai_catchup",
+  "edition_mode": "QUIET",
+  "headline": "Đọc số liệu VS Code Agents đúng phạm vi",
+  "dek": "GitHub bổ sung số người dùng, phiên và tin nhắn của cửa sổ VS Code Agents vào báo cáo Copilot. Số bổ sung, chốt nguồn trước 07:00 ngày 14/09/2026 (giờ Việt Nam).",
+  "meta": {
+    "generated_at": "2026-09-26T05:24:27Z",
+    "cutoff_at": "2026-09-14T00:00:00Z",
+    "window_started_at": "2026-09-13T00:00:00Z",
+    "primary_scan_hours": 24,
+    "context_window_hours": 72,
+    "backfilled": true,
+    "research_notes": [
+      "Biên soạn bổ sung ngày 26/09/2026 từ danh sách ứng viên rỗng; đối chiếu sự kiện và URL với toàn bộ sổ tin trước khi chọn.",
+      "Ngày nguồn là ngày công bố trên trang gốc; không suy ra từ thời điểm công cụ tìm kiếm thu thập trang. Tin ngoài 24 giờ chỉ giữ trong cửa sổ 72 giờ và gắn CONTEXT_72H.",
+      "Nhật ký rà nguồn, mục loại và phạm vi kiểm tra: docs/research/backfill-2026-09-26.md."
+    ],
+    "reading_minutes": 2
+  },
+  "brief": [
+    {
+      "event_id": "openai-gpt-rosalind-trusted-access-availability-update-2026-09",
+      "event_signature": {
+        "organization": "openai",
+        "product": "gpt-rosalind",
+        "action": "general-availability",
+        "artifact": "life-sciences-trusted-access-program"
+      },
+      "published_at": "2026-09-11",
+      "freshness": "CONTEXT_72H",
+      "title": "GPT-Rosalind mở rộng quyền truy cập qua trusted-access",
+      "text": "OpenAI cập nhật ngày 11/09 rằng GPT-Rosalind đã rời research preview và mở cho tổ chức đủ điều kiện qua chương trình trusted-access. Đây là model chuyên cho quy trình khoa học đời sống; nhóm nghiên cứu cần kiểm tra điều kiện truy cập và giá có hiệu lực từ 05/10 trước khi đưa vào dự toán.",
+      "sources": [
+        {
+          "label": "OpenAI: Introducing GPT-Rosalind for life sciences research",
+          "url": "https://openai.com/index/introducing-gpt-rosalind/",
+          "type": "official",
+          "published_at": "2026-09-11"
+        }
+      ]
+    }
+  ],
+  "trends": [
+    {
+      "event_id": "github-copilot-usage-metrics-vscode-agents-window-activity",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot-usage-metrics",
+        "action": "feature-update",
+        "artifact": "vscode-agents-window-activity"
+      },
+      "published_at": "2026-09-11",
+      "freshness": "CONTEXT_72H",
+      "title": "Báo cáo Copilot tách hoạt động của cửa sổ VS Code Agents",
+      "sources": [
+        {
+          "label": "GitHub: Add VS Code Agents to Copilot usage metrics",
+          "url": "https://github.blog/changelog/2026-09-11-add-vs-code-agents-to-copilot-usage-metrics/",
+          "type": "official",
+          "published_at": "2026-09-11"
+        }
+      ],
+      "id": "github-copilot-usage-metrics-vscode-agents-window-activity",
+      "strength": "EMERGING",
+      "importance": "LEAD",
+      "paragraphs": [
+        "GitHub thêm số liệu GA cho cửa sổ VS Code Agents vào báo cáo sử dụng Copilot theo ngày và 28 ngày. Báo cáo có số người dùng hoạt động, số phiên và số tin nhắn; các trường này có thể vắng mặt hoặc mang giá trị null khi chưa có dữ liệu.",
+        "Phạm vi chỉ là cửa sổ Agents riêng, không gộp với Agent Mode trong editor. Người đọc số liệu cần có quyền phù hợp và tổ chức phải bật chính sách usage metrics. Nếu dashboard nội bộ đang cộng các nguồn hoạt động, hãy ghi rõ nhóm trường mới để tránh hiểu sai một biến động sau cập nhật.",
+        "Về phân tích, số phiên cho biết mức sử dụng chứ chưa trả lời công việc có hoàn thành tốt hơn hay không. Có thể đặt báo cáo cạnh thời gian review hoặc kết quả kiểm thử của một nhóm tác vụ, nhưng cần tránh quy mọi thay đổi cho agent. Trước hết hãy kiểm tra cách pipeline xử lý null và dữ liệu chưa xuất hiện."
+      ],
+      "action": "Nhập thử một báo cáo có trường thiếu và một báo cáo có hoạt động Agents để kiểm tra phép tổng hợp."
+    }
+  ],
+  "releases": [],
+  "developer_memo": {
+    "title": "Việc nên làm sau khi đọc",
+    "direct_answer": "Tách hoạt động cửa sổ Agents khỏi Agent Mode trong editor khi đọc báo cáo.",
+    "actions": [
+      "Kiểm tra pipeline dữ liệu xử lý trường thiếu và null đúng cách."
+    ],
+    "avoid": [
+      "Đừng lấy số phiên làm thước đo trực tiếp cho năng suất."
+    ]
+  },
+  "radar": [],
+  "takeaway": "Giữ nguyên ý nghĩa của dữ liệu thiếu khi nhập báo cáo sử dụng."
+}

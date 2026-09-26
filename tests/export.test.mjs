@@ -209,3 +209,40 @@ test("sitemap URLs have matching canonicals and complete share metadata", async 
     assert.ok((await stat(`dist/assets/${name}`)).size > 0);
   }
 });
+
+test("individual article pages preserve complete prose and primary source links", async () => {
+  const { storiesForEdition } = await import("../lib/stories.mjs");
+  for (const original of editions) {
+    for (const language of ["vi", "en"]) {
+      const edition = translatedEdition(original, language);
+      if (!edition) continue;
+      for (const story of storiesForEdition(edition, language)) {
+        const html = await readFile(`dist${story.href}index.html`, "utf8");
+        for (const text of [
+          story.title,
+          story.text,
+          story.summary,
+          ...(story.paragraphs || []),
+          story.action,
+          story.what_changed,
+          story.who_gets_it,
+          story.why_it_matters,
+          story.verdict_note,
+        ].filter(Boolean)) {
+          assert.ok(
+            html.includes(escape(text)),
+            `${story.href}: missing article content`,
+          );
+        }
+        for (const source of story.sources) {
+          assert.ok(
+            html.includes(
+              `href="${escape(source.url)}" target="_blank" rel="noopener noreferrer"`,
+            ),
+            `${story.href}: missing original source`,
+          );
+        }
+      }
+    }
+  }
+});

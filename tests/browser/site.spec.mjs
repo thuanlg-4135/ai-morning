@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { readdir, readFile } from "node:fs/promises";
+import { storiesForEdition } from "../../lib/stories.mjs";
 import { basePath } from "../../lib/site.mjs";
 
 const filenames = (await readdir("content"))
@@ -21,6 +22,7 @@ const routes = [
   "",
   "archive/",
   ...editions.map((e) => `${e.edition_date}/`),
+  ...editions.flatMap((e) => storiesForEdition(e).map((s) => s.href.slice(1))),
   "en/",
   "en/archive/",
   ...editions
@@ -32,7 +34,7 @@ for (const width of [360, 412, 768, 1440, 1920]) {
   test(`all exported pages render without overflow or runtime errors at ${width}px`, async ({
     page,
   }) => {
-    test.setTimeout(120_000);
+    test.setTimeout(240_000);
     await page.setViewportSize({ width, height: 1000 });
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
@@ -57,7 +59,7 @@ for (const width of [360, 412, 768, 1440, 1920]) {
         "lang",
         route.startsWith("en/") ? "en" : "vi",
       );
-      await page.locator(".footer").scrollIntoViewIfNeeded();
+      await page.locator("footer").scrollIntoViewIfNeeded();
       await page.evaluate(async () => {
         const images = [...document.images];
         for (const image of images) image.loading = "eager";
@@ -101,7 +103,8 @@ test("theme, font size, reading mode, bookmarks, archive search, checklist and l
   await page.getByRole("button", { name: "Chế độ đọc", exact: true }).click();
   await page.reload();
   await expect(page.locator("html")).toHaveAttribute("data-large", "true");
-  await expect(page.locator(".hero-art")).toBeHidden();
+  await page.goto(`${basePath}/${editions[0].edition_date}/`);
+  await expect(page.locator("main aside")).toBeHidden();
   await page.getByRole("button", { name: "Chế độ đọc", exact: true }).click();
   const bookmark = page.locator(".story-actions button[aria-pressed]").first();
   await bookmark.click();
@@ -112,7 +115,9 @@ test("theme, font size, reading mode, bookmarks, archive search, checklist and l
   await page.getByRole("button", { name: /Bài đã lưu/ }).click();
   await expect(page.locator(".saved-list a")).toHaveCount(1);
   await page.locator(".saved-list a").click();
-  await expect(page).toHaveURL(new RegExp(`${editions[0].edition_date}/#`));
+  await expect(page).toHaveURL(
+    new RegExp(`${editions[0].edition_date}/[^/]+/$`),
+  );
   await expect(
     page.getByRole("button", { name: /^Bỏ lưu:/ }).first(),
   ).toHaveAttribute("aria-pressed", "true");
@@ -129,9 +134,7 @@ test("theme, font size, reading mode, bookmarks, archive search, checklist and l
   await expect(page.locator(".archive-card")).toHaveCount(editions.length);
   await page.getByRole("link", { name: "EN", exact: true }).click();
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
-  await expect(page.locator("h1")).toHaveText(
-    "More mornings, more perspective.",
-  );
+  await expect(page.locator("h1")).toHaveText("The newspaper archive");
   await page.locator(".archive-card").first().click();
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
   await page.getByRole("link", { name: "VI", exact: true }).click();
@@ -143,65 +146,26 @@ test("theme, font size, reading mode, bookmarks, archive search, checklist and l
   );
 });
 
-test("content and navigation work without JavaScript; reduced motion stops decorative animation", async ({
+test("newspaper discovery and complete articles work without JavaScript", async ({
   browser,
-  page,
 }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
-  const staticPage = await context.newPage();
-  await staticPage.goto(`http://localhost:8080${basePath}/`);
-  await expect(staticPage.locator("h1")).toHaveText(editions[0].headline);
-  await expect(staticPage.locator(".analysis-story")).toHaveCount(
-    editions[0].trends.length,
-  );
-  await staticPage
-    .locator(".footer")
-    .getByRole("link", { name: "Bài cũ" })
-    .click();
-  await expect(staticPage.locator(".archive-card")).toHaveCount(
-    editions.length,
-  );
-  await context.close();
-  await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto(`${basePath}/`);
-  expect(
-    await page
-      .locator(".brand-sun")
-      .evaluate((element) => getComputedStyle(element).animationName),
-  ).toBe("none");
-});
-
-test("quick edition opens with the keyboard without JavaScript and links to full stories", async ({
-  browser,
-}) => {
-  const context = await browser.newContext({
-    javaScriptEnabled: false,
-    viewport: { width: 360, height: 900 },
-  });
   const page = await context.newPage();
-  for (const route of ["", "2026-08-22/", "en/"]) {
-    await page.goto(`http://localhost:8080${basePath}/${route}`);
-    const digest = page.locator(".quick-edition");
-    await expect(digest.locator("ol")).toBeHidden();
-    await digest.locator("summary").focus();
-    await page.keyboard.press("Enter");
-    await expect(digest.locator("ol")).toBeVisible();
-    const links = digest.locator(".quick-full-link");
-    expect(await links.count()).toBeGreaterThan(0);
-    for (const link of await links.all()) {
-      const target = await link.getAttribute("href");
-      await link.click();
-      await expect(page.locator(target)).toBeInViewport();
-      await expect(page.locator(target)).toBeVisible();
-    }
-    expect(
-      await page.evaluate(
-        () => document.documentElement.scrollWidth <= innerWidth,
-      ),
-    ).toBe(true);
-    await digest.locator("summary").click();
-    await expect(digest.locator("ol")).toBeHidden();
-  }
+  await page.goto(`http://localhost:8080${basePath}/`);
+  const lead = page.locator("main h1 a");
+  const title = await lead.textContent();
+  await lead.click();
+  await expect(page.locator("main h1")).toHaveText(title);
+  await expect(page.locator('main a[target="_blank"]').first()).toBeVisible();
+  await page
+    .getByRole("link", { name: "Trở về bản tin", exact: false })
+    .click();
+  await expect(page.locator("main h1")).toHaveText(editions[0].headline);
+  await page
+    .locator("footer")
+    .getByRole("link", { name: "Tất cả số báo", exact: true })
+    .click();
+  await expect(page.locator(".archive-card")).toHaveCount(editions.length);
   await context.close();
 });
 
@@ -242,7 +206,7 @@ test("archive searches individual stories without accents and filters by section
   const href = await first.getAttribute("href");
   await first.click();
   await expect(page).toHaveURL(new URL(href, "http://localhost:8080").href);
-  await expect(page.locator(new URL(page.url()).hash)).toBeInViewport();
+  await expect(page.locator("main h1")).toBeVisible();
   await page.goto(`${basePath}/en/archive/`);
   await page.getByRole("button", { name: /^Stories/ }).click();
   await expect(page.locator(".story-result").first()).toHaveAttribute(

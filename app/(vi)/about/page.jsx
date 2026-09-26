@@ -1,7 +1,10 @@
-import { Header, Footer } from "../../../components/newspaper";
+import {
+  SiteHeader as Header,
+  SiteFooter as Footer,
+} from "../../../components/layout/site-header";
 import { getEditions } from "../../../lib/editions.mjs";
 import { pageMetadata } from "../../../lib/metadata.mjs";
-import "../../learning.css";
+import "../../../components/learning/learning.css";
 
 export const metadata = pageMetadata({
   title: "Về AI Morning · Dữ liệu & góp ý",
@@ -14,12 +17,7 @@ export default async function AboutPage() {
   const editions = await getEditions();
   return (
     <>
-      <Header
-        language="vi"
-        edition={editions[0]}
-        archive
-        activeSection="about"
-      />
+      <Header language="vi" edition={editions[0]} compact />
       <main id="main-content" className="shell learn-main">
         <article className="learn-article">
           <header>

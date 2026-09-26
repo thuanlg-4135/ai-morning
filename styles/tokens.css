@@ -1,0 +1,45 @@
+/* OpenAI developer/Codex UI palette, adapted for newspaper reading.
+   Reference: https://developers.openai.com/codex/ */
+:root {
+  --paper: #f9f9f9;
+  --surface: #fff;
+  --ink: #212121;
+  --muted: #5d5d5d;
+  --line: #dfdfdf;
+  --soft: #ededed;
+  --accent: #0169cc;
+  --accent-soft: #e5f3ff;
+  --on-accent: #fff;
+  --page-width: 1280px;
+  --body-size: 18px;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --paper: #181818;
+  --surface: #212121;
+  --ink: #f3f3f3;
+  --muted: #afafaf;
+  --line: #414141;
+  --soft: #282828;
+  --accent: #66b5ff;
+  --accent-soft: #00284d;
+  --on-accent: #0d0d0d;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #181818;
+    --surface: #212121;
+    --ink: #f3f3f3;
+    --muted: #afafaf;
+    --line: #414141;
+    --soft: #282828;
+    --accent: #66b5ff;
+    --accent-soft: #00284d;
+    --on-accent: #0d0d0d;
+    color-scheme: dark;
+  }
+}
+:root[data-large="true"] {
+  --body-size: 21px;
+}

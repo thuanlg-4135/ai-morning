@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "edition_date": "2026-09-19",
+  "locale": "vi-VN",
+  "edition_type": "daily_ai_catchup",
+  "edition_mode": "QUIET",
+  "headline": "npm tách bước chuẩn bị package khỏi quyền phát hành",
+  "dek": "Token stage-only cho phép tự động gửi phiên bản chờ duyệt; mcp-handler thử đưa công cụ tới agent trong trình duyệt. Số bổ sung, chốt nguồn trước 07:00 ngày 19/09/2026 (giờ Việt Nam).",
+  "meta": {
+    "generated_at": "2026-09-26T05:24:27Z",
+    "cutoff_at": "2026-09-19T00:00:00Z",
+    "window_started_at": "2026-09-18T00:00:00Z",
+    "primary_scan_hours": 24,
+    "context_window_hours": 72,
+    "backfilled": true,
+    "research_notes": [
+      "Biên soạn bổ sung ngày 26/09/2026 từ danh sách ứng viên rỗng; đối chiếu sự kiện và URL với toàn bộ sổ tin trước khi chọn.",
+      "Ngày nguồn là ngày công bố trên trang gốc; không suy ra từ thời điểm công cụ tìm kiếm thu thập trang. Tin ngoài 24 giờ chỉ giữ trong cửa sổ 72 giờ và gắn CONTEXT_72H.",
+      "Nhật ký rà nguồn, mục loại và phạm vi kiểm tra: docs/research/backfill-2026-09-26.md."
+    ],
+    "reading_minutes": 2
+  },
+  "brief": [
+    {
+      "event_id": "vercel-mcp-handler-2-2-0-experimental-webmcp",
+      "event_signature": {
+        "organization": "vercel",
+        "product": "mcp-handler",
+        "action": "release",
+        "artifact": "2-2-0-experimental-webmcp"
+      },
+      "published_at": "2026-09-18",
+      "freshness": "NEW_TODAY",
+      "title": "mcp-handler 2.2.0 thử hỗ trợ WebMCP",
+      "sources": [
+        {
+          "label": "Vercel: WebMCP support in mcp-handler",
+          "url": "https://vercel.com/changelog/webmcp-mcp-handler",
+          "type": "official",
+          "published_at": "2026-09-18"
+        }
+      ],
+      "text": "mcp-handler thêm hỗ trợ WebMCP thử nghiệm: developer chọn công cụ trong experimental_webMcp và nạp script từ endpoint MCP. Lời gọi được chuyển về server theo người dùng đã đăng nhập, nên hãy thử một công cụ ít rủi ro và kiểm tra quyền phía server trước khi mở thao tác ghi."
+    }
+  ],
+  "trends": [
+    {
+      "event_id": "npm-granular-access-token-stage-only-publishing-permission",
+      "event_signature": {
+        "organization": "npm",
+        "product": "granular-access-token",
+        "action": "release",
+        "artifact": "stage-only-publishing-permission"
+      },
+      "published_at": "2026-09-18",
+      "freshness": "NEW_TODAY",
+      "title": "Token npm mới chỉ gửi phiên bản tới hàng chờ phát hành",
+      "sources": [
+        {
+          "label": "GitHub: Stage-only npm tokens for safer automation",
+          "url": "https://github.blog/changelog/2026-09-18-stage-only-npm-tokens-for-safer-automation/",
+          "type": "official",
+          "published_at": "2026-09-18"
+        }
+      ],
+      "id": "npm-granular-access-token-stage-only-publishing-permission",
+      "strength": "EMERGING",
+      "importance": "LEAD",
+      "paragraphs": [
+        "npm thêm quyền Read and write (stage only) cho granular access token. Workflow dùng npm stage publish để gửi phiên bản chờ duyệt; maintainer xem và phê duyệt bằng xác thực hai yếu tố. Token này không được gọi npm publish trực tiếp.",
+        "Giới hạn đó không biến token thành chỉ đọc. Nó vẫn có thể sửa dist-tag hoặc đánh dấu phiên bản ngừng dùng. Tính năng là lựa chọn bật thêm và không tự đổi quyền token hiện có; vì vậy nhóm phải chủ động thay token và lệnh trong pipeline.",
+        "Nên thử với package riêng, từ lúc tạo bản chờ đến lúc maintainer phê duyệt. Kiểm tra cả trường hợp cố publish trực tiếp để xác nhận ranh giới quyền. Theo yêu cầu công bố, luồng staged publishing cần npm CLI từ 11.15.0, Node.js từ 22.14.0 và tài khoản có quyền publish cùng 2FA."
+      ],
+      "action": "Thực hiện trọn một lượt stage rồi duyệt bằng 2FA trên package thử, đồng thời thử lệnh publish trực tiếp với token mới."
+    }
+  ],
+  "releases": [],
+  "developer_memo": {
+    "title": "Việc nên làm sau khi đọc",
+    "direct_answer": "Thử luồng xuất bản có người duyệt trên một package thử nghiệm.",
+    "actions": [
+      "Kiểm tra token stage-only bị từ chối khi gọi npm publish trực tiếp.",
+      "Chỉ đưa công cụ cần thiết vào danh sách WebMCP thử nghiệm."
+    ],
+    "avoid": [
+      "Đừng coi token stage-only là chỉ đọc: nó vẫn có quyền ghi khác."
+    ]
+  },
+  "radar": [],
+  "takeaway": "Giữ người duyệt ở bước phát hành và kiểm tra quyền còn lại của token."
+}

@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "edition_date": "2026-09-07",
+  "locale": "vi-VN",
+  "edition_type": "daily_ai_catchup",
+  "edition_mode": "QUIET",
+  "headline": "SMART thử lấy tài liệu thiết kế làm đầu vào sinh lại thư viện",
+  "dek": "Một nghiên cứu đặt phần mô tả và ví dụ tính toán ở trung tâm của công cụ mô hình hóa hiệu năng ML. Số bổ sung, chốt nguồn trước 07:00 ngày 07/09/2026 (giờ Việt Nam).",
+  "meta": {
+    "generated_at": "2026-09-26T05:24:27Z",
+    "cutoff_at": "2026-09-07T00:00:00Z",
+    "window_started_at": "2026-09-06T00:00:00Z",
+    "primary_scan_hours": 24,
+    "context_window_hours": 72,
+    "backfilled": true,
+    "research_notes": [
+      "Biên soạn bổ sung ngày 26/09/2026 từ danh sách ứng viên rỗng; đối chiếu sự kiện và URL với toàn bộ sổ tin trước khi chọn.",
+      "Ngày nguồn là ngày công bố trên trang gốc; không suy ra từ thời điểm công cụ tìm kiếm thu thập trang. Tin ngoài 24 giờ chỉ giữ trong cửa sổ 72 giờ và gắn CONTEXT_72H.",
+      "Nhật ký rà nguồn, mục loại và phạm vi kiểm tra: docs/research/backfill-2026-09-26.md."
+    ],
+    "reading_minutes": 2
+  },
+  "brief": [
+    {
+      "event_id": "google-gemini-code-assist-new-subscriptions-sales-only-2026-09",
+      "event_signature": {
+        "organization": "google",
+        "product": "gemini-code-assist",
+        "action": "feature-update",
+        "artifact": "new-customer-purchase-channel-change"
+      },
+      "published_at": "2026-09-04",
+      "freshness": "CONTEXT_72H",
+      "title": "Google đổi cách đăng ký Gemini Code Assist mới",
+      "text": "Từ 04/09, billing account chưa có thuê bao Gemini Code Assist đang hoạt động không thể mua mới qua Google Cloud console; khách hàng hiện tại không bị ảnh hưởng. Google hướng khách hàng mới sang bộ phận bán hàng, nên nhóm đang cân nhắc gói cần xác nhận kênh đăng ký trước khi lên kế hoạch triển khai.",
+      "sources": [
+        {
+          "label": "Google Cloud Gemini release notes",
+          "url": "https://cloud.google.com/gemini/docs/release-notes",
+          "type": "official",
+          "published_at": "2026-09-04"
+        }
+      ]
+    }
+  ],
+  "trends": [
+    {
+      "event_id": "smart-research-smart-design-docs-performance-library-2609-05364",
+      "event_signature": {
+        "organization": "smart-research",
+        "product": "smart",
+        "action": "research",
+        "artifact": "design-docs-performance-library-2609-05364"
+      },
+      "published_at": "2026-09-04T17:08:51Z",
+      "freshness": "CONTEXT_72H",
+      "title": "SMART sinh lại thư viện mô hình hóa hiệu năng từ tài liệu thiết kế",
+      "sources": [
+        {
+          "label": "arXiv: Design Docs Are All You Need",
+          "url": "https://arxiv.org/abs/2609.05364",
+          "type": "research",
+          "published_at": "2026-09-04T17:08:51Z"
+        }
+      ],
+      "id": "smart-research-smart-design-docs-performance-library-2609-05364",
+      "strength": "EARLY_SIGNAL",
+      "importance": "LEAD",
+      "paragraphs": [
+        "Bài nghiên cứu SMART, nộp lên arXiv ngày 04/09, mô tả một thư viện mô hình hóa hiệu năng hệ thống ML mà nhánh chính gần như không chứa code. Nhóm tác giả tổ chức tài liệu thiết kế theo quan hệ phụ thuộc, rồi dùng coding agent sinh lại phần triển khai khi cập nhật phiên bản.",
+        "Tài liệu có các ví dụ tính toán từng bước để hướng dẫn việc sinh code. Nhóm tác giả báo cáo phần triển khai tái tạo được các mô hình tham chiếu đã kiểm tra thủ công. Đây là kết quả trong phạm vi công cụ nghiên cứu của họ, chưa chứng minh cách làm sẽ phù hợp với ứng dụng có nhiều hành vi giao diện hoặc tích hợp bên ngoài.",
+        "Bài học có thể thử ngay là viết đặc tả đủ rõ để kiểm chứng đầu ra. Ví dụ, với hàm ước tính bộ nhớ, hãy ghi công thức, đơn vị và trường hợp biên trước khi yêu cầu agent viết code. Bộ kiểm tra cần tồn tại độc lập để phát hiện việc triển khai hiểu sai mô tả."
+      ],
+      "action": "Thử trên một hàm tính toán có kết quả tham chiếu, đo số lần phải sửa đặc tả và code."
+    }
+  ],
+  "releases": [],
+  "developer_memo": {
+    "title": "Việc nên làm sau khi đọc",
+    "direct_answer": "Có thể thử cách viết đặc tả bằng ví dụ trên một mô-đun nhỏ.",
+    "actions": [
+      "Viết đầu vào, kết quả mong đợi và cách tính cho một hàm trước khi nhờ agent triển khai."
+    ],
+    "avoid": [
+      "Đừng suy rộng kết quả một thư viện nghiên cứu thành lý do viết lại toàn bộ sản phẩm."
+    ]
+  },
+  "radar": [],
+  "takeaway": "Giữ bộ ví dụ kiểm chứng độc lập với phần code do agent sinh ra."
+}

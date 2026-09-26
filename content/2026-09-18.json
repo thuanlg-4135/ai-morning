@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "edition_date": "2026-09-18",
+  "locale": "vi-VN",
+  "edition_type": "daily_ai_catchup",
+  "edition_mode": "QUIET",
+  "headline": "GitHub Actions cho đặt luật chạy theo từng workflow",
+  "dek": "Execution protections lên GA, còn runner Ubuntu 26.04 mở lộ trình chuyển ubuntu-latest. Số bổ sung, chốt nguồn trước 07:00 ngày 18/09/2026 (giờ Việt Nam).",
+  "meta": {
+    "generated_at": "2026-09-26T05:24:27Z",
+    "cutoff_at": "2026-09-18T00:00:00Z",
+    "window_started_at": "2026-09-17T00:00:00Z",
+    "primary_scan_hours": 24,
+    "context_window_hours": 72,
+    "backfilled": true,
+    "research_notes": [
+      "Biên soạn bổ sung ngày 26/09/2026 từ danh sách ứng viên rỗng; đối chiếu sự kiện và URL với toàn bộ sổ tin trước khi chọn.",
+      "Ngày nguồn là ngày công bố trên trang gốc; không suy ra từ thời điểm công cụ tìm kiếm thu thập trang. Tin ngoài 24 giờ chỉ giữ trong cửa sổ 72 giờ và gắn CONTEXT_72H.",
+      "Nhật ký rà nguồn, mục loại và phạm vi kiểm tra: docs/research/backfill-2026-09-26.md."
+    ],
+    "reading_minutes": 2
+  },
+  "brief": [
+    {
+      "event_id": "github-actions-runner-ubuntu-26-04-latest-migration",
+      "event_signature": {
+        "organization": "github",
+        "product": "actions-runner",
+        "action": "general-availability",
+        "artifact": "ubuntu-26-04-latest-migration"
+      },
+      "published_at": "2026-09-17",
+      "freshness": "NEW_TODAY",
+      "title": "ubuntu-latest sẽ chuyển sang Ubuntu 26.04",
+      "sources": [
+        {
+          "label": "GitHub: Ubuntu 26 GA and latest migration",
+          "url": "https://github.blog/changelog/2026-09-17-ubuntu-26-generally-available-and-latest-migration/",
+          "type": "official",
+          "published_at": "2026-09-17"
+        }
+      ],
+      "text": "Runner Ubuntu 26.04 lên GA; GitHub dự kiến chuyển nhãn ubuntu-latest trong khoảng 19/10–19/11/2026. Nhóm nên chạy thử workflow trên ubuntu-26.04 và kiểm tra công cụ phụ thuộc; nếu chưa sẵn sàng, ghim ubuntu-24.04 trong lúc xử lý khác biệt."
+    }
+  ],
+  "trends": [
+    {
+      "event_id": "github-actions-execution-protections-workflow-file-targeting-insights-rest",
+      "event_signature": {
+        "organization": "github",
+        "product": "actions-execution-protections",
+        "action": "general-availability",
+        "artifact": "workflow-file-targeting-insights-rest"
+      },
+      "published_at": "2026-09-17",
+      "freshness": "NEW_TODAY",
+      "title": "Luật chạy Actions có thể nhắm vào từng file workflow",
+      "sources": [
+        {
+          "label": "GitHub: Workflow execution protections GA",
+          "url": "https://github.blog/changelog/2026-09-17-workflow-execution-protections-in-github-actions-generally-available/",
+          "type": "official",
+          "published_at": "2026-09-17"
+        }
+      ],
+      "id": "github-actions-execution-protections-workflow-file-targeting-insights-rest",
+      "strength": "EMERGING",
+      "importance": "LEAD",
+      "paragraphs": [
+        "GitHub đưa workflow execution protections lên GA. Chính sách kiểm soát ai được khởi chạy và sự kiện nào được phép kích hoạt workflow; bản GA bổ sung phạm vi theo file workflow, trang Insights và REST API để quản lý cấu hình.",
+        "Nhóm có thể đặt quy tắc riêng cho deploy.yml trong khi giữ luồng CI cho cộng tác viên. Chế độ evaluate cho biết lượt chạy nào sẽ bị chặn trước khi thực thi policy. Đây là bước cần dùng khi repository có nhiều kiểu tự động hóa mà người quản trị chưa nắm hết.",
+        "GitHub cũng công bố quy tắc mặc định hạn chế pull_request_target cho một số repo công khai chưa có chính sách sự kiện phù hợp. Quy tắc bắt đầu ở evaluate; mốc thực thi nêu trong thông báo là 02/11/2026 cho nhóm repo bị ảnh hưởng. Hãy xem Insights để xác định workflow cần sửa hoặc cho phép rõ ràng, thay vì coi mọi repo đều bị chặn ngay."
+      ],
+      "action": "Chạy policy ở evaluate, kiểm tra Insights và chỉ bật enforcement sau khi đã xử lý các workflow hợp lệ bị ảnh hưởng."
+    }
+  ],
+  "releases": [],
+  "developer_memo": {
+    "title": "Việc nên làm sau khi đọc",
+    "direct_answer": "Xem tác động của policy ở chế độ evaluate trước khi chặn workflow.",
+    "actions": [
+      "Kiểm tra workflow deploy có đúng người và sự kiện được phép chạy.",
+      "Thêm lượt chạy thử trên ubuntu-26.04 trước đợt chuyển nhãn."
+    ],
+    "avoid": [
+      "Đừng bật chặn hàng loạt khi chưa đọc kết quả evaluate."
+    ]
+  },
+  "radar": [],
+  "takeaway": "Kiểm tra quyền khởi chạy và môi trường runner thành hai thay đổi riêng."
+}

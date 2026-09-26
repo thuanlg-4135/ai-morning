@@ -42,8 +42,8 @@ test("learning is reachable from the newspaper without JavaScript", async ({
   });
   const page = await context.newPage();
   await page.goto(`${basePath}/`);
-  await page.getByRole("link", { name: "Học & làm", exact: true }).click();
-  await expect(page.locator("h1")).toContainText("Đọc để hiểu");
+  await page.getByRole("link", { name: "Thư viện", exact: true }).click();
+  await expect(page.locator("h1")).toContainText("Thư viện thực hành");
   await page
     .getByRole("link", { name: articles[2].title, exact: true })
     .click();

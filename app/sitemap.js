@@ -1,4 +1,5 @@
 import { getEditions, inLanguage } from "../lib/editions.mjs";
+import { storiesForEdition } from "../lib/stories.mjs";
 import { getLearning } from "../lib/learning.mjs";
 import { datePath, homePath } from "../lib/site.mjs";
 import { absoluteUrl } from "../lib/metadata.mjs";
@@ -17,10 +18,13 @@ export default async function sitemap() {
   for (const language of ["vi", "en"]) {
     const localized = inLanguage(editions, language);
     if (!localized.length) continue;
-    // The latest home is an alias of a dated edition; list canonical URLs only.
     routes.push(
+      homePath(language),
       `${homePath(language)}archive/`,
       ...localized.map((e) => datePath(e.edition_date, language)),
+      ...localized.flatMap((e) =>
+        storiesForEdition(e, language).map((s) => s.href),
+      ),
     );
   }
   return routes.map((path) => ({ url: absoluteUrl(path) }));

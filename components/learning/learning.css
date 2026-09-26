@@ -1,0 +1,235 @@
+/* Evergreen guides share the newspaper's type, rules and reading width. */
+.learn-main {
+  padding-top: 32px;
+}
+.learn-intro {
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 26px;
+}
+.learn-intro h1 {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(36px, 5vw, 62px);
+  letter-spacing: -0.045em;
+  line-height: 1.1;
+  margin: 16px 0;
+}
+.learn-intro > p {
+  max-width: 74ch;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 20px;
+  line-height: 1.6;
+}
+.learn-count {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 16px;
+}
+.learn-tracks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+.learn-tracks a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+}
+.learn-tracks span {
+  color: var(--muted);
+}
+.learn-track {
+  margin-top: 32px;
+}
+.learn-track-heading {
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  gap: 18px;
+  align-items: baseline;
+  padding: 12px 0;
+  margin-bottom: 18px;
+}
+.learn-track-heading > span {
+  font-size: 12px;
+  color: var(--muted);
+}
+.learn-track-heading h2 {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 30px;
+  letter-spacing: -0.025em;
+}
+.learn-track-heading p {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+.learn-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+.learn-card {
+  border-bottom: 1px solid var(--line);
+  padding: 12px 0 24px;
+}
+.learn-card h3 {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 27px;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  margin: 12px 0;
+}
+.learn-card p {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.learn-card-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+  font-size: 12px;
+}
+.learn-card-bottom > span {
+  color: var(--muted);
+}
+.learn-card-bottom a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.learn-editor-note {
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 13px;
+  border-top: 1px solid var(--line);
+  margin-top: 30px;
+  padding-top: 20px;
+}
+.learn-article {
+  max-width: 800px;
+  margin-inline: auto;
+}
+.learn-back {
+  display: inline-block;
+  font-size: 12px;
+  margin-bottom: 24px;
+}
+.learn-article header {
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 22px;
+}
+.learn-article h1 {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin: 12px 0 18px;
+}
+.learn-summary {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 22px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.learn-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin-top: 20px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.learn-article section {
+  margin: 28px 0;
+}
+.learn-article h2 {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 29px;
+  line-height: 1.2;
+  margin: 12px 0;
+}
+.learn-article section p,
+.learn-article section li {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: var(--body-size);
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+.learn-article section ul {
+  padding-left: 24px;
+}
+.learn-toc {
+  border-block: 1px solid var(--line);
+  padding: 20px 0;
+}
+.learn-toc ol {
+  padding-left: 24px;
+  margin-bottom: 0;
+}
+.learn-toc li {
+  padding: 6px 0;
+  line-height: 1.5;
+}
+.learn-step {
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+}
+.learn-ai blockquote {
+  border-left: 2px solid var(--accent);
+  padding: 6px 0 6px 24px;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 19px;
+  line-height: 1.7;
+}
+.learn-sources {
+  border-top: 1px solid var(--ink);
+  padding-top: 20px;
+}
+.learn-sources a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.learn-next {
+  border-top: 2px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 22px 0;
+}
+@media (max-width: 900px) {
+  .learn-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .learn-main {
+    padding-top: 24px;
+  }
+  .learn-cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .learn-card h3 {
+    font-size: 27px;
+  }
+  .learn-summary {
+    font-size: 20px;
+  }
+  .learn-track-heading h2 {
+    font-size: 27px;
+  }
+  .learn-tracks {
+    flex-direction: column;
+  }
+  .learn-tracks a {
+    justify-content: space-between;
+  }
+}

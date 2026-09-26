@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "edition_date": "2026-09-23",
+  "locale": "vi-VN",
+  "edition_type": "daily_ai_catchup",
+  "edition_mode": "QUIET",
+  "headline": "Sol, Luna và Opus 5.5 mở thêm lựa chọn cho tác vụ hằng ngày",
+  "dek": "OpenAI và Anthropic công bố model mới, khiến việc so chi phí cần gắn với kết quả trên cùng đầu việc. Số bổ sung, chốt nguồn trước 07:00 ngày 23/09/2026 (giờ Việt Nam).",
+  "meta": {
+    "generated_at": "2026-09-26T05:24:27Z",
+    "cutoff_at": "2026-09-23T00:00:00Z",
+    "window_started_at": "2026-09-22T00:00:00Z",
+    "primary_scan_hours": 24,
+    "context_window_hours": 72,
+    "backfilled": true,
+    "research_notes": [
+      "Biên soạn bổ sung ngày 26/09/2026 từ danh sách ứng viên rỗng; đối chiếu sự kiện và URL với toàn bộ sổ tin trước khi chọn.",
+      "Ngày nguồn là ngày công bố trên trang gốc; không suy ra từ thời điểm công cụ tìm kiếm thu thập trang. Tin ngoài 24 giờ chỉ giữ trong cửa sổ 72 giờ và gắn CONTEXT_72H.",
+      "Nhật ký rà nguồn, mục loại và phạm vi kiểm tra: docs/research/backfill-2026-09-26.md."
+    ],
+    "reading_minutes": 2
+  },
+  "brief": [
+    {
+      "event_id": "anthropic-claude-opus-5-5-launch",
+      "event_signature": {
+        "organization": "anthropic",
+        "product": "claude-opus",
+        "action": "release",
+        "artifact": "5-5-launch"
+      },
+      "published_at": "2026-09-22",
+      "freshness": "NEW_TODAY",
+      "title": "Anthropic công bố Claude Opus 5.5",
+      "sources": [
+        {
+          "label": "Anthropic: Introducing Claude Opus 5.5",
+          "url": "https://www.anthropic.com/claude-opus-5-5",
+          "type": "official",
+          "published_at": "2026-09-22"
+        }
+      ],
+      "text": "Anthropic giới thiệu Opus 5.5 với giá tiêu chuẩn 4 USD đầu vào và 20 USD đầu ra mỗi triệu token. Hãng công bố cải thiện hiệu quả coding; nhóm nên dùng cùng bộ tác vụ và thiết lập công cụ để kiểm tra chất lượng, đồng thời phân biệt giá tiêu chuẩn với fast mode."
+    }
+  ],
+  "trends": [
+    {
+      "event_id": "openai-gpt-6-sol-luna-api-launch",
+      "event_signature": {
+        "organization": "openai",
+        "product": "gpt-6",
+        "action": "release",
+        "artifact": "sol-luna-api-launch"
+      },
+      "published_at": "2026-09-22",
+      "freshness": "NEW_TODAY",
+      "title": "GPT-6 Sol và Luna có mặt trong API và Codex",
+      "sources": [
+        {
+          "label": "OpenAI: Introducing GPT-6 Sol and Luna",
+          "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+          "type": "official",
+          "published_at": "2026-09-22"
+        }
+      ],
+      "id": "openai-gpt-6-sol-luna-api-launch",
+      "strength": "EMERGING",
+      "importance": "LEAD",
+      "paragraphs": [
+        "OpenAI công bố GPT-6 Sol và Luna, cung cấp qua API với tên gpt-6-sol và gpt-6-luna. Theo thông báo, hai model cũng được đưa vào Codex và ChatGPT Work cho các gói trả phí được liệt kê, với triển khai dần trong ngày.",
+        "Giá API công bố cho mỗi triệu token là 2 USD đầu vào và 10 USD đầu ra với Sol; Luna là 0,10 USD và 0,50 USD. OpenAI đưa ra nhiều kết quả đánh giá về coding và công việc dùng công cụ. Những kết quả đó thuộc thiết lập đánh giá được công bố, chưa phản ánh trực tiếp thời gian sửa một ticket trong repository của nhóm.",
+        "Có thể chọn vài tác vụ đã có tiêu chí nghiệm thu, giữ nguyên công cụ và dữ liệu đầu vào để so model. Ghi cả số lượt làm lại và thời gian người review phải bỏ ra. Cách này giúp phân biệt một lựa chọn có đơn giá thấp với lựa chọn thực sự giảm chi phí cho đầu việc hoàn thành."
+      ],
+      "action": "Chạy cùng tập ticket nhỏ đã có tiêu chí nghiệm thu, rồi tính tổng chi phí kể cả lượt sửa lại."
+    }
+  ],
+  "releases": [],
+  "developer_memo": {
+    "title": "Việc nên làm sau khi đọc",
+    "direct_answer": "Chạy đánh giá riêng trên tập tác vụ của nhóm trước khi đổi model mặc định.",
+    "actions": [
+      "Ghi số lượt sửa lại, thời gian hoàn thành và tổng token của từng tác vụ."
+    ],
+    "avoid": [
+      "Đừng dùng benchmark do nhà cung cấp công bố làm kết luận cho repository của mình."
+    ]
+  },
+  "radar": [],
+  "takeaway": "So chi phí cho kết quả được chấp nhận thay vì chỉ nhìn đơn giá token."
+}

@@ -3,7 +3,7 @@
   "generated_from": {
     "first_edition": "2026-08-22",
     "last_edition": "2026-09-26",
-    "edition_count": 19,
+    "edition_count": 36,
     "source_registry_count": 45
   },
   "events": [
@@ -1456,6 +1456,88 @@
       ]
     },
     {
+      "event_id": "github-copilot-upcoming-policy-billing-changes-2026-08",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot-business-enterprise",
+        "action": "policy-change",
+        "artifact": "seat-prepayment-and-unified-experience"
+      },
+      "signature_key": "github|copilot-business-enterprise|policy-change|seat-prepayment-and-unified-experience",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "copilot-business-enterprise",
+        "action": "policy-change",
+        "artifact": "seat-prepayment-and-unified-experience"
+      },
+      "current_signature_key": "github|copilot-business-enterprise|policy-change|seat-prepayment-and-unified-experience",
+      "first_published_at": "2026-08-28",
+      "first_edition": "2026-08-31",
+      "title": "GitHub công bố thay đổi chính sách và thanh toán Copilot",
+      "fingerprint": "github cong bo thay doi chinh sach va thanh toan copilot",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-08-28-upcoming-changes-to-github-copilot-policies-and-billing"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-31",
+          "section": "brief",
+          "published_at": "2026-08-28",
+          "event_signature": {
+            "organization": "github",
+            "product": "copilot-business-enterprise",
+            "action": "policy-change",
+            "artifact": "seat-prepayment-and-unified-experience"
+          },
+          "signature_key": "github|copilot-business-enterprise|policy-change|seat-prepayment-and-unified-experience",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-copilot-visual-studio-august-2026-git-review-thinking-controls",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot-visual-studio",
+        "action": "release",
+        "artifact": "august-2026-git-review-thinking-controls"
+      },
+      "signature_key": "github|copilot-visual-studio|release|august-2026-git-review-thinking-controls",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "copilot-visual-studio",
+        "action": "release",
+        "artifact": "august-2026-git-review-thinking-controls"
+      },
+      "current_signature_key": "github|copilot-visual-studio|release|august-2026-git-review-thinking-controls",
+      "first_published_at": "2026-08-28",
+      "first_edition": "2026-08-31",
+      "title": "Git agent xem được thay đổi chưa commit trong Visual Studio",
+      "fingerprint": "git agent xem duoc thay doi chua commit trong visual studio",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-08-28-github-copilot-in-visual-studio-august-update-2"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-08-31",
+          "section": "trends",
+          "published_at": "2026-08-28",
+          "event_signature": {
+            "organization": "github",
+            "product": "copilot-visual-studio",
+            "action": "release",
+            "artifact": "august-2026-git-review-thinking-controls"
+          },
+          "signature_key": "github|copilot-visual-studio|release|august-2026-git-review-thinking-controls",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
       "event_id": "github-agentic-workflows-0-87-9-prerelease",
       "event_signature": {
         "organization": "github",
@@ -2650,6 +2732,88 @@
       ]
     },
     {
+      "event_id": "google-gemini-code-assist-new-subscriptions-sales-only-2026-09",
+      "event_signature": {
+        "organization": "google",
+        "product": "gemini-code-assist",
+        "action": "feature-update",
+        "artifact": "new-customer-purchase-channel-change"
+      },
+      "signature_key": "google|gemini-code-assist|feature-update|new-customer-purchase-channel-change",
+      "current_event_signature": {
+        "organization": "google",
+        "product": "gemini-code-assist",
+        "action": "feature-update",
+        "artifact": "new-customer-purchase-channel-change"
+      },
+      "current_signature_key": "google|gemini-code-assist|feature-update|new-customer-purchase-channel-change",
+      "first_published_at": "2026-09-04",
+      "first_edition": "2026-09-07",
+      "title": "Google đổi cách đăng ký Gemini Code Assist mới",
+      "fingerprint": "google doi cach dang ky gemini code assist moi",
+      "canonical_sources": [
+        "https://cloud.google.com/gemini/docs/release-notes"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-07",
+          "section": "brief",
+          "published_at": "2026-09-04",
+          "event_signature": {
+            "organization": "google",
+            "product": "gemini-code-assist",
+            "action": "feature-update",
+            "artifact": "new-customer-purchase-channel-change"
+          },
+          "signature_key": "google|gemini-code-assist|feature-update|new-customer-purchase-channel-change",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "smart-research-smart-design-docs-performance-library-2609-05364",
+      "event_signature": {
+        "organization": "smart-research",
+        "product": "smart",
+        "action": "research",
+        "artifact": "design-docs-performance-library-2609-05364"
+      },
+      "signature_key": "smart-research|smart|research|design-docs-performance-library-2609-05364",
+      "current_event_signature": {
+        "organization": "smart-research",
+        "product": "smart",
+        "action": "research",
+        "artifact": "design-docs-performance-library-2609-05364"
+      },
+      "current_signature_key": "smart-research|smart|research|design-docs-performance-library-2609-05364",
+      "first_published_at": "2026-09-04T17:08:51Z",
+      "first_edition": "2026-09-07",
+      "title": "SMART sinh lại thư viện mô hình hóa hiệu năng từ tài liệu thiết kế",
+      "fingerprint": "smart sinh lai thu vien mo hinh hoa hieu nang tu tai lieu thiet ke",
+      "canonical_sources": [
+        "https://arxiv.org/abs/2609.05364"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-07",
+          "section": "trends",
+          "published_at": "2026-09-04T17:08:51Z",
+          "event_signature": {
+            "organization": "smart-research",
+            "product": "smart",
+            "action": "research",
+            "artifact": "design-docs-performance-library-2609-05364"
+          },
+          "signature_key": "smart-research|smart|research|design-docs-performance-library-2609-05364",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
       "event_id": "litellm-v1-100-0",
       "event_signature": {
         "organization": "berriai",
@@ -2807,6 +2971,88 @@
             "artifact": "ukraine-airppu-wan-ifra-program"
           },
           "signature_key": "openai|newsroom-ai-catalyst|partnership|ukraine-airppu-wan-ifra-program",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-copilot-jetbrains-enterprise-managed-sandbox-policies",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot-jetbrains",
+        "action": "preview",
+        "artifact": "enterprise-managed-sandbox-policies"
+      },
+      "signature_key": "github|copilot-jetbrains|preview|enterprise-managed-sandbox-policies",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "copilot-jetbrains",
+        "action": "preview",
+        "artifact": "enterprise-managed-sandbox-policies"
+      },
+      "current_signature_key": "github|copilot-jetbrains|preview|enterprise-managed-sandbox-policies",
+      "first_published_at": "2026-09-08",
+      "first_edition": "2026-09-09",
+      "title": "Quản trị viên đặt giới hạn file và mạng cho Copilot trong JetBrains",
+      "fingerprint": "quan tri vien dat gioi han file va mang cho copilot trong jetbrains",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-08-enterprise-managed-sandbox-in-copilot-for-jetbrains"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-09",
+          "section": "trends",
+          "published_at": "2026-09-08",
+          "event_signature": {
+            "organization": "github",
+            "product": "copilot-jetbrains",
+            "action": "preview",
+            "artifact": "enterprise-managed-sandbox-policies"
+          },
+          "signature_key": "github|copilot-jetbrains|preview|enterprise-managed-sandbox-policies",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "vercel-flat-rate-cdn-pro-team-fixed-monthly-billing",
+      "event_signature": {
+        "organization": "vercel",
+        "product": "flat-rate-cdn",
+        "action": "general-availability",
+        "artifact": "pro-team-fixed-monthly-billing"
+      },
+      "signature_key": "vercel|flat-rate-cdn|general-availability|pro-team-fixed-monthly-billing",
+      "current_event_signature": {
+        "organization": "vercel",
+        "product": "flat-rate-cdn",
+        "action": "general-availability",
+        "artifact": "pro-team-fixed-monthly-billing"
+      },
+      "current_signature_key": "vercel|flat-rate-cdn|general-availability|pro-team-fixed-monthly-billing",
+      "first_published_at": "2026-09-08",
+      "first_edition": "2026-09-09",
+      "title": "Vercel Pro có lựa chọn CDN tính phí cố định",
+      "fingerprint": "vercel pro co lua chon cdn tinh phi co dinh",
+      "canonical_sources": [
+        "https://vercel.com/changelog/flat-rate-cdn-is-now-ga-for-pro-teams"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-09",
+          "section": "brief",
+          "published_at": "2026-09-08",
+          "event_signature": {
+            "organization": "vercel",
+            "product": "flat-rate-cdn",
+            "action": "general-availability",
+            "artifact": "pro-team-fixed-monthly-billing"
+          },
+          "signature_key": "vercel|flat-rate-cdn|general-availability|pro-team-fixed-monthly-billing",
           "material_update": null,
           "update_kind": null,
           "dedupe_override_reason": null
@@ -3094,6 +3340,1154 @@
             "artifact": "causal-encoder-decoder-kv-cache-api"
           },
           "signature_key": "deepseek|deepseek-v4-1-flash|launch|causal-encoder-decoder-kv-cache-api",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-copilot-code-review-auto-resolution-shell-analysis-lite-ensemble",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot-code-review",
+        "action": "feature-update",
+        "artifact": "auto-resolution-shell-analysis-lite-ensemble"
+      },
+      "signature_key": "github|copilot-code-review|feature-update|auto-resolution-shell-analysis-lite-ensemble",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "copilot-code-review",
+        "action": "feature-update",
+        "artifact": "auto-resolution-shell-analysis-lite-ensemble"
+      },
+      "current_signature_key": "github|copilot-code-review|feature-update|auto-resolution-shell-analysis-lite-ensemble",
+      "first_published_at": "2026-09-11",
+      "first_edition": "2026-09-12",
+      "title": "Copilot đóng nhận xét khi commit mới giải quyết vấn đề",
+      "fingerprint": "copilot dong nhan xet khi commit moi giai quyet van de",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-11-auto-resolution-and-analysis-updates-in-copilot-code-review"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-12",
+          "section": "trends",
+          "published_at": "2026-09-11",
+          "event_signature": {
+            "organization": "github",
+            "product": "copilot-code-review",
+            "action": "feature-update",
+            "artifact": "auto-resolution-shell-analysis-lite-ensemble"
+          },
+          "signature_key": "github|copilot-code-review|feature-update|auto-resolution-shell-analysis-lite-ensemble",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "godot-godot-4-8-dev5-mip-texture-streaming",
+      "event_signature": {
+        "organization": "godot",
+        "product": "godot",
+        "action": "release",
+        "artifact": "4-8-dev5-mip-texture-streaming"
+      },
+      "signature_key": "godot|godot|release|4-8-dev5-mip-texture-streaming",
+      "current_event_signature": {
+        "organization": "godot",
+        "product": "godot",
+        "action": "release",
+        "artifact": "4-8-dev5-mip-texture-streaming"
+      },
+      "current_signature_key": "godot|godot|release|4-8-dev5-mip-texture-streaming",
+      "first_published_at": "2026-09-10",
+      "first_edition": "2026-09-12",
+      "title": "Godot 4.8 dev5 thử texture streaming theo mức mip",
+      "fingerprint": "godot 4 8 dev5 thu texture streaming theo muc mip",
+      "canonical_sources": [
+        "https://godotengine.org/article/dev-snapshot-godot-4-8-dev-5"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-12",
+          "section": "brief",
+          "published_at": "2026-09-10",
+          "event_signature": {
+            "organization": "godot",
+            "product": "godot",
+            "action": "release",
+            "artifact": "4-8-dev5-mip-texture-streaming"
+          },
+          "signature_key": "godot|godot|release|4-8-dev5-mip-texture-streaming",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "google-cloud-developer-plugin-agent-skills-mcp-bundle",
+      "event_signature": {
+        "organization": "google",
+        "product": "cloud-developer-plugin",
+        "action": "release",
+        "artifact": "agent-skills-mcp-bundle"
+      },
+      "signature_key": "google|cloud-developer-plugin|release|agent-skills-mcp-bundle",
+      "current_event_signature": {
+        "organization": "google",
+        "product": "cloud-developer-plugin",
+        "action": "release",
+        "artifact": "agent-skills-mcp-bundle"
+      },
+      "current_signature_key": "google|cloud-developer-plugin|release|agent-skills-mcp-bundle",
+      "first_published_at": "2026-09-10",
+      "first_edition": "2026-09-13",
+      "title": "Google Cloud gom skills và tài liệu vào plugin cho agent",
+      "fingerprint": "google cloud gom skills va tai lieu vao plugin cho agent",
+      "canonical_sources": [
+        "https://cloud.google.com/blog/topics/developers-practitioners/introducing-the-google-cloud-developer-plugin-for-ai-coding-agents"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-13",
+          "section": "brief",
+          "published_at": "2026-09-10",
+          "event_signature": {
+            "organization": "google",
+            "product": "cloud-developer-plugin",
+            "action": "release",
+            "artifact": "agent-skills-mcp-bundle"
+          },
+          "signature_key": "google|cloud-developer-plugin|release|agent-skills-mcp-bundle",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "vercel-fastapi-static-assets-cdn-build-promotion",
+      "event_signature": {
+        "organization": "vercel",
+        "product": "fastapi",
+        "action": "feature-update",
+        "artifact": "static-assets-cdn-build-promotion"
+      },
+      "signature_key": "vercel|fastapi|feature-update|static-assets-cdn-build-promotion",
+      "current_event_signature": {
+        "organization": "vercel",
+        "product": "fastapi",
+        "action": "feature-update",
+        "artifact": "static-assets-cdn-build-promotion"
+      },
+      "current_signature_key": "vercel|fastapi|feature-update|static-assets-cdn-build-promotion",
+      "first_published_at": "2026-09-10",
+      "first_edition": "2026-09-13",
+      "title": "Vercel phục vụ frontend và StaticFiles của FastAPI qua CDN",
+      "fingerprint": "vercel phuc vu frontend va staticfiles cua fastapi qua cdn",
+      "canonical_sources": [
+        "https://vercel.com/changelog/fastapi-frontends-and-static-files-served-from-the-cdn"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-13",
+          "section": "trends",
+          "published_at": "2026-09-10",
+          "event_signature": {
+            "organization": "vercel",
+            "product": "fastapi",
+            "action": "feature-update",
+            "artifact": "static-assets-cdn-build-promotion"
+          },
+          "signature_key": "vercel|fastapi|feature-update|static-assets-cdn-build-promotion",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-copilot-usage-metrics-vscode-agents-window-activity",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot-usage-metrics",
+        "action": "feature-update",
+        "artifact": "vscode-agents-window-activity"
+      },
+      "signature_key": "github|copilot-usage-metrics|feature-update|vscode-agents-window-activity",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "copilot-usage-metrics",
+        "action": "feature-update",
+        "artifact": "vscode-agents-window-activity"
+      },
+      "current_signature_key": "github|copilot-usage-metrics|feature-update|vscode-agents-window-activity",
+      "first_published_at": "2026-09-11",
+      "first_edition": "2026-09-14",
+      "title": "Báo cáo Copilot tách hoạt động của cửa sổ VS Code Agents",
+      "fingerprint": "bao cao copilot tach hoat dong cua cua so vs code agents",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-11-add-vs-code-agents-to-copilot-usage-metrics"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-14",
+          "section": "trends",
+          "published_at": "2026-09-11",
+          "event_signature": {
+            "organization": "github",
+            "product": "copilot-usage-metrics",
+            "action": "feature-update",
+            "artifact": "vscode-agents-window-activity"
+          },
+          "signature_key": "github|copilot-usage-metrics|feature-update|vscode-agents-window-activity",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "openai-gpt-rosalind-trusted-access-availability-update-2026-09",
+      "event_signature": {
+        "organization": "openai",
+        "product": "gpt-rosalind",
+        "action": "general-availability",
+        "artifact": "life-sciences-trusted-access-program"
+      },
+      "signature_key": "openai|gpt-rosalind|general-availability|life-sciences-trusted-access-program",
+      "current_event_signature": {
+        "organization": "openai",
+        "product": "gpt-rosalind",
+        "action": "general-availability",
+        "artifact": "life-sciences-trusted-access-program"
+      },
+      "current_signature_key": "openai|gpt-rosalind|general-availability|life-sciences-trusted-access-program",
+      "first_published_at": "2026-09-11",
+      "first_edition": "2026-09-14",
+      "title": "GPT-Rosalind mở rộng quyền truy cập qua trusted-access",
+      "fingerprint": "gpt rosalind mo rong quyen truy cap qua trusted access",
+      "canonical_sources": [
+        "https://openai.com/index/introducing-gpt-rosalind"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-14",
+          "section": "brief",
+          "published_at": "2026-09-11",
+          "event_signature": {
+            "organization": "openai",
+            "product": "gpt-rosalind",
+            "action": "general-availability",
+            "artifact": "life-sciences-trusted-access-program"
+          },
+          "signature_key": "openai|gpt-rosalind|general-availability|life-sciences-trusted-access-program",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-copilot-auto-efficiency-balance-intelligence-tiers",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot-auto",
+        "action": "feature-update",
+        "artifact": "efficiency-balance-intelligence-tiers"
+      },
+      "signature_key": "github|copilot-auto|feature-update|efficiency-balance-intelligence-tiers",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "copilot-auto",
+        "action": "feature-update",
+        "artifact": "efficiency-balance-intelligence-tiers"
+      },
+      "current_signature_key": "github|copilot-auto|feature-update|efficiency-balance-intelligence-tiers",
+      "first_published_at": "2026-09-14",
+      "first_edition": "2026-09-15",
+      "title": "Copilot auto thêm ba mức ưu tiên cho việc chọn model",
+      "fingerprint": "copilot auto them ba muc uu tien cho viec chon model",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-14-configure-cost-and-quality-in-copilot-auto-model-selection"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-15",
+          "section": "trends",
+          "published_at": "2026-09-14",
+          "event_signature": {
+            "organization": "github",
+            "product": "copilot-auto",
+            "action": "feature-update",
+            "artifact": "efficiency-balance-intelligence-tiers"
+          },
+          "signature_key": "github|copilot-auto|feature-update|efficiency-balance-intelligence-tiers",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "vercel-ai-sdk-harness-native-subscription-authentication",
+      "event_signature": {
+        "organization": "vercel",
+        "product": "ai-sdk-harness",
+        "action": "feature-update",
+        "artifact": "native-subscription-authentication"
+      },
+      "signature_key": "vercel|ai-sdk-harness|feature-update|native-subscription-authentication",
+      "current_event_signature": {
+        "organization": "vercel",
+        "product": "ai-sdk-harness",
+        "action": "feature-update",
+        "artifact": "native-subscription-authentication"
+      },
+      "current_signature_key": "vercel|ai-sdk-harness|feature-update|native-subscription-authentication",
+      "first_published_at": "2026-09-14",
+      "first_edition": "2026-09-15",
+      "title": "AI SDK harness dùng được đăng nhập thuê bao trên host",
+      "fingerprint": "ai sdk harness dung duoc dang nhap thue bao tren host",
+      "canonical_sources": [
+        "https://vercel.com/changelog/ai-sdk-harness-native-subscription-authentication"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-15",
+          "section": "brief",
+          "published_at": "2026-09-14",
+          "event_signature": {
+            "organization": "vercel",
+            "product": "ai-sdk-harness",
+            "action": "feature-update",
+            "artifact": "native-subscription-authentication"
+          },
+          "signature_key": "vercel|ai-sdk-harness|feature-update|native-subscription-authentication",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "godot-godot-4-8-dev6-platform-hotfix-contact-shadows",
+      "event_signature": {
+        "organization": "godot",
+        "product": "godot",
+        "action": "release",
+        "artifact": "4-8-dev6-platform-hotfix-contact-shadows"
+      },
+      "signature_key": "godot|godot|release|4-8-dev6-platform-hotfix-contact-shadows",
+      "current_event_signature": {
+        "organization": "godot",
+        "product": "godot",
+        "action": "release",
+        "artifact": "4-8-dev6-platform-hotfix-contact-shadows"
+      },
+      "current_signature_key": "godot|godot|release|4-8-dev6-platform-hotfix-contact-shadows",
+      "first_published_at": "2026-09-15",
+      "first_edition": "2026-09-16",
+      "title": "Godot 4.8 dev6 sửa lỗi nền tảng và thêm contact shadows",
+      "fingerprint": "godot 4 8 dev6 sua loi nen tang va them contact shadows",
+      "canonical_sources": [
+        "https://godotengine.org/article/dev-snapshot-godot-4-8-dev-6"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-16",
+          "section": "brief",
+          "published_at": "2026-09-15",
+          "event_signature": {
+            "organization": "godot",
+            "product": "godot",
+            "action": "release",
+            "artifact": "4-8-dev6-platform-hotfix-contact-shadows"
+          },
+          "signature_key": "godot|godot|release|4-8-dev6-platform-hotfix-contact-shadows",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "godot-renderer-cpu-profiling-optimization-method",
+      "event_signature": {
+        "organization": "godot",
+        "product": "godot-renderer",
+        "action": "research-publication",
+        "artifact": "cpu-profiling-and-renderer-optimization"
+      },
+      "signature_key": "godot|godot-renderer|research-publication|cpu-profiling-and-renderer-optimization",
+      "current_event_signature": {
+        "organization": "godot",
+        "product": "godot-renderer",
+        "action": "research-publication",
+        "artifact": "cpu-profiling-and-renderer-optimization"
+      },
+      "current_signature_key": "godot|godot-renderer|research-publication|cpu-profiling-and-renderer-optimization",
+      "first_published_at": "2026-09-15",
+      "first_edition": "2026-09-16",
+      "title": "Godot mô tả cách tìm nút thắt CPU trong renderer",
+      "fingerprint": "godot mo ta cach tim nut that cpu trong renderer",
+      "canonical_sources": [
+        "https://godotengine.org/article/rendering-cpu-optimizations"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-16",
+          "section": "trends",
+          "published_at": "2026-09-15",
+          "event_signature": {
+            "organization": "godot",
+            "product": "godot-renderer",
+            "action": "research-publication",
+            "artifact": "cpu-profiling-and-renderer-optimization"
+          },
+          "signature_key": "godot|godot-renderer|research-publication|cpu-profiling-and-renderer-optimization",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-code-scanning-ai-scan-remove-codeql-default-setup-prerequisite",
+      "event_signature": {
+        "organization": "github",
+        "product": "code-scanning-ai-scan",
+        "action": "preview",
+        "artifact": "remove-codeql-default-setup-prerequisite"
+      },
+      "signature_key": "github|code-scanning-ai-scan|preview|remove-codeql-default-setup-prerequisite",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "code-scanning-ai-scan",
+        "action": "preview",
+        "artifact": "remove-codeql-default-setup-prerequisite"
+      },
+      "current_signature_key": "github|code-scanning-ai-scan|preview|remove-codeql-default-setup-prerequisite",
+      "first_published_at": "2026-09-16",
+      "first_edition": "2026-09-17",
+      "title": "AI Scan chạy trên thêm repository theo policy hiện có",
+      "fingerprint": "ai scan chay tren them repository theo policy hien co",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-16-code-scanning-ai-scan-no-longer-requires-codeql-default-setup"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-17",
+          "section": "trends",
+          "published_at": "2026-09-16",
+          "event_signature": {
+            "organization": "github",
+            "product": "code-scanning-ai-scan",
+            "action": "preview",
+            "artifact": "remove-codeql-default-setup-prerequisite"
+          },
+          "signature_key": "github|code-scanning-ai-scan|preview|remove-codeql-default-setup-prerequisite",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "typesafe-ai-jev-vercel-ai-gateway-typed-decisions",
+      "event_signature": {
+        "organization": "typesafe-ai",
+        "product": "jev",
+        "action": "integration",
+        "artifact": "vercel-ai-gateway-typed-decisions"
+      },
+      "signature_key": "typesafe-ai|jev|integration|vercel-ai-gateway-typed-decisions",
+      "current_event_signature": {
+        "organization": "typesafe-ai",
+        "product": "jev",
+        "action": "integration",
+        "artifact": "vercel-ai-gateway-typed-decisions"
+      },
+      "current_signature_key": "typesafe-ai|jev|integration|vercel-ai-gateway-typed-decisions",
+      "first_published_at": "2026-09-16",
+      "first_edition": "2026-09-17",
+      "title": "Jev trả quyết định định kiểu qua AI Gateway",
+      "fingerprint": "jev tra quyet dinh dinh kieu qua ai gateway",
+      "canonical_sources": [
+        "https://vercel.com/changelog/typesafe-ai-jev-now-available-on-ai-gateway"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-17",
+          "section": "brief",
+          "published_at": "2026-09-16",
+          "event_signature": {
+            "organization": "typesafe-ai",
+            "product": "jev",
+            "action": "integration",
+            "artifact": "vercel-ai-gateway-typed-decisions"
+          },
+          "signature_key": "typesafe-ai|jev|integration|vercel-ai-gateway-typed-decisions",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-actions-execution-protections-workflow-file-targeting-insights-rest",
+      "event_signature": {
+        "organization": "github",
+        "product": "actions-execution-protections",
+        "action": "general-availability",
+        "artifact": "workflow-file-targeting-insights-rest"
+      },
+      "signature_key": "github|actions-execution-protections|general-availability|workflow-file-targeting-insights-rest",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "actions-execution-protections",
+        "action": "general-availability",
+        "artifact": "workflow-file-targeting-insights-rest"
+      },
+      "current_signature_key": "github|actions-execution-protections|general-availability|workflow-file-targeting-insights-rest",
+      "first_published_at": "2026-09-17",
+      "first_edition": "2026-09-18",
+      "title": "Luật chạy Actions có thể nhắm vào từng file workflow",
+      "fingerprint": "luat chay actions co the nham vao tung file workflow",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-17-workflow-execution-protections-in-github-actions-generally-available"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-18",
+          "section": "trends",
+          "published_at": "2026-09-17",
+          "event_signature": {
+            "organization": "github",
+            "product": "actions-execution-protections",
+            "action": "general-availability",
+            "artifact": "workflow-file-targeting-insights-rest"
+          },
+          "signature_key": "github|actions-execution-protections|general-availability|workflow-file-targeting-insights-rest",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-actions-runner-ubuntu-26-04-latest-migration",
+      "event_signature": {
+        "organization": "github",
+        "product": "actions-runner",
+        "action": "general-availability",
+        "artifact": "ubuntu-26-04-latest-migration"
+      },
+      "signature_key": "github|actions-runner|general-availability|ubuntu-26-04-latest-migration",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "actions-runner",
+        "action": "general-availability",
+        "artifact": "ubuntu-26-04-latest-migration"
+      },
+      "current_signature_key": "github|actions-runner|general-availability|ubuntu-26-04-latest-migration",
+      "first_published_at": "2026-09-17",
+      "first_edition": "2026-09-18",
+      "title": "ubuntu-latest sẽ chuyển sang Ubuntu 26.04",
+      "fingerprint": "ubuntu latest se chuyen sang ubuntu 26 04",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-17-ubuntu-26-generally-available-and-latest-migration"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-18",
+          "section": "brief",
+          "published_at": "2026-09-17",
+          "event_signature": {
+            "organization": "github",
+            "product": "actions-runner",
+            "action": "general-availability",
+            "artifact": "ubuntu-26-04-latest-migration"
+          },
+          "signature_key": "github|actions-runner|general-availability|ubuntu-26-04-latest-migration",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "npm-granular-access-token-stage-only-publishing-permission",
+      "event_signature": {
+        "organization": "npm",
+        "product": "granular-access-token",
+        "action": "release",
+        "artifact": "stage-only-publishing-permission"
+      },
+      "signature_key": "npm|granular-access-token|release|stage-only-publishing-permission",
+      "current_event_signature": {
+        "organization": "npm",
+        "product": "granular-access-token",
+        "action": "release",
+        "artifact": "stage-only-publishing-permission"
+      },
+      "current_signature_key": "npm|granular-access-token|release|stage-only-publishing-permission",
+      "first_published_at": "2026-09-18",
+      "first_edition": "2026-09-19",
+      "title": "Token npm mới chỉ gửi phiên bản tới hàng chờ phát hành",
+      "fingerprint": "token npm moi chi gui phien ban toi hang cho phat hanh",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-18-stage-only-npm-tokens-for-safer-automation"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-19",
+          "section": "trends",
+          "published_at": "2026-09-18",
+          "event_signature": {
+            "organization": "npm",
+            "product": "granular-access-token",
+            "action": "release",
+            "artifact": "stage-only-publishing-permission"
+          },
+          "signature_key": "npm|granular-access-token|release|stage-only-publishing-permission",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "vercel-mcp-handler-2-2-0-experimental-webmcp",
+      "event_signature": {
+        "organization": "vercel",
+        "product": "mcp-handler",
+        "action": "release",
+        "artifact": "2-2-0-experimental-webmcp"
+      },
+      "signature_key": "vercel|mcp-handler|release|2-2-0-experimental-webmcp",
+      "current_event_signature": {
+        "organization": "vercel",
+        "product": "mcp-handler",
+        "action": "release",
+        "artifact": "2-2-0-experimental-webmcp"
+      },
+      "current_signature_key": "vercel|mcp-handler|release|2-2-0-experimental-webmcp",
+      "first_published_at": "2026-09-18",
+      "first_edition": "2026-09-19",
+      "title": "mcp-handler 2.2.0 thử hỗ trợ WebMCP",
+      "fingerprint": "mcp handler 2 2 0 thu ho tro webmcp",
+      "canonical_sources": [
+        "https://vercel.com/changelog/webmcp-mcp-handler"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-19",
+          "section": "brief",
+          "published_at": "2026-09-18",
+          "event_signature": {
+            "organization": "vercel",
+            "product": "mcp-handler",
+            "action": "release",
+            "artifact": "2-2-0-experimental-webmcp"
+          },
+          "signature_key": "vercel|mcp-handler|release|2-2-0-experimental-webmcp",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-copilot-code-review-overview-2026-09",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot-code-review",
+        "action": "feature-update",
+        "artifact": "review-overview-progress-and-batch-commit-messages"
+      },
+      "signature_key": "github|copilot-code-review|feature-update|review-overview-progress-and-batch-commit-messages",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "copilot-code-review",
+        "action": "feature-update",
+        "artifact": "review-overview-progress-and-batch-commit-messages"
+      },
+      "current_signature_key": "github|copilot-code-review|feature-update|review-overview-progress-and-batch-commit-messages",
+      "first_published_at": "2026-09-18",
+      "first_edition": "2026-09-20",
+      "title": "Copilot code review giữ lại lịch sử phát hiện qua các lượt review",
+      "fingerprint": "copilot code review giu lai lich su phat hien qua cac luot review",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-18-copilot-code-review-an-improved-review-experience"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-20",
+          "section": "brief",
+          "published_at": "2026-09-18",
+          "event_signature": {
+            "organization": "github",
+            "product": "copilot-code-review",
+            "action": "feature-update",
+            "artifact": "review-overview-progress-and-batch-commit-messages"
+          },
+          "signature_key": "github|copilot-code-review|feature-update|review-overview-progress-and-batch-commit-messages",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "vercel-spend-management-enterprise-flexible-commitment-budget",
+      "event_signature": {
+        "organization": "vercel",
+        "product": "spend-management",
+        "action": "feature-update",
+        "artifact": "enterprise-flexible-commitment-budget"
+      },
+      "signature_key": "vercel|spend-management|feature-update|enterprise-flexible-commitment-budget",
+      "current_event_signature": {
+        "organization": "vercel",
+        "product": "spend-management",
+        "action": "feature-update",
+        "artifact": "enterprise-flexible-commitment-budget"
+      },
+      "current_signature_key": "vercel|spend-management|feature-update|enterprise-flexible-commitment-budget",
+      "first_published_at": "2026-09-18",
+      "first_edition": "2026-09-20",
+      "title": "Enterprise Flexible Commitment dùng được Spend Management",
+      "fingerprint": "enterprise flexible commitment dung duoc spend management",
+      "canonical_sources": [
+        "https://vercel.com/changelog/spend-management-enterprise-flex"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-20",
+          "section": "trends",
+          "published_at": "2026-09-18",
+          "event_signature": {
+            "organization": "vercel",
+            "product": "spend-management",
+            "action": "feature-update",
+            "artifact": "enterprise-flexible-commitment-budget"
+          },
+          "signature_key": "vercel|spend-management|feature-update|enterprise-flexible-commitment-budget",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "aws-sagemaker-huggingface-agent-skills-deployment-guide",
+      "event_signature": {
+        "organization": "aws",
+        "product": "sagemaker-ai",
+        "action": "release",
+        "artifact": "six-agent-skills-for-model-deployments"
+      },
+      "signature_key": "aws|sagemaker-ai|release|six-agent-skills-for-model-deployments",
+      "current_event_signature": {
+        "organization": "aws",
+        "product": "sagemaker-ai",
+        "action": "release",
+        "artifact": "six-agent-skills-for-model-deployments"
+      },
+      "current_signature_key": "aws|sagemaker-ai|release|six-agent-skills-for-model-deployments",
+      "first_published_at": "2026-09-18",
+      "first_edition": "2026-09-21",
+      "title": "AWS và Hugging Face đóng gói skills cho deployment model",
+      "fingerprint": "aws va hugging face dong goi skills cho deployment model",
+      "canonical_sources": [
+        "https://aws.amazon.com/blogs/machine-learning/deploy-hugging-face-models-on-amazon-sagemaker-ai-with-coding-agents"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-21",
+          "section": "brief",
+          "published_at": "2026-09-18",
+          "event_signature": {
+            "organization": "aws",
+            "product": "sagemaker-ai",
+            "action": "release",
+            "artifact": "six-agent-skills-for-model-deployments"
+          },
+          "signature_key": "aws|sagemaker-ai|release|six-agent-skills-for-model-deployments",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-code-quality-rulesets-rest-api-coverage-condition",
+      "event_signature": {
+        "organization": "github",
+        "product": "code-quality-rulesets",
+        "action": "feature-update",
+        "artifact": "rest-api-coverage-condition"
+      },
+      "signature_key": "github|code-quality-rulesets|feature-update|rest-api-coverage-condition",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "code-quality-rulesets",
+        "action": "feature-update",
+        "artifact": "rest-api-coverage-condition"
+      },
+      "current_signature_key": "github|code-quality-rulesets|feature-update|rest-api-coverage-condition",
+      "first_published_at": "2026-09-18",
+      "first_edition": "2026-09-21",
+      "title": "Điều kiện coverage trong ruleset có thể quản lý bằng API",
+      "fingerprint": "dieu kien coverage trong ruleset co the quan ly bang api",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-18-manage-the-code-coverage-ruleset-condition-with-the-rest-api"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-21",
+          "section": "trends",
+          "published_at": "2026-09-18",
+          "event_signature": {
+            "organization": "github",
+            "product": "code-quality-rulesets",
+            "action": "feature-update",
+            "artifact": "rest-api-coverage-condition"
+          },
+          "signature_key": "github|code-quality-rulesets|feature-update|rest-api-coverage-condition",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-enterprise-credentials-inventory-csv-paginated-rest-export",
+      "event_signature": {
+        "organization": "github",
+        "product": "enterprise-credentials",
+        "action": "release",
+        "artifact": "inventory-csv-paginated-rest-export"
+      },
+      "signature_key": "github|enterprise-credentials|release|inventory-csv-paginated-rest-export",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "enterprise-credentials",
+        "action": "release",
+        "artifact": "inventory-csv-paginated-rest-export"
+      },
+      "current_signature_key": "github|enterprise-credentials|release|inventory-csv-paginated-rest-export",
+      "first_published_at": "2026-09-21",
+      "first_edition": "2026-09-22",
+      "title": "Enterprise Cloud xuất bản kiểm kê token và SSH key",
+      "fingerprint": "enterprise cloud xuat ban kiem ke token va ssh key",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-21-github-enterprise-adds-credential-inventory-exports"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-22",
+          "section": "trends",
+          "published_at": "2026-09-21",
+          "event_signature": {
+            "organization": "github",
+            "product": "enterprise-credentials",
+            "action": "release",
+            "artifact": "inventory-csv-paginated-rest-export"
+          },
+          "signature_key": "github|enterprise-credentials|release|inventory-csv-paginated-rest-export",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "vercel-deployments-billable-duration-cpu-minutes",
+      "event_signature": {
+        "organization": "vercel",
+        "product": "deployments",
+        "action": "feature-update",
+        "artifact": "billable-duration-cpu-minutes"
+      },
+      "signature_key": "vercel|deployments|feature-update|billable-duration-cpu-minutes",
+      "current_event_signature": {
+        "organization": "vercel",
+        "product": "deployments",
+        "action": "feature-update",
+        "artifact": "billable-duration-cpu-minutes"
+      },
+      "current_signature_key": "vercel|deployments|feature-update|billable-duration-cpu-minutes",
+      "first_published_at": "2026-09-21",
+      "first_edition": "2026-09-22",
+      "title": "Vercel hiển thị thời lượng build tính phí",
+      "fingerprint": "vercel hien thi thoi luong build tinh phi",
+      "canonical_sources": [
+        "https://vercel.com/changelog/deployments-now-show-billable-duration-and-cpu-minutes"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-22",
+          "section": "brief",
+          "published_at": "2026-09-21",
+          "event_signature": {
+            "organization": "vercel",
+            "product": "deployments",
+            "action": "feature-update",
+            "artifact": "billable-duration-cpu-minutes"
+          },
+          "signature_key": "vercel|deployments|feature-update|billable-duration-cpu-minutes",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "anthropic-claude-opus-5-5-launch",
+      "event_signature": {
+        "organization": "anthropic",
+        "product": "claude-opus",
+        "action": "release",
+        "artifact": "5-5-launch"
+      },
+      "signature_key": "anthropic|claude-opus|release|5-5-launch",
+      "current_event_signature": {
+        "organization": "anthropic",
+        "product": "claude-opus",
+        "action": "release",
+        "artifact": "5-5-launch"
+      },
+      "current_signature_key": "anthropic|claude-opus|release|5-5-launch",
+      "first_published_at": "2026-09-22",
+      "first_edition": "2026-09-23",
+      "title": "Anthropic công bố Claude Opus 5.5",
+      "fingerprint": "anthropic cong bo claude opus 5 5",
+      "canonical_sources": [
+        "https://anthropic.com/claude-opus-5-5"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-23",
+          "section": "brief",
+          "published_at": "2026-09-22",
+          "event_signature": {
+            "organization": "anthropic",
+            "product": "claude-opus",
+            "action": "release",
+            "artifact": "5-5-launch"
+          },
+          "signature_key": "anthropic|claude-opus|release|5-5-launch",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "openai-gpt-6-sol-luna-api-launch",
+      "event_signature": {
+        "organization": "openai",
+        "product": "gpt-6",
+        "action": "release",
+        "artifact": "sol-luna-api-launch"
+      },
+      "signature_key": "openai|gpt-6|release|sol-luna-api-launch",
+      "current_event_signature": {
+        "organization": "openai",
+        "product": "gpt-6",
+        "action": "release",
+        "artifact": "sol-luna-api-launch"
+      },
+      "current_signature_key": "openai|gpt-6|release|sol-luna-api-launch",
+      "first_published_at": "2026-09-22",
+      "first_edition": "2026-09-23",
+      "title": "GPT-6 Sol và Luna có mặt trong API và Codex",
+      "fingerprint": "gpt 6 sol va luna co mat trong api va codex",
+      "canonical_sources": [
+        "https://openai.com/index/introducing-gpt-6-sol-and-luna"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-23",
+          "section": "trends",
+          "published_at": "2026-09-22",
+          "event_signature": {
+            "organization": "openai",
+            "product": "gpt-6",
+            "action": "release",
+            "artifact": "sol-luna-api-launch"
+          },
+          "signature_key": "openai|gpt-6|release|sol-luna-api-launch",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-actions-node-runtime-node20-removed-node24-required",
+      "event_signature": {
+        "organization": "github",
+        "product": "actions-node-runtime",
+        "action": "deprecation",
+        "artifact": "node20-removed-node24-required"
+      },
+      "signature_key": "github|actions-node-runtime|deprecation|node20-removed-node24-required",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "actions-node-runtime",
+        "action": "deprecation",
+        "artifact": "node20-removed-node24-required"
+      },
+      "current_signature_key": "github|actions-node-runtime|deprecation|node20-removed-node24-required",
+      "first_published_at": "2026-09-23",
+      "first_edition": "2026-09-24",
+      "title": "GitHub Actions kết thúc tùy chọn giữ Node 20 cho JavaScript action",
+      "fingerprint": "github actions ket thuc tuy chon giu node 20 cho javascript action",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-23-node-20-is-no-longer-available-in-github-actions"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-24",
+          "section": "trends",
+          "published_at": "2026-09-23",
+          "event_signature": {
+            "organization": "github",
+            "product": "actions-node-runtime",
+            "action": "deprecation",
+            "artifact": "node20-removed-node24-required"
+          },
+          "signature_key": "github|actions-node-runtime|deprecation|node20-removed-node24-required",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "vercel-sandbox-drives-persistent-mounted-storage",
+      "event_signature": {
+        "organization": "vercel",
+        "product": "sandbox-drives",
+        "action": "beta",
+        "artifact": "persistent-mounted-storage"
+      },
+      "signature_key": "vercel|sandbox-drives|beta|persistent-mounted-storage",
+      "current_event_signature": {
+        "organization": "vercel",
+        "product": "sandbox-drives",
+        "action": "beta",
+        "artifact": "persistent-mounted-storage"
+      },
+      "current_signature_key": "vercel|sandbox-drives|beta|persistent-mounted-storage",
+      "first_published_at": "2026-09-23",
+      "first_edition": "2026-09-24",
+      "title": "Vercel Sandbox có Drive lưu dữ liệu qua nhiều lượt chạy",
+      "fingerprint": "vercel sandbox co drive luu du lieu qua nhieu luot chay",
+      "canonical_sources": [
+        "https://vercel.com/changelog/drives-for-vercel-sandbox-are-now-in-public-beta"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-24",
+          "section": "brief",
+          "published_at": "2026-09-23",
+          "event_signature": {
+            "organization": "vercel",
+            "product": "sandbox-drives",
+            "action": "beta",
+            "artifact": "persistent-mounted-storage"
+          },
+          "signature_key": "vercel|sandbox-drives|beta|persistent-mounted-storage",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "cloudflare-mcp-server-portals-approved-endpoint-access-activity-logging",
+      "event_signature": {
+        "organization": "cloudflare",
+        "product": "mcp-server-portals",
+        "action": "general-availability",
+        "artifact": "approved-endpoint-access-activity-logging"
+      },
+      "signature_key": "cloudflare|mcp-server-portals|general-availability|approved-endpoint-access-activity-logging",
+      "current_event_signature": {
+        "organization": "cloudflare",
+        "product": "mcp-server-portals",
+        "action": "general-availability",
+        "artifact": "approved-endpoint-access-activity-logging"
+      },
+      "current_signature_key": "cloudflare|mcp-server-portals|general-availability|approved-endpoint-access-activity-logging",
+      "first_published_at": "2026-09-24",
+      "first_edition": "2026-09-25",
+      "title": "Cloudflare gom MCP server được phê duyệt vào một endpoint",
+      "fingerprint": "cloudflare gom mcp server duoc phe duyet vao mot endpoint",
+      "canonical_sources": [
+        "https://developers.cloudflare.com/changelog/post/2026-09-24-mcp-portals-ga"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-25",
+          "section": "trends",
+          "published_at": "2026-09-24",
+          "event_signature": {
+            "organization": "cloudflare",
+            "product": "mcp-server-portals",
+            "action": "general-availability",
+            "artifact": "approved-endpoint-access-activity-logging"
+          },
+          "signature_key": "cloudflare|mcp-server-portals|general-availability|approved-endpoint-access-activity-logging",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-actions-artifacts-expired-artifacts-hidden-ui-rest",
+      "event_signature": {
+        "organization": "github",
+        "product": "actions-artifacts",
+        "action": "feature-update",
+        "artifact": "expired-artifacts-hidden-ui-rest"
+      },
+      "signature_key": "github|actions-artifacts|feature-update|expired-artifacts-hidden-ui-rest",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "actions-artifacts",
+        "action": "feature-update",
+        "artifact": "expired-artifacts-hidden-ui-rest"
+      },
+      "current_signature_key": "github|actions-artifacts|feature-update|expired-artifacts-hidden-ui-rest",
+      "first_published_at": "2026-09-24",
+      "first_edition": "2026-09-25",
+      "title": "API Actions không còn liệt kê artifact hết hạn",
+      "fingerprint": "api actions khong con liet ke artifact het han",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-24-expired-github-actions-artifacts-no-longer-shown-in-ui-and-api"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-25",
+          "section": "brief",
+          "published_at": "2026-09-24",
+          "event_signature": {
+            "organization": "github",
+            "product": "actions-artifacts",
+            "action": "feature-update",
+            "artifact": "expired-artifacts-hidden-ui-rest"
+          },
+          "signature_key": "github|actions-artifacts|feature-update|expired-artifacts-hidden-ui-rest",
           "material_update": null,
           "update_kind": null,
           "dedupe_override_reason": null

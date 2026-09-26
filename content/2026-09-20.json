@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "edition_date": "2026-09-20",
+  "locale": "vi-VN",
+  "edition_type": "daily_ai_catchup",
+  "edition_mode": "QUIET",
+  "headline": "Ngân sách Vercel có thêm cảnh báo cho Enterprise Flexible Commitment",
+  "dek": "Spend Management mở rộng phạm vi gói, nhưng đặt ngân sách chưa tự dừng mọi khoản sử dụng. Số bổ sung, chốt nguồn trước 07:00 ngày 20/09/2026 (giờ Việt Nam).",
+  "meta": {
+    "generated_at": "2026-09-26T05:24:27Z",
+    "cutoff_at": "2026-09-20T00:00:00Z",
+    "window_started_at": "2026-09-19T00:00:00Z",
+    "primary_scan_hours": 24,
+    "context_window_hours": 72,
+    "backfilled": true,
+    "research_notes": [
+      "Biên soạn bổ sung ngày 26/09/2026 từ danh sách ứng viên rỗng; đối chiếu sự kiện và URL với toàn bộ sổ tin trước khi chọn.",
+      "Ngày nguồn là ngày công bố trên trang gốc; không suy ra từ thời điểm công cụ tìm kiếm thu thập trang. Tin ngoài 24 giờ chỉ giữ trong cửa sổ 72 giờ và gắn CONTEXT_72H.",
+      "Nhật ký rà nguồn, mục loại và phạm vi kiểm tra: docs/research/backfill-2026-09-26.md."
+    ],
+    "reading_minutes": 2
+  },
+  "brief": [
+    {
+      "event_id": "github-copilot-code-review-overview-2026-09",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot-code-review",
+        "action": "feature-update",
+        "artifact": "review-overview-progress-and-batch-commit-messages"
+      },
+      "published_at": "2026-09-18",
+      "freshness": "CONTEXT_72H",
+      "title": "Copilot code review giữ lại lịch sử phát hiện qua các lượt review",
+      "text": "GitHub đưa GA giao diện tổng quan mới cho Copilot code review. Bản tổng quan tách phát hiện còn mở, lỗi đã xác nhận sửa và lỗi mới tìm thấy ở lượt review sau; khi áp dụng một nhóm gợi ý, Copilot có thể tạo tiêu đề commit phù hợp. Team có thể dùng thử trên PR nhỏ để xem từng kết luận có gắn đúng diff và lịch sử thay đổi hay không.",
+      "sources": [
+        {
+          "label": "GitHub Changelog: Copilot code review — An improved review experience",
+          "url": "https://github.blog/changelog/2026-09-18-copilot-code-review-an-improved-review-experience/",
+          "type": "official",
+          "published_at": "2026-09-18"
+        }
+      ]
+    }
+  ],
+  "trends": [
+    {
+      "event_id": "vercel-spend-management-enterprise-flexible-commitment-budget",
+      "event_signature": {
+        "organization": "vercel",
+        "product": "spend-management",
+        "action": "feature-update",
+        "artifact": "enterprise-flexible-commitment-budget"
+      },
+      "published_at": "2026-09-18",
+      "freshness": "CONTEXT_72H",
+      "title": "Enterprise Flexible Commitment dùng được Spend Management",
+      "sources": [
+        {
+          "label": "Vercel: Spend Management expands to Enterprise Flexible Commitment",
+          "url": "https://vercel.com/changelog/spend-management-enterprise-flex",
+          "type": "official",
+          "published_at": "2026-09-18"
+        }
+      ],
+      "id": "vercel-spend-management-enterprise-flexible-commitment-budget",
+      "strength": "EMERGING",
+      "importance": "LEAD",
+      "paragraphs": [
+        "Vercel mở Spend Management cho nhóm Enterprise dùng Flexible Commitment mà không thu thêm phí cho tính năng này. Nhóm có thể đặt ngân sách theo chu kỳ thanh toán và chọn nhận email, gọi webhook hoặc tạm dừng deployment production của các project.",
+        "Ngân sách theo dõi mức sử dụng được trừ vào số dư trả trước. Chỉ nhập con số không tự dừng tiêu thụ; hành động tạm dừng phải bật riêng và không chặn sử dụng AI Gateway hay v0. Đây là giới hạn cần thể hiện rõ trong quy trình ứng phó chi phí của nhóm.",
+        "Trước khi bật phản ứng tự động, nên thử đường đi của cảnh báo: ai nhận, webhook gọi hệ thống nào và ai chịu trách nhiệm xử lý. Nếu ứng dụng có nhiều nguồn chi phí, hãy đối chiếu từng nguồn với phạm vi tính năng. Như vậy một thông báo vượt ngân sách sẽ dẫn tới hành động cụ thể, thay vì tạo cảm giác đã có trần chi phí tuyệt đối."
+      ],
+      "action": "Thử webhook cảnh báo và ghi rõ người xử lý cùng các dịch vụ nằm ngoài hành động tạm dừng."
+    }
+  ],
+  "releases": [],
+  "developer_memo": {
+    "title": "Việc nên làm sau khi đọc",
+    "direct_answer": "Thiết lập người nhận cảnh báo và thử webhook trước khi dùng hành động tự dừng.",
+    "actions": [
+      "Đối chiếu khoản sử dụng tính theo mức dùng với số dư trả trước."
+    ],
+    "avoid": [
+      "Đừng hiểu ngân sách là trần cứng cho AI Gateway hoặc v0."
+    ]
+  },
+  "radar": [],
+  "takeaway": "Xác định dịch vụ nào vẫn tiếp tục tiêu thụ sau khi kích hoạt cơ chế dừng."
+}

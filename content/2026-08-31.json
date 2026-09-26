@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "edition_date": "2026-08-31",
+  "locale": "vi-VN",
+  "edition_type": "daily_ai_catchup",
+  "edition_mode": "QUIET",
+  "headline": "Visual Studio đưa review về trước pull request",
+  "dek": "Bản cập nhật Copilot cho Visual Studio bổ sung review thay đổi chưa commit và điều chỉnh mức suy luận. Số bổ sung, chốt nguồn trước 07:00 ngày 31/08/2026 (giờ Việt Nam).",
+  "meta": {
+    "generated_at": "2026-09-26T05:24:27Z",
+    "cutoff_at": "2026-08-31T00:00:00Z",
+    "window_started_at": "2026-08-30T00:00:00Z",
+    "primary_scan_hours": 24,
+    "context_window_hours": 72,
+    "backfilled": true,
+    "research_notes": [
+      "Biên soạn bổ sung ngày 26/09/2026 từ danh sách ứng viên rỗng; đối chiếu sự kiện và URL với toàn bộ sổ tin trước khi chọn.",
+      "Ngày nguồn là ngày công bố trên trang gốc; không suy ra từ thời điểm công cụ tìm kiếm thu thập trang. Tin ngoài 24 giờ chỉ giữ trong cửa sổ 72 giờ và gắn CONTEXT_72H.",
+      "Nhật ký rà nguồn, mục loại và phạm vi kiểm tra: docs/research/backfill-2026-09-26.md."
+    ],
+    "reading_minutes": 2
+  },
+  "brief": [
+    {
+      "event_id": "github-copilot-upcoming-policy-billing-changes-2026-08",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot-business-enterprise",
+        "action": "policy-change",
+        "artifact": "seat-prepayment-and-unified-experience"
+      },
+      "published_at": "2026-08-28",
+      "freshness": "CONTEXT_72H",
+      "title": "GitHub công bố thay đổi chính sách và thanh toán Copilot",
+      "text": "GitHub dự kiến thu phí ghế Copilot Business và Enterprise khi cấp quyền từ tháng 9; khách hàng hiện tại dùng thẻ hoặc PayPal sẽ thấy thay đổi từ chu kỳ ngày 1/10. Thông báo cũng nêu kế hoạch hợp nhất trải nghiệm web, mobile và cloud agent, vì vậy quản trị viên nên rà chính sách trước mốc 28/9.",
+      "sources": [
+        {
+          "label": "GitHub Changelog: Upcoming changes to GitHub Copilot policies and billing",
+          "url": "https://github.blog/changelog/2026-08-28-upcoming-changes-to-github-copilot-policies-and-billing/",
+          "type": "official",
+          "published_at": "2026-08-28"
+        }
+      ]
+    }
+  ],
+  "trends": [
+    {
+      "event_id": "github-copilot-visual-studio-august-2026-git-review-thinking-controls",
+      "event_signature": {
+        "organization": "github",
+        "product": "copilot-visual-studio",
+        "action": "release",
+        "artifact": "august-2026-git-review-thinking-controls"
+      },
+      "published_at": "2026-08-28",
+      "freshness": "CONTEXT_72H",
+      "title": "Git agent xem được thay đổi chưa commit trong Visual Studio",
+      "sources": [
+        {
+          "label": "GitHub: Copilot in Visual Studio — August update",
+          "url": "https://github.blog/changelog/2026-08-28-github-copilot-in-visual-studio-august-update-2/",
+          "type": "official",
+          "published_at": "2026-08-28"
+        }
+      ],
+      "id": "github-copilot-visual-studio-august-2026-git-review-thinking-controls",
+      "strength": "EMERGING",
+      "importance": "LEAD",
+      "paragraphs": [
+        "GitHub công bố bản cập nhật Copilot cho Visual Studio ngày 28/08. Git agent có thể review thay đổi chưa commit hoặc một commit, hiển thị nhận xét ngay trong trình soạn thảo và danh sách ở Git Changes. Luồng này hỗ trợ cả repository GitHub lẫn Azure DevOps.",
+        "Các model phù hợp có thêm mức suy luận Low, Medium và High. Chủ tổ chức cũng có thể phân phối custom agent dùng chung; Visual Studio nhận diện nguồn tổ chức trong danh sách chọn agent. Đây là các điều khiển hữu ích khi nhóm muốn dùng cùng hướng dẫn review ở nhiều repository.",
+        "Về cách áp dụng, nên thử trên một diff đủ nhỏ để người viết tự kiểm tra từng nhận xét. Review sớm có thể phát hiện chỗ cần xem lại trước khi tạo pull request, nhưng kết luận đúng hay sai vẫn phải đối chiếu với hành vi chương trình. Kiểm tra kênh Insiders nếu chưa thấy tính năng trong bản đang dùng."
+      ],
+      "action": "So sánh review của Git agent với một lỗi đã biết trong diff nhỏ, rồi chạy bài kiểm thử tái hiện lỗi đó."
+    }
+  ],
+  "releases": [],
+  "developer_memo": {
+    "title": "Việc nên làm sau khi đọc",
+    "direct_answer": "Thử review một thay đổi nhỏ ngay trong IDE trước khi mở pull request.",
+    "actions": [
+      "Chọn một diff có lỗi đã biết để xem Git agent có nhận ra và chỉ đúng vị trí không."
+    ],
+    "avoid": [
+      "Đừng coi nhận xét của agent là kết quả kiểm thử."
+    ]
+  },
+  "radar": [],
+  "takeaway": "Đối chiếu nhận xét trong IDE với lỗi đã tái hiện được trước khi sửa theo gợi ý."
+}

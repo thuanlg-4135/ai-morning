@@ -8,8 +8,8 @@ AI Morning giúp bạn nắm được điều gì vừa thay đổi, vì sao nó
 
 ## Trải nghiệm đọc
 
-- Giao diện báo buổi sáng, hỗ trợ điện thoại và máy tính, với font tiếng Việt tự host.
-- Chế độ sáng, tối hoặc theo hệ thống; tùy chọn đọc tập trung, tăng cỡ chữ và theo dõi tiến độ đọc.
+- Giao diện báo với bảng màu lấy cảm hứng từ Codex với trang chủ nhiều bài và trang đọc bài riêng, hỗ trợ điện thoại và máy tính, với font tiếng Việt tự host.
+- Chế độ sáng, tối hoặc theo hệ thống; tùy chọn đọc tập trung, tăng cỡ chữ.
 - Lưu bài ngay trên trình duyệt và tìm lại trong kho bản tin, không cần tài khoản.
 - Checklist dành cho developer trong từng phiên đọc; tải lại trang sẽ đặt lại checklist.
 - Nội dung và liên kết vẫn dùng được khi tắt JavaScript; chuyển động tôn trọng `prefers-reduced-motion`.
@@ -28,11 +28,11 @@ npm run dev
 
 Mở [localhost:3000/ai-morning/](http://localhost:3000/ai-morning/).
 
-Nội dung nằm trong `content/YYYY-MM-DD.json`. Để chỉnh giao diện, xem `components/`, `app/` và `app/globals.css`.
+Nội dung nằm trong `content/YYYY-MM-DD.json`. Để chỉnh giao diện, bắt đầu từ [kiến trúc frontend](docs/frontend-architecture.md): component được chia theo layout, tin tức, kho bản tin, thư viện và tùy chọn đọc.
 
 ## Cách dự án hoạt động
 
-Dự án dùng **Next.js App Router, React và Motion**. Mỗi số báo là một tệp JSON; quá trình build kiểm tra dữ liệu rồi tạo HTML tĩnh để xuất bản trên GitHub Pages. Môi trường xuất bản không cần máy chủ Next.js.
+Dự án dùng **Next.js App Router và React**. Mỗi số báo là một tệp JSON; quá trình build kiểm tra dữ liệu rồi tạo HTML tĩnh để xuất bản trên GitHub Pages. Môi trường xuất bản không cần máy chủ Next.js.
 
 ```text
 content/YYYY-MM-DD.json + data/news-index.json
@@ -48,8 +48,9 @@ content/YYYY-MM-DD.json + data/news-index.json
 
 | Đường dẫn | Nội dung |
 | --- | --- |
-| `/` | Số báo mới nhất |
-| `/YYYY-MM-DD/` | Số báo theo ngày |
+| `/` | Trang chủ báo: số mới nhất và bài từ các số trước |
+| `/YYYY-MM-DD/` | Số báo đầy đủ theo ngày |
+| `/YYYY-MM-DD/EVENT_ID/` | Trang đọc riêng cho từng bài |
 | `/archive/` | Tìm số báo và xem bài đã lưu |
 | `/en/`, `/en/YYYY-MM-DD/`, `/en/archive/` | Các số có bản dịch tiếng Anh đã duyệt |
 
@@ -115,7 +116,8 @@ Chạy build trước các kiểm thử trình duyệt. Playwright kiểm tra c�
 
 ```text
 app/                Routes Next.js, layout theo ngôn ngữ và CSS
-components/         Giao diện báo và các thành phần tương tác
+components/         layout/, news/, archive/, learning/, reading/
+styles/             Design tokens và điều khiển đọc dùng chung
 lib/                Đọc JSON, bản dịch và cấu hình đường dẫn
 content/            Nội dung biên tập theo ngày
 config/             Danh sách nguồn nghiên cứu
