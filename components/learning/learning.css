@@ -83,6 +83,13 @@
   letter-spacing: -0.025em;
   margin: 12px 0;
 }
+.learn-card h3 a {
+  transition: color 0.15s ease;
+}
+.learn-card h3 a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
 .learn-card p {
   font-family: var(--font-serif), Georgia, serif;
   font-size: 18px;
@@ -103,6 +110,13 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  color: var(--accent);
+  font-weight: 600;
+  transition: gap 0.15s ease;
+}
+.learn-card-bottom a:hover {
+  gap: 12px;
+  text-decoration: none;
 }
 .learn-editor-note {
   color: var(--muted);
@@ -182,11 +196,13 @@
   padding-top: 20px;
 }
 .learn-ai blockquote {
-  border-left: 2px solid var(--accent);
-  padding: 6px 0 6px 24px;
+  border-left: 3px solid var(--accent);
+  background: var(--soft);
+  border-radius: 0 4px 4px 0;
+  padding: 16px 20px;
   font-family: var(--font-serif), Georgia, serif;
-  font-size: 19px;
-  line-height: 1.7;
+  font-size: 18px;
+  line-height: 1.65;
 }
 .learn-sources {
   border-top: 1px solid var(--ink);

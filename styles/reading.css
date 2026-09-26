@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
 }
 .icon-button,
 .theme-button {
@@ -13,26 +13,51 @@
   min-width: 36px;
   min-height: 36px;
   border: 1px solid var(--line);
+  border-radius: 4px;
   background: var(--surface);
-  padding: 8px;
+  padding: 8px 10px;
   font-size: 12px;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
 }
 .icon-button:hover,
-.theme-button:hover,
-.icon-button[aria-pressed="true"] {
+.theme-button:hover {
+  background: var(--soft);
+  border-color: var(--muted);
+  color: var(--ink);
+}
+.icon-button[aria-pressed="true"],
+.theme-button[aria-pressed="true"] {
   background: var(--accent-soft);
   border-color: var(--accent);
   color: var(--accent);
 }
+.icon-button:active,
+.theme-button:active {
+  transform: scale(0.97);
+}
 .story-actions {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 .action-message {
   font-size: 12px;
+  color: var(--accent);
+  font-weight: 500;
   flex-basis: 100%;
+  animation: fadeIn 0.2s ease;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .action-message:empty {
   display: none;
@@ -42,7 +67,7 @@
   list-style: none;
 }
 .memo-checklist li {
-  padding: 12px 0;
+  padding: 14px 0;
   border-bottom: 1px solid var(--line);
 }
 .memo-checklist label {
@@ -50,13 +75,23 @@
   gap: 12px;
   align-items: flex-start;
   cursor: pointer;
+  transition: color 0.15s ease;
+}
+.memo-checklist label:hover {
+  color: var(--accent);
 }
 .memo-checklist input {
   width: 18px;
   height: 18px;
-  margin: 5px 0 0;
+  margin: 4px 0 0;
   flex-shrink: 0;
   accent-color: var(--accent);
+  cursor: pointer;
+}
+.memo-checklist input:checked ~ span:last-child {
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--muted);
 }
 .check-box {
   display: none;
@@ -65,6 +100,7 @@
   color: var(--muted);
   font-family: var(--font-sans), sans-serif;
   font-size: 12px;
+  padding-top: 14px;
 }
 .sr-only {
   position: absolute;

@@ -25,15 +25,22 @@
 .filter-tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 6px;
 }
 .filter-tabs button {
   display: flex;
   align-items: center;
   gap: 7px;
   border: 1px solid var(--line);
+  border-radius: 4px;
   background: var(--paper);
-  padding: 10px 12px;
+  padding: 10px 14px;
+  font-size: 13px;
+  transition: all 0.15s ease;
+}
+.filter-tabs button:hover:not([aria-pressed="true"]) {
+  background: var(--soft);
+  border-color: var(--muted);
 }
 .filter-tabs button[aria-pressed="true"] {
   background: var(--accent);
@@ -44,12 +51,17 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 2px solid var(--line);
   padding: 12px 0;
-  min-width: 260px;
+  min-width: 280px;
+  transition: border-color 0.2s ease;
+}
+.search-field:focus-within {
+  border-color: var(--accent);
 }
 .search-field input {
   border: 0;
+  outline: none;
   background: transparent;
   color: var(--ink);
   width: 100%;
@@ -97,6 +109,17 @@
   font-family: var(--font-serif), Georgia, serif;
   font-size: 25px;
   line-height: 1.22;
+}
+.archive-card h2 a,
+.story-result h2 a,
+.saved-list h2 a {
+  transition: color 0.15s ease;
+}
+.archive-card h2 a:hover,
+.story-result h2 a:hover,
+.saved-list h2 a:hover {
+  color: var(--accent);
+  text-decoration: none;
 }
 .archive-card p,
 .story-result p {

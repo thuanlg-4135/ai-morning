@@ -7,7 +7,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 39px;
+  min-height: 40px;
   border-bottom: 1px solid var(--line);
   font-size: 12px;
 }
@@ -20,24 +20,36 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  color: var(--muted);
+  transition: color 0.15s ease;
+}
+.utility a:hover {
+  color: var(--ink);
+  text-decoration: none;
 }
 .brand {
   display: block;
   width: fit-content;
-  margin: 8px auto 0;
+  margin: 10px auto 2px;
   font-family: var(--font-serif), Georgia, serif;
   font-size: clamp(42px, 7.3vw, 104px);
-  line-height: 1.08;
+  line-height: 1.05;
   font-weight: 800;
   letter-spacing: -0.055em;
   word-spacing: 0.08em;
+  transition: color 0.15s ease;
+}
+.brand:hover {
+  color: var(--accent);
+  text-decoration: none;
 }
 .tagline {
   text-align: center;
   font-family: var(--font-serif), Georgia, serif;
   font-size: 15px;
   font-weight: 600;
-  margin: 0 0 12px;
+  color: var(--muted);
+  margin: 0 0 14px;
 }
 .nav {
   display: flex;
@@ -46,16 +58,25 @@
   gap: 0;
   border-top: 2px solid var(--ink);
   border-bottom: 1px solid var(--ink);
-  padding: 11px 0;
+  padding: 12px 0;
   overflow-x: auto;
-  scrollbar-width: thin;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
   font-family: var(--font-serif), Georgia, serif;
   font-weight: 650;
   font-size: 15px;
 }
+.nav::-webkit-scrollbar {
+  display: none;
+}
 .nav a {
   white-space: nowrap;
   padding: 0 21px;
+  transition: color 0.15s ease;
+}
+.nav a:hover {
+  color: var(--accent);
+  text-decoration: none;
 }
 .nav a + a {
   border-left: 1px solid var(--line);
@@ -66,10 +87,10 @@
 .footer {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr 1.3fr;
-  gap: 24px;
+  gap: 28px;
   border-top: 2px solid var(--ink);
-  padding: 20px 0 36px;
-  margin-top: 44px;
+  padding: 24px 0 40px;
+  margin-top: 52px;
   font-size: 12px;
 }
 .footer > div + div {
@@ -84,6 +105,12 @@
 .footer a:not(.footerBrand) {
   display: block;
   margin: 8px 0;
+  color: var(--muted);
+  transition: color 0.15s ease;
+}
+.footer a:not(.footerBrand):hover {
+  color: var(--accent);
+  text-decoration: none;
 }
 .footer p {
   line-height: 1.6;
@@ -96,6 +123,11 @@
   font-size: 26px;
   font-weight: 800;
   letter-spacing: -0.05em;
+  transition: color 0.15s ease;
+}
+.footerBrand:hover {
+  color: var(--accent);
+  text-decoration: none;
 }
 @media (max-width: 900px) {
   .nav {
