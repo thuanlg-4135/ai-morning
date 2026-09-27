@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "edition_date": "2026-09-27",
+  "locale": "vi-VN",
+  "edition_type": "daily_ai_catchup",
+  "edition_mode": "QUIET",
+  "headline": "Cuối tuần: kiểm tra công cụ trước khi đổi quy trình",
+  "dek": "Bản tin chọn bốn cập nhật ngày 25/9 chưa xuất hiện trong các số trước, thuộc cửa sổ bối cảnh 72 giờ. Lượt rà soát chưa xác minh được tin phù hợp để gắn nhãn mới trong 24 giờ.",
+  "meta": {
+    "generated_at": "2026-09-27T13:21:12+00:00",
+    "cutoff_at": "2026-09-27T07:00:00+07:00",
+    "window_started_at": "2026-09-26T07:00:00+07:00",
+    "scan_hours": 24,
+    "context_hours": 72,
+    "research_notes": [
+      "Đã rà nhóm model/platform, công cụ developer, vận hành/bảo mật, nghiên cứu, báo chí độc lập và nguồn 3D/game. Không suy ra không có tin từ việc tìm kiếm không trả kết quả.",
+      "Meta AI bị timeout; trang Blender News trả lỗi 402. Các kết quả Unreal được mở nằm ngoài cửa sổ; không đưa hướng dẫn cũ vào tin mới.",
+      "Nguồn của bốn mục chỉ hiển thị ngày, dùng quy tắc ngày lịch và nhãn CONTEXT_72H; không tự đặt giờ phát hành.",
+      "Các tin Copilot Memory, proof of presence, VS Code 1.139 và MCP portals đã có trong sổ sự kiện nên loại khỏi danh sách mới."
+    ]
+  },
+  "brief": [
+    {
+      "event_id": "github-actions-workflow-query-count-2500-cap",
+      "event_signature": {
+        "organization": "github",
+        "product": "actions-workflow-runs",
+        "action": "feature-update",
+        "artifact": "query-count-2500-threshold"
+      },
+      "published_at": "2026-09-25",
+      "freshness": "CONTEXT_72H",
+      "sources": [
+        {
+          "label": "GitHub — Changes to query results in the GitHub Actions API and UI",
+          "url": "https://github.blog/changelog/2026-09-25-changes-to-query-results-in-the-github-actions-api-and-ui/",
+          "type": "official",
+          "published_at": "2026-09-25"
+        }
+      ],
+      "title": "GitHub Actions đổi cách đếm kết quả truy vấn lớn",
+      "text": "GitHub đang triển khai cách hiển thị “2.500+” khi truy vấn lượt chạy vượt ngưỡng này, thay vì cố trả tổng chính xác; kết quả phân trang vẫn giới hạn 1.000 mục. Nếu script báo cáo CI cần lấy nhiều lượt chạy, hãy chia bộ lọc theo khoảng ngày và kiểm tra lại cách tính tổng."
+    },
+    {
+      "event_id": "cloudflare-browser-run-crawl-lifecycle-queue-events",
+      "event_signature": {
+        "organization": "cloudflare",
+        "product": "browser-run",
+        "action": "feature-update",
+        "artifact": "crawl-lifecycle-queue-subscriptions"
+      },
+      "published_at": "2026-09-25",
+      "freshness": "CONTEXT_72H",
+      "sources": [
+        {
+          "label": "Cloudflare — Subscribe to Browser Run crawl events",
+          "url": "https://developers.cloudflare.com/changelog/post/2026-09-25-crawl-event-subscriptions/",
+          "type": "official",
+          "published_at": "2026-09-25"
+        }
+      ],
+      "title": "Browser Run gửi sự kiện thu thập web vào Queues",
+      "text": "Cloudflare Browser Run cho phép đăng ký sự kiện bắt đầu, cập nhật và kết thúc tác vụ thu thập web qua Queues. Nhóm làm công cụ nhập dữ liệu có thể dùng thông báo kết thúc để khởi động bước xử lý tiếp theo, thay cho việc gọi API liên tục để hỏi trạng thái."
+    }
+  ],
+  "trends": [
+    {
+      "event_id": "microsoft-copilot-home-code-autopilot-announcement",
+      "event_signature": {
+        "organization": "microsoft",
+        "product": "copilot",
+        "action": "preview",
+        "artifact": "home-code-autopilot-managed-runtime"
+      },
+      "published_at": "2026-09-25",
+      "freshness": "CONTEXT_72H",
+      "sources": [
+        {
+          "label": "Microsoft — Introducing the new Copilot with Home, Code and Autopilot",
+          "url": "https://blogs.microsoft.com/blog/2026/09/25/introducing-the-new-copilot-with-home-code-and-autopilot/",
+          "type": "official",
+          "published_at": "2026-09-25"
+        }
+      ],
+      "title": "Microsoft đưa công cụ tạo ứng dụng vào Copilot",
+      "strength": "EARLY_SIGNAL",
+      "importance": "LEAD",
+      "editorial_theme": "internal-app-development",
+      "editorial_angle": "preview-scope-and-cost",
+      "paragraphs": [
+        "Microsoft công bố Home, Code và Autopilot cho Copilot ngày 25/9. Code hướng tới tạo ứng dụng nhỏ từ mô tả; Home và Code sẽ được mở dần qua chương trình Frontier. Autopilot, agent làm việc kéo dài, dự kiến mở rộng bản thử nghiệm riêng cuối tháng. Riêng Copilot Managed Runtime, hạ tầng chạy ứng dụng trong môi trường Microsoft 365 của tổ chức, đã ở giai đoạn preview.",
+        "Ví dụ, nhóm phát triển có thể thử một bảng theo dõi bàn giao QA khi được cấp quyền truy cập. Đầu ra cần kiểm tra là ứng dụng chia sẻ được và xử lý đúng quyền xem dữ liệu. Đây mới là cách thử đề xuất, chưa phải kết quả kiểm chứng. Microsoft cho biết Code và Autopilot tính phí theo mức sử dụng; nhóm cần tính cả chi phí vận hành trước khi nhận thêm ứng dụng nội bộ để bảo trì."
+      ],
+      "action": "Chọn một tác vụ nhỏ và xác nhận quyền dùng preview trước khi lên lịch thử."
+    }
+  ],
+  "releases": [
+    {
+      "event_id": "vercel-sandbox-memory-observability-dashboard-cli",
+      "event_signature": {
+        "organization": "vercel",
+        "product": "sandbox",
+        "action": "feature-update",
+        "artifact": "memory-usage-dashboard-cli"
+      },
+      "published_at": "2026-09-25",
+      "freshness": "CONTEXT_72H",
+      "sources": [
+        {
+          "label": "Vercel — Sandbox now supports memory observability",
+          "url": "https://vercel.com/changelog/vercel-sandbox-now-supports-memory-observability",
+          "type": "official",
+          "published_at": "2026-09-25"
+        }
+      ],
+      "product": "Vercel Sandbox",
+      "feature": "Theo dõi mức dùng bộ nhớ",
+      "status": "AVAILABLE",
+      "summary": "Vercel bổ sung dữ liệu sử dụng bộ nhớ của Sandbox trên dashboard và qua lệnh vercel metrics.",
+      "who_gets_it": "Nhóm đang chạy công việc trong Vercel Sandbox và cần kiểm tra tài nguyên.",
+      "why_it_matters": "Ví dụ, khi một lượt chạy xử lý tệp bị dừng, biểu đồ bộ nhớ là thêm một dữ kiện để đối chiếu với log.",
+      "verdict": "TRY_NOW",
+      "verdict_note": "Chạy lại một tác vụ mẫu và lưu số liệu cùng log. Chỉ số bộ nhớ không tự chứng minh nguyên nhân lỗi hay thay thế việc tái hiện lỗi."
+    }
+  ],
+  "developer_memo": {
+    "title": "Chọn một việc có thể kiểm chứng",
+    "direct_answer": "Ưu tiên kiểm tra công cụ nhóm đang dùng trước khi thử thêm nền tảng.",
+    "actions": [
+      "Rà script thống kê GitHub Actions để tìm chỗ phụ thuộc tổng số kết quả chính xác.",
+      "Ghi số liệu bộ nhớ cùng log cho một tác vụ Sandbox mẫu."
+    ],
+    "avoid": [
+      "Tránh coi lịch mở preview Copilot là tính năng đã có cho mọi tài khoản."
+    ]
+  },
+  "radar": [],
+  "takeaway": "Chọn một thay đổi liên quan trực tiếp đến công việc và ghi lại kết quả kiểm tra trước khi mở rộng."
+}

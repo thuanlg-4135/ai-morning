@@ -2,8 +2,8 @@
   "schema_version": 3,
   "generated_from": {
     "first_edition": "2026-08-22",
-    "last_edition": "2026-09-26",
-    "edition_count": 36,
+    "last_edition": "2026-09-27",
+    "edition_count": 37,
     "source_registry_count": 45
   },
   "events": [
@@ -4611,6 +4611,170 @@
             "artifact": "1-139-agents-in-remote-dev-containers"
           },
           "signature_key": "microsoft|visual-studio-code|release|1-139-agents-in-remote-dev-containers",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "cloudflare-browser-run-crawl-lifecycle-queue-events",
+      "event_signature": {
+        "organization": "cloudflare",
+        "product": "browser-run",
+        "action": "feature-update",
+        "artifact": "crawl-lifecycle-queue-subscriptions"
+      },
+      "signature_key": "cloudflare|browser-run|feature-update|crawl-lifecycle-queue-subscriptions",
+      "current_event_signature": {
+        "organization": "cloudflare",
+        "product": "browser-run",
+        "action": "feature-update",
+        "artifact": "crawl-lifecycle-queue-subscriptions"
+      },
+      "current_signature_key": "cloudflare|browser-run|feature-update|crawl-lifecycle-queue-subscriptions",
+      "first_published_at": "2026-09-25",
+      "first_edition": "2026-09-27",
+      "title": "Browser Run gửi sự kiện thu thập web vào Queues",
+      "fingerprint": "browser run gui su kien thu thap web vao queues",
+      "canonical_sources": [
+        "https://developers.cloudflare.com/changelog/post/2026-09-25-crawl-event-subscriptions"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-27",
+          "section": "brief",
+          "published_at": "2026-09-25",
+          "event_signature": {
+            "organization": "cloudflare",
+            "product": "browser-run",
+            "action": "feature-update",
+            "artifact": "crawl-lifecycle-queue-subscriptions"
+          },
+          "signature_key": "cloudflare|browser-run|feature-update|crawl-lifecycle-queue-subscriptions",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "github-actions-workflow-query-count-2500-cap",
+      "event_signature": {
+        "organization": "github",
+        "product": "actions-workflow-runs",
+        "action": "feature-update",
+        "artifact": "query-count-2500-threshold"
+      },
+      "signature_key": "github|actions-workflow-runs|feature-update|query-count-2500-threshold",
+      "current_event_signature": {
+        "organization": "github",
+        "product": "actions-workflow-runs",
+        "action": "feature-update",
+        "artifact": "query-count-2500-threshold"
+      },
+      "current_signature_key": "github|actions-workflow-runs|feature-update|query-count-2500-threshold",
+      "first_published_at": "2026-09-25",
+      "first_edition": "2026-09-27",
+      "title": "GitHub Actions đổi cách đếm kết quả truy vấn lớn",
+      "fingerprint": "github actions doi cach dem ket qua truy van lon",
+      "canonical_sources": [
+        "https://github.blog/changelog/2026-09-25-changes-to-query-results-in-the-github-actions-api-and-ui"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-27",
+          "section": "brief",
+          "published_at": "2026-09-25",
+          "event_signature": {
+            "organization": "github",
+            "product": "actions-workflow-runs",
+            "action": "feature-update",
+            "artifact": "query-count-2500-threshold"
+          },
+          "signature_key": "github|actions-workflow-runs|feature-update|query-count-2500-threshold",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "microsoft-copilot-home-code-autopilot-announcement",
+      "event_signature": {
+        "organization": "microsoft",
+        "product": "copilot",
+        "action": "preview",
+        "artifact": "home-code-autopilot-managed-runtime"
+      },
+      "signature_key": "microsoft|copilot|preview|home-code-autopilot-managed-runtime",
+      "current_event_signature": {
+        "organization": "microsoft",
+        "product": "copilot",
+        "action": "preview",
+        "artifact": "home-code-autopilot-managed-runtime"
+      },
+      "current_signature_key": "microsoft|copilot|preview|home-code-autopilot-managed-runtime",
+      "first_published_at": "2026-09-25",
+      "first_edition": "2026-09-27",
+      "title": "Microsoft đưa công cụ tạo ứng dụng vào Copilot",
+      "fingerprint": "microsoft dua cong cu tao ung dung vao copilot",
+      "canonical_sources": [
+        "https://blogs.microsoft.com/blog/2026/09/25/introducing-the-new-copilot-with-home-code-and-autopilot"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-27",
+          "section": "trends",
+          "published_at": "2026-09-25",
+          "event_signature": {
+            "organization": "microsoft",
+            "product": "copilot",
+            "action": "preview",
+            "artifact": "home-code-autopilot-managed-runtime"
+          },
+          "signature_key": "microsoft|copilot|preview|home-code-autopilot-managed-runtime",
+          "material_update": null,
+          "update_kind": null,
+          "dedupe_override_reason": null
+        }
+      ]
+    },
+    {
+      "event_id": "vercel-sandbox-memory-observability-dashboard-cli",
+      "event_signature": {
+        "organization": "vercel",
+        "product": "sandbox",
+        "action": "feature-update",
+        "artifact": "memory-usage-dashboard-cli"
+      },
+      "signature_key": "vercel|sandbox|feature-update|memory-usage-dashboard-cli",
+      "current_event_signature": {
+        "organization": "vercel",
+        "product": "sandbox",
+        "action": "feature-update",
+        "artifact": "memory-usage-dashboard-cli"
+      },
+      "current_signature_key": "vercel|sandbox|feature-update|memory-usage-dashboard-cli",
+      "first_published_at": "2026-09-25",
+      "first_edition": "2026-09-27",
+      "title": "Vercel Sandbox — Theo dõi mức dùng bộ nhớ",
+      "fingerprint": "vercel sandbox theo doi muc dung bo nho",
+      "canonical_sources": [
+        "https://vercel.com/changelog/vercel-sandbox-now-supports-memory-observability"
+      ],
+      "occurrences": [
+        {
+          "edition_date": "2026-09-27",
+          "section": "releases",
+          "published_at": "2026-09-25",
+          "event_signature": {
+            "organization": "vercel",
+            "product": "sandbox",
+            "action": "feature-update",
+            "artifact": "memory-usage-dashboard-cli"
+          },
+          "signature_key": "vercel|sandbox|feature-update|memory-usage-dashboard-cli",
           "material_update": null,
           "update_kind": null,
           "dedupe_override_reason": null
